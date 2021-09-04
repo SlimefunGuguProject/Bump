@@ -1,4 +1,4 @@
-# Bump(作者：bxx2004)（适配作者：Lobbytech-MC）(已授权）
+# Bump(作者：bxx2004)（适配作者：Lobbytech-MC, zimzaza4）(已授权）
 这是一个Slimefun4附属，它添加了更多魔法武器与鉴定系统
 
 ## 原贴
