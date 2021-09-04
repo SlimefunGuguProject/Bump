@@ -1,18 +1,34 @@
 /*    */ package bxx2004.bump.sf;
 /*    */ 
-/*    */ import bxx2004.bump.Bump;
-/*    */ import bxx2004.bump.util.Register;
-/*    */ import bxx2004.bump.util.SfItemStackCreate;
-/*    */ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-/*    */ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-/*    */ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.Category;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-/*    */ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-/*    */ import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-/*    */ import org.bukkit.Material;
-/*    */ import org.bukkit.NamespacedKey;
-/*    */ import org.bukkit.inventory.ItemStack;
+/*    */
+
+import bxx2004.bump.Bump;
+import bxx2004.bump.util.Register;
+import bxx2004.bump.util.SfItemStackCreate;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+
 /*    */ //import org.bukkit.plugin.Plugin;
 /*    */ 
 /*    */ 
@@ -23,7 +39,7 @@
 /*    */ 
 /*    */ 
 /*    */   
-/* 26 */   public Category food = new Category(new NamespacedKey(Bump.getPlugin(Bump.class), "Food"), new CustomItem(Material.BREAD, "&bBump-食物", "", "&b&k|&b- 点击打开 >", "", "&7高级的食物往往...!", "Rua Rua Rua..." ));
+/* 26 */   public ItemGroup food = new ItemGroup(new NamespacedKey(Bump.getPlugin(Bump.class), "Food"), new CustomItemStack(Material.BREAD, "&bBump-食物", "", "&b&k|&b- 点击打开 >", "", "&7高级的食物往往...!", "Rua Rua Rua..." ));
 /*    */ 
 /*    */   
 /* 29 */   public static SlimefunItemStack keLe_ = (new SfItemStackCreate("KELE", Material.POTION, "&e可乐",  new String[]{ "&b&k|&b- 冰力十足,喝了真精神,还会飞呢!" })).get();

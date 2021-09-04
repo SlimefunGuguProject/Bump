@@ -1,12 +1,22 @@
 /*    */ package bxx2004.bump.util;
 /*    */ 
-/*    */ import bxx2004.bump.Bump;
-/*    */ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-/*    */ import javax.annotation.Nonnull;
-/*    */ import javax.annotation.Nullable;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-/*    */ import org.bukkit.plugin.java.JavaPlugin;
-/*    */ 
+/*    */
+
+import bxx2004.bump.Bump;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import org.bukkit.plugin.java.JavaPlugin;
+
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+
+/*    */
 /*    */ public class Register
 /*    */   implements SlimefunAddon
 /*    */ {

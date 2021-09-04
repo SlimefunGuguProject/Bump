@@ -1,17 +1,32 @@
 /*    */ package bxx2004.bump.sf;
 /*    */ 
-/*    */ import bxx2004.bump.Bump;
-/*    */ import bxx2004.bump.util.SfItemStackCreate;
-/*    */ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-/*    */ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-/*    */ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.Category;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-/*    */ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-/*    */ import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-/*    */ import org.bukkit.Material;
-/*    */ import org.bukkit.NamespacedKey;
-/*    */ import org.bukkit.inventory.ItemStack;
+/*    */
+
+import bxx2004.bump.Bump;
+import bxx2004.bump.util.SfItemStackCreate;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+
 /*    */ //import org.bukkit.plugin.Plugin;
 /*    */ 
 /*    */ 
@@ -39,7 +54,7 @@
 /*    */   public static SlimefunItemStack peachwood_;
 /* 40 */   public static SlimefunItemStack upDatePower_ = (new SfItemStackCreate("UPDATE_POWER", Material.ZOMBIE_HEAD, "&e升级核心", new String[] { "", "&b&k|&b- 用来升级一些奇怪的物品...", "" })).get();
 /*    */   
-/*    */   public Category stuff;
+/*    */   public ItemGroup stuff;
 /*    */   
 /*    */   static {
 /* 45 */     sunEnergy_ = (new SfItemStackCreate("SUN_ENERGY", Material.SUNFLOWER, "&e光合能量", new String[] { "", "&b&k|&b- 变异的植物也会进行光合作用...", "" })).get();
@@ -55,7 +70,7 @@
 /*    */   }
 /*    */   
 /*    */   public Stuff(SlimefunAddon plugin) {
-/* 58 */     this.stuff = new Category(new NamespacedKey(Bump.getPlugin(Bump.class), "Stuff"), new CustomItem(Material.NETHER_STAR, "&bBump-魔法物品",  "", "&b&k|&b- 点击打开 >", "", "&7在生活中发生变异的一些物品!", "他们可能含有未知的力量..." ));
+/* 58 */     this.stuff = new ItemGroup(new NamespacedKey(Bump.getPlugin(Bump.class), "Stuff"), new CustomItemStack(Material.NETHER_STAR, "&bBump-魔法物品",  "", "&b&k|&b- 点击打开 >", "", "&7在生活中发生变异的一些物品!", "他们可能含有未知的力量..." ));
 /* 59 */     this.stuff.register(plugin);
 /* 60 */     SlimefunItem upDatePower = new SlimefunItem(this.stuff, upDatePower_, RecipeType.MAGIC_WORKBENCH, new ItemStack[] { SlimefunItems.POWER_CRYSTAL, SlimefunItems.LAVA_CRYSTAL, SlimefunItems.POWER_CRYSTAL, SlimefunItems.LAVA_CRYSTAL, CPU_, SlimefunItems.LAVA_CRYSTAL, SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K });
 /* 61 */     SlimefunItem peachwood = new SlimefunItem(this.stuff, peachwood_, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { new ItemStack(Material.ACACIA_WOOD), new ItemStack(Material.BIRCH_WOOD), new ItemStack(Material.DARK_OAK_WOOD) });
@@ -64,7 +79,7 @@
 /* 64 */     SlimefunItem watersugar = new SlimefunItem(this.stuff, waterSugar_, RecipeType.PRESSURE_CHAMBER, new ItemStack[] { SlimefunItems.MAGIC_SUGAR });
 /* 65 */     SlimefunItem sunEnergy = new SlimefunItem(this.stuff, sunEnergy_, RecipeType.MAGIC_WORKBENCH, new ItemStack[] { new ItemStack(Material.CHORUS_FLOWER, 1), new ItemStack(Material.SUNFLOWER, 1), new ItemStack(Material.CHORUS_FLOWER, 1) });
 /* 66 */     SlimefunItem mechaGeat = new SlimefunItem(this.stuff, mechaGeat_, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.COPPER_WIRE, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD });
-/* 67 */     SlimefunItem oldCoin = new SlimefunItem(this.stuff, oldCoin_, RecipeType.ARMOR_FORGE, new ItemStack[] { null, null, null, null, new CustomItem(Material.DIAMOND_SHOVEL, "&e&o获取方式: ","&7&o摸金铲也许对他有点作用..." ) });
+/* 67 */     SlimefunItem oldCoin = new SlimefunItem(this.stuff, oldCoin_, RecipeType.ARMOR_FORGE, new ItemStack[] { null, null, null, null, new CustomItemStack(Material.DIAMOND_SHOVEL, "&e&o获取方式: ","&7&o摸金铲也许对他有点作用..." ) });
 /* 68 */     SlimefunItem make = new SlimefunItem(this.stuff, make_, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { SlimefunItems.BATTERY, SlimefunItems.BATTERY, SlimefunItems.BATTERY, SlimefunItems.COOLING_UNIT, SlimefunItems.POWER_CRYSTAL, SlimefunItems.COOLING_UNIT, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.ADVANCED_CIRCUIT_BOARD });
 /* 69 */     SlimefunItem oldCPU = new SlimefunItem(this.stuff, oldCPU_, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] { SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE, make.getItem(), SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE, SlimefunItems.COPPER_WIRE });
 /* 70 */     SlimefunItem CPU = new SlimefunItem(this.stuff, CPU_, RecipeType.COMPRESSOR, new ItemStack[] { oldCPU.getItem() });

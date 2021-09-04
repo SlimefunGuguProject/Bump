@@ -1,17 +1,32 @@
 /*    */ package bxx2004.bump.sf;
 /*    */ 
-/*    */ import bxx2004.bump.Bump;
-/*    */ import bxx2004.bump.util.SfItemStackCreate;
-/*    */ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
-/*    */ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-/*    */ import me.mrCookieSlime.Slimefun.Lists.RecipeType;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.Category;
-/*    */ import me.mrCookieSlime.Slimefun.Objects.SlimefunItem.SlimefunItem;
-/*    */ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-/*    */ import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-/*    */ import org.bukkit.Material;
-/*    */ import org.bukkit.NamespacedKey;
-/*    */ import org.bukkit.inventory.ItemStack;
+/*    */
+
+import bxx2004.bump.Bump;
+import bxx2004.bump.util.SfItemStackCreate;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
+import org.bukkit.inventory.ItemStack;
+
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+/*    */
+
 /*    */ //import org.bukkit.plugin.Plugin;
 /*    */ 
 /*    */ 
@@ -39,7 +54,7 @@
 /*    */   public static SlimefunItemStack witherSkullRow_;
 /* 40 */   public static SlimefunItemStack LightBow_ = (new SfItemStackCreate("LIGHT_BOW", Material.BOW, "&6神罚之弓", new String[] { "", "&b&k|&b- &7&o接受神的惩罚...", "" },  "ARROW_DAMAGE-5" )).get();
 /*    */   
-/*    */   public Category weapon;
+/*    */   public ItemGroup weapon;
 /*    */   
 /*    */   static {
 /* 45 */     witherSkullRow_ = (new SfItemStackCreate("WITHERSKULL_ROW", Material.BOW, "&6凋零弓", new String[] { "", "&b&k|&b- &7&o它发射出去的的是每一个亡灵...", "" },  "ARROW_DAMAGE-5" )).get();
@@ -55,7 +70,7 @@
 /*    */   }
 /*    */   
 /*    */   public Weapon(SlimefunAddon bump) {
-/* 58 */     this.weapon = new Category(new NamespacedKey(Bump.getPlugin(Bump.class), "Weapon"), new CustomItem(Material.IRON_SWORD, "&aBump-魔法武器",  "", "&b&k|&b- 点击打开 >", "", "&7这些东西被魔法灌注的更加强大!", "请谨慎的研究他们!" ));
+/* 58 */     this.weapon = new ItemGroup(new NamespacedKey(Bump.getPlugin(Bump.class), "Weapon"), new CustomItemStack(Material.IRON_SWORD, "&aBump-魔法武器",  "", "&b&k|&b- 点击打开 >", "", "&7这些东西被魔法灌注的更加强大!", "请谨慎的研究他们!" ));
 /* 59 */     this.weapon.register(bump);
 /* 60 */     SlimefunItem LightBow = new SlimefunItem(this.weapon, LightBow_, RecipeType.ARMOR_FORGE, new ItemStack[] { SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE, SlimefunItems.POWER_CRYSTAL, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM });
 /* 61 */     SlimefunItem witherskullbow = new SlimefunItem(this.weapon, witherSkullRow_, RecipeType.ARMOR_FORGE, new ItemStack[] { SlimefunItems.NECROTIC_SKULL, Stuff.peachwood_, SlimefunItems.NECROTIC_SKULL, SlimefunItems.POWER_CRYSTAL, Stuff.peachwood_, SlimefunItems.NECROTIC_SKULL, Stuff.peachwood_ });

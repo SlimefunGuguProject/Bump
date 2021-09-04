@@ -1,26 +1,50 @@
 /*     */ package bxx2004.bump.event;
 /*     */ 
-/*     */ import bxx2004.bump.sf.Stuff;
-/*     */ import bxx2004.bump.sf.Tools;
-/*     */ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunPlugin;
-/*     */ import java.util.ArrayList;
-/*     */ import java.util.List;
-/*     */ import java.util.Random;
-/*     */ import me.mrCookieSlime.Slimefun.cscorelib2.item.CustomItem;
-/*     */ import org.bukkit.Bukkit;
-/*     */ import org.bukkit.Material;
-/*     */ import org.bukkit.attribute.Attribute;
-/*     */ import org.bukkit.entity.Player;
-/*     */ import org.bukkit.event.EventHandler;
-/*     */ import org.bukkit.event.Listener;
-/*     */ import org.bukkit.event.block.Action;
-/*     */ import org.bukkit.event.block.BlockBreakEvent;
-/*     */ import org.bukkit.event.inventory.InventoryClickEvent;
-/*     */ import org.bukkit.event.player.PlayerInteractEvent;
-/*     */ import org.bukkit.inventory.Inventory;
-/*     */ import org.bukkit.inventory.ItemStack;
-/*     */ import org.bukkit.inventory.meta.ItemMeta;
-/*     */ 
+/*     */
+
+import bxx2004.bump.sf.Stuff;
+import bxx2004.bump.sf.Tools;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
+import org.bukkit.Bukkit;
+import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Player;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.Action;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.inventory.Inventory;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+/*     */
+
+/*     */
 /*     */ public class ToolsEvent
 /*     */   implements Listener
 /*     */ {
@@ -33,9 +57,9 @@
 /*  33 */         Inventory inventory = Bukkit.createInventory(null, 27, "合成界面");
 /*  34 */         for (int i = 0; i < 27; i++) {
 /*  35 */           if (i == 10 || i == 13 || i == 16) {
-/*  36 */             inventory.setItem(13, new CustomItem(Material.GREEN_STAINED_GLASS_PANE, "&a确认鉴定",  "&e<- &b左面放入鉴定符", "&e-> &b右面放入物品" ));
+/*  36 */             inventory.setItem(13, new CustomItemStack(Material.GREEN_STAINED_GLASS_PANE, "&a确认鉴定",  "&e<- &b左面放入鉴定符", "&e-> &b右面放入物品" ));
 /*     */           } else {
-/*  38 */             inventory.setItem(i, new CustomItem(Material.BLACK_STAINED_GLASS_PANE, "---"));
+/*  38 */             inventory.setItem(i, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, "---"));
 /*     */           } 
 /*     */         } 
 /*  41 */         p.openInventory(inventory);
@@ -81,7 +105,7 @@
 /*  81 */             p.getInventory().addItem( itemStack );
 /*  82 */             event.getInventory().clear();
 /*  83 */             p.closeInventory();
-/*  84 */             SlimefunPlugin.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o鉴定成功!", false);
+/*  84 */             Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o鉴定成功!", false);
 /*     */           } 
 /*     */         } 
 /*  87 */         if (event.getInventory().getItem(10).getItemMeta() != null && event.getInventory().getItem(16).getItemMeta() != null && event.getInventory().getItem(10).getItemMeta().equals(Tools.appraisalPaperArmor_.getItemMeta()) && 
@@ -115,7 +139,7 @@
 /* 115 */             p.getInventory().addItem( itemStack );
 /* 116 */             event.getInventory().clear();
 /* 117 */             p.closeInventory();
-/* 118 */             SlimefunPlugin.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o鉴定成功!", false);
+/* 118 */             Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o鉴定成功!", false);
 /*     */           } 
 /*     */         } 
 /*     */       } 
@@ -132,7 +156,7 @@
 /* 132 */         if (random.nextInt(4) == 0) {
 /* 133 */           event.setDropItems(false);
 /* 134 */           p.getWorld().dropItem(event.getBlock().getLocation(), Stuff.oldCoin_);
-/* 135 */           SlimefunPlugin.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§oOMG, 金子...", false);
+/* 135 */           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§oOMG, 金子...", false);
 /*     */         } 
 /*     */       } 
 /* 138 */     } catch (Exception exception) {}

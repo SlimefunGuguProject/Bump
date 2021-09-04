@@ -1,10 +1,17 @@
 /*    */ package bxx2004.bump.util;
 /*    */ 
-/*    */ import me.mrCookieSlime.Slimefun.api.SlimefunItemStack;
-/*    */ import org.bukkit.Material;
-/*    */ import org.bukkit.enchantments.Enchantment;
-/*    */ import org.bukkit.inventory.meta.ItemMeta;
-/*    */ 
+/*    */
+
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import org.bukkit.Material;
+import org.bukkit.enchantments.Enchantment;
+import org.bukkit.inventory.meta.ItemMeta;
+
+/*    */
+/*    */
+/*    */
+
+/*    */
 /*    */ public class SfItemStackCreate {
 /*    */   private SlimefunItemStack itemStack;
 /*    */   
