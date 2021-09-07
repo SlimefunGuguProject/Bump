@@ -3,7 +3,7 @@
 这是一个Slimefun4附属/It is a Slimefun addon
 <br/>它添加了魔法武器、食物、武器鉴定系统/It adds magic weapon, food and weapon identification system.
 <br/>展示视频/Show video
-<br/>https://www.bilibili.com/95f2ee75-f779-409a-b00a-dcc62d6d9385
+<br/>https://www.bilibili.com/video/BV1z54y117Sv?spm_id_from=333.999.0.0
 ## 原贴/Original post
 https://www.mcbbs.net/thread-1125935-1-1.html
 
