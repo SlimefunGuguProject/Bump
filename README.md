@@ -7,6 +7,10 @@
 ## 原贴/Original post
 https://www.mcbbs.net/thread-1125935-1-1.html
 
+## 版本需求/Version requirements
+Minecraft版本：1.16.5~1.17.1
+<br/>Slimefun4版本：RC-27（v1.1）
+<br/>              RC-21~RC-26(v1.0)
 ## 源码说明/Source code description
 该源码为反编译源码，部分内容会有些欠缺，待大佬补充
 
