@@ -4,7 +4,7 @@
 <br/>它添加了魔法武器、食物、武器鉴定系统/It adds magic weapon, food and weapon identification system.
 <br/>展示视频/Show video
 <br/>https://www.bilibili.com/video/BV1z54y117Sv?spm_id_from=333.999.0.0
-## 原贴/Original post
+## 原贴/Original website
 https://www.mcbbs.net/thread-1125935-1-1.html
 
 ## 版本需求/Version requirements
