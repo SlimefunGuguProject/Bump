@@ -24,25 +24,27 @@ import org.bukkit.potion.PotionEffectType;
          if (event.getItem().getItemMeta().equals(Food.xueBi_.getItemMeta())) {
            p.setFoodLevel(20);
            Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o清凉一夏!", false);
+           p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
          if (event.getItem().getItemMeta().equals(Food.keLe_.getItemMeta())) {
-           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
-           p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2000, 5));
+           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o肥宅的胜利!", false);
+           p.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
          if (event.getItem().getItemMeta().equals(Food.kouXiangTang_.getItemMeta())) {
            Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
-           p.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 2000, 5));
-           p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
-         } 
-         if (event.getItem().getItemMeta().equals(Food.laTiao_.getItemMeta())) {
-           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
            p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
+         if (event.getItem().getItemMeta().equals(Food.laTiao_.getItemMeta())) {
+           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o这辣，才够味!", false);
+           p.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 2000, 5));
+           p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
+         } 
          if (event.getItem().getItemMeta().equals(Food.fangBianMian_.getItemMeta())) {
-           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
+           Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o童年的味道!", false);
+           p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
        } 
