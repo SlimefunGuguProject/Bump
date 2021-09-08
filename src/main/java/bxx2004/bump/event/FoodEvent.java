@@ -28,17 +28,17 @@ import org.bukkit.potion.PotionEffectType;
          } 
          if (event.getItem().getItemMeta().equals(Food.keLe_.getItemMeta())) {
            Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
-           p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 2000, 5));
+           p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
          if (event.getItem().getItemMeta().equals(Food.kouXiangTang_.getItemMeta())) {
            Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
-           p.addPotionEffect(new PotionEffect(PotionEffectType.SLOW, 2000, 5));
+           p.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
          if (event.getItem().getItemMeta().equals(Food.laTiao_.getItemMeta())) {
            Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§o仙气飘飘!", false);
-           p.addPotionEffect(new PotionEffect(PotionEffectType.FIRE_RESISTANCE, 2000, 5));
+           p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 2000, 5));
            p.getInventory().getItemInMainHand().setAmount(p.getInventory().getItemInMainHand().getAmount() - 1);
          } 
          if (event.getItem().getItemMeta().equals(Food.fangBianMian_.getItemMeta())) {
