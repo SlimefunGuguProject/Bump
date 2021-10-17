@@ -9,9 +9,6 @@
  import org.bukkit.ChatColor;
  import org.bukkit.plugin.java.JavaPlugin;
  
- 
- 
- 
  public class Bump
    extends JavaPlugin
    implements SlimefunAddon
@@ -27,7 +24,7 @@
      Bukkit.getConsoleSender().sendMessage("§b§l[Bump] ->§6§l     \\/___/  \\/___/  \\/_/\\/_/\\/_/\\ \\ \\/ ");
      Bukkit.getConsoleSender().sendMessage("§b§l[Bump] ->§6§l                                  \\ \\_\\ ");
      Bukkit.getConsoleSender().sendMessage("§b§l[Bump] ->§6§l                                   \\/_/ ");
-     Bukkit.getConsoleSender().sendMessage("§b§l[Bump] ->§a§l     - Slimefun - Powered By bxx2004 | Website https://github.com/haiman233/Slimefun-Bump");
+     Bukkit.getConsoleSender().sendMessage("§b§l[Bump] ->§a§l     - Slimefun4 RC-27 - Powered By bxx2004 | Website https://github.com/haiman233/Slimefun-Bump");
 
      
      Bukkit.getPluginManager().registerEvents(new WeaponEvent(), this);
