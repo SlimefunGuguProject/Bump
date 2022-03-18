@@ -13,7 +13,7 @@ Minecraft版本：1.16.5-1.17.1
 
 ## 语言/Language
 简体中文
-<br/>English-UK（future）
+<br/>[English-UK](https://github.com/haiman233/Slimefun-Bump-EN)
 
 ## 下载/Download
 详见releases
