@@ -21,20 +21,22 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.plugin.Plugin;
 
 
-public class Food
-{
-public static SlimefunItemStack xueBi_ = (new SfItemStackCreate("XUEBI", Material.POTION, "&e雪碧", new String[] { "", "&b&k|&b- 很甜很甜, 还冒着气泡!", "" },  "MENDING-3" )).get();
+public class Food {
+    public static SlimefunItemStack xueBi_ = new SfItemStackCreate("XUEBI", Material.POTION, "&eSprite", new String[]{"", "&b&k|&b- Very sweet and sweet, still bubbling!", ""}, "MENDING-3");
+    public ItemGroup food = new ItemGroup(new NamespacedKey(plugin, "Food"), new CustomItemStack(Material.BREAD, "&bBump-Food", "", "&b&k|&b- Click to open >", "", "&7High-class food often...!", "Rua Rua Rua..."));
+    public static SlimefunItemStack keLe_ = new SfItemStackCreate("KELE", Material.POTION, "&eCola", new String[]{"&b&k|&b- The ice is full of strength, and if you drink it, you can fly!"});
+    public static SlimefunItemStack fangBianMian_ = new SfItemStackCreate("FANGBIANMIAN", Material.STRING, "&eMaster Kong Instant Noodles", new String[]{"", "&b&k|&b- This taste is spicy!", ""});
+    public static SlimefunItemStack laTiao_;
 
-public ItemGroup food = new ItemGroup(new NamespacedKey(Bump.getPlugin(Bump.class), "Food"), new CustomItemStack(Material.BREAD, "&bBump-食物", "", "&b&k|&b- 点击打开 >", "", "&7高级的食物往往...!", "Rua Rua Rua..." ));
+    static {
+        laTiao_ = new SfItemStackCreate("LATIAO", Material.ROTTEN_FLESH, "&eSpicy Strips", new String[]{"", "&b&k|&b- It's cool, I still don't forget to lick the spicy oil after eating...", ""});
+        kouXiangTang_ = new SfItemStackCreate("KOUXIANGTANG", Material.SUGAR, "&eChewing Gum", new String[]{"", "&b&k|&b- Very sticky...", ""});
+    }
 
-  
-  public static SlimefunItemStack keLe_ = (new SfItemStackCreate("KELE", Material.POTION, "&e可乐",  new String[]{ "&b&k|&b- 冰力十足,喝了真精神,还会飞呢!" })).get();
-  public static SlimefunItemStack fangBianMian_ = (new SfItemStackCreate("FANGBIANMIAN", Material.STRING, "&e康师傅方便面", new String[] { "", "&b&k|&b- 这个味,对辣!", "" })).get(); public static SlimefunItemStack laTiao_; static {
-  laTiao_ = (new SfItemStackCreate("LATIAO", Material.ROTTEN_FLESH, "&e辣条", new String[] { "", "&b&k|&b- 爽,吃了之后还不忘舔舔辣油...", "" })).get();
-  kouXiangTang_ = (new SfItemStackCreate("KOUXIANGTANG", Material.SUGAR, "&e口香糖", new String[] { "", "&b&k|&b- 很粘稠的...", "" })).get();
-   }
-   public static SlimefunItemStack kouXiangTang_;
-   public Food(SlimefunAddon plugin) {
+    public static SlimefunItemStack kouXiangTang_;
+
+    public Food() {
+    public Food(SlimefunAddon plugin) {
      this.food.register(plugin);
      ItemStack[] itemStackArray = new ItemStack[9];
      itemStackArray[0] = SlimefunItems.MAGIC_SUGAR;
