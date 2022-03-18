@@ -3,6 +3,7 @@ package bxx2004.bump.sf;
 
 
 import bxx2004.bump.Bump;
+import bxx2004.bump.util.Register;
 import bxx2004.bump.util.SfItemStackCreate;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
