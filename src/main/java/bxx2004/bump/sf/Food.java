@@ -25,9 +25,6 @@ public class Food
 {
 public static SlimefunItemStack xueBi_ = (new SfItemStackCreate("XUEBI", Material.POTION, "&e雪碧", new String[] { "", "&b&k|&b- 很甜很甜, 还冒着气泡!", "" },  "MENDING-3" )).get();
 
-
-
- 
 public ItemGroup food = new ItemGroup(new NamespacedKey(Bump.getPlugin(Bump.class), "Food"), new CustomItemStack(Material.BREAD, "&bBump-食物", "", "&b&k|&b- 点击打开 >", "", "&7高级的食物往往...!", "Rua Rua Rua..." ));
 
   
