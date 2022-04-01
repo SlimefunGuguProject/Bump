@@ -2,13 +2,11 @@ package bxx2004.bump;
 
 import bxx2004.bump.event.MachineEvent;
 import bxx2004.bump.event.ToolsEvent;
-import bxx2004.bump.event.WeaponEvent;
 import bxx2004.bump.setup.ItemsSetup;
 import bxx2004.bump.util.Utils;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import org.bukkit.Bukkit;
 
-import java.text.MessageFormat;
 import java.util.logging.Level;
 
 public final class Bump extends AbstractAddon {
@@ -43,7 +41,6 @@ public final class Bump extends AbstractAddon {
         ItemsSetup.setup();
 
         // register events
-        Bukkit.getPluginManager().registerEvents(new WeaponEvent(), this);
         Bukkit.getPluginManager().registerEvents(new MachineEvent(), this);
         Bukkit.getPluginManager().registerEvents(new ToolsEvent(), this);
     }

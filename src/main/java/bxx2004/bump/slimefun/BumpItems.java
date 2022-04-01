@@ -143,7 +143,7 @@ public class BumpItems {
         Material.BOW
     );
     static {
-        LIGHT_BOW.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5);
+        WITHERSKULL_ROW.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5);
     }
 
     public static final SlimefunItemStack EMER_SWORD = new BumpItemStack(

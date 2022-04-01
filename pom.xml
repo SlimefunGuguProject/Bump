@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.bump</groupId>
     <artifactId>Bump</artifactId>
-    <version>MODIFIED</version>
+    <version>2.0</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -128,7 +128,7 @@
         <dependency>
             <groupId>net.guizhanss</groupId>
             <artifactId>GuizhanLib</artifactId>
-            <version>5bf144c919</version>
+            <version>0.8.0</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

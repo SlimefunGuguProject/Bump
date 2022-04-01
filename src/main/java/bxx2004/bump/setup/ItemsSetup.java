@@ -1,6 +1,7 @@
 package bxx2004.bump.setup;
 
 import bxx2004.bump.Bump;
+import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
 import bxx2004.bump.slimefun.BumpRecipeTypes;
 import bxx2004.bump.slimefun.items.food.Fangbianmian;
@@ -10,9 +11,17 @@ import bxx2004.bump.slimefun.items.food.Latiao;
 import bxx2004.bump.slimefun.items.food.Xuebi;
 import bxx2004.bump.slimefun.items.stuff.StuffItem;
 import bxx2004.bump.slimefun.items.tool.GetgoldSpade;
+import bxx2004.bump.slimefun.items.weapon.DevilSword;
+import bxx2004.bump.slimefun.items.weapon.LightBow;
+import bxx2004.bump.slimefun.items.weapon.SkyDevilSword;
+import bxx2004.bump.slimefun.items.weapon.SkySword;
+import bxx2004.bump.slimefun.items.weapon.SoulSword;
+import bxx2004.bump.slimefun.items.weapon.WitherSkullBow;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
+import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 
 public final class ItemsSetup {
@@ -138,6 +147,89 @@ public final class ItemsSetup {
 
         // region tool
         new GetgoldSpade().register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.TOOL,
+            BumpItems.APPRAISAL_PAPER_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[] {
+                BumpItems.RANDOM_HELMET
+            }
+        ).register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.TOOL,
+            BumpItems.APPRAISAL_PAPER_DAMAGE,
+            RecipeType.SMELTERY,
+            new ItemStack[] {
+                BumpItems.RANDOM_SWORD
+            }
+        ).register(plugin);
         // endregion tool
+
+        // region weapon
+        new LightBow().register(plugin);
+        new WitherSkullBow().register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.WEAPON,
+            BumpItems.EMER_SWORD,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                null, new ItemStack(Material.EMERALD), null,
+                null, new ItemStack(Material.EMERALD), null,
+                null, new ItemStack(Material.STICK), null
+            }
+        ).register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.WEAPON,
+            BumpItems.BONE_SWORD,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                null, new ItemStack(Material.BONE_BLOCK, 64), null,
+                null, new ItemStack(Material.BONE_BLOCK, 64), null,
+                null, SlimefunItems.GRANDMAS_WALKING_STICK, null
+            }
+        ).register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.WEAPON,
+            BumpItems.RANDOM_SWORD,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                null, null, null,
+                null, BumpItems.MAKE, null,
+                null, new ItemStack(Material.STICK), null
+            }
+        ).register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.WEAPON,
+            BumpItems.GUARD_SWORD,
+            RecipeType.ARMOR_FORGE,
+            new ItemStack[] {
+                null, BumpItems.SUN_ENERGY, null,
+                null, BumpItems.SUN_ENERGY, null,
+                null, new ItemStack(Material.STICK), null
+            }
+        ).register(plugin);
+
+        new SlimefunItem(
+            BumpItemGroups.WEAPON,
+            BumpItems.PEACH_SWORD,
+            RecipeType.ARMOR_FORGE,
+            new ItemStack[] {
+                null, BumpItems.PEACH_WOOD, null,
+                null, BumpItems.PEACH_WOOD, null,
+                null, new ItemStack(Material.STICK), null
+            }
+        ).register(plugin);
+
+        new SoulSword().register(plugin);
+        new SkySword().register(plugin);
+        new DevilSword().register(plugin);
+        new SkyDevilSword().register(plugin);
+        // endregion weapon
     }
 }
