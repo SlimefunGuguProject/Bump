@@ -113,6 +113,12 @@ items:
       - ""
       - "&b&k|&b- Refuge From Evil Spirits"
       - ""
+   update_power:
+    name: "&eUpgrade Core"
+    lore:
+      - ""
+      - "&b&k|&b- Used to upgrade some weird items..."
+      - ""
   getgold_spade:
     name: "&eGetting-gold Shovel"
     lore:
