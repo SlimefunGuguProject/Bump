@@ -204,3 +204,13 @@ items:
       - ""
       - "&b&k|&b- &7&oBreaking the sky and cutting the devil, one after another emits powerful energy..."
       - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and elevate yourself..."
+ 
+messages:
+  food:
+    xuebi: "&b&k|&b- &7&o清凉一夏!"
+    kele: "&b&k|&b- &7&o肥宅的胜利!"
+    fangbianmian: "&b&k|&b- &7&o童年的味道!"
+    latiao: "&b&k|&b- &7&o这辣，才够味!"
+    kouxiangtang: "&b&k|&b- &7&o仙气飘飘!"
+  tool:
+    getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
