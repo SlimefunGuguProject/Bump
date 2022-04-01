@@ -4,6 +4,7 @@ import bxx2004.bump.event.FoodEvent;
 import bxx2004.bump.event.MachineEvent;
 import bxx2004.bump.event.ToolsEvent;
 import bxx2004.bump.event.WeaponEvent;
+import bxx2004.bump.setup.ItemsSetup;
 import bxx2004.bump.util.Utils;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import org.bukkit.Bukkit;
@@ -33,11 +34,13 @@ public final class Bump extends AbstractAddon {
         Utils.log(Level.INFO, "&6&l                                   \\/_/ ");
         Utils.log(Level.INFO, "&a&l     - Slimefun4 RC-27+ - Powered By bxx2004 | Website https://github.com/SlimefunGuguProject/Slimefun-Bump");
 
-        // setup
+        // localization
         String lang = getConfig().getString("lang", "zh-CN");
         localization = new BumpLocalization(this);
         localization.addLanguage(lang);
         getLogger().log(Level.INFO, MessageFormat.format("&eLoaded language {0}", lang));
+
+        ItemsSetup.setup();
 
         // register events
         Bukkit.getPluginManager().registerEvents(new WeaponEvent(), this);
