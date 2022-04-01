@@ -102,6 +102,11 @@ public class BumpItems {
         "PEACH_WOOD",
         Material.STICK
     );
+
+    public static final SlimefunItemStack UPDATE_POWER = new BumpItemStack(
+        "UPDATE_POWER",
+        Material.ZOMBIE_HEAD
+    );
     // endregion stuff
 
     // region tool
@@ -214,9 +219,9 @@ public class BumpItems {
         Material.DIAMOND_SWORD
     );
     static {
-        DEVIL_SWORD.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5);
-        DEVIL_SWORD.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
-        DEVIL_SWORD.addUnsafeEnchantment(Enchantment.LOYALTY, 5);
+        SKY_DEVIL_SWORD.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5);
+        SKY_DEVIL_SWORD.addUnsafeEnchantment(Enchantment.DURABILITY, 5);
+        SKY_DEVIL_SWORD.addUnsafeEnchantment(Enchantment.LOYALTY, 5);
     }
     // endregion weapon
 }
