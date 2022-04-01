@@ -3,6 +3,9 @@ package bxx2004.bump;
 import net.guizhanss.guizhanlib.localization.Localization;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
+import net.md_5.bungee.api.ChatMessageType;
+import net.md_5.bungee.api.chat.BaseComponent;
+import net.md_5.bungee.api.chat.TextComponent;
 import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
 
@@ -46,5 +49,16 @@ public final class BumpLocalization extends Localization {
         Validate.notNull(messageKey, "Message key cannot be null");
 
         ChatUtil.send(p, MessageFormat.format(getString("messages." + messageKey), args));
+    }
+
+    @ParametersAreNonnullByDefault
+    public void sendActionbarMessage(Player p, String messageKey, Object... args) {
+        Validate.notNull(p, "Player cannot be null");
+        Validate.notNull(messageKey, "Message key cannot be null");
+
+        String message = MessageFormat.format(getString("messages." + messageKey), args);
+
+        BaseComponent[] components = TextComponent.fromLegacyText(ChatUtil.color(message));
+        p.spigot().sendMessage(ChatMessageType.ACTION_BAR, components);
     }
 }

@@ -125,21 +125,4 @@ public class ToolsEvent
         } catch (Exception exception) {
         }
     }
-
-    @EventHandler
-    public void onBreak(BlockBreakEvent event) {
-        try {
-            Player p = event.getPlayer();
-            if (p.getInventory().getItemInMainHand().getItemMeta().getLore().contains("§b§k|§b- 在沙子里一定几率挖出破损的金币!") &&
-                event.getBlock().getType().equals(Material.SAND)) {
-                Random random = new Random();
-                if (random.nextInt(4) == 0) {
-                    event.setDropItems(false);
-                    p.getWorld().dropItem(event.getBlock().getLocation(), Stuff.oldCoin_);
-                    Slimefun.getLocalization().sendActionbarMessage(p, "§b§k|§b- §7§oOMG, 金子...", false);
-                }
-            }
-        } catch (Exception exception) {
-        }
-    }
 }

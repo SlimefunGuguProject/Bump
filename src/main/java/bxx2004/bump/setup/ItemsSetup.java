@@ -1,12 +1,17 @@
 package bxx2004.bump.setup;
 
 import bxx2004.bump.Bump;
-import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
 import bxx2004.bump.slimefun.BumpRecipeTypes;
+import bxx2004.bump.slimefun.items.food.Fangbianmian;
+import bxx2004.bump.slimefun.items.food.Kele;
+import bxx2004.bump.slimefun.items.food.Kouxiangtang;
+import bxx2004.bump.slimefun.items.food.Latiao;
+import bxx2004.bump.slimefun.items.food.Xuebi;
+import bxx2004.bump.slimefun.items.stuff.StuffItem;
+import bxx2004.bump.slimefun.items.tool.GetgoldSpade;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -16,9 +21,19 @@ public final class ItemsSetup {
     public static void setup() {
         Bump plugin = Bump.getInstance();
 
+        // region armor
+        // endregion armor
+
+        // region food
+        new Xuebi().register(plugin);
+        new Kele().register(plugin);
+        new Fangbianmian().register(plugin);
+        new Latiao().register(plugin);
+        new Kouxiangtang().register(plugin);
+        // endregion food
+
         // region stuff
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.SUN_ENERGY,
             RecipeType.MAGIC_WORKBENCH,
             new ItemStack[] {
@@ -28,8 +43,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.MECHA_GEAR,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -39,15 +53,13 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.OLD_COIN,
             BumpRecipeTypes.GETGOLD_SPADE,
             new ItemStack[9]
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.MAKE,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -57,8 +69,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.OLD_CPU,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -68,8 +79,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.CPU,
             RecipeType.COMPRESSOR,
             new ItemStack[] {
@@ -77,8 +87,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.SOUL_PAPER,
             RecipeType.ANCIENT_ALTAR,
             new ItemStack[] {
@@ -88,8 +97,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.KSF_STUFF,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -99,8 +107,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.WATER_SUGAR,
             RecipeType.PRESSURE_CHAMBER,
             new ItemStack[] {
@@ -108,8 +115,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.PEACH_WOOD,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
@@ -119,8 +125,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new UnplaceableBlock(
-            BumpItemGroups.STUFF,
+        new StuffItem(
             BumpItems.UPDATE_POWER,
             RecipeType.MAGIC_WORKBENCH,
             new ItemStack[] {
@@ -130,5 +135,9 @@ public final class ItemsSetup {
             }
         ).register(plugin);
         // endregion stuff
+
+        // region tool
+        new GetgoldSpade().register(plugin);
+        // endregion tool
     }
 }

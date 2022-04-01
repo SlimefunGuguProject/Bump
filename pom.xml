@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>me.bump</groupId>
     <artifactId>Bump</artifactId>
-    <version>1.1</version>
+    <version>MODIFIED</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -55,9 +55,11 @@
 
             <resource>
                 <directory>${basedir}/src/main/resources</directory>
-                <filtering>false</filtering>
+                <filtering>true</filtering>
                 <includes>
-                    <include>schematics/*</include>
+                    <include>*.yml</include>
+
+                    <include>lang/*.yml</include>
                 </includes>
             </resource>
         </resources>
@@ -66,10 +68,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-shade-plugin</artifactId>
-                <version>3.2.4</version>
+                <version>3.3.0</version>
 
                 <configuration>
-
+                    <minimizeJar>true</minimizeJar>
                     <!-- Shade dependencies into the output jar -->
                     <relocations>
                         <relocation>
