@@ -73,8 +73,8 @@
                     <!-- Shade dependencies into the output jar -->
                     <relocations>
                         <relocation>
-                            <pattern>org.bstats</pattern>
-                            <shadedPattern>io.github.thebusybiscuit.exoticgarden.bstats</shadedPattern>
+                            <pattern>net.guizhanss.guizhanlib</pattern>
+                            <shadedPattern>bxx2004.bump.libs.guizhanlib</shadedPattern>
                         </relocation>
                     </relocations>
 
@@ -110,9 +110,9 @@
         </dependency>
 
         <dependency>
-            <groupId>com.github.slimefun</groupId>
+            <groupId>io.github.Slimefun</groupId>
             <artifactId>Slimefun4</artifactId>
-            <version>RC-27</version>
+            <version>RC-30</version>
             <scope>provided</scope>
         </dependency>
 
@@ -124,9 +124,9 @@
         </dependency>
 
         <dependency>
-            <groupId>org.bstats</groupId>
-            <artifactId>bstats-bukkit</artifactId>
-            <version>2.2.1</version>
+            <groupId>net.guizhanss</groupId>
+            <artifactId>GuizhanLib</artifactId>
+            <version>5bf144c919</version>
             <scope>compile</scope>
         </dependency>
     </dependencies>

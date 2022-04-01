@@ -1,2 +1,3 @@
 options:
-  auto-update: false
+  auto-update: true
+  lang: zh-CN

@@ -1,5 +1,4 @@
- package bxx2004.bump.util;
- 
+package bxx2004.bump.util;
 
 
 import bxx2004.bump.Bump;
@@ -11,21 +10,20 @@ import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
 
 
- public class Register
-   implements SlimefunAddon
- {
-   @Nonnull
-   public JavaPlugin getJavaPlugin() {
-     return Bump.getPlugin(Bump.class);
-   }
-   
-   @Nullable
-   public String getBugTrackerURL() {
-     return "bxx2004";
-   }
-   
-   public Register(SlimefunItem... slimefunItems) {
-     for (int i = 0; i < slimefunItems.length; i++)
-       slimefunItems[i].register(this); 
-   }
- }
+public class Register
+    implements SlimefunAddon {
+    @Nonnull
+    public JavaPlugin getJavaPlugin() {
+        return Bump.getPlugin(Bump.class);
+    }
+
+    @Nullable
+    public String getBugTrackerURL() {
+        return "bxx2004";
+    }
+
+    public Register(SlimefunItem... slimefunItems) {
+        for (int i = 0; i < slimefunItems.length; i++)
+            slimefunItems[i].register(this);
+    }
+}
