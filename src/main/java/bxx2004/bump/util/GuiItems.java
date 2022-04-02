@@ -13,4 +13,10 @@ public final class GuiItems {
         Bump.getLocalization().getString("gui.appraise.name"),
         Bump.getLocalization().getStringArray("gui.appraise.lore")
     );
+
+    public static ItemStack APPRAISE_PAPER = new CustomItemStack(
+        Material.PAPER,
+        Bump.getLocalization().getString("gui.appraisal_paper.name"),
+        Bump.getLocalization().getStringArray("gui.appraisal_paper.lore")
+    );
 }

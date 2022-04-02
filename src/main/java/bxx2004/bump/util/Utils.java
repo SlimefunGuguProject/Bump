@@ -6,9 +6,11 @@ import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.text.MessageFormat;
+import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
 
@@ -56,6 +58,20 @@ public class Utils {
             if (!event.isCancelled()) {
                 p.setFoodLevel(event.getFoodLevel());
             }
+        }
+    }
+
+    /**
+     * Try to push {@link ItemStack} to player's inventory,
+     * if full, then drop on the ground
+     * @param p the {@link Player} to be dealt with
+     * @param itemStacks all {@link ItemStack} to be pushed
+     */
+    public static void pushToPlayerInventory(Player p, ItemStack... itemStacks) {
+        Map<Integer, ItemStack> remainingItemMap = p.getInventory().addItem(itemStacks);
+
+        for (ItemStack item : remainingItemMap.values()) {
+            p.getWorld().dropItem(p.getLocation(), item.clone());
         }
     }
 }
