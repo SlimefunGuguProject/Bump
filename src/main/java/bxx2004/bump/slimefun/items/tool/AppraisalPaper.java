@@ -77,6 +77,7 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
             menu.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_PAPER, (player, slot, item, action) -> {
                 // Check input slot
                 ItemStack input = menu.getItemInSlot(INPUT_SLOT);
+                SlimefunItem sfItem = SlimefunItem.getByItem(input);
 
                 if (input == null) {
                     Bump.getLocalization().sendMessage(p, "no-input");
@@ -90,7 +91,9 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                 }
 
                 // validate item
-                if (AppraiseUtils.isAppraisableMaterial(input.getType()) && !AppraiseUtils.isAppraised(input)) {
+                if (AppraiseUtils.isAppraisableMaterial(input.getType())
+                    && sfItem != null
+                    && !AppraiseUtils.isAppraised(input)) {
                     // item can be marked appraisable
                     ItemStack output = input.clone();
                     AppraiseUtils.setAppraisable(output);

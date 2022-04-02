@@ -3,6 +3,7 @@ package bxx2004.bump.slimefun;
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.items.BumpItemStack;
 import bxx2004.bump.slimefun.items.machine.Appraisal;
+import bxx2004.bump.util.AppraiseUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Material;
@@ -16,6 +17,9 @@ public class BumpItems {
         "RANDOM_HELMET",
         Material.DIAMOND_HELMET
     );
+    static{
+        AppraiseUtils.setAppraisable(RANDOM_HELMET);
+    }
     // endregion armor
 
     // region food
@@ -170,6 +174,9 @@ public class BumpItems {
         "RANDOM_SWORD",
         Material.DIAMOND_SWORD
     );
+    static{
+        AppraiseUtils.setAppraisable(RANDOM_SWORD);
+    }
 
     public static final SlimefunItemStack GUARD_SWORD = new BumpItemStack(
         "GUARD_SWORD",

@@ -63,7 +63,6 @@ public final class AppraiseUtils {
 
         ItemMeta im = itemStack.getItemMeta();
 
-        // TODO: 未完成
         // set lore
         List<String> lore;
         if (im.hasLore()) {
