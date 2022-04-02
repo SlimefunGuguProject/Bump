@@ -213,6 +213,11 @@ items:
       - "&b&k|&b- &e&o右键 &7&o连续向前发射三次吐息并且提升自己..."
       - ""
 
+lores:
+  per-use: "&7每次使用"
+  not-appraised: "&b&k|&b- &7&o未鉴定"
+  appraised: "&b&k|&b- &7&o已鉴定 &b| &7&o等级: {0}"
+
 messages:
   no-input: "&c请放入物品!"
   output-no-space: "&c输出空间不足!"
