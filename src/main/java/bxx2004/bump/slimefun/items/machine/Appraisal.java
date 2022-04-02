@@ -3,12 +3,14 @@ package bxx2004.bump.slimefun.items.machine;
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
+import bxx2004.bump.util.AppraiseUtils;
 import bxx2004.bump.util.GuiItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
@@ -17,11 +19,14 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+import org.bukkit.persistence.PersistentDataContainer;
 
 import javax.annotation.Nonnull;
 
 public class Appraisal extends MenuBlock implements EnergyNetComponent {
 
+    // gui
     private static final int[] BACKGROUND = {
         0, 4, 8, 9, 17, 18, 22, 26
     };
@@ -35,6 +40,7 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
     private static final int APPRAISE_BUTTON = 13;
     private static final int OUTPUT_SLOT = 15;
 
+    // energy
     private static final int ENERGY_CONSUMPTION = 114514;
 
     public Appraisal() {
@@ -92,6 +98,18 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
             return;
         }
 
+        // validate input
+        if (!validate(item)) {
+            Bump.getLocalization().sendMessage(p, "machine.appraisal.invalid");
+            return;
+        }
+
+        // check if input item is already appraised
+        if (AppraiseUtils.isAppraised(item)) {
+            Bump.getLocalization().sendMessage(p, "machine.appraisal.appraised");
+            return;
+        }
+
         // check output slot
         if (blockMenu.getItemInSlot(OUTPUT_SLOT) != null) {
             Bump.getLocalization().sendMessage(p, "output-no-space");
@@ -105,7 +123,26 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
             return;
         }
 
+        blockMenu.replaceExistingItem(INPUT_SLOT, null);
+        blockMenu.pushItem(applyAppraisal(item), OUTPUT_SLOT);
+        setCharge(blockMenu.getLocation(), 0);
+        Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
+    }
 
+    private boolean validate(ItemStack itemStack) {
+        return AppraiseUtils.isAppraiseable(itemStack)
+            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HELMET, itemStack, false)
+            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_SWORD, itemStack, false);
+    }
+
+    // TODO: 未完成
+    private ItemStack applyAppraisal(@Nonnull ItemStack itemStack) {
+        ItemStack output = itemStack.clone();
+        ItemMeta im = output.getItemMeta();
+        PersistentDataContainer pdc = im.getPersistentDataContainer();
+
+        // pdc.set(Keys.APPRAISE_LEVEL, PersistentDataType.INTEGER, 3);
+        return output;
     }
 
     public static int getEnergyConsumption() {
@@ -121,5 +158,9 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
     @Override
     public int getCapacity() {
         return ENERGY_CONSUMPTION;
+    }
+
+    private enum Type {
+
     }
 }

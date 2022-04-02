@@ -1,7 +1,10 @@
 package bxx2004.bump.slimefun;
 
+import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.items.BumpItemStack;
+import bxx2004.bump.slimefun.items.machine.Appraisal;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 
@@ -48,7 +51,8 @@ public class BumpItems {
     // region machine
     public static final SlimefunItemStack APPRAISAL = new BumpItemStack(
         "APPRAISAL",
-        Material.BELL
+        Material.BELL,
+        LoreBuilder.power(Appraisal.getEnergyConsumption(), Bump.getLocalization().getString("lores.per-use"))
     );
     // endregion machine
 

@@ -2,6 +2,7 @@ package bxx2004.bump.slimefun.items.tool;
 
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
+import bxx2004.bump.util.AppraiseUtils;
 import bxx2004.bump.util.GuiItems;
 import bxx2004.bump.util.Utils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -11,6 +12,7 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -18,6 +20,7 @@ import javax.annotation.Nonnull;
 
 public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
 
+    // gui
     private static final int[] BACKGROUND_SLOT = {
         0, 4, 8, 9, 17, 18, 22, 26
     };
@@ -86,6 +89,18 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                     return true;
                 }
 
+                // validate item
+                if (AppraiseUtils.isAppraisableMaterial(input.getType()) && !AppraiseUtils.isAppraised(input)) {
+                    // item can be marked appraisable
+                    ItemStack output = input.clone();
+                    AppraiseUtils.setAppraisable(output);
+                    menu.replaceExistingItem(INPUT_SLOT, null);
+                    menu.addItem(OUTPUT_SLOT, output);
+
+                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
+                } else {
+                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
+                }
 
                 return true;
             });
