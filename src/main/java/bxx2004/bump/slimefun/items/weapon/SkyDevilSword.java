@@ -7,7 +7,6 @@ import bxx2004.bump.util.Utils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import net.guizhanss.guizhanlib.common.Scheduler;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -42,23 +41,21 @@ public class SkyDevilSword extends SimpleSlimefunItem<ItemUseHandler> {
                 p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 3));
                 p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 300, 3));
 
-                Scheduler.repeatAsync(100, new BukkitRunnable() {
-                    int i = 0;
+                (new BukkitRunnable() {
+                    int count = 3;
 
                     @Override
                     public void run() {
-                        if (this.i < 3) {
+                        if (count > 0) {
                             p.launchProjectile(DragonFireball.class);
-                            this.i++;
+                            count--;
                         } else {
-                            cancel();
-                            this.i = 0;
+                            this.cancel();
                             p.setGlowing(false);
                             Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.end");
-                            p.removePotionEffect(PotionEffectType.SPEED);
                         }
                     }
-                });
+                }).runTaskTimer(Bump.getInstance(), 1L, 100L);
             } else {
                 // Too low food level
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
