@@ -19,8 +19,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
 
 import javax.annotation.Nonnull;
 
@@ -124,7 +122,11 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
         }
 
         blockMenu.replaceExistingItem(INPUT_SLOT, null);
-        blockMenu.pushItem(applyAppraisal(item), OUTPUT_SLOT);
+
+        ItemStack output = item.clone();
+        AppraiseUtils.applyAppraise(output);
+        blockMenu.pushItem(output, OUTPUT_SLOT);
+
         setCharge(blockMenu.getLocation(), 0);
         Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
     }
@@ -133,16 +135,6 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
         return AppraiseUtils.isAppraiseable(itemStack)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HELMET, itemStack, false)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_SWORD, itemStack, false);
-    }
-
-    // TODO: 未完成
-    private ItemStack applyAppraisal(@Nonnull ItemStack itemStack) {
-        ItemStack output = itemStack.clone();
-        ItemMeta im = output.getItemMeta();
-        PersistentDataContainer pdc = im.getPersistentDataContainer();
-
-        // pdc.set(Keys.APPRAISE_LEVEL, PersistentDataType.INTEGER, 3);
-        return output;
     }
 
     public static int getEnergyConsumption() {

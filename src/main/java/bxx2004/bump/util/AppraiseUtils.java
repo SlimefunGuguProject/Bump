@@ -11,6 +11,7 @@ import org.bukkit.persistence.PersistentDataContainer;
 import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -60,24 +61,44 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        ItemMeta meta = itemStack.getItemMeta();
+        ItemMeta im = itemStack.getItemMeta();
 
         // TODO: 未完成
         // set lore
-        if (meta.hasLore()) {
-            List<String> lore = meta.getLore();
-            for (int i = 0; i < lore.size(); i++) {
-                if (lore.get(i).equals(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")))) {
-
-                }
-            }
+        List<String> lore;
+        if (im.hasLore()) {
+            lore = im.getLore();
+        } else {
+            lore = new ArrayList<>();
         }
+        lore.add(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")));
+        im.setLore(lore);
+
+        // set pdc
+        PersistentDataContainer pdc = im.getPersistentDataContainer();
+        pdc.set(Keys.APPRAISABLE, PersistentDataType.BYTE, (byte) 1);
+
+        itemStack.setItemMeta(im);
     }
 
+    /**
+     * Check if the {@link ItemStack} is appraised
+     *
+     * @param itemStack the {@link ItemStack} to be checked
+     *
+     * @return if the {@link ItemStack} is appraised
+     */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        return itemStack.getItemMeta().getPersistentDataContainer().has(Keys.APPRAISE_LEVEL, PersistentDataType.INTEGER);
+        return itemStack.getItemMeta().getPersistentDataContainer().has(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE);
+    }
+
+    public static void applyAppraise(@Nonnull ItemStack itemStack) {
+        Validate.notNull(itemStack, "itemStack should not be null");
+        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
+
+
     }
 }
