@@ -2,6 +2,7 @@ package bxx2004.bump.slimefun.items;
 
 import bxx2004.bump.Bump;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -28,7 +29,9 @@ public class BumpItemStack extends SlimefunItemStack {
 
         ItemMeta im = getItemMeta();
         List<String> lore = im.getLore();
-        lore.addAll(Arrays.asList(appendLore));
+        for (String line : appendLore) {
+            lore.add(ChatUtil.color(line));
+        }
         im.setLore(lore);
         setItemMeta(im);
     }
