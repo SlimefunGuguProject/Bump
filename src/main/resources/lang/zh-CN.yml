@@ -214,6 +214,8 @@ items:
       - ""
 
 messages:
+  no_input: "&c请放入物品!"
+  output_no_space: "&c输出空间不足!"
   food:
     xuebi: "&b&k|&b- &7&o清凉一夏!"
     kele: "&b&k|&b- &7&o肥宅的胜利!"
@@ -235,3 +237,18 @@ messages:
       end: "&b&k|&b- &7&o强化时间已经结束!"
     light_bow: "&b&k|&b- &7&o神罚!"
     wither_skull_bow: "&b&k|&b- &7&o凋零!"
+  machine:
+    appraisal:
+      invalid: "&c该物品无法进行鉴定!"
+
+gui:
+  appraise_paper:
+    name: "&e点击鉴定"
+    lore:
+      - "&7<- 在左侧放入需要鉴定的物品"
+      - "&7点击这里开始鉴定"
+  appraise:
+    name: "&e点击鉴定"
+    lore:
+      - "&7<- 在左侧放入需要鉴定的物品"
+      - "&7点击这里开始鉴定"

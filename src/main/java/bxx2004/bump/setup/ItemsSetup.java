@@ -9,7 +9,9 @@ import bxx2004.bump.slimefun.items.food.Kele;
 import bxx2004.bump.slimefun.items.food.Kouxiangtang;
 import bxx2004.bump.slimefun.items.food.Latiao;
 import bxx2004.bump.slimefun.items.food.Xuebi;
+import bxx2004.bump.slimefun.items.machine.Appraisal;
 import bxx2004.bump.slimefun.items.stuff.StuffItem;
+import bxx2004.bump.slimefun.items.tool.AppraisalPaper;
 import bxx2004.bump.slimefun.items.tool.GetgoldSpade;
 import bxx2004.bump.slimefun.items.weapon.DevilSword;
 import bxx2004.bump.slimefun.items.weapon.LightBow;
@@ -21,7 +23,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
-import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 
 public final class ItemsSetup {
@@ -31,6 +32,16 @@ public final class ItemsSetup {
         Bump plugin = Bump.getInstance();
 
         // region armor
+        new SlimefunItem(
+            BumpItemGroups.ARMOR,
+            BumpItems.RANDOM_HELMET,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                BumpItems.OLD_COIN, null, BumpItems.OLD_COIN,
+                BumpItems.OLD_COIN, BumpItems.MAKE, BumpItems.OLD_COIN,
+                BumpItems.OLD_COIN, BumpItems.OLD_COIN, BumpItems.OLD_COIN
+            }
+        ).register(plugin);
         // endregion armor
 
         // region food
@@ -40,6 +51,10 @@ public final class ItemsSetup {
         new Latiao().register(plugin);
         new Kouxiangtang().register(plugin);
         // endregion food
+
+        // region machine
+        new Appraisal().register(plugin);
+        // endregion machine
 
         // region stuff
         new StuffItem(
@@ -148,8 +163,7 @@ public final class ItemsSetup {
         // region tool
         new GetgoldSpade().register(plugin);
 
-        new SlimefunItem(
-            BumpItemGroups.TOOL,
+        new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[] {
@@ -157,8 +171,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new SlimefunItem(
-            BumpItemGroups.TOOL,
+        new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_DAMAGE,
             RecipeType.SMELTERY,
             new ItemStack[] {
