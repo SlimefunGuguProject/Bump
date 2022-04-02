@@ -231,3 +231,20 @@ messages:
       end: "&b&k|&b- &7&oThe strengthening time is over!"
     light_bow: "&b&k|&b- &7&oGod punishes!"
     wither_skull_bow: "&b&k|&b- &7&oWithering!"
+  machine:
+    appraisal:
+      invalid: "&cThe item has not yet been appraised...!"
+      appraised: "&cSorry that the item cannot be identified or has already been appraised!"
+      success: "&aAppraisal!"
+      
+gui:
+  appraise:
+    name: "&eClick to appraise"
+    lore:
+      - "&7<- Put the items to be appraised on the left side"
+      - "&7Click here to appraise"
+  appraisal_paper:
+    name: "&eClick to apply"
+    lore:
+      - "&7<- Put items on the left side"
+      - "&7Click here to allow the item to be appraised"
