@@ -113,7 +113,7 @@ items:
       - ""
       - "&b&k|&b- Refuge From Evil Spirits"
       - ""
-   update_power:
+  update_power:
     name: "&eUpgrade Core"
     lore:
       - ""
@@ -220,3 +220,16 @@ messages:
     kouxiangtang: "&b&k|&b- &7&oThe taste of childhood!"
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
+  weapon:
+    unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
+    low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
+    soul_sword:
+      converted-part: "&b&k|&b- &7&oPart of your food level has been converted into health!"
+      converted-all: "&b&k|&b- &7&oAll of your food level has been converted into health!"
+    devil_sword: "&b&k|&b- &7&oDemon Slayer, bring justice from the sky!"
+    sky_sword: "&b&k|&b- &7&oHeaven Breaking, soar into the sky!"
+    sky_devil_sword: 
+      activate: "&b&k|&b- &7&oDemon Slayer or Heaven Breaking,only to the justice!"
+      end: "&b&k|&b- &7&oThe strengthening time is over!"
+    light_bow: "&b&k|&b- &7&oGod punishes!"
+    wither_skull_bow: "&b&k|&b- &7&oWithering!"
