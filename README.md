@@ -6,9 +6,14 @@
 
 作者: bxx2004
 
-维护者 (已获得授权): Lobbytech-MC, zimzaza4, haiman233, ybw0014
+维护者: Lobbytech-MC, zimzaza4, haiman233, ybw0014
 
 Bump 是一个 Slimefun4 附属插件，它添加了魔法武器、食物、武器鉴定系统。
+
+# 授权图
+
+![P$XX}%43@U5N_}DJSB0 Z)M](https://user-images.githubusercontent.com/83174104/161408901-1a6df0d2-bc90-4764-82f2-69acca2892dd.png)
+
 
 ## 下载
 
