@@ -32,19 +32,21 @@ Slimefun 版本: RC-27 及以上版本
 
 ### 1.0
 
-Bump 1.1 由 Lobbytech-MC 基于 原MCBBS版本 重构。  
+Bump 1.0 由 Lobbytech-MC 基于 原MCBBS版本 重构。  
 Minecraft 版本: 1.16 - 1.17  
-Slimefun 版本: RC-21 - RC-26 及以上版本
+Slimefun 版本: RC-21 - RC-26 及以上版本  
+
 可在 [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.0) 中下载
 
-### MCBBS下载版本
-MCBBS下载版本为原作者 bxx2004 在 MCBBS 发布的初始版本。  
-Minecraft 版本: 1.15 - 1.16
+### MCBBS 初始版本
+
+MCBBS 初始版本为原作者 bxx2004 在 MCBBS 发布的初始版本。   
+Minecraft 版本: 1.15 - 1.16  
 Slimefun 版本: RC-16 - RC-21
 
 **需要 CS-CoreLib**
 
-可在 [MCBBS](https://www.mcbbs.net/thread-1125935-1-1.html) 中下载
+请前往 [MCBBS原帖](https://www.mcbbs.net/thread-1125935-1-1.html) 下载
 
 ## 关于Bump
 
@@ -61,7 +63,7 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 我们目前支持以下语言来显示插件内容：
 
 - `en-US` 英语 (美国)
-<br/>感谢@UniverseNetwork为Bump的英文翻译提供参考
+  - 感谢 @UniverseNetwork 为Bump的英文翻译提供参考
 - `zh-CN` 简体中文
 - `zh-TW` 繁体中文
 
