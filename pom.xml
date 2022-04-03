@@ -86,6 +86,7 @@
                             <artifact>*:*</artifact>
                             <excludes>
                                 <exclude>META-INF/*</exclude>
+                                <exclude>minecraft.*.json</exclude>
                             </excludes>
                         </filter>
                     </filters>
