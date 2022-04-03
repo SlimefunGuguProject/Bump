@@ -1,5 +1,6 @@
 package bxx2004.bump;
 
+import bxx2004.bump.listeners.BowShootListener;
 import bxx2004.bump.setup.ItemsSetup;
 import bxx2004.bump.util.Utils;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
@@ -36,6 +37,8 @@ public final class Bump extends AbstractAddon {
         Utils.log(Level.INFO, "&eLoaded language {0}", lang);
 
         ItemsSetup.setup();
+
+        getServer().getPluginManager().registerEvents(new BowShootListener(), this);
     }
 
     @Override
