@@ -61,6 +61,7 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 我们目前支持以下语言来显示插件内容：
 
 - `en-US` 英语 (美国)
+感谢@UniverseNetwork为Bump的英文翻译提供参考
 - `zh-CN` 简体中文
 - `zh-TW` 繁体中文
 
