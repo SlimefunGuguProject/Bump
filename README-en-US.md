@@ -6,9 +6,13 @@
 
 Author: bxx2004
 
-Maintainers (authorized): Lobbytech-MC, zimzaza4, haiman233, ybw0014
+Maintainers: Lobbytech-MC, zimzaza4, haiman233, ybw0014
 
 Bump is a Slimefun addon that adds magic weapon, food and weapon identification system.
+
+# Authorized
+
+![P$XX}%43@U5N_}DJSB0 Z)M](https://user-images.githubusercontent.com/83174104/161408943-388d2640-03c5-4f6d-a11c-fcd6b532cfe5.png)
 
 ## Download
 
