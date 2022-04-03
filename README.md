@@ -2,7 +2,7 @@
 
 # Bump
 
-[English(United States)](/README-en-US.md)
+- [English(United States)](/README-en-US.md)
 
 作者: bxx2004
 
