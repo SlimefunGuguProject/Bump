@@ -24,7 +24,7 @@ Click the image below to download：
 
 ### 1.1
 
-Bump 1.1 was refactored by haiman233 and zimzaza4 due to the API relocation update in Slimefun RC-27.
+Bump 1.1 was refactored by haiman233 and zimzaza4 due to the API relocation update in Slimefun RC-27.  
 Minecraft version: 1.16 - 1.17  
 Slimefun version: RC-27 and above
 
@@ -40,7 +40,7 @@ See [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.0)
 
 ### mcbbs original version
 
-This is the original version published by bxx2004 in mcbbs.
+This is the original version published by bxx2004 in mcbbs.  
 Minecraft version: 1.15 - 1.16  
 Slimefun version: RC-16 - RC-21  
 
