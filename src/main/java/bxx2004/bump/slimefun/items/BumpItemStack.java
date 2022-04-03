@@ -6,7 +6,6 @@ import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class BumpItemStack extends SlimefunItemStack {
