@@ -4,7 +4,7 @@
 
 - [English(United States)](/README-en-US.md)
 
-作者: bxx2004
+作者: bxx2004 
 
 维护者: Lobbytech-MC, zimzaza4, haiman233, ybw0014
 
