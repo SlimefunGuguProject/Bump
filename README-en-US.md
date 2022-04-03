@@ -2,7 +2,7 @@
 
 # Bump
 
-[简体中文](/README.md)
+- [简体中文](/README.md)
 
 Author: bxx2004
 
