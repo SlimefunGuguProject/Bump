@@ -32,9 +32,14 @@ Slimefun 版本: RC-27 及以上版本
 
 ### 1.0
 
-Bump 1.0 为原作者 bxx2004 在 MCBBS 发布的初始版本。  
+Bump 1.1 由 Lobbytech-MC 基于 原MCBBS版本 重构。  
 Minecraft 版本: 1.16 - 1.17  
-Slimefun 版本: RC-21 - RC-26  
+Slimefun 版本: RC-21 - RC-26 及以上版本
+
+### MCBBS下载版本
+MCBBS下载版本为原作者 bxx2004 在 MCBBS 发布的初始版本。  
+Minecraft 版本: 1.15 - 1.16
+Slimefun 版本: RC-16 - RC-21
 **需要 CS-CoreLib**
 
 可在 [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.0) 中下载
