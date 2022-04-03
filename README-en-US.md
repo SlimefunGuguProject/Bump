@@ -31,13 +31,19 @@ Slimefun version: RC-27 and above
 See [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.1)
 
 ### 1.0
-
-Bump 1.0 is the original version published by bxx2004 in mcbbs.
+Bump 1.0 was refactored by Lobbytech-MC due to the MCBBS version.  
 Minecraft version: 1.16 - 1.17  
-Slimefun version: RC-21 - RC-26  
-**Requires CS-CoreLib**
+Slimefun version: RC-21 - RC-26
 
 See [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.0)
+
+### MCBBS version
+MCBBS version is the original version published by bxx2004 in mcbbs.
+Minecraft version: 1.15 - 1.16  
+Slimefun version: RC-16 - RC-21  
+**Requires CS-CoreLib**
+
+See [MCBBS](https://www.mcbbs.net/thread-1125935-1-1.html)
 
 ## About Bump
 
@@ -54,6 +60,7 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 We support these languages：
 
 - `en-US` English (United States)
+<br/>Thanks @UniverseNetwork for English translation
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
 
