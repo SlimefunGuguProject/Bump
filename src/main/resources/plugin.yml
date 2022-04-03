@@ -1,8 +1,13 @@
 name: Bump
 main: bxx2004.bump.Bump
-website: https://github.com/haiman233/Slimefun-Bump
-version: 1.1
-api-version: 1.13
-author: bxx2004,Lobbytech-MC,zimzaza4，haiman233
+website: https://github.com/SlimefunGuguProject/Bump
+version: '${project.version}'
+api-version: 1.14
+authors:
+  - bxx2004
+  - Lobbytech-MC
+  - zimzaza4
+  - haiman233
+  - ybw0014
 depend:
   - Slimefun
