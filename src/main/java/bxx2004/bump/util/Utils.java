@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.text.MessageFormat;
 import java.util.Map;
@@ -73,5 +74,21 @@ public class Utils {
         for (ItemStack item : remainingItemMap.values()) {
             p.getWorld().dropItem(p.getLocation(), item.clone());
         }
+    }
+
+    /**
+     * Get consecutive stars
+     *
+     * @param n the number of stars
+     *
+     * @return stars
+     */
+    public static @Nonnull String getStars(int n) {
+        StringBuilder builder = new StringBuilder();
+        while (n > 0) {
+            builder.append("⭐");
+            n--;
+        }
+        return builder.toString();
     }
 }

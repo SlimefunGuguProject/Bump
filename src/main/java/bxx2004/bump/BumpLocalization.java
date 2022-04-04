@@ -19,6 +19,11 @@ public final class BumpLocalization extends Localization {
         super(plugin);
     }
 
+    @ParametersAreNonnullByDefault
+    public @Nonnull String getString(String key, Object... args) {
+        return MessageFormat.format(getString(key), args);
+    }
+
     public @Nonnull String getCategoryName(@Nonnull String categoryId) {
         Validate.notNull(categoryId, "Category Id cannot be null");
 
