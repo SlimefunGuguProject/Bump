@@ -118,7 +118,7 @@ public final class AppraiseUtils {
         if (MinecraftTag.SWORD.isTagged(itemStack)) {
             // swords can be applied with damage and attack apeed modifier
             double damage = ThreadLocalRandom.current().nextDouble(3, 15);
-            double attackSpeed = ThreadLocalRandom.current().nextDouble(1, 3);
+            double attackSpeed = ThreadLocalRandom.current().nextDouble(0, 0.8);
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "DAMAGE", damage, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
 
@@ -128,6 +128,10 @@ public final class AppraiseUtils {
             // armor can be applied with armor modifier
             double armor = ThreadLocalRandom.current().nextDouble(3, 15);
             im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "ARMOR_TOUGHNESS", 0, AttributeModifier.Operation.ADD_NUMBER, slot));
+
+            // the star is determined by armor only
+            stars = getLevelByLimit(armor, 3, 15);
         }
 
         // set lore
