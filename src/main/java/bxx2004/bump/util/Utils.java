@@ -2,14 +2,19 @@ package bxx2004.bump.util;
 
 import bxx2004.bump.Bump;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
+import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.bukkit.inventory.ItemStack;
 
+import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 import java.text.MessageFormat;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.logging.Level;
@@ -64,14 +69,41 @@ public class Utils {
     /**
      * Try to push {@link ItemStack} to player's inventory,
      * if full, then drop on the ground
+     *
      * @param p the {@link Player} to be dealt with
      * @param itemStacks all {@link ItemStack} to be pushed
      */
-    public static void pushToPlayerInventory(Player p, ItemStack... itemStacks) {
-        Map<Integer, ItemStack> remainingItemMap = p.getInventory().addItem(itemStacks);
+    public static void pushToPlayerInventory(@Nonnull Player p, @Nonnull ItemStack... itemStacks) {
+        Validate.notNull(p, "player should not be null");
+        Validate.notNull(itemStacks, "at least one ItemStack is needed");
+
+        // filter null ItemStacks
+        List<ItemStack> items = new ArrayList<>();
+        for (ItemStack item : itemStacks) {
+            if (item != null) {
+                items.add(item);
+            }
+        }
+        Map<Integer, ItemStack> remainingItemMap = p.getInventory().addItem(items.toArray(new ItemStack[0]));
 
         for (ItemStack item : remainingItemMap.values()) {
             p.getWorld().dropItem(p.getLocation(), item.clone());
         }
+    }
+
+    /**
+     * Get a {@link String} of consecutive stars
+     *
+     * @param n the number of stars
+     *
+     * @return {@link String} of consecutive stars
+     */
+    public static @Nonnull String getStars(int n) {
+        StringBuilder builder = new StringBuilder();
+        while (n > 0) {
+            builder.append("⭐");
+            n--;
+        }
+        return builder.toString();
     }
 }

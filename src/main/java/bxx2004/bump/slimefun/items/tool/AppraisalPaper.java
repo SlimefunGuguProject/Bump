@@ -44,9 +44,9 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
             e.cancel();
 
             Player p = e.getPlayer();
-            SlimefunItemStack paperItemStack = (SlimefunItemStack) e.getItem();
+            ItemStack paperItemStack = e.getItem();
 
-            ChestMenu menu = new ChestMenu(paperItemStack.getDisplayName());
+            ChestMenu menu = new ChestMenu(paperItemStack.getItemMeta().getDisplayName());
             menu.setPlayerInventoryClickable(true);
 
             // Setup menu
@@ -69,7 +69,7 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
             // Block Appraisal paper click
             menu.addPlayerInventoryClickHandler((player, slot, item, action) -> {
                 SlimefunItem sfItem = SlimefunItem.getByItem(item);
-                return sfItem instanceof AppraisalPaper;
+                return !(sfItem instanceof AppraisalPaper);
             });
 
             // Add appraise button handler
@@ -80,31 +80,39 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
 
                 if (input == null) {
                     Bump.getLocalization().sendMessage(p, "no-input");
-                    return true;
+                    return false;
                 }
 
                 // Check output slot
                 if (menu.getItemInSlot(OUTPUT_SLOT) != null) {
                     Bump.getLocalization().sendMessage(p, "output-no-space");
-                    return true;
+                    return false;
                 }
 
-                // validate item
+                /*
+                    Validate the item. The item that can be marked appraisable
+                    should meet these requirements:
+                    - is appraisable type (sword, armors for now)
+                    - is a slimefun item
+                    - has not been appraised yet
+                    - has not beed marked appraisable yet
+                 */
                 if (AppraiseUtils.isAppraisableMaterial(input.getType())
                     && sfItem != null
-                    && !AppraiseUtils.isAppraised(input)) {
+                    && !AppraiseUtils.isAppraised(input)
+                    && !AppraiseUtils.isAppraisable(input)) {
                     // item can be marked appraisable
                     ItemStack output = input.clone();
                     AppraiseUtils.setAppraisable(output);
                     menu.replaceExistingItem(INPUT_SLOT, null);
-                    menu.addItem(OUTPUT_SLOT, output);
+                    menu.replaceExistingItem(OUTPUT_SLOT, output);
 
                     Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
                 } else {
                     Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
                 }
 
-                return true;
+                return false;
             });
 
             menu.open(p);
