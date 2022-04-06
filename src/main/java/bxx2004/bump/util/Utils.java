@@ -77,6 +77,7 @@ public class Utils {
         Validate.notNull(p, "player should not be null");
         Validate.notNull(itemStacks, "at least one ItemStack is needed");
 
+        // filter null ItemStacks
         List<ItemStack> items = new ArrayList<>();
         for (ItemStack item : itemStacks) {
             if (item != null) {

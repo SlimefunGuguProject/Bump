@@ -89,15 +89,23 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                     return false;
                 }
 
-                // validate item
+                /*
+                    Validate the item. The item that can be marked appraisable
+                    should meet these requirements:
+                    - is appraisable type (sword, armors for now)
+                    - is a slimefun item
+                    - has not been appraised yet
+                    - has not beed marked appraisable yet
+                 */
                 if (AppraiseUtils.isAppraisableMaterial(input.getType())
                     && sfItem != null
-                    && !AppraiseUtils.isAppraised(input)) {
+                    && !AppraiseUtils.isAppraised(input)
+                    && !AppraiseUtils.isAppraisable(input)) {
                     // item can be marked appraisable
                     ItemStack output = input.clone();
                     AppraiseUtils.setAppraisable(output);
-                    menu.addItem(OUTPUT_SLOT, output);
                     menu.replaceExistingItem(INPUT_SLOT, null);
+                    menu.replaceExistingItem(OUTPUT_SLOT, output);
 
                     Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
                 } else {

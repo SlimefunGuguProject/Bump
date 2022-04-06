@@ -15,11 +15,10 @@ import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Level;
 
 /**
  * Utility methods for appraise
@@ -50,13 +49,13 @@ public final class AppraiseUtils {
      *
      * @return if the {@link ItemStack} can be used in appraisal machine
      */
-    public static boolean isAppraiseable(@Nonnull ItemStack itemStack) {
+    public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
         PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
-        return pdc.has(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE) &&
-            pdc.get(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE) == 1;
+        return pdc.has(Keys.APPRAISABLE, PersistentDataType.BYTE)
+            && pdc.get(Keys.APPRAISABLE, PersistentDataType.BYTE) == 1;
     }
 
     /**
@@ -77,6 +76,7 @@ public final class AppraiseUtils {
         } else {
             lore = new ArrayList<>();
         }
+        lore.add("");
         lore.add(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")));
         im.setLore(lore);
 
@@ -116,10 +116,18 @@ public final class AppraiseUtils {
         int stars = 0;
 
         if (MinecraftTag.SWORD.isTagged(itemStack)) {
-            // swords can be applied with damage modifier
-            double damage = ThreadLocalRandom.current().nextDouble(1, 15);
+            // swords can be applied with damage and attack apeed modifier
+            double damage = ThreadLocalRandom.current().nextDouble(3, 15);
+            double attackSpeed = ThreadLocalRandom.current().nextDouble(1, 3);
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "DAMAGE", damage, AttributeModifier.Operation.ADD_NUMBER, slot));
-            stars = getLevelByLimit(damage, 1, 15);
+            im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
+
+            // the star is determined by damage only
+            stars = getLevelByLimit(damage, 3, 15);
+        } else if (MinecraftTag.ARMOR.isTagged(itemStack)) {
+            // armor can be applied with armor modifier
+            double armor = ThreadLocalRandom.current().nextDouble(3, 15);
+            im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
         }
 
         // set lore
