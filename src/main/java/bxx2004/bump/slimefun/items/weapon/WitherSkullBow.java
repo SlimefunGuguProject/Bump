@@ -1,7 +1,7 @@
 package bxx2004.bump.slimefun.items.weapon;
 
 import bxx2004.bump.Bump;
-import bxx2004.bump.handlers.BowShootHandler;
+import bxx2004.bump.handlers.BowUseHandler;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
 import bxx2004.bump.util.Utils;
@@ -13,7 +13,7 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
-public class WitherSkullBow extends SimpleSlimefunItem<BowShootHandler> {
+public class WitherSkullBow extends SimpleSlimefunItem<BowUseHandler> {
 
     public WitherSkullBow() {
         super(BumpItemGroups.WEAPON, BumpItems.WITHERSKULL_ROW, RecipeType.ARMOR_FORGE, new ItemStack[] {
@@ -25,7 +25,7 @@ public class WitherSkullBow extends SimpleSlimefunItem<BowShootHandler> {
 
     @Nonnull
     @Override
-    public BowShootHandler getItemHandler() {
+    public BowUseHandler getItemHandler() {
         return (e, p, item) -> {
             e.setCancelled(true);
             if (p.getFoodLevel() >= 5) {
