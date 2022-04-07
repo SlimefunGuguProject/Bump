@@ -1,10 +1,10 @@
-package bxx2004.bump.slimefun.items.food;
+package bxx2004.bump.abstracts;
 
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ItemConsumptionHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 import org.bukkit.GameMode;
@@ -15,18 +15,16 @@ import org.bukkit.inventory.ItemStack;
 import javax.annotation.Nonnull;
 import java.util.Locale;
 
-public abstract class ItemFood extends SimpleSlimefunItem<ItemUseHandler> {
+public abstract class ConsumableFood extends SimpleSlimefunItem<ItemConsumptionHandler> {
 
-    protected ItemFood(SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
+    protected ConsumableFood(SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.FOOD, itemStack, recipeType, recipe);
     }
 
     @Nonnull
     @Override
-    public ItemUseHandler getItemHandler() {
-        return e -> {
-            Player p = e.getPlayer();
-
+    public ItemConsumptionHandler getItemHandler() {
+        return (e, p, item) -> {
             String messageKey = this.getId().toLowerCase(Locale.ROOT);
             Bump.getLocalization().sendActionbarMessage(p, "food." + messageKey);
 

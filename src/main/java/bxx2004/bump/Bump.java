@@ -13,6 +13,7 @@ public final class Bump extends AbstractAddon {
 
     public Bump() {
         super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
+        setupMetrics(14870);
     }
 
     @Override

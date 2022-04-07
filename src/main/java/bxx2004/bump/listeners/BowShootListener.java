@@ -1,6 +1,6 @@
 package bxx2004.bump.listeners;
 
-import bxx2004.bump.handlers.BowShootHandler;
+import bxx2004.bump.handlers.BowUseHandler;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -22,7 +22,7 @@ public final class BowShootListener implements Listener {
             SlimefunItem sfItem = SlimefunItem.getByItem(item);
 
             if (sfItem != null && sfItem.canUse(p, true)) {
-                sfItem.callItemHandler(BowShootHandler.class, handler -> handler.onShoot(e, p, item));
+                sfItem.callItemHandler(BowUseHandler.class, handler -> handler.onShoot(e, p, item));
             }
         }
     }

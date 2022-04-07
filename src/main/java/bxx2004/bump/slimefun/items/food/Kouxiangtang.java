@@ -1,5 +1,6 @@
 package bxx2004.bump.slimefun.items.food;
 
+import bxx2004.bump.abstracts.ItemFood;
 import bxx2004.bump.slimefun.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
