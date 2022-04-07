@@ -10,7 +10,7 @@ import org.bukkit.inventory.ItemStack;
 
 import java.util.Optional;
 
-public interface BowShootHandler extends ItemHandler {
+public interface BowUseHandler extends ItemHandler {
 
     void onShoot(EntityShootBowEvent e, Player p, ItemStack item);
 
@@ -25,6 +25,6 @@ public interface BowShootHandler extends ItemHandler {
 
     @Override
     default Class<? extends ItemHandler> getIdentifier() {
-        return BowShootHandler.class;
+        return BowUseHandler.class;
     }
 }
