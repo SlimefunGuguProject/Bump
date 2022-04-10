@@ -196,16 +196,24 @@ public final class AppraiseUtils {
      */
     private static int getLevelByLimit(double randomValue, int min, int max) {
         double percent = (randomValue - min) / (max - min) * 100;
-        if (percent >= 95) {
+        if (percent >= 100) {
+            return 8;
+        } else if (percent >= 97) {
+            return 7;
+        } else if (percent >= 94) {
+            return 6;
+        } else if (percent >= 91) {
             return 5;
-        } else if (percent >= 80) {
+        } else if (percent >= 85) {
             return 4;
-        } else if (percent >= 60) {
+        } else if (percent >= 65) {
             return 3;
-        } else if (percent >= 30) {
+        } else if (percent >= 45) {
             return 2;
-        } else {
+        } else if (percent >= 25) {
             return 1;
+        } else {
+            return 0;
         }
     }
 }
