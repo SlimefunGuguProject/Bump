@@ -116,8 +116,8 @@ public final class AppraiseUtils {
 
         if (MinecraftTag.SWORD.isTagged(itemStack)) {
             // swords can be applied with damage and attack apeed modifier
-            double damage = ThreadLocalRandom.current().nextDouble(3, 15);
-            double attackSpeed = ThreadLocalRandom.current().nextDouble(0, 0.8);
+            double damage = ThreadLocalRandom.current().nextDouble(5, 28);
+            double attackSpeed = ThreadLocalRandom.current().nextDouble(0, 10);
             double speed = ThreadLocalRandom.current().nextDouble(0, 0.6);
             double luck = ThreadLocalRandom.current().nextDouble(0, 5);
             double attackKnkockback = ThreadLocalRandom.current().nextDouble(0, 10);
@@ -128,10 +128,10 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, new AttributeModifier(UUID.randomUUID(), "ATTACKK_NOCKBACK", attackKnkockback, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by damage only
-            stars = getLevelByLimit(damage, 3, 15);
+            stars = getLevelByLimit(damage, 5, 28);
         } else if (MinecraftTag.ARMOR.isTagged(itemStack)) {
             // armor can be applied with armor modifier
-            double armor = ThreadLocalRandom.current().nextDouble(3, 15);
+            double armor = ThreadLocalRandom.current().nextDouble(3, 25);
             double armorToughness = ThreadLocalRandom.current().nextDouble(1.5, 10);
             double maxHealth = ThreadLocalRandom.current().nextDouble(0, 10.5);
             double knockbackResistance = ThreadLocalRandom.current().nextDouble(0, 0.8);
@@ -143,7 +143,7 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, new AttributeModifier(UUID.randomUUID(), "FLYING_SPEED", flyingSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by armor only
-            stars = getLevelByLimit(armor, 3, 15);
+            stars = getLevelByLimit(armor, 3, 25);
         }
 
         // set lore
