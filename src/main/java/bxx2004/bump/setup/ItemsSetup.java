@@ -39,7 +39,7 @@ public final class ItemsSetup {
             new ItemStack[] {
                 BumpItems.OLD_COIN, null, BumpItems.OLD_COIN,
                 BumpItems.OLD_COIN, BumpItems.MAKE, BumpItems.OLD_COIN,
-                BumpItems.OLD_COIN, BumpItems.OLD_COIN, BumpItems.OLD_COIN
+                BumpItems.OLD_COIN, BumpItems.UPDATE_POWER, BumpItems.OLD_COIN
             }
         ).register(plugin);
         // endregion armor
@@ -211,7 +211,7 @@ public final class ItemsSetup {
             BumpItems.RANDOM_SWORD,
             RecipeType.ENHANCED_CRAFTING_TABLE,
             new ItemStack[] {
-                null, null, null,
+                null, BumpItems.UPDATE_POWER, null,
                 null, BumpItems.MAKE, null,
                 null, new ItemStack(Material.STICK), null
             }
