@@ -134,7 +134,7 @@ public final class AppraiseUtils {
             double armor = ThreadLocalRandom.current().nextDouble(3, 15);
             double armorToughness = ThreadLocalRandom.current().nextDouble(1.5, 10);
             double maxHealth = ThreadLocalRandom.current().nextDouble(0, 10.5);
-            double knockbackResistance = ThreadLocalRandom.current().nextDouble(0, 1);
+            double knockbackResistance = ThreadLocalRandom.current().nextDouble(0, 0.8);
             double flyingSpeed = ThreadLocalRandom.current().nextDouble(0, 5);
             im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "ARMOR_TOUGHNESS", armorToughness, AttributeModifier.Operation.ADD_NUMBER, slot));
