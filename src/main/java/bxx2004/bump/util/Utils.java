@@ -24,29 +24,6 @@ public class Utils {
     private Utils() {}
 
     /**
-     * This method calls {@link Bump}'s logger coverts color codes
-     *
-     * @param level the log {@link Level}
-     * @param message the {@link String} of message
-     * @param args array of {@link Object} to be injected to message
-     */
-    public static void log(Level level, String message, Object... args) {
-        Bump.getInstance().getLogger().log(level, ChatUtil.color(MessageFormat.format(message, args)));
-    }
-
-    /**
-     * This method test a chance roll starting from 1 to upper
-     *
-     * @param chance The number the roll must be lower than
-     * @param upper  The highest possible number that could roll (inclusive)
-     *
-     * @return true if roll passes
-     */
-    public static boolean testChance(int chance, int upper) {
-        return ThreadLocalRandom.current().nextInt(1, upper + 1) <= chance;
-    }
-
-    /**
      * This method calls {@link FoodLevelChangeEvent} and set {@link Player}'s
      * food level if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled

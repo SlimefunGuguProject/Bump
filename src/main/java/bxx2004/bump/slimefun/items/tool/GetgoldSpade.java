@@ -3,11 +3,11 @@ package bxx2004.bump.slimefun.items.tool;
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
-import bxx2004.bump.util.Utils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ToolUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import net.guizhanss.guizhanlib.utils.RandomUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -31,7 +31,7 @@ public class GetgoldSpade extends SimpleSlimefunItem<ToolUseHandler> {
                 return;
             }
 
-            if (!Utils.testChance(1, 4)) {
+            if (!RandomUtil.testChance(1, 4)) {
                 return;
             }
 
