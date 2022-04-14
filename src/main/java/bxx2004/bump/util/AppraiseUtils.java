@@ -198,17 +198,17 @@ public final class AppraiseUtils {
         double percent = (randomValue - min) / (max - min) * 100;
         if (percent >= 100) {
             return 8;
-        } else if (percent >= 97) {
+        } else if (percent >= 98) {
             return 7;
-        } else if (percent >= 94) {
+        } else if (percent >= 95) {
             return 6;
         } else if (percent >= 91) {
             return 5;
         } else if (percent >= 85) {
             return 4;
-        } else if (percent >= 65) {
+        } else if (percent >= 69) {
             return 3;
-        } else if (percent >= 45) {
+        } else if (percent >= 48) {
             return 2;
         } else if (percent >= 25) {
             return 1;
