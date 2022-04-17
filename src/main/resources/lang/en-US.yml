@@ -1,5 +1,5 @@
-# English
-
+---
+#简体中文
 categories:
   main: "&bBump"
   armor: "&bBump - Armor"
@@ -8,7 +8,6 @@ categories:
   stuff: "&bBump - Stuff"
   tool: "&bBump - Tool"
   weapon: "&bBump - Magic Weapon"
-
 items:
   random_helmet:
     name: "&6Random Helmet"
@@ -208,8 +207,15 @@ items:
       - ""
       - "&b&k|&b- &7&oBreaking the sky and cutting the devil, one after another emits powerful energy..."
       - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and elevate yourself..."
- 
+      - ""
+lores:
+  per-use: "&7每次使用"
+  not-appraised: "&b&k|&b- &7&o未鉴定"
+  appraised: "&b&k|&b- &7&o已鉴定 &b| &d等级: &e&l{0}"
 messages:
+  no-input: "&c请放入物品!"
+  output-no-space: "&c输出空间不足!"
+  not-enough-power: "&c电力不足!"
   food:
     xuebi: "&b&k|&b- &7&oA cool summer!!"
     kele: "&b&k|&b- &7&oThe victory of the fat otaku!"
@@ -218,6 +224,9 @@ messages:
     kouxiangtang: "&b&k|&b- &7&oThe taste of childhood!"
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
+    appraisal_paper:
+      invalid: "&c该物品无法进行鉴定!"
+      success: "&a该物品现在可以进行鉴定了!"
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
     low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
@@ -226,7 +235,7 @@ messages:
       converted-all: "&b&k|&b- &7&oAll of your food level has been converted into health!"
     devil_sword: "&b&k|&b- &7&oDemon Slayer, bring justice from the sky!"
     sky_sword: "&b&k|&b- &7&oHeaven Breaking, soar into the sky!"
-    sky_devil_sword: 
+    sky_devil_sword:
       activate: "&b&k|&b- &7&oDemon Slayer or Heaven Breaking,only to the justice!"
       end: "&b&k|&b- &7&oThe strengthening time is over!"
     light_bow: "&b&k|&b- &7&oGod punishes!"
@@ -236,7 +245,6 @@ messages:
       invalid: "&cThe item has not yet been appraised...!"
       appraised: "&cSorry that the item cannot be identified or has already been appraised!"
       success: "&aAppraisal!"
-      
 gui:
   appraise:
     name: "&eClick to appraise"
