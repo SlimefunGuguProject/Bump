@@ -74,4 +74,4 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 
 你可以在`config.yml`中更改`options.lang`字段来应用新的语言。
 
-如果你想向本附属添加你的语言，欢迎提交PR。
+如果你想向本附属添加你的语言，请在 [Crowdin](https://crowdin.com/project/slimefun-bump) 提交你的翻译。
