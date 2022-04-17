@@ -1,0 +1,3 @@
+files:
+  - source: /src/main/resources/lang/zh-CN.yml
+    translation: /src/main/resources/lang/%osx_locale%.yml
