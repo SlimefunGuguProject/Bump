@@ -73,4 +73,4 @@ We support these languages：
 
 You can change `options.lang` in `config.yml` to your favourite language.
 
-If you would like to add your language to this addon, pull request is welcome.
+If you want to add your language to this addon, please submit your translation at [Crowdin](https://crowdin.com/project/slimefun-bump).
