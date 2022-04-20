@@ -1,5 +1,5 @@
 name: Bug汇报
-description: 反馈本插件的Bug或问题
+description: 反馈本插件的Bug或问题，仅限中文
 labels: ["bug"]
 assignees:
   - ybw0014
