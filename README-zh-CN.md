@@ -10,11 +10,6 @@
 
 Bump 是一个 Slimefun4 附属插件，它添加了魔法武器、食物、武器鉴定系统。
 
-# 授权图
-
-![P$XX}%43@U5N_}DJSB0 Z)M](https://user-images.githubusercontent.com/83174104/161408901-1a6df0d2-bc90-4764-82f2-69acca2892dd.png)
-
-
 ## 下载
 
 ### 2.0
@@ -26,6 +21,8 @@ Slimefun 版本: RC-30 及以上版本
 点击下方图片前往下载：
 
 [![构建状态](https://builds.guizhanss.net/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.net/SlimefunGuguProject/Bump/main)
+
+<details><summary>旧版本，仅中文</summary>
 
 ### 1.1
 
@@ -53,7 +50,15 @@ Slimefun 版本: RC-16 - RC-21
 
 请前往 [MCBBS原帖](https://www.mcbbs.net/thread-1125935-1-1.html) 下载
 
+</details>
+
 ## 关于Bump
+
+### 授权图
+
+Bump 是一个2020年编写的附属，我们已获得授权来重写Bump。
+
+![P$XX}%43@U5N_}DJSB0 Z)M](https://user-images.githubusercontent.com/83174104/161408901-1a6df0d2-bc90-4764-82f2-69acca2892dd.png)
 
 ### 展示视频
 
@@ -72,6 +77,7 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 - `zh-CN` 简体中文
 - `zh-TW` 繁体中文
 
+默认语言为简体中文 `zh-CN`。  
 你可以在`config.yml`中更改`options.lang`字段来应用新的语言。
 
 如果你想向本附属添加你的语言，请在 [Crowdin](https://crowdin.com/project/slimefun-bump) 提交你的翻译。
