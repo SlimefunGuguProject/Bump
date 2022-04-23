@@ -82,3 +82,15 @@ You can change `options.lang` in `config.yml` to your favourite language.
 
 If you want to add your language to this addon, please submit your translation at [Crowdin](https://crowdin.com/project/slimefun-bump).
 
+## Bugs/Suggestions
+
+If you make a new issue or the pull request, please contact us on discord @ybw0014#2209 or @haiman#0803
+
+<p>
+  <a href="https://discord.gg/slimefun">
+    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Discord Invite"/>
+  </a>
+  <a href="https://discord.gg/SqD3gg5SAU">
+    <img src="https://discordapp.com/api/guilds/809178621424041997/widget.png?style=banner3" alt="Discord Invite"/>
+  </a>
+</p>
