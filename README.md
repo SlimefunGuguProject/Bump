@@ -8,13 +8,13 @@ Author: bxx2004
 
 Maintainers: Lobbytech-MC, zimzaza4, haiman233, ybw0014
 
-Bump is a Slimefun addon that adds magic weapon, food and weapon identification system.
+Bump is a Slimefun addon that adds magic weapons, food and an appraisal system.
 
 ## Download
 
 ### 2.0
 
-Bump 2.0 is refactored mostly by ybw0014. It depends on Slimefun RC-30, and adds localization service. 
+Bump 2.0 is refactored by @ybw0014, and maintained by @ybw0014 and @haiman233. It depends on Slimefun RC-30, and adds localization service. 
 Minecraft version: 1.14 and above  
 Slimefun version: RC-30 and above
 
@@ -54,7 +54,7 @@ Visit [mcbbs thread](https://www.mcbbs.net/thread-1125935-1-1.html) to download
 
 ## About Bump
 
-### Authorized
+### Authorization
 
 Bump is a plugin made in 2020. We are authorized to rewrite bump.
 
@@ -82,9 +82,11 @@ You can change `options.lang` in `config.yml` to your favourite language.
 
 If you want to add your language to this addon, please submit your translation at [Crowdin](https://crowdin.com/project/slimefun-bump).
 
-## Bugs/Suggestions
+## Bugs / Suggestions
 
-If you make a new issue or the pull request, please contact us on discord @ybw0014#2209 or @haiman#0803
+Please submit bug reports in [issues](https://github.com/SlimefunGuguProject/Bump/issues/), we only accept reports in Chinese and English.
+
+For suggestions and questions, we haven't got a channel in slimefun addon community, so you can ask in `#other-addons`, feel free to ping `ybw0014#2209` or `haiman#0803`.
 
 <p>
   <a href="https://discord.gg/slimefun">
