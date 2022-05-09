@@ -8,9 +8,16 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * This {@link Listener} will call {@link BowUseHandler}.
+ *
+ * @see BowUseHandler
+ *
+ * @author ybw0014
+ */
 public final class BowShootListener implements Listener {
     @EventHandler
-    public void onBowShoot(EntityShootBowEvent e) {
+    public void onBowUse(EntityShootBowEvent e) {
         if (!(e.getEntity() instanceof Player)) {
             return;
         }

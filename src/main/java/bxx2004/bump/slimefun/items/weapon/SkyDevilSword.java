@@ -1,6 +1,7 @@
 package bxx2004.bump.slimefun.items.weapon;
 
 import bxx2004.bump.Bump;
+import bxx2004.bump.abstracts.BumpSword;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
 import bxx2004.bump.util.Utils;
@@ -16,10 +17,10 @@ import org.bukkit.scheduler.BukkitRunnable;
 
 import javax.annotation.Nonnull;
 
-public class SkyDevilSword extends SimpleSlimefunItem<ItemUseHandler> {
+public class SkyDevilSword extends BumpSword {
 
     public SkyDevilSword() {
-        super(BumpItemGroups.WEAPON, BumpItems.SKY_DEVIL_SWORD, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+        super(5, BumpItems.SKY_DEVIL_SWORD, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
             null, null, null,
             BumpItems.SKY_SWORD, BumpItems.UPDATE_POWER, BumpItems.DEVIL_SWORD,
             null, null, null
@@ -32,9 +33,7 @@ public class SkyDevilSword extends SimpleSlimefunItem<ItemUseHandler> {
         return e -> {
             Player p = e.getPlayer();
 
-            if (p.getFoodLevel() >= 5) {
-                Utils.changeFoodLevel(p, p.getFoodLevel() - 5);
-
+            if (costHunger(p)) {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.activate");
 
                 p.setGlowing(true);

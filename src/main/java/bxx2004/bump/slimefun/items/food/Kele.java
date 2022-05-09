@@ -10,6 +10,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+/**
+ * Coke? Or Pepsi? Who knows.
+ *
+ * @author ybw0014
+ */
 public class Kele extends ConsumableFood {
 
     public Kele() {

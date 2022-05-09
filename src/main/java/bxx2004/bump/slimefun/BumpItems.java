@@ -9,6 +9,11 @@ import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 
+/**
+ * This class holds all {@link SlimefunItemStack} of Bump.
+ *
+ * @author ybw0014
+ */
 public class BumpItems {
     private BumpItems() {}
 

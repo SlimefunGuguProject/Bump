@@ -9,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+/**
+ * Chewing gum.
+ *
+ * @author ybw0014
+ */
 public class Kouxiangtang extends ItemFood {
 
     public Kouxiangtang() {

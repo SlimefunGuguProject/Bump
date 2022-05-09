@@ -10,6 +10,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+/**
+ * Instant noodle.
+ *
+ * @author ybw0014
+ */
 public class Fangbianmian extends ItemFood {
 
     public Fangbianmian() {

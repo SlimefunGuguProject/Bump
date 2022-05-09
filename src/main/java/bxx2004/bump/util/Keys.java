@@ -3,6 +3,11 @@ package bxx2004.bump.util;
 import bxx2004.bump.Bump;
 import org.bukkit.NamespacedKey;
 
+/**
+ * Some reusable {@link NamespacedKey}.
+ *
+ * @author ybw0014
+ */
 public final class Keys {
     private Keys() {}
 

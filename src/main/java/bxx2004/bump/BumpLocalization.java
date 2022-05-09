@@ -14,6 +14,9 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import java.text.MessageFormat;
 import java.util.Locale;
 
+/**
+ * This is an extended {@link Localization} service made for Bump
+ */
 public final class BumpLocalization extends Localization {
     public BumpLocalization(Bump plugin) {
         super(plugin);

@@ -5,6 +5,11 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * Some GUI items.
+ *
+ * @author ybw0014
+ */
 public final class GuiItems {
     private GuiItems() {}
 

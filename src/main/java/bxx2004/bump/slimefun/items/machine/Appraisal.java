@@ -22,6 +22,11 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 
+/**
+ * This is the appraisal machine.
+ *
+ * It will cost energy and appraise sword / armor with appraisable tag.
+ */
 public class Appraisal extends MenuBlock implements EnergyNetComponent {
 
     // gui
@@ -150,9 +155,5 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
     @Override
     public int getCapacity() {
         return ENERGY_CONSUMPTION;
-    }
-
-    private enum Type {
-
     }
 }

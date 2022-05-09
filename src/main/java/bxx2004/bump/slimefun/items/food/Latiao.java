@@ -9,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+/**
+ * Latiao. Spicy stick.
+ *
+ * @author ybw0014
+ */
 public class Latiao extends ConsumableFood {
 
     public Latiao() {
