@@ -29,6 +29,21 @@ public interface CostHungerItem {
     }
 
     /**
+     * This method will check whether {@link Player}'s food level is sufficient to cost.
+     *
+     * @param p the {@link Player} that uses the item
+     *
+     * @return if player has enough hunger
+     */
+    default boolean checkHunger(Player p) {
+        if (p.getGameMode() != GameMode.CREATIVE) {
+            return p.getFoodLevel() >= getHungerCost();
+        } else {
+            return true;
+        }
+    }
+
+    /**
      * This method will cost hunger of a {@link Player}.
      *
      * It will call {@link FoodLevelChangeEvent} and cost {@link Player}'s
@@ -37,16 +52,13 @@ public interface CostHungerItem {
      *
      * @param p the {@link Player} that uses the item
      *
-     * @return if player has enough hunger
+     * @return if player has reduced enough hunger
      */
     default boolean costHunger(Player p) {
-        if (p.getGameMode() != GameMode.CREATIVE) {
-            if (p.getFoodLevel() >= getHungerCost()) {
-                return Utils.changeFoodLevel(p,p.getFoodLevel() - getHungerCost());
-            }
-            return false;
+        if (checkHunger(p)) {
+            return Utils.changeFoodLevel(p,p.getFoodLevel() - getHungerCost());
         } else {
-            return true;
+            return false;
         }
     }
 }
