@@ -1,7 +1,5 @@
 package bxx2004.bump.util;
 
-import bxx2004.bump.Bump;
-import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
@@ -11,12 +9,9 @@ import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.logging.Level;
 
 @ParametersAreNonnullByDefault
 public class Utils {
@@ -30,15 +25,22 @@ public class Utils {
      *
      * @param p the {@link Player} that food level will be changed
      * @param level the target food level
+     *
+     * @return if the food level is changed
      */
-    public static void changeFoodLevel(Player p, int level) {
+    public static boolean changeFoodLevel(Player p, int level) {
         if (p.getGameMode() != GameMode.CREATIVE) {
             FoodLevelChangeEvent event = new FoodLevelChangeEvent(p, level);
             Bukkit.getPluginManager().callEvent(event);
 
             if (!event.isCancelled()) {
                 p.setFoodLevel(event.getFoodLevel());
+                return true;
             }
+
+            return false;
+        } else {
+            return true;
         }
     }
 

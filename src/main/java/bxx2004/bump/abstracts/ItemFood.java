@@ -2,6 +2,7 @@ package bxx2004.bump.abstracts;
 
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -15,6 +16,12 @@ import org.bukkit.inventory.ItemStack;
 import javax.annotation.Nonnull;
 import java.util.Locale;
 
+/**
+ * A {@link ItemFood} is a {@link SlimefunItem} that is based on a non-food item.
+ * Player can get effects after consuming.
+ *
+ * @author ybw0014
+ */
 public abstract class ItemFood extends SimpleSlimefunItem<ItemUseHandler> {
 
     protected ItemFood(SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {

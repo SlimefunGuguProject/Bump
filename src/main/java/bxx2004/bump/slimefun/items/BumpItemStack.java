@@ -8,6 +8,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import java.util.List;
 
+/**
+ * This is an extended {@link SlimefunItemStack} that loads name and lore from localization service.
+ */
 public class BumpItemStack extends SlimefunItemStack {
     public BumpItemStack(String id, Material material) {
         super(

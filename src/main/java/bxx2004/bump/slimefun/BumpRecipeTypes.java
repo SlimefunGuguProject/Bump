@@ -3,6 +3,11 @@ package bxx2004.bump.slimefun;
 import bxx2004.bump.Bump;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
+/**
+ * This class holds all {@link RecipeType} of Bump.
+ *
+ * @author ybw0014
+ */
 public class BumpRecipeTypes {
     private BumpRecipeTypes() {}
 

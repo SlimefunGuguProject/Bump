@@ -1,11 +1,17 @@
 package bxx2004.bump.slimefun;
 
 import bxx2004.bump.Bump;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 
+/**
+ * This class holds all {@link ItemGroup}s of Bump.
+ *
+ * @author ybw0014
+ */
 public class BumpItemGroups {
     public static NestedItemGroup MAIN = new NestedItemGroup(
         Bump.createKey("bump_main"),

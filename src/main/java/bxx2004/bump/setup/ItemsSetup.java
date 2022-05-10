@@ -25,6 +25,9 @@ import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+/**
+ * This class is used to setup items
+ */
 public final class ItemsSetup {
     private ItemsSetup() {}
 

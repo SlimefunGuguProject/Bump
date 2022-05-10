@@ -9,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
+/**
+ * Sprite.
+ *
+ * @author ybw0014
+ */
 public class Xuebi extends ConsumableFood {
 
     public Xuebi() {

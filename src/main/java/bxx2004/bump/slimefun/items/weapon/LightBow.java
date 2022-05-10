@@ -3,9 +3,7 @@ package bxx2004.bump.slimefun.items.weapon;
 import bxx2004.bump.Bump;
 import bxx2004.bump.abstracts.BumpBow;
 import bxx2004.bump.handlers.BowUseHandler;
-import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.slimefun.BumpItems;
-import bxx2004.bump.util.Utils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import org.bukkit.inventory.ItemStack;
@@ -15,7 +13,7 @@ import javax.annotation.Nonnull;
 public class LightBow extends BumpBow {
 
     public LightBow() {
-        super(BumpItemGroups.WEAPON, BumpItems.LIGHT_BOW, RecipeType.ARMOR_FORGE, new ItemStack[] {
+        super(10, BumpItems.LIGHT_BOW, RecipeType.ARMOR_FORGE, new ItemStack[] {
             SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
             SlimefunItems.POWER_CRYSTAL, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
             SlimefunItems.STAFF_STORM
@@ -27,8 +25,7 @@ public class LightBow extends BumpBow {
     public BowUseHandler getItemHandler() {
         return (e, p, item) -> {
             e.setCancelled(true);
-            if (p.getFoodLevel() >= 10) {
-                Utils.changeFoodLevel(p, p.getFoodLevel() - 10);
+            if (costHunger(p)) {
                 damageItem(p, item);
 
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.light_bow");
