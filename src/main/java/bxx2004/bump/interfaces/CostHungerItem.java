@@ -7,7 +7,9 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
 /**
- * This interface indicates that the item will cost hunger when use
+ * This interface indicates that the item will cost hunger when use.
+ *
+ * @author ybw0014
  */
 public interface CostHungerItem {
     /**

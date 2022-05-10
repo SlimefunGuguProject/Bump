@@ -21,7 +21,7 @@ import java.util.Optional;
  */
 public interface BowUseHandler extends ItemHandler {
 
-    void onShoot(EntityShootBowEvent e, Player p, ItemStack item);
+    void onUse(EntityShootBowEvent e, Player p, ItemStack bow);
 
     @Override
     default @Nonnull Optional<IncompatibleItemHandlerException> validate(SlimefunItem item) {
