@@ -60,10 +60,12 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
     public ItemUseHandler getItemHandler() {
         return e -> {
             Player p = e.getPlayer();
+            ItemStack item = e.getItem();
 
-            if (isCooldown(e.getItem())) {
+            if (isCooldown(item)) {
                 if (costHunger(p)) {
-                    onItemUse(p, e.getItem());
+                    setCooldown(item);
+                    onItemUse(p, item);
                 } else {
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
                 }
