@@ -22,7 +22,7 @@ public final class BowShootListener implements Listener {
         if (e.getEntity() instanceof Player && e.getProjectile() instanceof Arrow) {
             SlimefunItem bow = SlimefunItem.getByItem(e.getBow());
 
-            if (bow instanceof SlimefunBow) {
+            if (bow != null) {
                 bow.callItemHandler(BowUseHandler.class, handler -> handler.onUse(e, (Player) e.getEntity(), e.getBow()));
             }
         }
