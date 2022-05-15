@@ -14,7 +14,8 @@ Bump is a Slimefun addon that adds magic weapons, food and an appraisal system.
 
 ### 2.0
 
-Bump 2.0 is refactored by @ybw0014, and maintained by @ybw0014 and @haiman233. It depends on Slimefun RC-30, and adds localization service. 
+Bump 2.0 is refactored by @ybw0014, and maintained by @ybw0014 and @haiman233. It depends on Slimefun RC-30, and adds localization service.  
+
 Minecraft version: 1.14 and above  
 Slimefun version: RC-30 and above
 
