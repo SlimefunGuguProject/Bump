@@ -229,7 +229,7 @@ messages:
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
     low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
-    cooldown: "&b&k|&b- &7&o你现在还不能使用武器!"
+    cooldown: "&b&k|&b- &7&oYou cannot use this weapon now!"
     soul_sword:
       converted-part: "&b&k|&b- &7&oPart of your food level has been converted into health!"
       converted-all: "&b&k|&b- &7&oAll of your food level has been converted into health!"
