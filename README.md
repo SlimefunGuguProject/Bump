@@ -87,7 +87,7 @@ If you want to add your language to this addon, please submit your translation a
 
 Please submit bug reports in [issues](https://github.com/SlimefunGuguProject/Bump/issues/), we only accept reports in Chinese and English.
 
-For suggestions and questions, we haven't got a channel in slimefun addon community, so you can ask in `#other-addons`, feel free to ping `ybw0014#2209` or `haiman#0803`.
+For suggestions and questions, please talk about them in `#bump` of slimefun addon community, feel free to ping `ybw0014#2209` or `haiman#0803`.
 
 <p>
   <a href="https://discord.gg/slimefun">
