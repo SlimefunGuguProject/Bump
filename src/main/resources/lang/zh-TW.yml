@@ -1,1 +1,157 @@
 ---
+categories:
+  main: "&bBump"
+  armor: "&bBump - 護甲"
+  food: "&bBump - 食物"
+  machine: "&bBump - 機器"
+  stuff: "&bBump - 魔法物品"
+  tool: "&bBump - 工具"
+  weapon: "&bBump - 魔法武器"
+items:
+  random_helmet:
+    name: "&6隨機頭盔"
+    lore:
+      - ""
+      - "&b&k|&b- &7&o我的運氣怎麼樣..."
+      - "&b&k|&b- &e&o鑒定儀 &7&o隨機給予此一個屬性..."
+  xuebi:
+    name: "&6雪碧"
+    lore:
+      - ""
+      - "&b&k|&b- 很甜很甜, 還冒著氣泡!"
+      - ""
+  kele:
+    name: "&e可樂"
+    lore:
+      - ""
+      - "&b&k|&b- 冰力十足,喝了真精神,還會飛呢!"
+      - ""
+  fangbianmian:
+    name: "&e康師傅速食麵"
+    lore:
+      - ""
+      - "&b&k|&b- 這個味,對辣!"
+      - ""
+  latiao:
+    name: "&e辣條"
+    lore:
+      - ""
+      - "&b&k|&b- 爽,吃了之後還不忘舔舔辣油..."
+      - ""
+  kouxiangtang:
+    name: "&e口香糖"
+    lore:
+      - ""
+      - "&b&k|&b- 很粘稠的..."
+      - ""
+  appraisal:
+    name: "&b鑒定儀"
+    lore:
+      - ""
+      - "&c&k|&7- 哦,你這是個殘次品..."
+      - ""
+  sun_energy:
+    name: "&e光合能量"
+    lore:
+      - ""
+      - "&b&k|&b- 變異的植物也會進行光合作用..."
+      - ""
+  mecha_gear:
+    name: "&e機械齒輪"
+    lore:
+      - ""
+      - "&b&k|&b- 某大型工廠淘汰下來的東西..."
+      - ""
+  old_coin:
+    name: "&e破損的的金幣"
+    lore:
+      - ""
+      - "&b&k|&b- 這東西能買什麼..."
+      - ""
+  make:
+    name: "&e電腦工藝核心"
+    lore:
+      - ""
+      - "&b&k|&b- 它用來幹什麼呢..."
+      - ""
+  old_cpu:
+    name: "&e破損的CPU"
+    lore:
+      - ""
+      - "&b&k|&b- 從哪家的電腦上拆下來的..."
+      - ""
+  cpu:
+    name: "&eCPU"
+    lore:
+      - ""
+      - "&b&k|&b- 完好無損..."
+      - ""
+  soul_paper:
+    name: "&e靈魂之符"
+    lore:
+      - ""
+      - "&b&k|&b- 被注入了靈魂的力量"
+      - ""
+  ksf_stuff:
+    name: "&e速食麵調料"
+    lore:
+      - ""
+      - "&b&k|&b- 嘶~ 是香辣味的"
+      - ""
+  water_sugar:
+    name: "&e汽水糖"
+    lore:
+      - ""
+      - "&b&k|&b- 雪碧? 還是可口可樂?"
+      - ""
+  peach_wood:
+    name: "&e桃木"
+    lore:
+      - ""
+      - "&b&k|&b- 驅邪避難"
+      - ""
+  update_power:
+    name: "&e升級核心"
+    lore:
+      - ""
+      - "&b&k|&b- 用來升級一些奇怪的物品..."
+      - ""
+  getgold_spade:
+    name: "&e摸金鏟"
+    lore:
+      - ""
+      - "&b&k|&b- 在沙子裏一定幾率挖出破損的金幣!"
+      - ""
+  appraisal_paper_armor:
+    name: "&e護甲品質鑒定符"
+    lore:
+      - ""
+      - "&b&k|&b- 給定物品隨機一個護甲屬性!"
+      - "&b&k|&b- 非常昂貴,一定要保存好..."
+      - ""
+  appraisal_paper_damage:
+    name: "&e武器品質鑒定符"
+messages:
+  weapon:
+    sky_sword: "&b&k|&b- &7&o破天, 一飛沖天!"
+    sky_devil_sword:
+      activate: "&b&k|&b- &7&o破天斬魔,天降正義!"
+      end: "&b&k|&b- &7&o強化時間已經結束!"
+    light_bow: "&b&k|&b- &7&o神罰!"
+    wither_skull_bow: "&b&k|&b- &7&o凋零!"
+  machine:
+    appraisal:
+      invalid: "&c該物品無法進行鑒定!"
+      appraised: "&c該物品已經鑒定過,無法進行鑒定!"
+      success: "&a已鑒定武器!"
+gui:
+  appraise:
+    name: "&e點擊鑒定"
+    lore:
+      - "&7<- 在左側放入需要鑒定的物品"
+      - "&7點擊這裏開始鑒定"
+  appraisal_paper:
+    name: "&e點擊應用"
+    lore:
+      - "&7<- 在左側放入物品"
+      - "&7點擊這裏讓物品可以進行鑒定"
