@@ -1,258 +1,258 @@
 ---
 categories:
   main: "&bBump"
-  armor: "&bBump - 護甲"
-  food: "&bBump - 食物"
-  machine: "&bBump - 機器"
-  stuff: "&bBump - 魔法物品"
-  tool: "&bBump - 工具"
-  weapon: "&bBump - 魔法武器"
+  armor: "&bBump - Armor"
+  food: "&bBump - Food"
+  machine: "&bBump - Machine"
+  stuff: "&bBump - Stuff"
+  tool: "&bBump - Tool"
+  weapon: "&bBump - Magic Weapon"
 items:
   random_helmet:
-    name: "&6隨機頭盔"
+    name: "&6Random Helmet"
     lore:
       - ""
-      - "&b&k|&b- &7&o我的運氣怎麼樣..."
-      - "&b&k|&b- &e&o鑒定儀 &7&o隨機給予此一個屬性..."
+      - "&b&k|&b- &7&oHow is my luck..."
+      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
   xuebi:
-    name: "&6雪碧"
+    name: "&6Sprite"
     lore:
       - ""
-      - "&b&k|&b- 很甜很甜, 還冒著氣泡!"
+      - "&b&k|&b- Very sweet and sweet, still bubbling!"
       - ""
   kele:
-    name: "&e可樂"
+    name: "&eCola"
     lore:
       - ""
-      - "&b&k|&b- 冰力十足,喝了真精神,還會飛呢!"
+      - "&b&k|&b- The ice is full of strength, and if you drink it, you can fly!"
       - ""
   fangbianmian:
-    name: "&e康師傅速食麵"
+    name: "&eMaster Kong instant noodle"
     lore:
       - ""
-      - "&b&k|&b- 這個味,對辣!"
+      - "&b&k|&b- This taste is spicy!!"
       - ""
   latiao:
-    name: "&e辣條"
+    name: "&eSpicy gluten"
     lore:
       - ""
-      - "&b&k|&b- 爽,吃了之後還不忘舔舔辣油..."
+      - "&b&k|&b- Cool! I still don't forget to lick the spicy oil after eating..."
       - ""
   kouxiangtang:
-    name: "&e口香糖"
+    name: "&eChewing Gum"
     lore:
       - ""
-      - "&b&k|&b- 很粘稠的..."
+      - "&b&k|&b- Very sticky..."
       - ""
   appraisal:
-    name: "&b鑒定儀"
+    name: "&bAppraisal instrument"
     lore:
       - ""
-      - "&c&k|&7- 哦,你這是個殘次品..."
+      - "&c&k|&7- Oh! A defective instrument..."
       - ""
   sun_energy:
-    name: "&e光合能量"
+    name: "&ePhotosynthetic Energy"
     lore:
       - ""
-      - "&b&k|&b- 變異的植物也會進行光合作用..."
+      - "&b&k|&b- Mutated plants will also photosynthesize..."
       - ""
   mecha_gear:
-    name: "&e機械齒輪"
+    name: "&eMechanical Gear"
     lore:
       - ""
-      - "&b&k|&b- 某大型工廠淘汰下來的東西..."
+      - "&b&k|&b- Something eliminated by a large factory..."
       - ""
   old_coin:
-    name: "&e破損的的金幣"
+    name: "&eBroken Gold Coin"
     lore:
       - ""
-      - "&b&k|&b- 這東西能買什麼..."
+      - "&b&k|&b- What can I buy..."
       - ""
   make:
-    name: "&e電腦工藝核心"
+    name: "&eComputer Technology Core"
     lore:
       - ""
-      - "&b&k|&b- 它用來幹什麼呢..."
+      - "&b&k|&b- What is it used for..."
       - ""
   old_cpu:
-    name: "&e破損的CPU"
+    name: "&eBroken CPU"
     lore:
       - ""
-      - "&b&k|&b- 從哪家的電腦上拆下來的..."
+      - "&b&k|&b- From which computer it was removed..."
       - ""
   cpu:
     name: "&eCPU"
     lore:
       - ""
-      - "&b&k|&b- 完好無損..."
+      - "&b&k|&b- Intact..."
       - ""
   soul_paper:
-    name: "&e靈魂之符"
+    name: "&eSoul Talisman"
     lore:
       - ""
-      - "&b&k|&b- 被注入了靈魂的力量"
+      - "&b&k|&b- The power of the soul"
       - ""
   ksf_stuff:
-    name: "&e速食麵調料"
+    name: "&eInstant Noodle Seasoning"
     lore:
       - ""
-      - "&b&k|&b- 嘶~ 是香辣味的"
+      - "&b&k|&b- Sizzle~ It's spicy"
       - ""
   water_sugar:
-    name: "&e汽水糖"
+    name: "&eSoda Candy"
     lore:
       - ""
-      - "&b&k|&b- 雪碧? 還是可口可樂?"
+      - "&b&k|&b- Sprite? Or Coca-Cola?"
       - ""
   peach_wood:
-    name: "&e桃木"
+    name: "&ePeach Wood"
     lore:
       - ""
-      - "&b&k|&b- 驅邪避難"
+      - "&b&k|&b- Refuge From Evil Spirits"
       - ""
   update_power:
-    name: "&e升級核心"
+    name: "&eUpgrade Core"
     lore:
       - ""
-      - "&b&k|&b- 用來升級一些奇怪的物品..."
+      - "&b&k|&b- Used to upgrade some weird items..."
       - ""
   getgold_spade:
-    name: "&e摸金鏟"
+    name: "&eGetting-gold Shovel"
     lore:
       - ""
-      - "&b&k|&b- 在沙子裏一定幾率挖出破損的金幣!"
+      - "&b&k|&b- There is a certain chance to dig out broken gold coins in the sand!"
       - ""
   appraisal_paper_armor:
-    name: "&e護甲品質鑒定符"
+    name: "&eArmor Quality Identifier"
     lore:
       - ""
-      - "&b&k|&b- 給定物品隨機一個護甲屬性!"
-      - "&b&k|&b- 非常昂貴,一定要保存好..."
+      - "&b&k|&b- A random armor attribute for a given item!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
       - ""
   appraisal_paper_damage:
-    name: "&e武器品質鑒定符"
+    name: "&eWeapon Quality Identifier"
     lore:
       - ""
-      - "&b&k|&b- 給定物品隨機一個攻擊屬性!"
-      - "&b&k|&b- 非常昂貴,一定要保存好..."
+      - "&b&k|&b- A random attack attribute for a given item!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
       - ""
   light_bow:
-    name: "&6神罰之弓"
+    name: "&6God's Punishment Bow"
     lore:
       - ""
-      - "&b&k|&b- &7&o接受神的懲罰..."
+      - "&b&k|&b- &7&oAccept God's punishment..."
       - ""
   witherskull_row:
-    name: "&6凋零弓"
+    name: "&6Withered Bow"
     lore:
       - ""
-      - "&b&k|&b- &7&o它發射出去的的是每一個亡靈..."
+      - "&b&k|&b- &7&oWhat it launches is every undead..."
       - ""
   emer_sword:
-    name: "&6綠寶石之劍"
+    name: "&6Emerald Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o昂貴的綠寶石打造而成..."
+      - "&b&k|&b- &7&oMade of expensive emeralds..."
       - ""
   bone_sword:
-    name: "&6骨劍"
+    name: "&6Bone Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o堅硬無比..."
+      - "&b&k|&b- &7&oVery hard..."
       - ""
   random_sword:
-    name: "&6隨機短刃"
+    name: "&6Random Short Edge"
     lore:
       - ""
-      - "&b&k|&b- &7&o我的運氣怎麼樣..."
-      - "&b&k|&b- &e&o鑒定儀 &7&o隨機給予此一個屬性..."
+      - "&b&k|&b- &7&oHow is my luck..."
+      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
   guard_sword:
-    name: "&6守護之劍"
+    name: "&6Guardian Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o我守護著你,到生命的最後一刻..."
+      - "&b&k|&b- &7&oI will guard you until the last moment of life"
       - ""
   peach_sword:
-    name: "&6桃木劍"
+    name: "&6Peach Wood Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o致敬經典僵屍片..."
+      - "&b&k|&b- &7&oTribute to the classic zombie movie..."
       - ""
   soul_sword:
-    name: "&6靈魂之劍"
+    name: "&6Soul Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o惡魔的靈魂在這裏被注入..."
-      - "&b&k|&b- &e&o右鍵 &7&o可以發出一聲低吼..."
-      - "&b&k|&b- &7&o將你的&e&o飽食度&7&o轉化成&e&o生命值&7&o..."
+      - "&b&k|&b- &7&oThe soul of the devil is injected here..."
+      - "&b&k|&b- &e&oRight click &7&oto make a low growl..."
+      - "&b&k|&b- &7&oTurn &7&oyour &e&osatiety &7&ointo &e&ohealth&7&o..."
       - ""
   sky_sword:
-    name: "&6破天劍"
+    name: "&6Heaven Breaking Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o破天,多麼霸氣的名字..."
-      - "&b&k|&b- &e&o右鍵 &7&o將自己沖向天際..."
+      - "&b&k|&b- &7&oHeaven Breaking,what a domineering name..."
+      - "&b&k|&b- &e&oRight click &7&oand rush to the sky..."
       - ""
   devil_sword:
-    name: "&6斬魔劍"
+    name: "&6Demon Slayer Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o斬魔,多麼威武的稱號..."
-      - "&b&k|&b- &e&o右鍵 &7&o發出聖火橫掃一切黑暗..."
+      - "&b&k|&b- &7&oDemon Slayer, what a mighty title..."
+      - "&b&k|&b- &e&oRight click &7&oto send out the holy fire to sweep all darkness..."
       - ""
   sky_devil_sword:
-    name: "&6破天斬魔劍"
+    name: "&6Heaven-demon Crumble Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&o破天斬魔,相繼發出強大的能量..."
-      - "&b&k|&b- &e&o右鍵 &7&o連續向前發射三次吐息並且提升自己..."
+      - "&b&k|&b- &7&oBreaking the sky and cutting the devil, one after another emits powerful energy..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and elevate yourself..."
       - ""
 lores:
-  per-use: "&7每次使用"
-  not-appraised: "&b&k|&b- &7&o未鑒定"
-  appraised: "&b&k|&b- &7&o已鑒定 &b| &7&o等級: {0}"
+  per-use: "&7per use"
+  not-appraised: "&b&k|&b- &7&oNot appraised"
+  appraised: "&b&k|&b- &7&oAppraised &b| &dLevel: &e&l{0}"
 messages:
-  no-input: "&c請放入物品!"
-  output-no-space: "&c輸出空間不足!"
-  not-enough-power: "&c電力不足!"
+  no-input: "&cPlease put in items."
+  output-no-space: "&cNo output space!"
+  not-enough-power: "&cNot enough energy."
   food:
-    xuebi: "&b&k|&b- &7&o清涼一夏!"
-    kele: "&b&k|&b- &7&o肥宅的勝利!"
-    fangbianmian: "&b&k|&b- &7&o童年的味道!"
-    latiao: "&b&k|&b- &7&o這辣，才夠味!"
-    kouxiangtang: "&b&k|&b- &7&o仙氣飄飄!"
+    xuebi: "&b&k|&b- &7&oA cool summer!!"
+    kele: "&b&k|&b- &7&oThe victory of the fat otaku!"
+    fangbianmian: "&b&k|&b- &7&oFairy spirit fluttering!"
+    latiao: "&b&k|&b- &7&oThis is spicy enough!"
+    kouxiangtang: "&b&k|&b- &7&oThe taste of childhood!"
   tool:
-    getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
+    getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
-      invalid: "&c該物品無法進行鑒定!"
-      success: "&a該物品現在可以進行鑒定了!"
+      invalid: "&cThis item is not appraisable!"
+      success: "&aThis item can be appraised now!"
   weapon:
-    unavailable: "&b&k|&b- &7&o你現在無法發動該技能!"
-    low-food-level: "&b&k|&b- &7&o你的飽食度太低!"
-    cooldown: "&b&k|&b- &7&o你現在還不能使用武器!"
+    unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
+    low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
+    cooldown: "&b&k|&b- &7&oYou cannot use this weapon now!"
     soul_sword:
-      converted-part: "&b&k|&b- &7&o已將部分飽食度轉化為生命值!"
-      converted-all: "&b&k|&b- &7&o已將全部飽食度轉化為生命值!"
-    devil_sword: "&b&k|&b- &7&o斬魔, 一刀致命!"
-    sky_sword: "&b&k|&b- &7&o破天, 一飛沖天!"
+      converted-part: "&b&k|&b- &7&oPart of your food level has been converted into health!"
+      converted-all: "&b&k|&b- &7&oAll of your food level has been converted into health!"
+    devil_sword: "&b&k|&b- &7&oDemon Slayer, bring justice from the sky!"
+    sky_sword: "&b&k|&b- &7&oHeaven Breaking, soar into the sky!"
     sky_devil_sword:
-      activate: "&b&k|&b- &7&o破天斬魔,天降正義!"
-      end: "&b&k|&b- &7&o強化時間已經結束!"
-    light_bow: "&b&k|&b- &7&o神罰!"
-    wither_skull_bow: "&b&k|&b- &7&o凋零!"
+      activate: "&b&k|&b- &7&oDemon Slayer or Heaven Breaking,only to the justice!"
+      end: "&b&k|&b- &7&oThe strengthening time is over!"
+    light_bow: "&b&k|&b- &7&oGod punishes!"
+    wither_skull_bow: "&b&k|&b- &7&oWithering!"
   machine:
     appraisal:
-      invalid: "&c該物品無法進行鑒定!"
-      appraised: "&c該物品已經鑒定過,無法進行鑒定!"
-      success: "&a已鑒定武器!"
+      invalid: "&cThe item has not yet been appraised...!"
+      appraised: "&cSorry that the item cannot be identified or has already been appraised!"
+      success: "&aAppraisal!"
 gui:
   appraise:
-    name: "&e點擊鑒定"
+    name: "&eClick to appraise"
     lore:
-      - "&7<- 在左側放入需要鑒定的物品"
-      - "&7點擊這裏開始鑒定"
+      - "&7<- Put the items to be appraised on the left side"
+      - "&7Click here to appraise"
   appraisal_paper:
-    name: "&e點擊應用"
+    name: "&eClick to apply"
     lore:
-      - "&7<- 在左側放入物品"
-      - "&7點擊這裏讓物品可以進行鑒定"
+      - "&7<- Put items on the left side"
+      - "&7Click here to allow the item to be appraised"
