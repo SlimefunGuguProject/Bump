@@ -6,6 +6,7 @@ import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -30,7 +31,12 @@ public class BumpItemStack extends SlimefunItemStack {
         );
 
         ItemMeta im = getItemMeta();
-        List<String> lore = im.getLore();
+        List<String> lore;
+        if (im.hasLore()) {
+            lore = im.getLore();
+        } else {
+            lore = new ArrayList<>();
+        }
         for (String line : appendLore) {
             lore.add(ChatUtil.color(line));
         }
