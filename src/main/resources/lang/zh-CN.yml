@@ -142,6 +142,12 @@ items:
       - ""
       - "&b&k|&b- &7&o接受神的惩罚..."
       - ""
+  witherskull_bow:
+    name: "&6凋零弓"
+    lore:
+      - ""
+      - "&b&k|&b- &7&o它发射出去的的是每一个亡灵..."
+      - ""
   emer_sword:
     name: "&6绿宝石之剑"
     lore:
