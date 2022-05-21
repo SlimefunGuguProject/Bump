@@ -73,10 +73,12 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 
 We support these languages：
 
-- `en-US` English (United States)
+- `en` English
   - Thanks @UniverseNetwork for English translation
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
+- `ja` Japanese
+  - Thanks @SchnTgaiSpock for Japanese translation
 
 The default language is Simplified Chinese `zh-CN`.  
 You can change `options.lang` in `config.yml` to your favourite language.
