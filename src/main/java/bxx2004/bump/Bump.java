@@ -31,7 +31,7 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  Issue tracker: https://github.com/SlimefunGuguProject/Bump/issues");
 
         // localization
-        String lang = getConfig().getString("lang", "zh-CN");
+        String lang = getConfig().getString("options.lang", "zh-CN");
         localization = new BumpLocalization(this);
         localization.addLanguage(lang);
         sendConsole("&eLoaded language {0}", lang);
