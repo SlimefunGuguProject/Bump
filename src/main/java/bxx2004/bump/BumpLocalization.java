@@ -48,7 +48,7 @@ public final class BumpLocalization extends Localization {
     public @Nonnull String getResearchName(@Nonnull String researchId) {
         Validate.notNull(researchId, "Research Id cannot be null");
 
-        return getString("searches." + StringUtil.dehumanize(researchId).toLowerCase(Locale.ROOT));
+        return getString("researches." + StringUtil.dehumanize(researchId).toLowerCase(Locale.ROOT));
     }
 
     @ParametersAreNonnullByDefault

@@ -19,7 +19,7 @@ import javax.annotation.Nonnull;
 public class WitherSkullBow extends BumpBow {
 
     public WitherSkullBow() {
-        super(5, BumpItems.WITHERSKULL_ROW, RecipeType.ARMOR_FORGE, new ItemStack[] {
+        super(5, BumpItems.WITHERSKULL_BOW, RecipeType.ARMOR_FORGE, new ItemStack[] {
             SlimefunItems.NECROTIC_SKULL, BumpItems.PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
             SlimefunItems.POWER_CRYSTAL, BumpItems.PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
             BumpItems.PEACH_WOOD, null, null
