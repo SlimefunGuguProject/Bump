@@ -209,7 +209,7 @@ items:
 lores:
   per-use: "&7毎回使用"
   not-appraised: "&b&k|&b- &7&oまだ鑑定されていない"
-  appraised: "&b&k|&b- &7&o鑑定された &b| &dレベル&e&{0}"
+  appraised: "&b&k|&b- &7&o鑑定された &b| &dレベル&e&l{0}"
 messages:
   no-input: "&cアイテムを入れてください。"
   output-no-space: "&c出力の空間が足りない！"
