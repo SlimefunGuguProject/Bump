@@ -1,4 +1,4 @@
 options:
   auto-update: true
   lang: en
-  enable-researches: false
+  enable-researches: true
