@@ -210,7 +210,7 @@ items:
 lores:
   per-use: "&7每次使用"
   not-appraised: "&b&k|&b- &7&o未鑒定"
-  appraised: "&b&k|&b- &7&o已鑒定 &b| &7&o等級: {0}"
+  appraised: "&b&k|&b- &7&o已鑒定 &b| &e&l等級: {0}"
 messages:
   no-input: "&c請放入物品!"
   output-no-space: "&c輸出空間不足!"
