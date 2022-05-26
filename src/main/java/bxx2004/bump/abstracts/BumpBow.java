@@ -28,6 +28,9 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
     protected BumpBow(int hunger, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.WEAPON, item, recipeType, recipe);
 
+        // durabilityCost
+        addItemSetting(costDurability);
+
         // hunger cost
         Validate.isTrue(hunger >= 0 && hunger <= 20, "Hunger cost must be between 0 and 20");
         hungerCost = new IntRangeSetting(this, "hunger-cost", 0, hunger, 20);

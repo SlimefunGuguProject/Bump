@@ -6,6 +6,7 @@ import bxx2004.bump.handlers.BowUseHandler;
 import bxx2004.bump.slimefun.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import org.bukkit.Sound;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.inventory.ItemStack;
 
@@ -36,6 +37,8 @@ public class WitherSkullBow extends BumpBow {
 
                 e.setCancelled(true);
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.wither_skull_bow");
+
+                p.playSound(p.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0F, 1.0F);
                 p.launchProjectile(WitherSkull.class);
             } else {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
