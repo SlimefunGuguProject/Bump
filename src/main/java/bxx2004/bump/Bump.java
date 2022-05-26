@@ -34,9 +34,12 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
         // localization
-        lang = getConfig().getString("options.lang", "en");
+        lang = getConfig().getString("options.lang", "en-US");
         localization = new BumpLocalization(this);
         localization.addLanguage(lang);
+        if (!lang.equals("en-US")) {
+            localization.addLanguage("en-US");
+        }
         sendConsole("&eLoaded language {0}", lang);
 
         // items setup
