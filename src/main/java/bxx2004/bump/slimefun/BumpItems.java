@@ -61,7 +61,7 @@ public class BumpItems {
     public static final SlimefunItemStack APPRAISAL = new BumpItemStack(
         "APPRAISAL",
         Material.BELL,
-        LoreBuilder.power(Appraisal.getEnergyConsumption(), Bump.getLocalization().getString("lores.per-use"))
+        LoreBuilder.power(Appraisal.getEnergyConsumption(), " " + Bump.getLocalization().getString("lores.per-use"))
     );
     // endregion machine
 
