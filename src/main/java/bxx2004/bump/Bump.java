@@ -2,16 +2,19 @@ package bxx2004.bump;
 
 import bxx2004.bump.listeners.BowShootListener;
 import bxx2004.bump.setup.ItemsSetup;
+import bxx2004.bump.setup.ResearchSetup;
+import net.guizhanss.guizhanlib.bstats.bukkit.Metrics;
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 
 public final class Bump extends AbstractAddon {
 
     private BumpLocalization localization;
+    private String lang;
 
     public Bump() {
-        super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
-        setupMetrics(14870);
+        super("SlimefunGuguProject", "Bump", "main", "options.auto-update", "options.lang");
+        enableMetrics(14870);
     }
 
     @Override
@@ -27,11 +30,11 @@ public final class Bump extends AbstractAddon {
         sendConsole("&6&l                                   \\/_/ ");
         sendConsole("&a&l  Bump 2 for Slimefun4 RC-30+");
         sendConsole("&a&l  Powered By bxx2004");
-        sendConsole("&a&l  Repository: https://github.com/SlimefunGuguProject/Bump");
-        sendConsole("&a&l  Issue tracker: https://github.com/SlimefunGuguProject/Bump/issues");
+        sendConsole("&a&l  GitHub: https://github.com/SlimefunGuguProject/Bump");
+        sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
         // localization
-        String lang = getConfig().getString("options.lang", "zh-CN");
+        lang = getConfig().getString("options.lang", "en");
         localization = new BumpLocalization(this);
         localization.addLanguage(lang);
         sendConsole("&eLoaded language {0}", lang);
@@ -39,13 +42,21 @@ public final class Bump extends AbstractAddon {
         // items setup
         ItemsSetup.setup();
 
-        getServer().getPluginManager().registerEvents(new BowShootListener(), this);
+        // researches setup
+        if (getConfig().getBoolean("options.enable-research")) {
+            ResearchSetup.setup();
+        }
 
-        getMetrics().addCustomChart(new SimplePie("language", () -> lang));
+        getServer().getPluginManager().registerEvents(new BowShootListener(), this);
     }
 
     @Override
     public void disable() {
+    }
+
+    @Override
+    public void setupMetrics(Metrics metrics) {
+        metrics.addCustomChart(new SimplePie("Language", () -> lang));
     }
 
     public static BumpLocalization getLocalization() {

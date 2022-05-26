@@ -211,6 +211,17 @@ lores:
   per-use: "&7per use"
   not-appraised: "&b&k|&b- &7&oNot appraised"
   appraised: "&b&k|&b- &7&oAppraised &b| &dLevel: &e&l{0}"
+researches:
+  food: "Bump food"
+  random_equipment: "Random equipment"
+  appraise: "Appeaise"
+  stuff: "Magical stuff"
+  old_stuff: "Getting gold"
+  bow: "Bump bows"
+  peach_sword: "Peach sword"
+  normal_sword: "Normal sword"
+  soul_sword: "Soul sword"
+  sky_devil: "Heaven or Demon"
 messages:
   no-input: "&cPlease put in items."
   output-no-space: "&cNo output space!"

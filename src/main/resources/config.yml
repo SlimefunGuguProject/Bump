@@ -1,3 +1,4 @@
 options:
   auto-update: true
-  lang: zh-CN
+  lang: en-US
+  enable-researches: true
