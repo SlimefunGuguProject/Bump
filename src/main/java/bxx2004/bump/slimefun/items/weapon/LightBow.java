@@ -6,6 +6,8 @@ import bxx2004.bump.handlers.BowUseHandler;
 import bxx2004.bump.slimefun.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import org.bukkit.Material;
+import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
@@ -25,13 +27,19 @@ public class LightBow extends BumpBow {
     public BowUseHandler getItemHandler() {
         return (e, p, item) -> {
             e.setCancelled(true);
+
+            Block target = p.getTargetBlock(null, 200);
+            if (target.getType() == Material.AIR) {
+                return;
+            }
+
             if (costHunger(p)) {
                 damageItem(p, item);
 
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.light_bow");
 
                 for (int i = 0; i < 10; i++) {
-                    p.getWorld().strikeLightning(p.getTargetBlock(null, 200).getLocation());
+                    p.getWorld().strikeLightning(target.getLocation());
                 }
 
             } else {
