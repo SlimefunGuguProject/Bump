@@ -72,14 +72,14 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 
 我们目前支持以下语言来显示插件内容：
 
-- `en` 英语
+- `en-US` 英语（美国）
   - 感谢 @UniverseNetwork 为Bump的英文翻译提供参考
 - `zh-CN` 简体中文
 - `zh-TW` 繁体中文
 - `ja` 日语
   - 感谢 @SchnTgaiSpock 为Bump的日文翻译提供参考
 
-默认语言为简体中文 `zh-CN`。  
+默认语言为英语（美国） `en-US`。  
 你可以在`config.yml`中更改`options.lang`字段来应用新的语言。
 
 如果你想向本附属添加你的语言，请在 [Crowdin](https://crowdin.com/project/slimefun-bump) 提交你的翻译。
