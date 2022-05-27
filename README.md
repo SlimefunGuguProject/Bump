@@ -73,14 +73,14 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 
 We support these languages：
 
-- `en` English
+- `en-US` English (United States)
   - Thanks @UniverseNetwork for English translation
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
 - `ja` Japanese
   - Thanks @SchnTgaiSpock for Japanese translation
 
-The default language is Simplified Chinese `zh-CN`.  
+The default language is English (United States) `en-US`.  
 You can change `options.lang` in `config.yml` to your favourite language.
 
 If you want to add your language to this addon, please submit your translation at [Crowdin](https://crowdin.com/project/slimefun-bump).
