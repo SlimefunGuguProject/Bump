@@ -116,11 +116,11 @@ public final class AppraiseUtils {
 
         if (MinecraftTag.SWORD.isTagged(itemStack)) {
             // swords can be applied with damage and attack apeed modifier
-            double damage = ThreadLocalRandom.current().nextDouble(5, 28);
+            double damage = ThreadLocalRandom.current().nextDouble(0, 30);
             double attackSpeed = ThreadLocalRandom.current().nextDouble(0, 10);
             double speed = ThreadLocalRandom.current().nextDouble(0, 0.6);
-            double luck = ThreadLocalRandom.current().nextDouble(0, 5);
-            double attackKnkockback = ThreadLocalRandom.current().nextDouble(0, 10);
+            double luck = ThreadLocalRandom.current().nextDouble(0, 10);
+            double attackKnkockback = ThreadLocalRandom.current().nextDouble(0, 12);
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "DAMAGE", damage, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(UUID.randomUUID(), "ASPEED", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", speed, AttributeModifier.Operation.ADD_NUMBER, slot));
@@ -128,12 +128,12 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, new AttributeModifier(UUID.randomUUID(), "ATTACKK_NOCKBACK", attackKnkockback, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by damage only
-            stars = getLevelByLimit(damage, 5, 28);
+            stars = getLevelByLimit(damage, 0, 30);
         } else if (MinecraftTag.ARMOR.isTagged(itemStack)) {
             // armor can be applied with armor modifier
-            double armor = ThreadLocalRandom.current().nextDouble(3, 25);
-            double armorToughness = ThreadLocalRandom.current().nextDouble(1.5, 10);
-            double maxHealth = ThreadLocalRandom.current().nextDouble(0, 10.5);
+            double armor = ThreadLocalRandom.current().nextDouble(0, 30);
+            double armorToughness = ThreadLocalRandom.current().nextDouble(0, 12);
+            double maxHealth = ThreadLocalRandom.current().nextDouble(0, 12);
             double knockbackResistance = ThreadLocalRandom.current().nextDouble(0, 0.8);
             double flyingSpeed = ThreadLocalRandom.current().nextDouble(0, 5);
             im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
@@ -143,7 +143,7 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, new AttributeModifier(UUID.randomUUID(), "FLYING_SPEED", flyingSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by armor only
-            stars = getLevelByLimit(armor, 3, 25);
+            stars = getLevelByLimit(armor, 3, 30);
         }
 
         // set lore
