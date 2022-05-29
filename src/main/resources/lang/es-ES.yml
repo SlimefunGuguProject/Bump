@@ -1,1 +1,9 @@
 ---
+categories:
+  main: "&bBump"
+  armor: "&bBump - Armadura"
+  food: "&bBump - Comida"
+  machine: "&bBump - Máquina"
+  stuff: "&bBump - Cosas"
+  tool: "&bBump - Herramienta"
+  weapon: "&bBump - Arma Mágica"
