@@ -14,6 +14,12 @@ items:
       - ""
       - "&b&k|&b- &7&o我的运气怎么样..."
       - "&b&k|&b- &e&o鉴定仪 &7&o随机给予此一个属性..."
+  random_horse_armor:
+    name: "&6随机马铠"
+    lore:
+      - ""
+      - "&b&k|&b- &7&o我的运气怎么样..."
+      - "&b&k|&b- &e&o鉴定仪 &7&o随机给予此一个属性..."
   xuebi:
     name: "&6雪碧"
     lore:
@@ -136,6 +142,13 @@ items:
       - "&b&k|&b- 给定物品随机一个攻击属性!"
       - "&b&k|&b- 非常昂贵,一定要保存好..."
       - ""
+  appraisal_paper_horse_armor:
+    name: "&e马铠品质鉴定符"
+    lore:
+      - ""
+      - "&b&k|&b- 给定物品随机一个护甲属性!"
+      - "&b&k|&b- 非常昂贵,一定要保存好..."
+      - ""
   light_bow:
     name: "&6神罚之弓"
     lore:
@@ -236,6 +249,7 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
     appraisal_paper:
       invalid: "&c该物品无法进行鉴定!"
+      mismatch: "&c鉴定符不适用于该物品!"
       success: "&a该物品现在可以进行鉴定了!"
   weapon:
     unavailable: "&b&k|&b- &7&o你现在无法发动该技能!"
