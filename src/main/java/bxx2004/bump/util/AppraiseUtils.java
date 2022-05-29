@@ -1,6 +1,7 @@
 package bxx2004.bump.util;
 
 import bxx2004.bump.Bump;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.apache.commons.lang.Validate;
@@ -10,8 +11,6 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Utility methods for appraise
  *
  * @author ybw0014
+ * @author haiman233
  */
 public final class AppraiseUtils {
     private AppraiseUtils() {}
@@ -37,8 +37,9 @@ public final class AppraiseUtils {
     public static boolean isAppraisableMaterial(@Nonnull Material type) {
         Validate.notNull(type, "type should not be null");
 
-        return MinecraftTag.ARMOR.isTagged(type)
-            || MinecraftTag.SWORD.isTagged(type);
+        return BumpTag.ARMOR.isTagged(type)
+            || BumpTag.WEAPON.isTagged(type)
+            || BumpTag.HORSE_ARMOR.isTagged(type);
     }
 
     /**
@@ -52,9 +53,7 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
-        return pdc.has(Keys.APPRAISABLE, PersistentDataType.BYTE)
-            && pdc.get(Keys.APPRAISABLE, PersistentDataType.BYTE) == 1;
+        return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
     }
 
     /**
@@ -80,8 +79,7 @@ public final class AppraiseUtils {
         im.setLore(lore);
 
         // set pdc
-        PersistentDataContainer pdc = im.getPersistentDataContainer();
-        pdc.set(Keys.APPRAISABLE, PersistentDataType.BYTE, (byte) 1);
+        PersistentDataAPI.setByte(im, Keys.APPRAISABLE, (byte) 1);
 
         itemStack.setItemMeta(im);
     }
@@ -97,7 +95,7 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        return itemStack.getItemMeta().getPersistentDataContainer().has(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE);
+        return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
     }
 
     /**
@@ -110,17 +108,16 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
         ItemMeta im = itemStack.getItemMeta();
-        PersistentDataContainer pdc = im.getPersistentDataContainer();
         EquipmentSlot slot = getEquipmentSlot(itemStack.getType());
         int stars = 0;
 
         if (MinecraftTag.SWORD.isTagged(itemStack)) {
             // swords can be applied with damage and attack apeed modifier
-            double damage = ThreadLocalRandom.current().nextDouble(5, 28);
-            double attackSpeed = ThreadLocalRandom.current().nextDouble(0, 10);
-            double speed = ThreadLocalRandom.current().nextDouble(0, 0.6);
-            double luck = ThreadLocalRandom.current().nextDouble(0, 5);
-            double attackKnkockback = ThreadLocalRandom.current().nextDouble(0, 10);
+            double damage = ThreadLocalRandom.current().nextDouble(0, 30);
+            double attackSpeed = ThreadLocalRandom.current().nextDouble(-3, 10);
+            double speed = ThreadLocalRandom.current().nextDouble(-0.4, 0.6);
+            double luck = ThreadLocalRandom.current().nextDouble(-3, 10);
+            double attackKnkockback = ThreadLocalRandom.current().nextDouble(-2, 12);
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_DAMAGE, new AttributeModifier(UUID.randomUUID(), "DAMAGE", damage, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_SPEED, new AttributeModifier(UUID.randomUUID(), "ASPEED", attackSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", speed, AttributeModifier.Operation.ADD_NUMBER, slot));
@@ -128,14 +125,14 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_ATTACK_KNOCKBACK, new AttributeModifier(UUID.randomUUID(), "ATTACKK_NOCKBACK", attackKnkockback, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by damage only
-            stars = getLevelByLimit(damage, 5, 28);
+            stars = getLevelByLimit(damage, 0, 30);
         } else if (MinecraftTag.ARMOR.isTagged(itemStack)) {
             // armor can be applied with armor modifier
-            double armor = ThreadLocalRandom.current().nextDouble(3, 25);
-            double armorToughness = ThreadLocalRandom.current().nextDouble(1.5, 10);
-            double maxHealth = ThreadLocalRandom.current().nextDouble(0, 10.5);
-            double knockbackResistance = ThreadLocalRandom.current().nextDouble(0, 0.8);
-            double flyingSpeed = ThreadLocalRandom.current().nextDouble(0, 5);
+            double armor = ThreadLocalRandom.current().nextDouble(0, 30);
+            double armorToughness = ThreadLocalRandom.current().nextDouble(-2, 12);
+            double maxHealth = ThreadLocalRandom.current().nextDouble(-5, 12);
+            double knockbackResistance = ThreadLocalRandom.current().nextDouble(-0.2, 0.8);
+            double flyingSpeed = ThreadLocalRandom.current().nextDouble(-3, 5);
             im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "ARMOR_TOUGHNESS", armorToughness, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier(UUID.randomUUID(), "MAX_HEALTH", maxHealth, AttributeModifier.Operation.ADD_NUMBER, slot));
@@ -143,8 +140,28 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_FLYING_SPEED, new AttributeModifier(UUID.randomUUID(), "FLYING_SPEED", flyingSpeed, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by armor only
-            stars = getLevelByLimit(armor, 3, 25);
+            stars = getLevelByLimit(armor, 0, 30);
+        } else if (MinecraftTag.HORSE_ARMOR.isTagged(itemStack)) {
+            // horse armor can be applied with horse armor modifier
+            double maxHealth = ThreadLocalRandom.current().nextDouble(0, 30);
+            double armor = ThreadLocalRandom.current().nextDouble(-5, 30);
+            double armorToughness = ThreadLocalRandom.current().nextDouble(-2, 12);
+            double knockbackResistance = ThreadLocalRandom.current().nextDouble(-0.2, 0.8);
+            double horseJump = ThreadLocalRandom.current().nextDouble(-0.5, 1.4);
+            double speed = ThreadLocalRandom.current().nextDouble(-0.5, 1.2);
+            double followRange = ThreadLocalRandom.current().nextDouble(-10, 250);
+            im.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier(UUID.randomUUID(), "MAX_HEALTH", maxHealth, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "ARMOR_TOUGHNESS", armorToughness, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.randomUUID(), "KNOCKBACK_RESISTANCE", knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.HORSE_JUMP_STRENGTH, new AttributeModifier(UUID.randomUUID(), "HORSE_JUMP_STRENGTH", horseJump, AttributeModifier.Operation.ADD_SCALAR, slot));
+            im.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", speed, AttributeModifier.Operation.ADD_SCALAR, slot));
+            im.addAttributeModifier(Attribute.GENERIC_FOLLOW_RANGE, new AttributeModifier(UUID.randomUUID(), "FOLLOW_RANGE", followRange, AttributeModifier.Operation.ADD_SCALAR, slot));
+            
+            // the star is determined by max health only
+            stars = getLevelByLimit(maxHealth, 0, 30);
         }
+
 
         // set lore
         List<String> lore = im.getLore();
@@ -158,7 +175,7 @@ public final class AppraiseUtils {
         im.setLore(lore);
 
         // set pdc
-        pdc.set(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE, (byte) stars);
+        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) stars);
 
         itemStack.setItemMeta(im);
     }
@@ -175,7 +192,8 @@ public final class AppraiseUtils {
             return EquipmentSlot.HAND;
         } else if (MinecraftTag.HELMET.isTagged(type)) {
             return EquipmentSlot.HEAD;
-        } else if (MinecraftTag.CHESTPLATE.isTagged(type)) {
+        } else if (MinecraftTag.CHESTPLATE.isTagged(type)
+                || MinecraftTag.HORSE_ARMOR.isTagged(type)) {
             return EquipmentSlot.CHEST;
         } else if (MinecraftTag.LEGGINGS.isTagged(type)) {
             return EquipmentSlot.LEGS;
@@ -187,7 +205,7 @@ public final class AppraiseUtils {
     }
 
     /**
-     * Get the appraise level
+     * Get the appraisal level
      *
      * @param randomValue random generated value
      * @param min minimum value

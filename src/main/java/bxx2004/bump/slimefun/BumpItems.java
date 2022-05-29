@@ -25,6 +25,15 @@ public class BumpItems {
     static{
         AppraiseUtils.setAppraisable(RANDOM_HELMET);
     }
+    
+    public static final SlimefunItemStack RANDOM_HORSE_ARMOR = new BumpItemStack(
+        "RANDOM_HORSE_ARMOR",
+        Material.DIAMOND_HORSE_ARMOR
+    );
+    static{
+        AppraiseUtils.setAppraisable(RANDOM_HORSE_ARMOR);
+    }
+    
     // endregion armor
 
     // region food

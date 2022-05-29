@@ -139,6 +139,7 @@ public class Appraisal extends MenuBlock implements EnergyNetComponent {
     private boolean validate(ItemStack itemStack) {
         return AppraiseUtils.isAppraisable(itemStack)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HELMET, itemStack, false)
+            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HORSE_ARMOR, itemStack, false)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_SWORD, itemStack, false);
     }
 

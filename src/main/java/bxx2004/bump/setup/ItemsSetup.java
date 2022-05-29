@@ -45,6 +45,17 @@ public final class ItemsSetup {
                 BumpItems.OLD_COIN, BumpItems.UPDATE_POWER, BumpItems.OLD_COIN
             }
         ).register(plugin);
+        
+        new SlimefunItem(
+            BumpItemGroups.ARMOR,
+            BumpItems.RANDOM_HORSE_ARMOR,
+            RecipeType.ENHANCED_CRAFTING_TABLE,
+            new ItemStack[] {
+                BumpItems.OLD_COIN, null, BumpItems.OLD_COIN,
+                BumpItems.OLD_COIN, new ItemStack(Material.DIAMOND_HORSE_ARMOR), BumpItems.OLD_COIN,
+                BumpItems.OLD_COIN, BumpItems.UPDATE_POWER, BumpItems.OLD_COIN
+            }
+        ).register(plugin);
         // endregion armor
 
         // region food
