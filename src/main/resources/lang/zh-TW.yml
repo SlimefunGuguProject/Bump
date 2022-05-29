@@ -14,6 +14,12 @@ items:
       - ""
       - "&b&k|&b- &7&o我的運氣怎麼樣..."
       - "&b&k|&b- &e&o鑒定儀 &7&o隨機給予此一個屬性..."
+  random_horse_armor:
+    name: "&6随机馬鎧"
+    lore:
+      - ""
+      - "&b&k|&b- &7&o我的運氣怎麼樣..."
+      - "&b&k|&b- &e&o鑒定儀 &7&o隨機給予此一個屬性..."
   xuebi:
     name: "&6雪碧"
     lore:
@@ -211,6 +217,17 @@ lores:
   per-use: "&7每次使用"
   not-appraised: "&b&k|&b- &7&o未鑒定"
   appraised: "&b&k|&b- &7&o已鑒定 &b| &e&l等級: {0}"
+researches:
+  food: "Bump美食"
+  random_equipment: "隨機裝備"
+  appraise: "鉴定!!"
+  stuff: "Bump魔法"
+  old_stuff: "取金不易"
+  bow: "Bump之弓"
+  peach_sword: "桃木劍"
+  normal_sword: "Bump之劍"
+  soul_sword: "魂魄！"
+  sky_devil: "天堂隕落地獄!"
 messages:
   no-input: "&c請放入物品!"
   output-no-space: "&c輸出空間不足!"
