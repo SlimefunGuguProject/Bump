@@ -192,9 +192,8 @@ public final class AppraiseUtils {
             return EquipmentSlot.HAND;
         } else if (MinecraftTag.HELMET.isTagged(type)) {
             return EquipmentSlot.HEAD;
-        } else if (MinecraftTag.CHESTPLATE.isTagged(type)) {
-            return EquipmentSlot.CHEST;
-        } else if (MinecraftTag.HORSE_ARMOR.isTagged(type)) {
+        } else if (MinecraftTag.CHESTPLATE.isTagged(type)
+                || MinecraftTag.HORSE_ARMOR.isTagged(type)) {
             return EquipmentSlot.CHEST;
         } else if (MinecraftTag.LEGGINGS.isTagged(type)) {
             return EquipmentSlot.LEGS;
