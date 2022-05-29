@@ -179,6 +179,7 @@ public final class ItemsSetup {
 
         new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_ARMOR,
+            AppraisalPaper.Type.ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[] {
                 BumpItems.RANDOM_HELMET
@@ -187,9 +188,19 @@ public final class ItemsSetup {
 
         new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_DAMAGE,
+            AppraisalPaper.Type.WEAPON,
             RecipeType.SMELTERY,
             new ItemStack[] {
                 BumpItems.RANDOM_SWORD
+            }
+        ).register(plugin);
+
+        new AppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
+            AppraisalPaper.Type.HORSE_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[] {
+                BumpItems.RANDOM_HORSE_ARMOR
             }
         ).register(plugin);
         // endregion tool
