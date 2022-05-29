@@ -147,14 +147,14 @@ public final class AppraiseUtils {
             double armor = ThreadLocalRandom.current().nextDouble(-5, 30);
             double armorToughness = ThreadLocalRandom.current().nextDouble(-2, 12);
             double knockbackResistance = ThreadLocalRandom.current().nextDouble(-0.2, 0.8);
-            double horseJump = ThreadLocalRandom.current().nextDouble(-3, 15);
+            double horseJump = ThreadLocalRandom.current().nextDouble(-0.5, 1.4);
             double speed = ThreadLocalRandom.current().nextDouble(-0.5, 1.2);
             double followRange = ThreadLocalRandom.current().nextDouble(-10, 250);
             im.addAttributeModifier(Attribute.GENERIC_MAX_HEALTH, new AttributeModifier(UUID.randomUUID(), "MAX_HEALTH", maxHealth, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ARMOR, new AttributeModifier(UUID.randomUUID(), "ARMOR", armor, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_ARMOR_TOUGHNESS, new AttributeModifier(UUID.randomUUID(), "ARMOR_TOUGHNESS", armorToughness, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.randomUUID(), "KNOCKBACK_RESISTANCE", knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, slot));
-            im.addAttributeModifier(Attribute.HORSE_JUMP_STRENGTH, new AttributeModifier(UUID.randomUUID(), "HORSE_JUMP_STRENGTH", horseJump, AttributeModifier.Operation.ADD_NUMBER, slot));
+            im.addAttributeModifier(Attribute.HORSE_JUMP_STRENGTH, new AttributeModifier(UUID.randomUUID(), "HORSE_JUMP_STRENGTH", horseJump, AttributeModifier.Operation.ADD_SCALAR, slot));
             im.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", speed, AttributeModifier.Operation.ADD_SCALAR, slot));
             im.addAttributeModifier(Attribute.GENERIC_FOLLOW_RANGE, new AttributeModifier(UUID.randomUUID(), "FOLLOW_RANGE", followRange, AttributeModifier.Operation.ADD_SCALAR, slot));
             
