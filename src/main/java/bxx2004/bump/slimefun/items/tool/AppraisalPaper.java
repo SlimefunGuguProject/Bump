@@ -98,13 +98,12 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                 /*
                     Validate the item. The item that can be marked appraisable
                     should meet these requirements:
-                    - is appraisable type
                     - matches the appraisal paper type
                     - is a slimefun item
                     - has not been appraised yet
                     - has not been marked appraisable yet
                  */
-                if (AppraiseUtils.isAppraisableMaterial(input.getType()) && matchType(input.getType())){
+                if (matchType(input.getType())){
                     if (sfItem != null
                         && !AppraiseUtils.isAppraised(input)
                         && !AppraiseUtils.isAppraisable(input)) {
