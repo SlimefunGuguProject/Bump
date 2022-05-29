@@ -20,7 +20,7 @@ public final class ResearchSetup {
         createResearch("peach_sword", 32, BumpItems.PEACH_WOOD, BumpItems.PEACH_SWORD);
         createResearch("normal_sword", 28, BumpItems.EMER_SWORD, BumpItems.BONE_SWORD, BumpItems.GUARD_SWORD);
         createResearch("soul_sword", 20, BumpItems.SOUL_SWORD);
-        createResearch("sky_devil", 40, BumpItems.SKY_SWORD, BumpItems.DEVIL_SWORD, BumpItems.SKY_DEVIL_SWORD);
+        createResearch("sky_devil", 42, BumpItems.SKY_SWORD, BumpItems.DEVIL_SWORD, BumpItems.SKY_DEVIL_SWORD);
     }
 
     private static void createResearch(String key, int cost, ItemStack... itemStacks){
