@@ -28,21 +28,6 @@ public final class AppraiseUtils {
     private AppraiseUtils() {}
 
     /**
-     * Check if the {@link Material} can be appraised
-     *
-     * @param type the {@link Material} to be checked
-     *
-     * @return if the {@link Material} can be appraised
-     */
-    public static boolean isAppraisableMaterial(@Nonnull Material type) {
-        Validate.notNull(type, "type should not be null");
-
-        return BumpTag.ARMOR.isTagged(type)
-            || BumpTag.WEAPON.isTagged(type)
-            || BumpTag.HORSE_ARMOR.isTagged(type);
-    }
-
-    /**
      * Check if the {@link ItemStack} can be used in appraisal machine
      *
      * @param itemStack if the {@link ItemStack} to be checked

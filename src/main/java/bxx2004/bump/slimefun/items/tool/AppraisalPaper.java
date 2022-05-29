@@ -99,13 +99,11 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                     Validate the item. The item that can be marked appraisable
                     should meet these requirements:
                     - matches the appraisal paper type
-                    - is a slimefun item
                     - has not been appraised yet
                     - has not been marked appraisable yet
                  */
-                if (matchType(input.getType())){
-                    if (sfItem != null
-                        && !AppraiseUtils.isAppraised(input)
+                if (matchType(input.getType(), sfItem != null)){
+                    if (!AppraiseUtils.isAppraised(input)
                         && !AppraiseUtils.isAppraisable(input)) {
                         // item can be marked appraisable
                         ItemStack output = input.clone();
@@ -128,12 +126,12 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
         };
     }
 
-    private boolean matchType(Material mat) {
+    private boolean matchType(Material mat, boolean isSfItem) {
         switch (this.paperType) {
             case WEAPON:
-                return BumpTag.WEAPON.isTagged(mat);
+                return isSfItem && BumpTag.WEAPON.isTagged(mat);
             case ARMOR:
-                return BumpTag.ARMOR.isTagged(mat);
+                return isSfItem && BumpTag.ARMOR.isTagged(mat);
             case HORSE_ARMOR:
                 return BumpTag.HORSE_ARMOR.isTagged(mat);
             default:
