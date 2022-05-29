@@ -1,6 +1,7 @@
 package bxx2004.bump.util;
 
 import bxx2004.bump.Bump;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.apache.commons.lang.Validate;
@@ -10,8 +11,6 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
@@ -23,6 +22,7 @@ import java.util.concurrent.ThreadLocalRandom;
  * Utility methods for appraise
  *
  * @author ybw0014
+ * @author haiman233
  */
 public final class AppraiseUtils {
     private AppraiseUtils() {}
@@ -37,9 +37,9 @@ public final class AppraiseUtils {
     public static boolean isAppraisableMaterial(@Nonnull Material type) {
         Validate.notNull(type, "type should not be null");
 
-        return MinecraftTag.ARMOR.isTagged(type)
-            || MinecraftTag.SWORD.isTagged(type)
-            || MinecraftTag.HORSE_ARMOR.isTagged(type);
+        return BumpTag.ARMOR.isTagged(type)
+            || BumpTag.WEAPON.isTagged(type)
+            || BumpTag.HORSE_ARMOR.isTagged(type);
     }
 
     /**
@@ -53,9 +53,7 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
-        return pdc.has(Keys.APPRAISABLE, PersistentDataType.BYTE)
-            && pdc.get(Keys.APPRAISABLE, PersistentDataType.BYTE) == 1;
+        return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
     }
 
     /**
@@ -81,8 +79,7 @@ public final class AppraiseUtils {
         im.setLore(lore);
 
         // set pdc
-        PersistentDataContainer pdc = im.getPersistentDataContainer();
-        pdc.set(Keys.APPRAISABLE, PersistentDataType.BYTE, (byte) 1);
+        PersistentDataAPI.setByte(im, Keys.APPRAISABLE, (byte) 1);
 
         itemStack.setItemMeta(im);
     }
@@ -98,7 +95,7 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack, "itemStack should not be null");
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
-        return itemStack.getItemMeta().getPersistentDataContainer().has(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE);
+        return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
     }
 
     /**
@@ -111,7 +108,6 @@ public final class AppraiseUtils {
         Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
 
         ItemMeta im = itemStack.getItemMeta();
-        PersistentDataContainer pdc = im.getPersistentDataContainer();
         EquipmentSlot slot = getEquipmentSlot(itemStack.getType());
         int stars = 0;
 
@@ -179,7 +175,7 @@ public final class AppraiseUtils {
         im.setLore(lore);
 
         // set pdc
-        pdc.set(Keys.APPRAISE_LEVEL, PersistentDataType.BYTE, (byte) stars);
+        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) stars);
 
         itemStack.setItemMeta(im);
     }
@@ -210,7 +206,7 @@ public final class AppraiseUtils {
     }
 
     /**
-     * Get the appraise level
+     * Get the appraisal level
      *
      * @param randomValue random generated value
      * @param min minimum value
