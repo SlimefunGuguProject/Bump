@@ -156,7 +156,7 @@ public final class AppraiseUtils {
             im.addAttributeModifier(Attribute.GENERIC_KNOCKBACK_RESISTANCE, new AttributeModifier(UUID.randomUUID(), "KNOCKBACK_RESISTANCE", knockbackResistance, AttributeModifier.Operation.ADD_NUMBER, slot));
             im.addAttributeModifier(Attribute.HORSE_JUMP_STRENGTH, new AttributeModifier(UUID.randomUUID(), "HORSE_JUMP_STRENGTH", horseJump, AttributeModifier.Operation.ADD_SCALAR, slot));
             im.addAttributeModifier(Attribute.GENERIC_MOVEMENT_SPEED, new AttributeModifier(UUID.randomUUID(), "SPEED", speed, AttributeModifier.Operation.ADD_SCALAR, slot));
-            im.addAttributeModifier(Attribute.GENERIC_FOLLOW_RANGE, new AttributeModifier(UUID.randomUUID(), "FOLLOW_RANGE", followRange, AttributeModifier.Operation.ADD_SCALAR, slot));
+            im.addAttributeModifier(Attribute.GENERIC_FOLLOW_RANGE, new AttributeModifier(UUID.randomUUID(), "FOLLOW_RANGE", followRange, AttributeModifier.Operation.ADD_NUMBER, slot));
             
             // the star is determined by max health only
             stars = getLevelByLimit(maxHealth, 0, 30);

@@ -149,6 +149,11 @@ public class BumpItems {
         "APPRAISAL_PAPER_DAMAGE",
         Material.PAPER
     );
+
+    public static final SlimefunItemStack APPRAISAL_PAPER_HORSE_ARMOR = new BumpItemStack(
+        "APPRAISAL_PAPER_HORSE_ARMOR",
+        Material.PAPER
+    );
     // endregion tool
 
     // region weapon

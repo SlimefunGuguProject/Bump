@@ -142,6 +142,13 @@ items:
       - "&b&k|&b- A random attack attribute for a given item!"
       - "&b&k|&b- Very expensive, be sure to keep it..."
       - ""
+  appraisal_paper_horse_armor:
+    name: "&eHorse Armor Quality Identifier"
+    lore:
+      - ""
+      - "&b&k|&b- A random armor attribute for a given item!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
+      - ""
   light_bow:
     name: "&6God's Punishment Bow"
     lore:
@@ -242,6 +249,7 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
       invalid: "&cThis item is not appraisable!"
+      mismatch: "&cThe appraisal paper cannot be used with this item!"
       success: "&aThis item can be appraised now!"
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"

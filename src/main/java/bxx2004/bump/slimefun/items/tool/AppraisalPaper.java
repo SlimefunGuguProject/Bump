@@ -3,6 +3,7 @@ package bxx2004.bump.slimefun.items.tool;
 import bxx2004.bump.Bump;
 import bxx2004.bump.slimefun.BumpItemGroups;
 import bxx2004.bump.util.AppraiseUtils;
+import bxx2004.bump.util.BumpTag;
 import bxx2004.bump.util.GuiItems;
 import bxx2004.bump.util.Utils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -12,6 +13,7 @@ import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -33,8 +35,12 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
     private static final int APPRAISE_BUTTON = 13;
     private static final int OUTPUT_SLOT = 15;
 
-    public AppraisalPaper(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    private final Type paperType;
+
+    public AppraisalPaper(SlimefunItemStack item, Type type, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
+
+        paperType = type;
     }
 
     @Nonnull
@@ -92,24 +98,27 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                 /*
                     Validate the item. The item that can be marked appraisable
                     should meet these requirements:
-                    - is appraisable type (sword, armors for now)
+                    - matches the appraisal paper type
                     - is a slimefun item
                     - has not been appraised yet
-                    - has not beed marked appraisable yet
+                    - has not been marked appraisable yet
                  */
-                if (AppraiseUtils.isAppraisableMaterial(input.getType())
-                    && sfItem != null
-                    && !AppraiseUtils.isAppraised(input)
-                    && !AppraiseUtils.isAppraisable(input)) {
-                    // item can be marked appraisable
-                    ItemStack output = input.clone();
-                    AppraiseUtils.setAppraisable(output);
-                    menu.replaceExistingItem(INPUT_SLOT, null);
-                    menu.replaceExistingItem(OUTPUT_SLOT, output);
+                if (matchType(input.getType())){
+                    if (sfItem != null
+                        && !AppraiseUtils.isAppraised(input)
+                        && !AppraiseUtils.isAppraisable(input)) {
+                        // item can be marked appraisable
+                        ItemStack output = input.clone();
+                        AppraiseUtils.setAppraisable(output);
+                        menu.replaceExistingItem(INPUT_SLOT, null);
+                        menu.replaceExistingItem(OUTPUT_SLOT, output);
 
-                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
+                        Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
+                    } else {
+                        Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
+                    }
                 } else {
-                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
+                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.mismatch");
                 }
 
                 return false;
@@ -117,5 +126,24 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
 
             menu.open(p);
         };
+    }
+
+    private boolean matchType(Material mat) {
+        switch (this.paperType) {
+            case WEAPON:
+                return BumpTag.WEAPON.isTagged(mat);
+            case ARMOR:
+                return BumpTag.ARMOR.isTagged(mat);
+            case HORSE_ARMOR:
+                return BumpTag.HORSE_ARMOR.isTagged(mat);
+            default:
+                return false;
+        }
+    }
+
+    public enum Type {
+        WEAPON,
+        ARMOR,
+        HORSE_ARMOR
     }
 }
