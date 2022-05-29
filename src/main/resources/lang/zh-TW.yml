@@ -142,6 +142,13 @@ items:
       - "&b&k|&b- 給定物品隨機一個攻擊屬性!"
       - "&b&k|&b- 非常昂貴,一定要保存好..."
       - ""
+  appraisal_paper_horse_armor:
+    name: "&e馬鎧品質鑒定符"
+    lore:
+      - ""
+      - "&b&k|&b- 給定物品隨機一個護甲屬性!"
+      - "&b&k|&b- 非常昂貴, 一定要保存好..."
+      - ""
   light_bow:
     name: "&6神罰之弓"
     lore:
