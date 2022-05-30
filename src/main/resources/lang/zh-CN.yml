@@ -227,6 +227,7 @@ lores:
 researches:
   food: "Bump 食物"
   random_equipment: "随机装备"
+  appraise: "鉴定"
   stuff: "魔法物品"
   old_stuff: "淘金"
   bow: "Bump 弓"
