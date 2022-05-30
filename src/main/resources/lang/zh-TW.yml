@@ -249,6 +249,7 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
     appraisal_paper:
       invalid: "&c該物品無法進行鑒定!"
+      mismatch: "&c該鑒定符文無法應用於此物品"
       success: "&a該物品現在可以進行鑒定了!"
   weapon:
     unavailable: "&b&k|&b- &7&o你現在無法發動該技能!"
