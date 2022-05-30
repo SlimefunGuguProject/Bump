@@ -227,6 +227,7 @@ lores:
 researches:
   food: "Bumpの食品"
   random_equipment: "ランダムな装備"
+  appraise: "鑑定"
   stuff: "魔法の物"
   old_stuff: "金を獲得"
   bow: "Bumpの弓"
