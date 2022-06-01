@@ -2,4 +2,179 @@
 categories:
   main: "&bBump"
   armor: "&bBump - Armor"
+  food: "&bBump - Food"
   machine: "&bBump - Machine"
+  stuff: "&bBump - Stuff"
+  tool: "&bBump - Tool"
+  weapon: "&bBump - Magic Weapon"
+items:
+  random_helmet:
+    name: "&6Random Helmet"
+    lore:
+      - ""
+      - "&b&k|&b- &7&oHow is my luck..."
+      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
+  random_horse_armor:
+    name: "&6Random Horse Armor"
+    lore:
+      - ""
+      - "&b&k|&b- &7&oHow is my luck..."
+      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
+  xuebi:
+    name: "&6Sprite"
+    lore:
+      - ""
+      - "&b&k|&b- Very sweet and sweet, still bubbling!"
+      - ""
+  kele:
+    name: "&eCola"
+    lore:
+      - ""
+      - "&b&k|&b- The ice is full of strength, and if you drink it, you can fly!"
+      - ""
+  fangbianmian:
+    name: "&eMaster Kong instant noodle"
+    lore:
+      - ""
+      - "&b&k|&b- This taste is spicy!!"
+      - ""
+  latiao:
+    name: "&eSpicy gluten"
+    lore:
+      - ""
+      - "&b&k|&b- Cool! I still don't forget to lick the spicy oil after eating..."
+      - ""
+  kouxiangtang:
+    name: "&eChewing Gum"
+    lore:
+      - ""
+      - "&b&k|&b- Very sticky..."
+      - ""
+  appraisal:
+    name: "&bAppraisal instrument"
+    lore:
+      - ""
+      - "&c&k|&7- Oh! A defective instrument..."
+      - ""
+  sun_energy:
+    name: "&ePhotosynthetic Energy"
+    lore:
+      - ""
+      - "&b&k|&b- Mutated plants will also photosynthesize..."
+      - ""
+  mecha_gear:
+    name: "&eMechanical Gear"
+    lore:
+      - ""
+      - "&b&k|&b- Something eliminated by a large factory..."
+      - ""
+  old_coin:
+    name: "&eBroken Gold Coin"
+    lore:
+      - ""
+      - "&b&k|&b- What can I buy..."
+      - ""
+  make:
+    name: "&eComputer Technology Core"
+    lore:
+      - ""
+      - "&b&k|&b- What is it used for..."
+      - ""
+  old_cpu:
+    name: "&eBroken CPU"
+    lore:
+      - ""
+      - "&b&k|&b- From which computer it was removed..."
+      - ""
+  cpu:
+    name: "&eCPU"
+    lore:
+      - ""
+      - "&b&k|&b- Intact..."
+      - ""
+  soul_paper:
+    name: "&eSoul Talisman"
+    lore:
+      - ""
+      - "&b&k|&b- The power of the soul"
+      - ""
+  ksf_stuff:
+    name: "&eInstant Noodle Seasoning"
+    lore:
+      - ""
+      - "&b&k|&b- Sizzle~ It's spicy"
+      - ""
+  water_sugar:
+    name: "&eSoda Candy"
+    lore:
+      - ""
+      - "&b&k|&b- Sprite? Or Coca-Cola?"
+      - ""
+  peach_wood:
+    name: "&ePeach Wood"
+    lore:
+      - ""
+      - "&b&k|&b- Refuge From Evil Spirits"
+      - ""
+  update_power:
+    name: "&eUpgrade Core"
+    lore:
+      - ""
+      - "&b&k|&b- Used to upgrade some weird items..."
+      - ""
+  getgold_spade:
+    name: "&eGetting-gold Shovel"
+    lore:
+      - ""
+      - "&b&k|&b- There is a certain chance to dig out broken gold coins in the sand!"
+      - ""
+  appraisal_paper_armor:
+    name: "&eArmor Quality Identifier"
+    lore:
+      - ""
+      - "&b&k|&b- A random armor attribute for a given item!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
+      - ""
+messages:
+  food:
+    xuebi: "&b&k|&b- &7&oA cool summer!!"
+    kele: "&b&k|&b- &7&oThe victory of the fat otaku!"
+    fangbianmian: "&b&k|&b- &7&oThe taste of childhood!"
+    latiao: "&b&k|&b- &7&oThis is spicy enough!"
+    kouxiangtang: "&b&k|&b- &7&oFairy spirit fluttering!"
+  tool:
+    getgold_spade: "&b&k|&b- &7&oOMG, gold..."
+    appraisal_paper:
+      invalid: "&cThis item is not appraisable!"
+      mismatch: "&cThe appraisal paper cannot be used with this item!"
+      success: "&aThis item can be appraised now!"
+  weapon:
+    unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
+    low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
+    cooldown: "&b&k|&b- &7&oYou cannot use this weapon now!"
+    soul_sword:
+      converted-part: "&b&k|&b- &7&oPart of your food level has been converted into health!"
+      converted-all: "&b&k|&b- &7&oAll of your food level has been converted into health!"
+    devil_sword: "&b&k|&b- &7&oDemon Slayer, bring justice from the sky!"
+    sky_sword: "&b&k|&b- &7&oHeaven Breaking, soar into the sky!"
+    sky_devil_sword:
+      activate: "&b&k|&b- &7&oDemon Slayer or Heaven Breaking,only to the justice!"
+      end: "&b&k|&b- &7&oThe strengthening time is over!"
+    light_bow: "&b&k|&b- &7&oGod punishes!"
+    wither_skull_bow: "&b&k|&b- &7&oWithering!"
+  machine:
+    appraisal:
+      invalid: "&cThe item has not yet been appraised...!"
+      appraised: "&cSorry that the item cannot be identified or has already been appraised!"
+      success: "&aAppraisal!"
+gui:
+  appraise:
+    name: "&eClick to appraise"
+    lore:
+      - "&7<- Put the items to be appraised on the left side"
+      - "&7Click here to appraise"
+  appraisal_paper:
+    name: "&eClick to apply"
+    lore:
+      - "&7<- Put items on the left side"
+      - "&7Click here to allow the item to be appraised"
