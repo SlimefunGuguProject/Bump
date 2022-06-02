@@ -16,7 +16,7 @@ import org.bukkit.potion.PotionEffectType;
  */
 public class Zongzi extends ConsumableFood {
 
-    public Xuebi() {
+    public Zongzi() {
         super(BumpItems.ZONGZI, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
             new ItemStack(Material.LILY_PAD), new ItemStack(Material.ACACIA_LEAVES), new ItemStack(Material.LILY_PAD), 
             new ItemStack(Material.ACACIA_LEAVES), new ItemStack(Material.WHEAT), new ItemStack(Material.ACACIA_LEAVES), 
@@ -27,6 +27,10 @@ public class Zongzi extends ConsumableFood {
     @Override
     public void applyFoodEffects(Player p) {
         p.setFoodLevel(8);
-        p.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 500, 1));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 500, 1));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 8000, 1));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 2000, 2));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 10000, 3));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 5000, 5));
     }
 }
