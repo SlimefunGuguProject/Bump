@@ -50,6 +50,12 @@ items:
       - ""
       - "&b&k|&b- Very sticky..."
       - ""
+  zongzi:
+    name: "&aRice dumpling"
+    lore:
+      - ""
+      - "&b&k|&b- Happy Dragon Boat Festival!"
+      - ""
   appraisal:
     name: "&bAppraisal instrument"
     lore:
