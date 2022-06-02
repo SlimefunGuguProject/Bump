@@ -1,5 +1,5 @@
 name: Bump
-main: bxx2004.bump.Bump
+main: org.slimefunguguproject.bump.implementation.Bump
 website: https://github.com/SlimefunGuguProject/Bump
 version: '${project.version}'
 api-version: 1.16
