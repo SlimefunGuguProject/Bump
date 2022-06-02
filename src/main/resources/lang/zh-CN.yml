@@ -50,6 +50,12 @@ items:
       - ""
       - "&b&k|&b- 很粘稠的..."
       - ""
+  zongzi:
+    name: "&a粽子"
+    lore:
+      - ""
+      - "&b&k|&b- 端午节快乐!"
+      - ""
   appraisal:
     name: "&b鉴定仪"
     lore:
