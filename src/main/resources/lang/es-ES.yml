@@ -9,6 +9,7 @@ categories:
   weapon: "&bBump - Arma Mágica"
 items:
   random_helmet:
+    name: "&6Casco al Azar"
     lore:
       - ""
       - "&b&k|&b- &7&oCómo es mi suerte..."
