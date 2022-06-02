@@ -1,1 +1,7 @@
 ---
+categories:
+  main: "&bBump"
+  armor: "&bBump - l' armure"
+  food: "&bBump - Aliments"
+  machine: "&bBump - Machine"
+  stuff: "&bBump - Staff"
