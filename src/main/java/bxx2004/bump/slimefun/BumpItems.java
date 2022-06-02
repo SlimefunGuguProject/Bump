@@ -64,6 +64,11 @@ public class BumpItems {
         "KOUXIANGTANG",
         Material.SUGAR
     );
+    
+    public static final SlimefunItemStack ZONGZI = new BumpItemStack(
+        "ZONGZI",
+        Material.GREEN_DYE
+    );
     // endregion food
 
     // region machine
