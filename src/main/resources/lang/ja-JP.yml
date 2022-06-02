@@ -50,6 +50,12 @@ items:
       - ""
       - "&b&k|&b- とても粘り強い..."
       - ""
+  zongzi:
+    name: "&aちまき"
+    lore:
+      - ""
+      - "&b&k|&b- 端午の節句おめでとうございます!"
+      - ""
   appraisal:
     name: "&b鑑定機械"
     lore:
