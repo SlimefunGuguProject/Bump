@@ -19,6 +19,127 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oMal sehen, wie viel Glück ich habe..."
-      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
+      - "&b&k|&b- &e&oDer Appraiser &7&ogibt zufällig dieses Attribut..."
+  xuebi:
+    name: "&6Sprite"
+    lore:
+      - ""
+      - "&b&k|&b- Sehr süß und süß, immer noch sprudelnd!"
+      - ""
+  kele:
+    name: "&eCola"
+    lore:
+      - ""
+      - "&b&k|&b- Das Eis ist voller Kraft, und wenn du es trinkst, dann kannst du fliegen!"
+      - ""
+  fangbianmian:
+    name: "&eMaster Kong Instand-Nudeln"
+    lore:
+      - ""
+      - "&b&k|&b- Das schmeckt sehr scharf!!"
+      - ""
+  latiao:
+    name: "&eWürziges Gluten"
+    lore:
+      - ""
+      - "&b&k|&b-  Cool! Ich vergesse immer noch nicht, nach dem Essen das scharfe Öl abzulecken..."
+      - ""
+  kouxiangtang:
+    name: "&eKaugummi"
+    lore:
+      - ""
+      - "&b&k|&b- Sehr klebrig..."
+      - ""
+  zongzi:
+    name: "&aZongzi"
+    lore:
+      - ""
+      - "&b&k|&b- Frohes Drachenboot Festival!"
+      - ""
+  appraisal:
+    name: "&bBewertungsinstrument"
+    lore:
+      - ""
+      - "&c&k|&7- Oh! Ein defektes Instrument..."
+      - ""
+  sun_energy:
+    name: "&ePhotosynthetische Energie"
+    lore:
+      - ""
+      - "&b&k|&b- Mutierte Pflanzen werden auch Photosynthese betreiben..."
+      - ""
+  mecha_gear:
+    name: "&eMechanisches Getriebe"
+    lore:
+      - ""
+      - "&b&k|&b- Etwas, was von einer großen Fabrik beseitigt wurde..."
+      - ""
+  old_coin:
+    name: "&eKaputte Goldmünze"
+    lore:
+      - ""
+      - "&b&k|&b- Was kann ich kaufen..."
+      - ""
+  make:
+    name: "&eComputer Technologiekern"
+    lore:
+      - ""
+      - "&b&k|&b- Für was wird es verwendet..."
+      - ""
+  old_cpu:
+    name: "&eKaputte CPU"
+    lore:
+      - ""
+      - "&b&k|&b- Von welchem ​​Computer wurde es entfernt..."
+      - ""
   cpu:
     name: "&eCPU"
+    lore:
+      - ""
+      - "&b&k|&b- Interagieren..."
+      - ""
+  soul_paper:
+    name: "&eSeelentalisman"
+    lore:
+      - ""
+      - "&b&k|&b- Die Kraft der Seele"
+      - ""
+  ksf_stuff:
+    name: "&eInstant-Nudel Gewürz"
+    lore:
+      - ""
+      - "&b&k|&b- Zischen~ Es ist scharf"
+      - ""
+  water_sugar:
+    name: "&eSoda-Süßigkeiten"
+    lore:
+      - ""
+      - "&b&k|&b- Sprite? Oder Coca-Cola?"
+      - ""
+  peach_wood:
+    name: "&ePfirsichholz"
+    lore:
+      - ""
+      - "&b&k|&b- Zuflucht vor bösen Geistern"
+      - ""
+  update_power:
+    name: "&eKern Aufrüsten"
+    lore:
+      - ""
+      - "&b&k|&b- Wird verwendet, um einige seltsame Gegenstände zu verbessern..."
+      - ""
+  getgold_spade:
+    name: "&eBekomme-Gold Schaufel"
+    lore:
+      - ""
+      - "&b&k|&b- Es besteht eine gewisse Chance, zerbrochene Goldmünzen im Sand auszugraben!"
+      - ""
+  appraisal_paper_armor:
+    name: "&eRüstungsqualität Identifizierer"
+    lore:
+      - ""
+      - "&b&k|&b- Ein zufälliges Rüstungsattribut für einen bestimmten Gegenstand!"
+      - "&b&k|&b- Sehr teuer, unbedingt behalten..."
+      - ""
+  appraisal_paper_damage:
+    name: "&eWaffen-Qualitäts Identifizierer"
