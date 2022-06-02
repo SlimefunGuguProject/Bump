@@ -1,6 +1,6 @@
 package bxx2004.bump.slimefun.items.food;
 
-import bxx2004.bump.abstracts.ConsumableFood;
+import bxx2004.bump.abstracts.ItemFood;
 import bxx2004.bump.slimefun.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.Material;
@@ -14,7 +14,7 @@ import org.bukkit.potion.PotionEffectType;
  *
  * @author haiman233
  */
-public class Zongzi extends ConsumableFood {
+public class Zongzi extends ItemFood {
 
     public Zongzi() {
         super(BumpItems.ZONGZI, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
