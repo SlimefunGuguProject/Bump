@@ -1,0 +1,22 @@
+---
+categories:
+  main: "&bBump"
+  armor: "&bBump - Rüstung"
+  food: "&bBump - Essen"
+  machine: "&bBump - Maschine"
+  stuff: "&bBump - Mitarbeiter"
+  tool: "&bBump - Werkzeug"
+  weapon: "&bBump - Magische Waffe"
+items:
+  random_helmet:
+    name: "&6zufälliger Helm"
+    lore:
+      - ""
+      - "&b&k|&b- &7&oMal sehen, wie viel Glück ich habe..."
+      - "&b&k|&b- &e&oDer Appraiser &7&ogibt zufällig dieses Attribut..."
+  random_horse_armor:
+    name: "&6Zufällige Pferd Rüstung"
+    lore:
+      - ""
+      - "&b&k|&b- &7&oMal sehen, wie viel Glück ich habe..."
+      - "&b&k|&b- &e&oThe appraiser &7&orandomly gives this attribute..."
