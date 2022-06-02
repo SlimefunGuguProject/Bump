@@ -24,6 +24,7 @@ public class Latiao extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.UNLUCK, 2000, 5));
+        p.setFoodLevel(2);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 60, 1));
     }
 }
