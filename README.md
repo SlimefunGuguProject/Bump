@@ -79,9 +79,12 @@ We support these languages：
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
 - `ru-RU` Russian
+- `pt-BR` Portuguese, Brazilian
+  - Thanks @N1kyZ for Portuguese, Brazilian translation
 - `ja-JP` Japanese
   - Thanks @SchnTgaiSpock for Japanese translation
 - `nl-NL` Dutch 37%
+- `de-DE` German 35%
 - `es-ES` Spanish 17%
 - `tr-TR` Turkish 3%
 
