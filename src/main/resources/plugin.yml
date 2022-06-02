@@ -2,7 +2,7 @@ name: Bump
 main: bxx2004.bump.Bump
 website: https://github.com/SlimefunGuguProject/Bump
 version: '${project.version}'
-api-version: 1.14
+api-version: 1.16
 authors:
   - bxx2004
   - Lobbytech-MC
