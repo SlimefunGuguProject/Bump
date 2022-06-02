@@ -188,35 +188,4 @@ public final class AppraiseUtils {
             return EquipmentSlot.OFF_HAND;
         }
     }
-
-    /**
-     * Get the appraisal level
-     *
-     * @param randomValue random generated value
-     * @param min minimum value
-     * @param max maximum value
-     * @return appraise level
-     */
-    private static int getLevelByLimit(double randomValue, int min, int max) {
-        double percent = (randomValue - min) / (max - min) * 100;
-        if (percent >= 100) {
-            return 8;
-        } else if (percent >= 98) {
-            return 7;
-        } else if (percent >= 95) {
-            return 6;
-        } else if (percent >= 91) {
-            return 5;
-        } else if (percent >= 85) {
-            return 4;
-        } else if (percent >= 69) {
-            return 3;
-        } else if (percent >= 48) {
-            return 2;
-        } else if (percent >= 25) {
-            return 1;
-        } else {
-            return 0;
-        }
-    }
 }

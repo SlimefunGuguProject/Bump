@@ -1,6 +1,7 @@
 package bxx2004.bump.appraise;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+import net.guizhanss.guizhanlib.utils.RandomUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 
@@ -95,5 +96,17 @@ public final class AppraiseAttributes {
         }
 
         return this;
+    }
+
+    public AppraiseResult appraise() {
+        AppraiseResult result = new AppraiseResult();
+
+        for (Pair<AppraiseAttribute, Double> pair : attributes) {
+            AppraiseAttribute attr = pair.getFirstValue();
+            double val = RandomUtil.randomDouble(attr.getMin(), attr.getMax());
+            result.add(attr, val, pair.getSecondValue());
+        }
+
+        return result;
     }
 }

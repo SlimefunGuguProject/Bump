@@ -1,5 +1,6 @@
 package bxx2004.bump;
 
+import bxx2004.bump.appraise.AppraiseManager;
 import bxx2004.bump.listeners.BowShootListener;
 import bxx2004.bump.setup.ItemsSetup;
 import bxx2004.bump.setup.ResearchSetup;
@@ -9,6 +10,7 @@ import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 
 public final class Bump extends AbstractAddon {
 
+    // localization
     private BumpLocalization localization;
     private String lang;
 
@@ -50,6 +52,7 @@ public final class Bump extends AbstractAddon {
             ResearchSetup.setup();
         }
 
+        // listeners
         getServer().getPluginManager().registerEvents(new BowShootListener(), this);
     }
 
