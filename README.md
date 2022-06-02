@@ -75,10 +75,15 @@ We support these languages：
 
 - `en-US` English (United States)
   - Thanks @UniverseNetwork for English translation
+- `en-UK` English （United Kingdom）
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
-- `ja` Japanese
+- `ru-RU` Russian
+- `ja-JP` Japanese
   - Thanks @SchnTgaiSpock for Japanese translation
+- `nl-NL` Dutch 37%
+- `es-ES` Spanish 17%
+- `tr-TR` Turkish 3%
 
 The default language is English (United States) `en-US`.  
 You can change `options.lang` in `config.yml` to your favourite language.
