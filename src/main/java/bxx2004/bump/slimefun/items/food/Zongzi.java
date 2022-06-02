@@ -10,7 +10,7 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 /**
- * Zongzi.
+ * Zongzi. Rice dumpling
  *
  * @author haiman233
  */
