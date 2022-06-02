@@ -10,9 +10,9 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 /**
- * Sprite.
+ * Zongzi.
  *
- * @author ybw0014
+ * @author haiman233
  */
 public class Zongzi extends ConsumableFood {
 
