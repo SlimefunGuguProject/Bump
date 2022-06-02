@@ -29,8 +29,8 @@ public class Zongzi extends ConsumableFood {
         p.setFoodLevel(8);
         p.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 500, 1));
         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 8000, 1));
-        p.addPotionEffect(new PotionEffect(PotionEffectType.STRENGTH, 2000, 2));
-        p.addPotionEffect(new PotionEffect(PotionEffectType.HASTE, 10000, 3));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 2000, 2));
+        p.addPotionEffect(new PotionEffect(PotionEffectType.FAST_DIGGING, 10000, 3));
         p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 5000, 5));
     }
 }
