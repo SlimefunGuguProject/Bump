@@ -9,6 +9,7 @@ import bxx2004.bump.slimefun.items.food.Kele;
 import bxx2004.bump.slimefun.items.food.Kouxiangtang;
 import bxx2004.bump.slimefun.items.food.Latiao;
 import bxx2004.bump.slimefun.items.food.Xuebi;
+import bxx2004.bump.slimefun.items.food.Zongzi;
 import bxx2004.bump.slimefun.items.machine.Appraisal;
 import bxx2004.bump.slimefun.items.stuff.StuffItem;
 import bxx2004.bump.slimefun.items.tool.AppraisalPaper;
@@ -64,6 +65,7 @@ public final class ItemsSetup {
         new Fangbianmian().register(plugin);
         new Latiao().register(plugin);
         new Kouxiangtang().register(plugin);
+        new Zongzi().register(plugin);
         // endregion food
 
         // region machine
