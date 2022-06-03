@@ -13,6 +13,12 @@ import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 
 import javax.annotation.Nonnull;
 
+/**
+ * A {@link GetgoldSpade getting-gold shovel} will give player old coin
+ * with chance if player is breaking sand.
+ *
+ * @author ybw0014
+ */
 public class GetgoldSpade extends SimpleSlimefunItem<ToolUseHandler> {
 
     public GetgoldSpade() {

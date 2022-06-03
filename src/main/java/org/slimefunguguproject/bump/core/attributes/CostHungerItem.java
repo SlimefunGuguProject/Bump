@@ -8,7 +8,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.slimefunguguproject.bump.utils.Utils;
 
 /**
- * This interface indicates that the item will cost hunger when using.
+ * This {@link ItemAttribute} indicates that the item will cost hunger when using.
  *
  * @author ybw0014
  */

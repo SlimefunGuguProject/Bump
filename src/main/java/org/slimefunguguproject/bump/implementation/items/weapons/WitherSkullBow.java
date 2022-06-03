@@ -12,7 +12,7 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
 import javax.annotation.Nonnull;
 
 /**
- * This {@link BumpBow} will launch {@link WitherSkull} when using.
+ * {@link WitherSkullBow Withered bow} will launch {@link WitherSkull} when using.
  *
  * @author ybw0014
  */

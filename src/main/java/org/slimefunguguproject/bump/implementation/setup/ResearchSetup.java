@@ -5,10 +5,19 @@ import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+/**
+ * This class is used to set up {@link Research Researches}.
+ *
+ * @author ybw0014
+ */
 public final class ResearchSetup {
     private static int researchId = 114514;
 
-    private ResearchSetup() {}
+    private ResearchSetup() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void setup() {
         createResearch("food", 18, BumpItems.XUEBI, BumpItems.KELE, BumpItems.FANGBIANMIAN, BumpItems.LATIAO, BumpItems.KOUXIANGTANG);
@@ -23,6 +32,7 @@ public final class ResearchSetup {
         createResearch("sky_devil", 42, BumpItems.SKY_SWORD, BumpItems.DEVIL_SWORD, BumpItems.SKY_DEVIL_SWORD);
     }
 
+    @ParametersAreNonnullByDefault
     private static void createResearch(String key, int cost, ItemStack... itemStacks){
         new Research(Bump.createKey("research_" + key), ++researchId, Bump.getLocalization().getResearchName("key"), cost)
             .addItems(itemStacks).register();

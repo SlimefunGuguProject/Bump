@@ -15,6 +15,9 @@ public final class Bump extends AbstractAddon {
     private LocalizationService localization;
     private String lang;
 
+    // appraise
+    private AppraiseManager appraiseManager;
+
     public Bump() {
         super("SlimefunGuguProject", "Bump", "main", "options.auto-update", "options.lang");
         enableMetrics(14870);
@@ -54,7 +57,7 @@ public final class Bump extends AbstractAddon {
         }
 
         // appraise setup
-        new AppraiseManager();
+        appraiseManager = new AppraiseManager();
 
         // listeners
         getServer().getPluginManager().registerEvents(new BowShootListener(), this);
@@ -66,10 +69,18 @@ public final class Bump extends AbstractAddon {
 
     @Override
     public void setupMetrics(Metrics metrics) {
-        metrics.addCustomChart(new SimplePie("Language", () -> lang));
+        metrics.addCustomChart(new SimplePie("Server_Language", () -> lang));
+    }
+
+    private static Bump inst() {
+        return getInstance();
     }
 
     public static LocalizationService getLocalization() {
-        return ((Bump) getInstance()).localization;
+        return inst().localization;
+    }
+
+    public static AppraiseManager getAppraiseManager() {
+        return inst().appraiseManager;
     }
 }

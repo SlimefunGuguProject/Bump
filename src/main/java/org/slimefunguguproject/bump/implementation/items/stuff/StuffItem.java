@@ -8,6 +8,8 @@ import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 
 /**
  * {@link UnplaceableBlock} items in stuff category.
+ *
+ * @author ybw0014
  */
 public class StuffItem extends UnplaceableBlock {
     public StuffItem(SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {

@@ -1,35 +1,47 @@
 package org.slimefunguguproject.bump.api.appraise;
 
 import org.apache.commons.lang.Validate;
-import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import javax.annotation.Nonnull;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- * An {@link AppraiseResult} represents an appraise result.
+ * An {@link AppraiseResult} represents an appraisal result.
  *
  * @author ybw0014
  */
 public final class AppraiseResult {
     private final Map<AppraiseAttribute, Double> result = new LinkedHashMap<>();
-    private double overallPercentage;
+    private double overallPercentage = 0;
 
-    public AppraiseResult() {
-        overallPercentage = 0;
-    }
-
-    public AppraiseResult add(AppraiseAttribute attribute, double value, double overallPercentageage) {
+    /**
+     * This method adds an appraised attribute to result
+     *
+     * @param attribute The {@link AppraiseAttribute}
+     * @param value The value of the attribute
+     * @param percentage The weight of the attribute
+     *
+     * @return The {@link AppraiseResult}
+     */
+    @Nonnull
+    public AppraiseResult add(@Nonnull AppraiseAttribute attribute, double value, double percentage) {
         if (result.containsKey(attribute)) {
             return this;
         }
 
         result.put(attribute, value);
-        overallPercentage += attribute.getPercent(value) * overallPercentageage / 100.0D;
+        overallPercentage += attribute.getPercent(value) * percentage / 100.0D;
         return this;
     }
 
+    /**
+     * This method returns the stars of appraisal result
+     * calculated by overall percentage.
+     *
+     * @return The number of stars of the result
+     */
     public int getStarts() {
         if (overallPercentage >= 100) {
             return 8;
@@ -52,8 +64,16 @@ public final class AppraiseResult {
         }
     }
 
-    public void apply(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack cannot be null");
+    /**
+     * This method applies the appraisal result to given {@link ItemMeta}
+     *
+     * @param meta The {@link ItemMeta}
+     */
+    public void apply(@Nonnull ItemMeta meta) {
+        Validate.notNull(meta, "ItemMeta cannot be null");
 
+        for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
+            AppraiseAttribute attr = entry.getKey();
+        }
     }
 }

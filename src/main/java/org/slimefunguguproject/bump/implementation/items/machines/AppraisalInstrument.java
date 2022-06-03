@@ -23,11 +23,13 @@ import org.slimefunguguproject.bump.utils.GuiItems;
 import javax.annotation.Nonnull;
 
 /**
- * This is the appraisal instrument.
+ * This implements the {@link AppraisalInstrument appraisal instrument}.
  *
- * It will cost energy and appraise sword / armor with appraisable tag.
+ * It will cost energy and appraise any equipment with appraisable tag.
  *
  * @author ybw0014
+ *
+ * @see org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper
  */
 public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent {
 
@@ -131,7 +133,7 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
         blockMenu.replaceExistingItem(INPUT_SLOT, null);
 
         ItemStack output = item.clone();
-        AppraiseUtils.applyAppraise(output);
+        Bump.getAppraiseManager().appraiseItem(output);
         blockMenu.pushItem(output, OUTPUT_SLOT);
 
         setCharge(blockMenu.getLocation(), 0);

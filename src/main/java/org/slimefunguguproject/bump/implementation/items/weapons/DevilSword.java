@@ -9,6 +9,11 @@ import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 
+/**
+ * {@link DevilSword Demon Slayer Sword} will launch {@link SmallFireball} when using.
+ *
+ * @author ybw0014
+ */
 public class DevilSword extends BumpSword {
 
     public DevilSword() {

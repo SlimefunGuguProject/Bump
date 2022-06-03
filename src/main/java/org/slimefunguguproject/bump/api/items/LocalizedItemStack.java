@@ -10,10 +10,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This is an extended {@link SlimefunItemStack} that loads name and lore from localization service.
+ * This is an extended {@link SlimefunItemStack} that loads name and lore
+ * from {@link org.slimefunguguproject.bump.core.services.LocalizationService}.
+ *
+ * @author ybw0014
  */
-public class BumpItemStack extends SlimefunItemStack {
-    public BumpItemStack(String id, Material material) {
+public class LocalizedItemStack extends SlimefunItemStack {
+    public LocalizedItemStack(String id, Material material) {
         super(
             id,
             material,
@@ -22,7 +25,7 @@ public class BumpItemStack extends SlimefunItemStack {
         );
     }
 
-    public BumpItemStack(String id, Material material, String... appendLore) {
+    public LocalizedItemStack(String id, Material material, String... appendLore) {
         super(
             id,
             material,

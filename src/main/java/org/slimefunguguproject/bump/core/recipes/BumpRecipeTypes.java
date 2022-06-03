@@ -9,8 +9,10 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
  *
  * @author ybw0014
  */
-public class BumpRecipeTypes {
-    private BumpRecipeTypes() {}
+public final class BumpRecipeTypes {
+    private BumpRecipeTypes() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static RecipeType GETGOLD_SPADE = new RecipeType(
         Bump.createKey("getgold_spade"),

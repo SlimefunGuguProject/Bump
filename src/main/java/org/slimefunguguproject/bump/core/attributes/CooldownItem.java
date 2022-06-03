@@ -1,19 +1,20 @@
 package org.slimefunguguproject.bump.core.attributes;
 
+import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import org.apache.commons.lang.Validate;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.persistence.PersistentDataContainer;
-import org.bukkit.persistence.PersistentDataType;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.utils.Keys;
 
 import javax.annotation.Nonnull;
 
 /**
- * This interface indicates that this item has cooldown time.
+ * This {@link ItemAttribute} indicates that this item has cooldown time.
  *
  * @author ybw0014
  */
-public interface CooldownItem {
+public interface CooldownItem extends ItemAttribute {
     /**
      * This method returns the cooldown time in seconds.
      *
@@ -32,10 +33,10 @@ public interface CooldownItem {
         Validate.notNull(itemStack, "ItemStack should not be null");
         Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
 
-        PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
+        ItemMeta im = itemStack.getItemMeta();
 
-        if (pdc.has(Keys.LAST_USED, PersistentDataType.LONG)) {
-            long lastUsed = pdc.get(Keys.LAST_USED, PersistentDataType.LONG);
+        if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
+            long lastUsed = PersistentDataAPI.getLong(im, Keys.LAST_USED);
 
             return lastUsed + getCooldown() * 1000L <= System.currentTimeMillis();
         } else {
@@ -47,8 +48,9 @@ public interface CooldownItem {
         Validate.notNull(itemStack, "ItemStack should not be null");
         Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
 
-        PersistentDataContainer pdc = itemStack.getItemMeta().getPersistentDataContainer();
-        pdc.set(Keys.LAST_USED, PersistentDataType.LONG, System.currentTimeMillis());
+        ItemMeta im = itemStack.getItemMeta();
+        PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
+        itemStack.setItemMeta(im);
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {

@@ -12,7 +12,11 @@ import org.slimefunguguproject.bump.implementation.Bump;
  *
  * @author ybw0014
  */
-public class BumpItemGroups {
+public final class BumpItemGroups {
+    private BumpItemGroups() {
+        throw new IllegalStateException("Utility class");
+    }
+
     public static NestedItemGroup MAIN = new NestedItemGroup(
         Bump.createKey("bump_main"),
         new CustomItemStack(

@@ -11,7 +11,7 @@ import java.util.Set;
 /**
  * This class hold all appraisal attributes used in appraising.
  *
- * Must add attributes first.
+ * Must add attributes first, and call build().
  *
  * @author ybw0014
  */
@@ -76,6 +76,10 @@ public final class AppraiseAttributes {
         return this;
     }
 
+    /**
+     *
+     * @return
+     */
     public AppraiseAttributes build() {
         if (isLocked) {
             throw new IllegalStateException("No longer accept new attributes");
@@ -94,6 +98,7 @@ public final class AppraiseAttributes {
             attributes.add(new Pair<>(attr, percentage));
             usedPercentage += percentage;
         }
+        noPercentAttributes.clear();
 
         return this;
     }

@@ -11,7 +11,9 @@ import org.slimefunguguproject.bump.implementation.Bump;
  * @author ybw0014
  */
 public final class GuiItems {
-    private GuiItems() {}
+    private GuiItems() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static ItemStack APPRAISE_BUTTON = new CustomItemStack(
         Material.NAME_TAG,

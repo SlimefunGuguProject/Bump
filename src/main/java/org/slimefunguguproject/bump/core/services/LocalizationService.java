@@ -16,7 +16,9 @@ import java.text.MessageFormat;
 import java.util.Locale;
 
 /**
- * This is an extended {@link Localization} service made for Bump
+ * This is an extended {@link Localization} service made for Bump.
+ *
+ * @author ybw0014
  */
 public final class LocalizationService extends Localization {
     public LocalizationService(Bump plugin) {

@@ -1,9 +1,12 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
 import org.apache.commons.lang.Validate;
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.api.appraise.AppraiseAttributes;
+import org.slimefunguguproject.bump.api.appraise.AppraiseResult;
 import org.slimefunguguproject.bump.utils.BumpTag;
 
 import javax.annotation.Nonnull;
@@ -16,15 +19,11 @@ import javax.annotation.Nonnull;
  */
 public final class AppraiseManager {
 
-    private static AppraiseManager instance;
-
     private AppraiseAttributes weaponAttrs;
     private AppraiseAttributes armorAttrs;
     private AppraiseAttributes horseArmorAttrs;
 
     public AppraiseManager() {
-        Validate.isTrue(instance == null, "AppraiseManager has already been initialized");
-        instance = this;
         setup();
     }
 
@@ -46,13 +45,24 @@ public final class AppraiseManager {
     }
 
     public void appraiseItem(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack cannot be null");
+        Validate.notNull(itemStack, "ItemStack should not be null");
+        if (itemStack.getType() == Material.AIR) {
+            throw new IllegalArgumentException("ItemStack should not be empty");
+        }
+
+        ItemMeta im = itemStack.getItemMeta();
+        AppraiseResult result;
 
         if (BumpTag.WEAPON.isTagged(itemStack)) {
+            result = weaponAttrs.appraise();
         } else if (BumpTag.ARMOR.isTagged(itemStack)) {
-
+            result = armorAttrs.appraise();
         } else if (BumpTag.HORSE_ARMOR.isTagged(itemStack)) {
-
+            result = horseArmorAttrs.appraise();
+        } else {
+            throw new IllegalArgumentException("This item is invalid");
         }
+
+        result.apply(im);
     }
 }

@@ -26,10 +26,14 @@ import org.slimefunguguproject.bump.implementation.items.weapons.SoulSword;
 import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
 /**
- * This class is used to setup items
+ * This class is used to set up items.
+ *
+ * @author ybw0014
  */
 public final class ItemsSetup {
-    private ItemsSetup() {}
+    private ItemsSetup() {
+        throw new IllegalStateException("Utility class");
+    }
 
     public static void setup() {
         Bump plugin = Bump.getInstance();

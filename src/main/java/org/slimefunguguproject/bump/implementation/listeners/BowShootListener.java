@@ -9,7 +9,8 @@ import org.bukkit.event.entity.EntityShootBowEvent;
 import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
 
 /**
- * This {@link Listener} will call {@link BowUseHandler}.
+ * This {@link Listener} will call {@link BowUseHandler}
+ * when {@link Player} fires with a bow.
  *
  * @see BowUseHandler
  *

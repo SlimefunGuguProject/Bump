@@ -11,6 +11,11 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
 
 import javax.annotation.Nonnull;
 
+/**
+ * {@link LightBow God's Punishment Bow} will strike lightning at player's pointed block.
+ *
+ * @author ybw0014
+ */
 public class LightBow extends BumpBow {
 
     public LightBow() {

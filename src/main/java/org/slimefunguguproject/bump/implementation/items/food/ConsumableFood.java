@@ -17,7 +17,7 @@ import javax.annotation.Nonnull;
 import java.util.Locale;
 
 /**
- * A {@link ConsumableFood} is a {@link SlimefunItem} that is based on vanilla food.
+ * A {@link ConsumableFood} is a {@link SlimefunItem} that is based on vanilla food or potion.
  * Player can get effects after consuming.
  *
  * @author ybw0014
