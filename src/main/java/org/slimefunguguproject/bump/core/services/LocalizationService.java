@@ -26,29 +26,34 @@ public final class LocalizationService extends Localization {
     }
 
     @ParametersAreNonnullByDefault
-    public @Nonnull String getString(String key, Object... args) {
+    @Nonnull
+    public String getString(String key, Object... args) {
         return MessageFormat.format(getString(key), args);
     }
 
-    public @Nonnull String getCategoryName(@Nonnull String categoryId) {
+    @Nonnull
+    public String getCategoryName(@Nonnull String categoryId) {
         Validate.notNull(categoryId, "Category Id cannot be null");
 
         return getString("categories." + StringUtil.dehumanize(categoryId).toLowerCase(Locale.ROOT));
     }
 
-    public @Nonnull String getItemName(@Nonnull String itemId) {
+    @Nonnull
+    public String getItemName(@Nonnull String itemId) {
         Validate.notNull(itemId, "Item Id cannot be null");
 
         return getString("items." + StringUtil.dehumanize(itemId).toLowerCase(Locale.ROOT) + ".name");
     }
 
-    public @Nonnull String[] getItemLore(@Nonnull String itemId) {
+    @Nonnull
+    public String[] getItemLore(@Nonnull String itemId) {
         Validate.notNull(itemId, "Item Id cannot be null");
 
         return getStringArray("items." + StringUtil.dehumanize(itemId).toLowerCase(Locale.ROOT) + ".lore");
     }
 
-    public @Nonnull String getResearchName(@Nonnull String researchId) {
+    @Nonnull
+    public String getResearchName(@Nonnull String researchId) {
         Validate.notNull(researchId, "Research Id cannot be null");
 
         return getString("researches." + StringUtil.dehumanize(researchId).toLowerCase(Locale.ROOT));

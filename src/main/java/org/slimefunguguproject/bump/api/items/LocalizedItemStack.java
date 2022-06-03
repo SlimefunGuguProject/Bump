@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.implementation.Bump;
 
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +17,7 @@ import java.util.List;
  * @author ybw0014
  */
 public class LocalizedItemStack extends SlimefunItemStack {
+    @ParametersAreNonnullByDefault
     public LocalizedItemStack(String id, Material material) {
         super(
             id,
@@ -25,6 +27,7 @@ public class LocalizedItemStack extends SlimefunItemStack {
         );
     }
 
+    @ParametersAreNonnullByDefault
     public LocalizedItemStack(String id, Material material, String... appendLore) {
         super(
             id,

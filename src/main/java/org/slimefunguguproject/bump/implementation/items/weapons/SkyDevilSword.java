@@ -10,6 +10,12 @@ import org.bukkit.scheduler.BukkitRunnable;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 
+/**
+ * {@link SkyDevilSword Heaven-demon Crumble Sword} will fire 3 {@link DragonFireball dragon fireballs}
+ * and get some potion effects when using
+ *
+ * @author ybw0014
+ */
 public class SkyDevilSword extends BumpSword {
 
     public SkyDevilSword() {

@@ -9,6 +9,13 @@ import org.bukkit.util.Vector;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 
+import javax.annotation.ParametersAreNonnullByDefault;
+
+/**
+ * {@link SkySword Heaven Breaking Sword} will lift player up to the sky when using.
+ *
+ * @author ybw0014
+ */
 public class SkySword extends BumpSword {
 
     public SkySword() {
@@ -20,6 +27,7 @@ public class SkySword extends BumpSword {
     }
 
     @Override
+    @ParametersAreNonnullByDefault
     public void onItemUse(Player p, ItemStack itemStack) {
         Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_sword");
         Vector direction = p.getLocation().toVector();

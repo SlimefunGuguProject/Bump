@@ -5,6 +5,7 @@ import net.guizhanss.guizhanlib.utils.RandomUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 
+import javax.annotation.Nonnull;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -34,7 +35,7 @@ public final class AppraiseAttributes {
      *
      * @return {@link AppraiseAttributes} itself
      */
-    public AppraiseAttributes add(Attribute attribute, double min, double max, double percentage) {
+    public AppraiseAttributes add(@Nonnull Attribute attribute, double min, double max, double percentage) {
         if (isLocked) {
             throw new IllegalStateException("No longer accept new attributes");
         }
@@ -62,7 +63,7 @@ public final class AppraiseAttributes {
      *
      * @return {@link AppraiseAttributes} itself
      */
-    public AppraiseAttributes add(Attribute attribute, double min, double max) {
+    public AppraiseAttributes add(@Nonnull Attribute attribute, double min, double max) {
         if (isLocked) {
             throw new IllegalStateException("No longer accept new attributes");
         }
@@ -77,8 +78,12 @@ public final class AppraiseAttributes {
     }
 
     /**
+     * This method will calculate the attributes without weight,
+     * and distribute their weight averagely.
      *
-     * @return
+     * Also, it will mark {@link AppraiseAttributes} no longer accept new attributes.
+     *
+     * @return {@link AppraiseAttributes} itself
      */
     public AppraiseAttributes build() {
         if (isLocked) {
@@ -103,6 +108,12 @@ public final class AppraiseAttributes {
         return this;
     }
 
+    /**
+     * This method will generate random values as appraisal result.
+     *
+     * @return The {@link AppraiseResult appraisal result}
+     */
+    @Nonnull
     public AppraiseResult appraise() {
         AppraiseResult result = new AppraiseResult();
 

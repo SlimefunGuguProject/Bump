@@ -14,6 +14,11 @@ import org.slimefunguguproject.bump.utils.Utils;
 
 import javax.annotation.Nonnull;
 
+/**
+ * {@link SoulSword Soul sword} will convert hunger to health.
+ *
+ * @author ybw0014
+ */
 public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
 
     public SoulSword() {

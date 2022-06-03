@@ -57,6 +57,11 @@ public final class AppraiseManager {
             .build();
     }
 
+    /**
+     * This method applies the {@link AppraiseResult appraisal result} to {@link ItemStack}.
+     *
+     * @param itemStack The {@link ItemStack} to be appraised
+     */
     public void appraiseItem(@Nonnull ItemStack itemStack) {
         Validate.notNull(itemStack, "ItemStack should not be null");
         if (itemStack.getType() == Material.AIR) {
@@ -66,6 +71,7 @@ public final class AppraiseManager {
         ItemMeta im = itemStack.getItemMeta();
         AppraiseResult result;
 
+        // Get appraisal result
         if (BumpTag.WEAPON.isTagged(itemStack)) {
             result = weaponAttrs.appraise();
         } else if (BumpTag.ARMOR.isTagged(itemStack)) {
@@ -77,5 +83,10 @@ public final class AppraiseManager {
         }
 
         result.apply(im);
+
+        // set lore
+
+        // wrap up
+        itemStack.setItemMeta(im);
     }
 }

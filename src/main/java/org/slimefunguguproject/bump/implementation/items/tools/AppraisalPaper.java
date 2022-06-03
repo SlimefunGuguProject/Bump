@@ -132,7 +132,7 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
         };
     }
 
-    private boolean matchType(Material mat, boolean isSfItem) {
+    private boolean matchType(@Nonnull Material mat, boolean isSfItem) {
         switch (this.paperType) {
             case WEAPON:
                 return isSfItem && BumpTag.WEAPON.isTagged(mat);

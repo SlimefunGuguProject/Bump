@@ -14,6 +14,7 @@ import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * A {@link BumpBow} is a {@link SlimefunItem} which has an {@link ItemSetting} of damageable
@@ -25,6 +26,7 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
     private final ItemSetting<Boolean> costDurability = new ItemSetting<>(this, "cost-durability", true);
     protected final IntRangeSetting hungerCost;
 
+    @ParametersAreNonnullByDefault
     protected BumpBow(int hunger, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.WEAPON, item, recipeType, recipe);
 

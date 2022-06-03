@@ -16,6 +16,7 @@ import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * A {@link BumpSword} is a {@link SlimefunItem} with an {@link ItemSetting} of hunger cost and cooldown
@@ -27,6 +28,7 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
     protected final IntRangeSetting hungerCost;
     protected final IntRangeSetting cooldownInSeconds = new IntRangeSetting(this, "cooldown-in-seconds", 0, 0, Integer.MAX_VALUE);
 
+    @ParametersAreNonnullByDefault
     public BumpSword(int hunger, SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.WEAPON, itemStack, recipeType, recipe);
 
