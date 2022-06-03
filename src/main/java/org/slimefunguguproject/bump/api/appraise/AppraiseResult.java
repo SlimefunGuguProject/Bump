@@ -1,11 +1,19 @@
 package org.slimefunguguproject.bump.api.appraise;
 
 import org.apache.commons.lang.Validate;
+import org.bukkit.Material;
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.meta.ItemMeta;
+import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.LinkedHashMap;
 import java.util.Map;
+import java.util.UUID;
 
 /**
  * An {@link AppraiseResult} represents an appraisal result.
@@ -74,12 +82,17 @@ public final class AppraiseResult {
      * This method applies the appraisal result to given {@link ItemMeta}
      *
      * @param meta The {@link ItemMeta}
+     * @param slot The {@link EquipmentSlot} of appraisal
      */
-    public void apply(@Nonnull ItemMeta meta) {
+    @ParametersAreNonnullByDefault
+    public void apply(ItemMeta meta, EquipmentSlot slot) {
         Validate.notNull(meta, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
-            AppraiseAttribute attr = entry.getKey();
+            Attribute attr = entry.getKey().getAttribute();
+            meta.addAttributeModifier(attr,
+                new AttributeModifier(UUID.randomUUID(), attr.name(), entry.getValue(), AppraiseUtils.getOperation(attr), slot)
+            );
         }
     }
 }

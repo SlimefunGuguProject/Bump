@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
+import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
@@ -7,9 +8,14 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.api.appraise.AppraiseAttributes;
 import org.slimefunguguproject.bump.api.appraise.AppraiseResult;
-import org.slimefunguguproject.bump.utils.BumpTag;
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.utils.Utils;
 
 import javax.annotation.Nonnull;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
 
 /**
  * The {@link AppraiseManager} hold all {@link AppraiseAttributes} for each equipment.
@@ -19,34 +25,31 @@ import javax.annotation.Nonnull;
  */
 public final class AppraiseManager {
 
-    private AppraiseAttributes weaponAttrs;
-    private AppraiseAttributes armorAttrs;
-    private AppraiseAttributes horseArmorAttrs;
+    private final Map<AppraiseType, AppraiseAttributes> attributesMap = new HashMap<>();
 
     public AppraiseManager() {
         setup();
     }
 
     private void setup() {
-        weaponAttrs = new AppraiseAttributes()
+        attributesMap.put(AppraiseType.WEAPON, new AppraiseAttributes()
             .add(Attribute.GENERIC_ATTACK_DAMAGE, 0, 30, 40)
             .add(Attribute.GENERIC_ATTACK_SPEED, -3, 10, 25)
             .add(Attribute.GENERIC_MOVEMENT_SPEED, -0.4, 0.6, 15)
             .add(Attribute.GENERIC_LUCK, -3, 10, 10)
             .add(Attribute.GENERIC_ATTACK_KNOCKBACK, -2, 12, 10)
-            .build();
+            .build());
 
-        // TODO: armor & horse armor
-        armorAttrs = new AppraiseAttributes()
+        attributesMap.put(AppraiseType.ARMOR, new AppraiseAttributes()
             .add(Attribute.GENERIC_ARMOR, 0, 30, 40)
             .add(Attribute.GENERIC_ARMOR_TOUGHNESS, -2, 12, 25)
             .add(Attribute.GENERIC_MAX_HEALTH, -5, 12, 15)
             .add(Attribute.GENERIC_KNOCKBACK_RESISTANCE, -0.2, 0.8, 10)
             .add(Attribute.GENERIC_FLYING_SPEED, -3, 5, 7)
             .add(Attribute.ZOMBIE_SPAWN_REINFORCEMENTS, -5, 5, 3)
-            .build();
+            .build());
 
-        horseArmorAttrs = new AppraiseAttributes()
+        attributesMap.put(AppraiseType.HORSE_ARMOR, new AppraiseAttributes()
             .add(Attribute.GENERIC_MAX_HEALTH, 0, 30, 30)
             .add(Attribute.GENERIC_ARMOR, -5, 30, 15)
             .add(Attribute.GENERIC_ARMOR_TOUGHNESS, -2, 12, 10)
@@ -54,39 +57,56 @@ public final class AppraiseManager {
             .add(Attribute.HORSE_JUMP_STRENGTH, -0.5, 1.4, 20)
             .add(Attribute.GENERIC_MOVEMENT_SPEED, -0.5, 1.2, 15)
             .add(Attribute.GENERIC_FOLLOW_RANGE, -50, 250, 5)
-            .build();
+            .build());
     }
 
     /**
      * This method applies the {@link AppraiseResult appraisal result} to {@link ItemStack}.
      *
      * @param itemStack The {@link ItemStack} to be appraised
+     *
+     * @return If the item is appraised
      */
-    public void appraiseItem(@Nonnull ItemStack itemStack) {
+    public boolean appraiseItem(@Nonnull ItemStack itemStack) {
         Validate.notNull(itemStack, "ItemStack should not be null");
         if (itemStack.getType() == Material.AIR) {
             throw new IllegalArgumentException("ItemStack should not be empty");
         }
 
         ItemMeta im = itemStack.getItemMeta();
-        AppraiseResult result;
+        AppraiseType appraiseType;
 
-        // Get appraisal result
-        if (BumpTag.WEAPON.isTagged(itemStack)) {
-            result = weaponAttrs.appraise();
-        } else if (BumpTag.ARMOR.isTagged(itemStack)) {
-            result = armorAttrs.appraise();
-        } else if (BumpTag.HORSE_ARMOR.isTagged(itemStack)) {
-            result = horseArmorAttrs.appraise();
-        } else {
-            throw new IllegalArgumentException("This item is invalid");
+        // Get appraisal type
+        try {
+            appraiseType = AppraiseType.getFromMaterial(itemStack.getType());
+        } catch (IllegalArgumentException ex) {
+            Bump.log(Level.SEVERE, "An ItemStack with invalid material was trying to be appraised.");
+            return false;
         }
 
-        result.apply(im);
+        // Check attributes
+        if (!attributesMap.containsKey(appraiseType)) {
+            Bump.log(Level.SEVERE, "This appraisal type is not configured correctly. Please report this issue.");
+            return false;
+        }
 
-        // set lore
+        // Apply result
+        AppraiseResult result = attributesMap.get(appraiseType).appraise();
+        result.apply(im, appraiseType.getEquipmentSlot(itemStack.getType()));
+
+        // Set lore
+        List<String> lore = im.getLore();
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).equals(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")))) {
+                String line = Bump.getLocalization().getString("lores.appraised", Utils.getStars(result.getStarts()));
+                lore.set(i, ChatUtil.color(line));
+                break;
+            }
+        }
+        im.setLore(lore);
 
         // wrap up
         itemStack.setItemMeta(im);
+        return true;
     }
 }

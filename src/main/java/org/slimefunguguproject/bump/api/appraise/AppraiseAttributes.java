@@ -6,6 +6,7 @@ import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
@@ -26,36 +27,42 @@ public final class AppraiseAttributes {
     private double usedPercentage;
 
     /**
-     * This method adds an attribute, with percentage used to calculate overall star rate.
+     * This method adds an attribute.
      *
-     * @param attribute The attribute to be changed
+     * @param attribute The {@link Attribute} to be changed
      * @param min The minimum value of attribute
      * @param max The maximum value of attribute
-     * @param percentage The percentage used to calculate overall star rate
+     * @param weight The weight used to calculate overall star rate
+     *                   (between 0 and 100, -1 means dividing remaining weight)
      *
      * @return {@link AppraiseAttributes} itself
      */
-    public AppraiseAttributes add(@Nonnull Attribute attribute, double min, double max, double percentage) {
+    @ParametersAreNonnullByDefault
+    public AppraiseAttributes add(Attribute attribute, double min, double max, double weight) {
         if (isLocked) {
             throw new IllegalStateException("No longer accept new attributes");
         }
 
-        Validate.notNull(attribute, "attribute cannot be null");
+        Validate.notNull(attribute, "Attribute cannot be null");
         Validate.isTrue(min <= max, "The minimum value should less than or equal to maximum value");
-        Validate.isTrue(percentage >= 0 && percentage <= 100, "The percentage should be between 0 and 100");
-        Validate.isTrue(usedPercentage + percentage <= 100, "The overall percentage exceeds 100");
+        Validate.isTrue(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
+        if (weight != -1) {
+            Validate.isTrue(usedPercentage + weight <= 100, "The overall weight exceeds 100");
+        }
 
         AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max);
-        attributes.add(new Pair<>(attr, percentage));
-        usedPercentage += percentage;
+        if (weight == -1) {
+            noPercentAttributes.add(attr);
+        } else {
+            attributes.add(new Pair<>(attr, weight));
+            usedPercentage += weight;
+        }
 
         return this;
     }
 
     /**
-     * This method adds an attribute, without percentage.
-     *
-     * All attributes without a percentage will take average of remaining percentage.
+     * This method adds an attribute, without weight.
      *
      * @param attribute The attribute to be changed
      * @param min The minimum value of attribute
@@ -63,23 +70,14 @@ public final class AppraiseAttributes {
      *
      * @return {@link AppraiseAttributes} itself
      */
-    public AppraiseAttributes add(@Nonnull Attribute attribute, double min, double max) {
-        if (isLocked) {
-            throw new IllegalStateException("No longer accept new attributes");
-        }
-
-        Validate.notNull(attribute, "attribute cannot be null");
-        Validate.isTrue(min <= max, "The minimum value should less than or equal to maximum value");
-
-        AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max);
-        noPercentAttributes.add(attr);
-
-        return this;
+    @ParametersAreNonnullByDefault
+    public AppraiseAttributes add(Attribute attribute, double min, double max) {
+        return add(attribute, min, max, -1);
     }
 
     /**
      * This method will calculate the attributes without weight,
-     * and distribute their weight averagely.
+     * and divide the remaining overall weight.
      *
      * Also, it will mark {@link AppraiseAttributes} no longer accept new attributes.
      *

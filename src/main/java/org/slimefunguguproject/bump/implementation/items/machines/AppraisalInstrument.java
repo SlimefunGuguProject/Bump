@@ -130,14 +130,15 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
             return;
         }
 
-        blockMenu.replaceExistingItem(INPUT_SLOT, null);
-
         ItemStack output = item.clone();
-        Bump.getAppraiseManager().appraiseItem(output);
-        blockMenu.pushItem(output, OUTPUT_SLOT);
 
-        setCharge(blockMenu.getLocation(), 0);
-        Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
+        if (Bump.getAppraiseManager().appraiseItem(output)) {
+            blockMenu.replaceExistingItem(INPUT_SLOT, null);
+            blockMenu.pushItem(output, OUTPUT_SLOT);
+
+            setCharge(blockMenu.getLocation(), 0);
+            Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
+        }
     }
 
     private boolean validate(ItemStack itemStack) {

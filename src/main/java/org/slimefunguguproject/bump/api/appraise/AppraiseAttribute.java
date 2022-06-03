@@ -1,12 +1,12 @@
 package org.slimefunguguproject.bump.api.appraise;
 
-import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
- * This class represents a single attribute with range.
+ * This class represents a single {@link Attribute} with range.
  *
  * @author ybw0014
  */
@@ -15,9 +15,8 @@ final class AppraiseAttribute {
     private final double min;
     private final double max;
 
-    public AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
-        Validate.notNull(attribute, "Attribute cannot be null");
-
+    @ParametersAreNonnullByDefault
+    public AppraiseAttribute(Attribute attribute, double min, double max) {
         this.attribute = attribute;
         this.min = min;
         this.max = max;

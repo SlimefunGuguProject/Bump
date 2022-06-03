@@ -8,13 +8,12 @@ import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunIte
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import net.guizhanss.guizhanlib.utils.InventoryUtil;
-import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
-import org.slimefunguguproject.bump.utils.BumpTag;
 import org.slimefunguguproject.bump.utils.GuiItems;
 
 import javax.annotation.Nonnull;
@@ -41,12 +40,12 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
     private static final int APPRAISE_BUTTON = 13;
     private static final int OUTPUT_SLOT = 15;
 
-    private final Type paperType;
+    private final AppraiseType appraiseType;
 
-    public AppraisalPaper(SlimefunItemStack item, Type type, RecipeType recipeType, ItemStack[] recipe) {
+    public AppraisalPaper(SlimefunItemStack item, AppraiseType appraiseType, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
 
-        paperType = type;
+        this.appraiseType = appraiseType;
     }
 
     @Nonnull
@@ -108,7 +107,7 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
                     - has not been appraised yet
                     - has not been marked appraisable yet
                  */
-                if (matchType(input.getType(), sfItem != null)){
+                if (appraiseType.isValidMaterial(input.getType(), sfItem != null)){
                     if (!AppraiseUtils.isAppraised(input)
                         && !AppraiseUtils.isAppraisable(input)) {
                         // item can be marked appraisable
@@ -130,24 +129,5 @@ public class AppraisalPaper extends SimpleSlimefunItem<ItemUseHandler> {
 
             menu.open(p);
         };
-    }
-
-    private boolean matchType(@Nonnull Material mat, boolean isSfItem) {
-        switch (this.paperType) {
-            case WEAPON:
-                return isSfItem && BumpTag.WEAPON.isTagged(mat);
-            case ARMOR:
-                return isSfItem && BumpTag.ARMOR.isTagged(mat);
-            case HORSE_ARMOR:
-                return BumpTag.HORSE_ARMOR.isTagged(mat);
-            default:
-                return false;
-        }
-    }
-
-    public enum Type {
-        WEAPON,
-        ARMOR,
-        HORSE_ARMOR
     }
 }
