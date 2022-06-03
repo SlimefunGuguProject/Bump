@@ -85,7 +85,8 @@ public final class AppraiseUtils {
         Validate.notNull(attribute, "Attribute should not be null");
 
         switch (attribute) {
-            case GENERIC_MOVEMENT_SPEED || HORSE_JUMP_STRENGTH:
+            case GENERIC_MOVEMENT_SPEED:
+            case HORSE_JUMP_STRENGTH:
                 return AttributeModifier.Operation.ADD_SCALAR;
             default:
                 return AttributeModifier.Operation.ADD_NUMBER;
