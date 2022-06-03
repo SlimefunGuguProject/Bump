@@ -21,6 +21,7 @@ public enum AppraiseType {
         }
 
         @Override
+        @Nonnull
         public EquipmentSlot getEquipmentSlot(@Nonnull Material type) {
             return EquipmentSlot.HAND;
         }
@@ -32,6 +33,7 @@ public enum AppraiseType {
         }
 
         @Override
+        @Nonnull
         public EquipmentSlot getEquipmentSlot(@Nonnull Material type) {
             if (MinecraftTag.HELMET.isTagged(type)) {
                 return EquipmentSlot.HEAD;
@@ -53,6 +55,7 @@ public enum AppraiseType {
         }
 
         @Override
+        @Nonnull
         public EquipmentSlot getEquipmentSlot(@Nonnull Material type) {
             return EquipmentSlot.CHEST;
         }
@@ -64,14 +67,32 @@ public enum AppraiseType {
         this.allowVanillaItems = allowVanillaItems;
     }
 
+    /**
+     * Check if the given {@link Material} is valid.
+     *
+     * @param type The {@link Material} to be checked
+     *
+     * @return If the given {@link Material} is valid
+     */
     public abstract boolean isValidMaterial(@Nonnull Material type);
 
+    /**
+     * Get the {@link EquipmentSlot} for appraisal to be applied to.
+     *
+     * @param type The {@link Material} of appraisal equipment
+     *
+     * @return The target {@link EquipmentSlot}
+     */
     public abstract EquipmentSlot getEquipmentSlot(@Nonnull Material type);
 
-    public boolean allowVanillaItems() {
-        return allowVanillaItems;
-    }
-
+    /**
+     * Check if the given {@link Material} is valid, with SlimefunItem check.
+     *
+     * @param material the {@link Material} to be checked
+     * @param isSlimefunItem if the item is SlimefunItem
+     *
+     * @return If the given {@link Material} is valid
+     */
     public boolean isValidMaterial(@Nonnull Material material, boolean isSlimefunItem) {
         if (isValidMaterial(material)) {
             return allowVanillaItems || isSlimefunItem;
@@ -80,6 +101,15 @@ public enum AppraiseType {
         }
     }
 
+    /**
+     * Get the {@link AppraiseType} from given {@link Material}.
+     *
+     * @param material The {@link Material}
+     *
+     * @return Appropriate {@link AppraiseType}
+     *
+     * @throws IllegalArgumentException when given material is invalid.
+     */
     @Nonnull
     public static AppraiseType getFromMaterial(@Nonnull Material material) {
         Validate.notNull(material, "Material should not be null");
