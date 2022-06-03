@@ -9,6 +9,13 @@ import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
 import org.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import org.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 
+import javax.annotation.Nonnull;
+
+/**
+ * Main class for {@link Bump}.
+ *
+ * @author ybw0014
+ */
 public final class Bump extends AbstractAddon {
 
     // localization
@@ -69,17 +76,20 @@ public final class Bump extends AbstractAddon {
 
     @Override
     public void setupMetrics(Metrics metrics) {
-        metrics.addCustomChart(new SimplePie("Server_Language", () -> lang));
+        metrics.addCustomChart(new SimplePie("server_language", () -> lang));
     }
 
+    @Nonnull
     private static Bump inst() {
         return getInstance();
     }
 
+    @Nonnull
     public static LocalizationService getLocalization() {
         return inst().localization;
     }
 
+    @Nonnull
     public static AppraiseManager getAppraiseManager() {
         return inst().appraiseManager;
     }
