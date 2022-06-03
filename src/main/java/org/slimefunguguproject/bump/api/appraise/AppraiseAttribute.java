@@ -22,6 +22,13 @@ final class AppraiseAttribute {
         this.max = max;
     }
 
+    @Override
+    @Nonnull
+    public String toString() {
+        return "Attribute = " + attribute
+            + "[" + min + " - " + max + "]";
+    }
+
     @Nonnull
     public Attribute getAttribute() {
         return attribute;

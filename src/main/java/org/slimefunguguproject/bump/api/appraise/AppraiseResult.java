@@ -1,12 +1,10 @@
 package org.slimefunguguproject.bump.api.appraise;
 
 import org.apache.commons.lang.Validate;
-import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
 import javax.annotation.Nonnull;

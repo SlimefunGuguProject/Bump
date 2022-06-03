@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
@@ -9,6 +10,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.api.appraise.AppraiseAttributes;
 import org.slimefunguguproject.bump.api.appraise.AppraiseResult;
 import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.utils.Keys;
 import org.slimefunguguproject.bump.utils.Utils;
 
 import javax.annotation.Nonnull;
@@ -104,6 +106,9 @@ public final class AppraiseManager {
             }
         }
         im.setLore(lore);
+
+        // Set pdc
+        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) result.getStarts());
 
         // wrap up
         itemStack.setItemMeta(im);
