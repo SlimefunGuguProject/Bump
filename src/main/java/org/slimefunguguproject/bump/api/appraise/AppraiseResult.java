@@ -44,20 +44,26 @@ public final class AppraiseResult {
      */
     public int getStarts() {
         if (overallPercentage >= 100) {
-            return 8;
-        } else if (overallPercentage >= 98) {
-            return 7;
+            return 20;
+        } else if (overallPercentage >= 99) {
+            return 10;
+        } else if (overallPercentage >= 97) {
+            return 9;
         } else if (overallPercentage >= 95) {
+            return 8;
+        } else if (overallPercentage >= 92) {
+            return 7;
+        } else if (overallPercentage >= 88) {
             return 6;
-        } else if (overallPercentage >= 91) {
+        } else if (overallPercentage >= 84) {
             return 5;
-        } else if (overallPercentage >= 85) {
+        } else if (overallPercentage >= 78) {
             return 4;
-        } else if (overallPercentage >= 69) {
+        } else if (overallPercentage >= 66) {
             return 3;
-        } else if (overallPercentage >= 48) {
+        } else if (overallPercentage >= 40) {
             return 2;
-        } else if (overallPercentage >= 25) {
+        } else if (overallPercentage >= 10) {
             return 1;
         } else {
             return 0;
