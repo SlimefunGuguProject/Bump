@@ -3,18 +3,20 @@ package org.slimefunguguproject.bump.implementation.tasks;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import net.guizhanss.guizhanlib.common.Scheduler;
+import org.apache.commons.lang.Validate;
 import org.bukkit.entity.WitherSkull;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
+import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 /**
- * The {@link WitherSkullBowTask} is responsible for track
- * {@link WitherSkull WitherSkulls} fired from a {@link WitherSkullBow}.
+ * The {@link WitherSkullBowTask} is responsible for tracking
+ * {@link WitherSkull WitherSkulls} fired from {@link WitherSkullBow}.
  *
  * @author ybw0014
  */
@@ -62,15 +64,17 @@ public final class WitherSkullBowTask implements Runnable {
         }
     }
 
-    private static WitherSkullBowTask getTask() {
-        return instance;
+    /**
+     * This method will add {@link WitherSkull} to tracking list.
+     *
+     * @param skull the {@link WitherSkull} to be added.
+     */
+    public static void track(@Nonnull WitherSkull skull) {
+        Validate.notNull(skull, "Wither skull should not be null. How?");
+        instance.trackSkull(skull);
     }
 
-    public static void track(WitherSkull skull) {
-        getTask().trackSkull(skull);
-    }
-
-    public void trackSkull(WitherSkull skull) {
+    private void trackSkull(WitherSkull skull) {
         skullSpawnMap.put(skull, Bump.getSlimefunTickCount());
     }
 }
