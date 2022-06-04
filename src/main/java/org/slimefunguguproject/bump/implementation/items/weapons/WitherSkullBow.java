@@ -20,7 +20,7 @@ import javax.annotation.Nonnull;
  */
 public class WitherSkullBow extends BumpBow {
 
-    private final IntRangeSetting skullExistingTime = new IntRangeSetting(this, "skull-existing-time", 0, 10, 60);
+    private final IntRangeSetting skullDuration = new IntRangeSetting(this, "skull-duration", 0, 10, 60);
 
     public WitherSkullBow() {
         super(5, BumpItems.WITHERSKULL_BOW, RecipeType.ARMOR_FORGE, new ItemStack[] {
@@ -28,6 +28,8 @@ public class WitherSkullBow extends BumpBow {
             SlimefunItems.POWER_CRYSTAL, BumpItems.PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
             BumpItems.PEACH_WOOD, null, null
         });
+
+        addItemSetting(skullDuration);
     }
 
     @Nonnull
@@ -51,7 +53,7 @@ public class WitherSkullBow extends BumpBow {
         };
     }
 
-    public int getSkullExistingTime() {
-        return skullExistingTime.getValue();
+    public int getSkullDuration() {
+        return skullDuration.getValue();
     }
 }

@@ -26,11 +26,11 @@ public final class WitherSkullBowTask implements Runnable {
 
     // This map remembers each wither skull's spawn time
     private final Map<WitherSkull, Integer> skullSpawnMap = new HashMap<>();
-    private int existTime;
+    private int duration;
 
-    public WitherSkullBowTask(int existingTime) {
+    public WitherSkullBowTask(int duration) {
         instance = this;
-        this.existTime = existingTime;
+        this.duration = duration;
     }
 
     @Override
@@ -40,7 +40,7 @@ public final class WitherSkullBowTask implements Runnable {
         Iterator<Map.Entry<WitherSkull, Integer>> it = skullSpawnMap.entrySet().iterator();
         while (it.hasNext()) {
             Map.Entry<WitherSkull, Integer> entry = it.next();
-            if (entry.getValue() + existTime < currentTick) {
+            if (entry.getValue() + duration < currentTick) {
                 WitherSkull skull = entry.getKey();
                 if (skull.isValid()) {
                     skull.remove();
@@ -59,8 +59,8 @@ public final class WitherSkullBowTask implements Runnable {
             return;
         }
         WitherSkullBow bow = (WitherSkullBow) sfItem;
-        if (bow.getSkullExistingTime() > 0) {
-            Scheduler.repeat(Slimefun.getTickerTask().getTickRate(), new WitherSkullBowTask(bow.getSkullExistingTime()));
+        if (bow.getSkullDuration() > 0) {
+            Scheduler.repeat(Slimefun.getTickerTask().getTickRate(), new WitherSkullBowTask(bow.getSkullDuration()));
         }
     }
 
