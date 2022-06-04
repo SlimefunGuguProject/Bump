@@ -8,6 +8,7 @@ import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
 import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
 import org.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import org.slimefunguguproject.bump.implementation.setup.ResearchSetup;
+import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
 
 import javax.annotation.Nonnull;
 
@@ -68,6 +69,9 @@ public final class Bump extends AbstractAddon {
 
         // listeners
         getServer().getPluginManager().registerEvents(new BowShootListener(), this);
+
+        // tasks
+        WitherSkullBowTask.start();
     }
 
     @Override
