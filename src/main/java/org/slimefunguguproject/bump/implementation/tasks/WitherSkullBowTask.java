@@ -24,9 +24,9 @@ public final class WitherSkullBowTask implements Runnable {
 
     private static WitherSkullBowTask instance;
 
-    // This map remembers each wither skull's spawn time
+    // This map records each wither skull's spawn time
     private final Map<WitherSkull, Integer> skullSpawnMap = new HashMap<>();
-    private int duration;
+    private final int duration;
 
     public WitherSkullBowTask(int duration) {
         instance = this;
