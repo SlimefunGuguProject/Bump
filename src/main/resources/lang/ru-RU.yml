@@ -256,7 +256,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, золото..."
     appraisal_paper:
       invalid: "&cЭтот элемент не оценен!"
-      mismatch: "&cС этим предметом нельзя использовать документ оценки!"
       success: "&aТеперь можно оценить этот элемент!"
   weapon:
     unavailable: "&b&k|&b- &7&oВы не можете активировать этот навык!"
@@ -274,7 +273,6 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&oБог наказает!"
   machine:
     appraisal:
-      invalid: "&cЭлемент еще не оценен...!"
       appraised: "&cИзвините, что элемент не может быть идентифицирован или уже оценен!"
       success: "&aОценка!"
 gui:
