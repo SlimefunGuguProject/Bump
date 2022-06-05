@@ -256,7 +256,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
       invalid: "&cThis item is not appraisable!"
-      mismatch: "&cThe appraisal paper cannot be used with this item!"
       success: "&aThis item can be appraised now!"
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
@@ -274,7 +273,6 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&oWithering!"
   machine:
     appraisal:
-      invalid: "&cThe item has not yet been appraised...!"
       appraised: "&cSorry that the item cannot be identified or has already been appraised!"
       success: "&aAppraisal!"
 gui:
