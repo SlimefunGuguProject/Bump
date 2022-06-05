@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.slimefunguguproject.bump.api.items.LocalizedItemStack;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
+import org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
 /**
@@ -147,17 +148,20 @@ public class BumpItems {
 
     public static final SlimefunItemStack APPRAISAL_PAPER_ARMOR = new LocalizedItemStack(
         "APPRAISAL_PAPER_ARMOR",
-        Material.PAPER
+        Material.PAPER,
+        LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
     );
 
     public static final SlimefunItemStack APPRAISAL_PAPER_DAMAGE = new LocalizedItemStack(
         "APPRAISAL_PAPER_DAMAGE",
-        Material.PAPER
+        Material.PAPER,
+        LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
     );
 
     public static final SlimefunItemStack APPRAISAL_PAPER_HORSE_ARMOR = new LocalizedItemStack(
         "APPRAISAL_PAPER_HORSE_ARMOR",
-        Material.PAPER
+        Material.PAPER,
+        LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
     );
     // endregion tool
 
