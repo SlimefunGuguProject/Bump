@@ -256,7 +256,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, ouro..."
     appraisal_paper:
       invalid: "&cEste item é não pode ser avaliado!"
-      mismatch: "&cO papel de avaliação não pode ser usado com este item!"
       success: "&aEste item pode ser avaliado agora!"
   weapon:
     unavailable: "&b&k|&b- &7&oVocê não pode ativar esta habilidade agora!"
@@ -274,7 +273,6 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&oDecompondo!"
   machine:
     appraisal:
-      invalid: "&cO item ainda não foi avaliado...!"
       appraised: "&cDesculpe, o item não pode ser identificado ou já foi avaliado!"
       success: "&aAvaliação!"
 gui:
