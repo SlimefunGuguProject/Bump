@@ -256,7 +256,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
     appraisal_paper:
       invalid: "&c该物品无法进行鉴定!"
-      mismatch: "&c鉴定符不适用于该物品!"
       success: "&a该物品现在可以进行鉴定了!"
   weapon:
     unavailable: "&b&k|&b- &7&o你现在无法发动该技能!"
@@ -274,7 +273,6 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&o凋零!"
   machine:
     appraisal:
-      invalid: "&c该物品无法进行鉴定!"
       appraised: "&c该物品已经鉴定过,无法进行鉴定!"
       success: "&a已鉴定武器!"
 gui:
