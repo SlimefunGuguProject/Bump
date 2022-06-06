@@ -180,6 +180,7 @@ items:
       - "&b&k|&b- &7&oMuito difícil..."
       - ""
   random_sword:
+    name: "&6Lâmina curta aleatória"
     lore:
       - ""
       - "&b&k|&b- &7&oComo está minha sorte..."
