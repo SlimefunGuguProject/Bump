@@ -256,6 +256,7 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG、金だ..."
     appraisal_paper:
       invalid: "&cこのアイテムは鑑定できさせない！"
+      mismatch: "&cこのアイテムには鑑定紙を使用できません！"
       success: "&a今はこのアイテムが鑑定できさせます！"
   weapon:
     unavailable: "&b&k|&b- &7&o現在このスキルは使用できません！"
@@ -273,6 +274,7 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&oウィザー！"
   machine:
     appraisal:
+      invalid: "&cこのアイテムはまだ鑑定されていない！"
       appraised: "&cアイテムがもう鑑定されたので、また鑑定させるのはできない！"
       success: "&a鑑定成功！"
 gui:
