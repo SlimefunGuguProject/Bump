@@ -245,6 +245,7 @@ messages:
   no-input: "&cPor favor, coloque os itens."
   output-no-space: "&cSem espaço!"
   not-enough-power: "&cNão há energia suficiente."
+  stacked: "&cVocê não pode usar este item quando está empilhado."
   food:
     xuebi: "&b&k|&b- &7&oUm verão fresco!!"
     kele: "&b&k|&b- &7&oA vitória do otaku!"
@@ -256,6 +257,7 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, ouro..."
     appraisal_paper:
       invalid: "&cEste item é não pode ser avaliado!"
+      mismatch: "&cO identificador de qualidade é incompatível com este item!"
       success: "&aEste item pode ser avaliado agora!"
   weapon:
     unavailable: "&b&k|&b- &7&oVocê não pode ativar esta habilidade agora!"
@@ -273,6 +275,7 @@ messages:
     wither_skull_bow: "&b&k|&b- &7&oDecompondo!"
   machine:
     appraisal:
+      invalid: "&cO item não suporta ser avaliado!"
       appraised: "&cDesculpe, o item não pode ser identificado ou já foi avaliado!"
       success: "&aAvaliação!"
 gui:
