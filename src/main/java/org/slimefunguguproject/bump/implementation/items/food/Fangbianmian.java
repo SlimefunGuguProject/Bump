@@ -26,6 +26,7 @@ public class Fangbianmian extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 2000, 5));
+        p.setFoodLevel(20);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1500, 5));
     }
 }
