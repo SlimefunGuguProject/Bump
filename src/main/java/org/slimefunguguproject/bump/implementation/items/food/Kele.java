@@ -26,6 +26,7 @@ public class Kele extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
+        p.setFoodLevel(6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 2000, 5));
     }
 }

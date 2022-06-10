@@ -23,6 +23,7 @@ public class Kouxiangtang extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 2000, 5));
+        p.setFoodLevel(6);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 1000, 5));
     }
 }

@@ -25,7 +25,7 @@ public class Xuebi extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.setFoodLevel(20);
-        p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 2000, 5));
+        p.setFoodLevel(18);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 2000, 4));
     }
 }
