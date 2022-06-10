@@ -62,6 +62,12 @@ items:
       - ""
       - "&c&k|&7- Oh! A defective instrument..."
       - ""
+  attribute_grindstone:
+    name: "&bAttribute Grindstone"
+    lore:
+      - ""
+      - "&c&k|&7- It is able to purge attributes..."
+      - ""
   sun_energy:
     name: "&ePhotosynthetic Energy"
     lore:
@@ -278,6 +284,9 @@ messages:
       invalid: "&cThe item does not support being appraised!"
       appraised: "&cSorry that the item cannot be identified or has already been appraised!"
       success: "&aAppraisal!"
+    attribute-grindstone:
+      invalid: "&cThis item is not appraised yet."
+      success: "&cThe appraisal result is purged!"
 gui:
   appraise:
     name: "&eClick to appraise"

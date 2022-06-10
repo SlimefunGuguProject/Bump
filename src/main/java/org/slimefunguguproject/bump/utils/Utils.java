@@ -2,10 +2,13 @@ package org.slimefunguguproject.bump.utils;
 
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
+import org.bukkit.inventory.ItemStack;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 @ParametersAreNonnullByDefault
@@ -54,5 +57,16 @@ public class Utils {
             n--;
         }
         return builder.toString();
+    }
+
+    /**
+     * Just a simple null check wrapper
+     *
+     * @param itemStack The {@link ItemStack} to be checked
+     *
+     * @return if the {@link ItemStack} is valid
+     */
+    public static boolean validateItem(@Nullable ItemStack itemStack) {
+        return itemStack != null && itemStack.getType() != Material.AIR;
     }
 }

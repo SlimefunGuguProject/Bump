@@ -8,10 +8,12 @@ import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 
 import javax.annotation.Nonnull;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 
 /**
  * Utility methods for appraise
@@ -25,17 +27,19 @@ public final class AppraiseUtils {
     }
 
     /**
-     * Check if the {@link ItemStack} can be used in appraisal instrument
+     * Check if the {@link ItemStack} is marked as appraisable,
+     * which means it can be used in appraisal instrument
      *
      * @param itemStack if the {@link ItemStack} to be checked
      *
-     * @return if the {@link ItemStack} can be used in appraisal instrument
+     * @return if the {@link ItemStack} is marked as appraisable
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
-
-        return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
+        if (Utils.validateItem(itemStack)) {
+            return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -44,8 +48,9 @@ public final class AppraiseUtils {
      * @param itemStack the {@link ItemStack} to be set
      */
     public static void setAppraisable(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
+        if (!Utils.validateItem(itemStack)) {
+            return;
+        }
 
         ItemMeta im = itemStack.getItemMeta();
 
@@ -74,10 +79,11 @@ public final class AppraiseUtils {
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
-
-        return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
+        if (Utils.validateItem(itemStack)) {
+            return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
+        } else {
+            return false;
+        }
     }
 
     @Nonnull
@@ -91,5 +97,46 @@ public final class AppraiseUtils {
             default:
                 return AttributeModifier.Operation.ADD_NUMBER;
         }
+    }
+
+    public static boolean clearAttributes(@Nonnull ItemStack itemStack) {
+        if (!Utils.validateItem(itemStack)) {
+            return false;
+        }
+
+        ItemMeta im = itemStack.getItemMeta();
+
+        // pdc
+        PersistentDataAPI.setByte(im, Keys.APPRAISABLE, (byte) 1);
+        PersistentDataAPI.remove(im, Keys.APPRAISE_LEVEL);
+
+        // lore
+        List<String> lore;
+        if (im.hasLore()) {
+            lore = im.getLore();
+        } else {
+            lore = new ArrayList<>();
+        }
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).startsWith(ChatUtil.color(Bump.getLocalization().getString("lores.appraised")))) {
+                lore.set(i, ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")));
+                break;
+            }
+        }
+        im.setLore(lore);
+        // check existing
+
+        // attributes
+        AppraiseType appraiseType;
+        try {
+            appraiseType = AppraiseType.getFromMaterial(itemStack.getType());
+        } catch (IllegalArgumentException ex) {
+            return false;
+        }
+
+        im.removeAttributeModifier(appraiseType.getEquipmentSlot(itemStack.getType()));
+
+        itemStack.setItemMeta(im);
+        return true;
     }
 }
