@@ -286,7 +286,7 @@ messages:
       success: "&aAppraisal!"
     attribute-grindstone:
       invalid: "&cThis item is not appraised yet."
-      success: "&cThe appraisal result is purged!"
+      success: "&aThe appraisal result is purged!"
 gui:
   appraise:
     name: "&eClick to appraise"
@@ -298,3 +298,8 @@ gui:
     lore:
       - "&7<- Put items on the left side"
       - "&7Click here to allow the item to be appraised"
+  grind:
+    name: "&eClick to purge attributes"
+    lore:
+      - "&7<- Put appraised items on the left side"
+      - "&7Click here to purge attributes"
