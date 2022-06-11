@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
@@ -9,7 +10,11 @@ import javax.annotation.Nonnull;
  *
  * @author ybw0014
  */
-record AppraiseAttribute(Attribute attribute, double min, double max) {
+record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
+
+    AppraiseAttribute {
+        Preconditions.checkNotNull(attribute, "Attribute cannot be null");
+    }
 
     @Override
     @Nonnull
