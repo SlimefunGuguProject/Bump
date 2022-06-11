@@ -71,7 +71,8 @@ public final class Bump extends AbstractAddon {
         ItemsSetup.setup();
 
         // researches setup
-        if (getConfig().getBoolean("options.enable-research")) {
+        boolean enableResearch = getConfig().getBoolean("options.enable-research", true);
+        if (enableResearch) {
             ResearchSetup.setup();
         }
 
@@ -83,15 +84,14 @@ public final class Bump extends AbstractAddon {
 
         // tasks
         WitherSkullBowTask.start();
+
+        // Metrics setup
+        getMetrics().addCustomChart(new SimplePie("server_language", () -> lang));
+        getMetrics().addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
     }
 
     @Override
     public void disable() {
-    }
-
-    @Override
-    public void setupMetrics(Metrics metrics) {
-        metrics.addCustomChart(new SimplePie("server_language", () -> lang));
     }
 
     @Nonnull
