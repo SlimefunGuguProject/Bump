@@ -10,17 +10,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
  *
  * @author ybw0014
  */
-final class AppraiseAttribute {
-    private final Attribute attribute;
-    private final double min;
-    private final double max;
-
-    @ParametersAreNonnullByDefault
-    public AppraiseAttribute(Attribute attribute, double min, double max) {
-        this.attribute = attribute;
-        this.min = min;
-        this.max = max;
-    }
+record AppraiseAttribute(Attribute attribute, double min, double max) {
 
     @Override
     @Nonnull

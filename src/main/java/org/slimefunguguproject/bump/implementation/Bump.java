@@ -1,6 +1,5 @@
 package org.slimefunguguproject.bump.implementation;
 
-import net.guizhanss.guizhanlib.bstats.bukkit.Metrics;
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;

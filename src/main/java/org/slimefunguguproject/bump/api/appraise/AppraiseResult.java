@@ -1,6 +1,6 @@
 package org.slimefunguguproject.bump.api.appraise;
 
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
@@ -83,7 +83,7 @@ public final class AppraiseResult {
      */
     @ParametersAreNonnullByDefault
     public void apply(ItemMeta meta, EquipmentSlot slot) {
-        Validate.notNull(meta, "ItemMeta cannot be null");
+        Preconditions.checkNotNull(meta, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
             Attribute attr = entry.getKey().getAttribute();

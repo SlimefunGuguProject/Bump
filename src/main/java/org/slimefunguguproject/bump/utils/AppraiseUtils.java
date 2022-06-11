@@ -2,7 +2,7 @@ package org.slimefunguguproject.bump.utils;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
@@ -85,14 +85,11 @@ public final class AppraiseUtils {
 
     @Nonnull
     public static AttributeModifier.Operation getOperation(@Nonnull Attribute attribute) {
-        Validate.notNull(attribute, "Attribute should not be null");
+        Preconditions.checkNotNull(attribute, "Attribute should not be null");
 
-        switch (attribute) {
-            case GENERIC_MOVEMENT_SPEED:
-            case HORSE_JUMP_STRENGTH:
-                return AttributeModifier.Operation.ADD_SCALAR;
-            default:
-                return AttributeModifier.Operation.ADD_NUMBER;
-        }
+        return switch (attribute) {
+            case GENERIC_MOVEMENT_SPEED, HORSE_JUMP_STRENGTH -> AttributeModifier.Operation.ADD_SCALAR;
+            default -> AttributeModifier.Operation.ADD_NUMBER;
+        };
     }
 }

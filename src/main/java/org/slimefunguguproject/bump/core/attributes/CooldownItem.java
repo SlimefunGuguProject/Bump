@@ -1,11 +1,12 @@
 package org.slimefunguguproject.bump.core.attributes;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-import org.apache.commons.lang.Validate;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.utils.Keys;
+import org.slimefunguguproject.bump.utils.Utils;
 
 import javax.annotation.Nonnull;
 
@@ -23,12 +24,11 @@ public interface CooldownItem extends ItemAttribute {
     int getCooldown();
 
     default void setCooldown(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
-
-        ItemMeta im = itemStack.getItemMeta();
-        PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
-        itemStack.setItemMeta(im);
+        if (Utils.validateItem(itemStack)) {
+            ItemMeta im = itemStack.getItemMeta();
+            PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
+            itemStack.setItemMeta(im);
+        }
     }
 
     /**
@@ -38,27 +38,31 @@ public interface CooldownItem extends ItemAttribute {
      * @return if the item can be used now
      */
     default boolean isCooldown(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
+        if (Utils.validateItem(itemStack)) {
+            ItemMeta im = itemStack.getItemMeta();
 
-        ItemMeta im = itemStack.getItemMeta();
+            if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
+                long lastUsed = PersistentDataAPI.getLong(im, Keys.LAST_USED);
 
-        if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
-            long lastUsed = PersistentDataAPI.getLong(im, Keys.LAST_USED);
-
-            return lastUsed + getCooldown() * 1000L <= System.currentTimeMillis();
+                return lastUsed + getCooldown() * 1000L <= System.currentTimeMillis();
+            } else {
+                return false;
+            }
         } else {
             return false;
         }
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
+        Preconditions.checkNotNull(itemStack, "ItemStack should not be null");
 
-        if (isCooldown(itemStack)) {
-            setCooldown(itemStack);
-            return true;
+        if (Utils.validateItem(itemStack)) {
+            if (isCooldown(itemStack)) {
+                setCooldown(itemStack);
+                return true;
+            } else {
+                return false;
+            }
         } else {
             return false;
         }

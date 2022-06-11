@@ -37,5 +37,4 @@ public final class ResearchSetup {
         new Research(Bump.createKey("research_" + key), ++researchId, Bump.getLocalization().getResearchName("key"), cost)
             .addItems(itemStacks).register();
     }
-
 }

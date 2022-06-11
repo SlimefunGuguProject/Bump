@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.utils;
 
+import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -65,6 +66,12 @@ public class Utils {
      * @return if the {@link ItemStack} is valid
      */
     public static boolean validateItem(@Nullable ItemStack itemStack) {
-        return itemStack != null && itemStack.getType() != Material.AIR;
+        try {
+            Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
+            Preconditions.checkArgument(itemStack.getType() != Material.AIR, "ItemStack should not be empty");
+            return true;
+        } catch (IllegalArgumentException ex) {
+            return false;
+        }
     }
 }

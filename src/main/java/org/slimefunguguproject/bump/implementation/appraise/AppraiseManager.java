@@ -2,7 +2,7 @@ package org.slimefunguguproject.bump.implementation.appraise;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
@@ -74,8 +74,7 @@ public final class AppraiseManager {
      * @return If the item is appraised
      */
     public boolean appraiseItem(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        if (itemStack.getType() == Material.AIR) {
+        if (!Utils.validateItem(itemStack)) {
             throw new IllegalArgumentException("ItemStack should not be empty");
         }
 

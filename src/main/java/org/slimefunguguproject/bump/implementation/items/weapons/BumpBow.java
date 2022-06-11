@@ -7,7 +7,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.core.attributes.CostHungerItem;
 import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
@@ -34,7 +34,7 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
         addItemSetting(costDurability);
 
         // hunger cost
-        Validate.isTrue(hunger >= 0 && hunger <= 20, "Hunger cost must be between 0 and 20");
+        Preconditions.checkArgument(hunger >= 0 && hunger <= 20, "Hunger cost must be between 0 and 20");
         hungerCost = new IntRangeSetting(this, "hunger-cost", 0, hunger, 20);
         addItemSetting(hungerCost);
     }

@@ -2,7 +2,7 @@ package org.slimefunguguproject.bump.api.appraise;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
@@ -42,11 +42,11 @@ public final class AppraiseAttributes {
             throw new IllegalStateException("No longer accept new attributes");
         }
 
-        Validate.notNull(attribute, "Attribute cannot be null");
-        Validate.isTrue(min <= max, "The minimum value should less than or equal to maximum value");
-        Validate.isTrue(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
+        Preconditions.checkNotNull(attribute, "Attribute cannot be null");
+        Preconditions.checkArgument(min <= max, "The minimum value should less than or equal to maximum value");
+        Preconditions.checkArgument(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
         if (weight != -1) {
-            Validate.isTrue(usedPercentage + weight <= 100, "The overall weight exceeds 100");
+            Preconditions.checkArgument(usedPercentage + weight <= 100, "The overall weight exceeds 100");
         }
 
         AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max);

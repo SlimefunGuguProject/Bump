@@ -1,7 +1,7 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 import org.slimefunguguproject.bump.utils.BumpTag;
@@ -76,7 +76,7 @@ public enum AppraiseType {
      */
     @Nonnull
     public static AppraiseType getFromMaterial(@Nonnull Material material) {
-        Validate.notNull(material, "Material should not be null");
+        Preconditions.checkNotNull(material, "Material should not be null");
 
         for (AppraiseType type : AppraiseType.values()) {
             if (type.isValidMaterial(material)) {

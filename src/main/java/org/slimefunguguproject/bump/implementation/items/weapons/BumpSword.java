@@ -7,7 +7,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.core.attributes.CooldownItem;
@@ -33,7 +33,7 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
         super(BumpItemGroups.WEAPON, itemStack, recipeType, recipe);
 
         // hunger cost
-        Validate.isTrue(hunger >= 0 && hunger <= 20, "The default hunger cost must be between 0 and 20");
+        Preconditions.checkArgument(hunger >= 0 && hunger <= 20, "The default hunger cost must be between 0 and 20");
         hungerCost = new IntRangeSetting(this, "hunger-cost", 0, hunger, 20);
         addItemSetting(hungerCost);
 

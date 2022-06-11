@@ -3,7 +3,7 @@ package org.slimefunguguproject.bump.implementation.tasks;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import net.guizhanss.guizhanlib.common.Scheduler;
-import org.apache.commons.lang.Validate;
+import com.google.common.base.Preconditions;
 import org.bukkit.entity.WitherSkull;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
@@ -53,7 +53,7 @@ public final class WitherSkullBowTask implements Runnable {
      * @param skull the {@link WitherSkull} to be added.
      */
     public static void track(@Nonnull WitherSkull skull) {
-        Validate.notNull(skull, "Wither skull should not be null. How?");
+        Preconditions.checkNotNull(skull, "Wither skull should not be null. How?");
         instance.trackSkull(skull);
     }
 
