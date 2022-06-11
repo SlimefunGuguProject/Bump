@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * Latiao. Spicy stick.
@@ -23,7 +24,7 @@ public class Latiao extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.setFoodLevel(2);
+        Utils.addFoodLevel(p, 2);
         p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 48, 2));
     }
 }
