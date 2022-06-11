@@ -1,4 +1,10 @@
+# DO NOT modify this
+version: 2
+
 options:
+  # Auto update
   auto-update: true
+  # Bump language (Available languages: https://github.com/SlimefunGuguProject/Bump#supported-languages)
   lang: en-US
+  # Enable researches
   enable-researches: true

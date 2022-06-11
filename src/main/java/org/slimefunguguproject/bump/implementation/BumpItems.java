@@ -6,6 +6,7 @@ import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.slimefunguguproject.bump.api.items.LocalizedItemStack;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
+import org.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
@@ -77,6 +78,12 @@ public class BumpItems {
         "APPRAISAL",
         Material.BELL,
         LoreBuilder.power(AppraisalInstrument.getEnergyConsumption(), " " + Bump.getLocalization().getString("lores.per-use"))
+    );
+
+    public static final SlimefunItemStack ATTRIBUTE_GRINDSTONE = new LocalizedItemStack(
+        "ATTRIBUTE_GRINDSTONE",
+        Material.GRINDSTONE,
+        LoreBuilder.power(AttributeGrindstone.getEnergyConsumption(), " " + Bump.getLocalization().getString("lores.per-use"))
     );
     // endregion machine
 

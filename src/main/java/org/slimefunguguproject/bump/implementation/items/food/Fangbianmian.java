@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * Instant noodle.
@@ -26,6 +27,7 @@ public class Fangbianmian extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 2000, 5));
+        Utils.setFoodLevel(p, 20);
+        p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1500, 5));
     }
 }

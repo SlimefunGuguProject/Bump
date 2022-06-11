@@ -50,8 +50,18 @@ items:
       - ""
       - "&b&k|&b- Muy pegajoso..."
       - ""
+  zongzi:
+    name: "&aBola de masa de arroz"
+    lore:
+      - ""
+      - "&b&k|&b- Feliz Festival del Bote del Dragón!"
+      - ""
   appraisal:
     name: "&bInstrumento de evaluación"
+    lore:
+      - ""
+      - "&c&k|&7- ¡Vaya! Un instrumento defectuoso..."
+      - ""
   sun_energy:
     name: "&eEnergía fotosintética"
   mecha_gear:

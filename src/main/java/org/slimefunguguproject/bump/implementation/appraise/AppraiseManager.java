@@ -14,6 +14,7 @@ import org.slimefunguguproject.bump.utils.Keys;
 import org.slimefunguguproject.bump.utils.Utils;
 
 import javax.annotation.Nonnull;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,9 +29,13 @@ import java.util.logging.Level;
 public final class AppraiseManager {
 
     private final Map<AppraiseType, AppraiseAttributes> attributesMap = new HashMap<>();
+    private final String appraisedLorePrefix;
 
     public AppraiseManager() {
         setup();
+
+        String lore = ChatUtil.color(Bump.getLocalization().getString("lores.appraised"));
+        appraisedLorePrefix = lore.substring(0, lore.indexOf("{0}"));
     }
 
     private void setup() {
@@ -100,7 +105,7 @@ public final class AppraiseManager {
         List<String> lore = im.getLore();
         for (int i = 0; i < lore.size(); i++) {
             if (lore.get(i).equals(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")))) {
-                String line = Bump.getLocalization().getString("lores.appraised", Utils.getStars(result.getStarts()));
+                String line = Bump.getLocalization().getString("lores.appraised", Utils.getStars(result.getStars()));
                 lore.set(i, ChatUtil.color(line));
                 break;
             }
@@ -108,9 +113,56 @@ public final class AppraiseManager {
         im.setLore(lore);
 
         // Set pdc
-        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) result.getStarts());
+        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) result.getStars());
 
         // wrap up
+        itemStack.setItemMeta(im);
+        return true;
+    }
+
+    /**
+     * Purge appraisal result (all attribute modifiers).
+     *
+     * @param itemStack The {@link ItemStack} to be handled.
+     *
+     * @return If the purge process succeeds.
+     */
+    public boolean clearAttributes(@Nonnull ItemStack itemStack) {
+        if (!Utils.validateItem(itemStack)) {
+            return false;
+        }
+
+        ItemMeta im = itemStack.getItemMeta();
+
+        // pdc
+        PersistentDataAPI.setByte(im, Keys.APPRAISABLE, (byte) 1);
+        PersistentDataAPI.remove(im, Keys.APPRAISE_LEVEL);
+
+        // lore
+        List<String> lore;
+        if (im.hasLore()) {
+            lore = im.getLore();
+        } else {
+            lore = new ArrayList<>();
+        }
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).startsWith(appraisedLorePrefix)) {
+                lore.set(i, ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")));
+                break;
+            }
+        }
+        im.setLore(lore);
+
+        // attributes
+        AppraiseType appraiseType;
+        try {
+            appraiseType = AppraiseType.getFromMaterial(itemStack.getType());
+        } catch (IllegalArgumentException ex) {
+            return false;
+        }
+
+        im.removeAttributeModifier(appraiseType.getEquipmentSlot(itemStack.getType()));
+
         itemStack.setItemMeta(im);
         return true;
     }

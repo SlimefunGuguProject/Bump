@@ -16,6 +16,7 @@ import org.slimefunguguproject.bump.implementation.items.food.Latiao;
 import org.slimefunguguproject.bump.implementation.items.food.Xuebi;
 import org.slimefunguguproject.bump.implementation.items.food.Zongzi;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
+import org.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import org.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
 import org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import org.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
@@ -39,7 +40,7 @@ public final class ItemsSetup {
     public static void setup() {
         Bump plugin = Bump.getInstance();
 
-        // region armor
+        // <editor-fold defaultstate="collapsed" desc="Armor">
         new SlimefunItem(
             BumpItemGroups.ARMOR,
             BumpItems.RANDOM_HELMET,
@@ -61,22 +62,23 @@ public final class ItemsSetup {
                 BumpItems.OLD_COIN, BumpItems.UPDATE_POWER, BumpItems.OLD_COIN
             }
         ).register(plugin);
-        // endregion armor
+        // </editor-fold>
 
-        // region food
+        // <editor-fold defaultstate="collapsed" desc="Food">
         new Xuebi().register(plugin);
         new Kele().register(plugin);
         new Fangbianmian().register(plugin);
         new Latiao().register(plugin);
         new Kouxiangtang().register(plugin);
         new Zongzi().register(plugin);
-        // endregion food
+        // </editor-fold>
 
-        // region machine
+        // <editor-fold defaultstate="collapsed" desc="Machine">
         new AppraisalInstrument().register(plugin);
-        // endregion machine
+        new AttributeGrindstone().register(plugin);
+        // </editor-fold>
 
-        // region stuff
+        // <editor-fold defaultstate="collapsed" desc="Stuff">
         new StuffItem(
             BumpItems.SUN_ENERGY,
             RecipeType.MAGIC_WORKBENCH,
@@ -178,9 +180,9 @@ public final class ItemsSetup {
                 SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K
             }
         ).register(plugin);
-        // endregion stuff
+        // </editor-fold>
 
-        // region tool
+        // <editor-fold defaultstate="collapsed" desc="Tools">
         new GetgoldSpade().register(plugin);
 
         new AppraisalPaper(
@@ -209,9 +211,9 @@ public final class ItemsSetup {
                 BumpItems.RANDOM_HORSE_ARMOR
             }
         ).register(plugin);
-        // endregion tool
+        // </editor-fold>
 
-        // region weapon
+        // <editor-fold defaultstate="collapsed" desc="Weapon">
         new LightBow().register(plugin);
         new WitherSkullBow().register(plugin);
 
@@ -274,6 +276,6 @@ public final class ItemsSetup {
         new SkySword().register(plugin);
         new DevilSword().register(plugin);
         new SkyDevilSword().register(plugin);
-        // endregion weapon
+        // </editor-fold>
     }
 }

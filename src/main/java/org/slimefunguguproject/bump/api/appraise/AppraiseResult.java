@@ -48,26 +48,26 @@ public final class AppraiseResult {
      *
      * @return The number of stars of the result
      */
-    public int getStarts() {
+    public int getStars() {
         if (overallPercentage >= 100) {
             return 20;
-        } else if (overallPercentage >= 99) {
+        } else if (overallPercentage >= 98) {
             return 10;
-        } else if (overallPercentage >= 97) {
+        } else if (overallPercentage >= 96) {
             return 9;
-        } else if (overallPercentage >= 95) {
-            return 8;
         } else if (overallPercentage >= 92) {
-            return 7;
+            return 8;
         } else if (overallPercentage >= 88) {
+            return 7;
+        } else if (overallPercentage >= 82) {
             return 6;
-        } else if (overallPercentage >= 84) {
+        } else if (overallPercentage >= 74) {
             return 5;
-        } else if (overallPercentage >= 78) {
+        } else if (overallPercentage >= 64) {
             return 4;
-        } else if (overallPercentage >= 66) {
+        } else if (overallPercentage >= 48) {
             return 3;
-        } else if (overallPercentage >= 40) {
+        } else if (overallPercentage >= 30) {
             return 2;
         } else if (overallPercentage >= 10) {
             return 1;

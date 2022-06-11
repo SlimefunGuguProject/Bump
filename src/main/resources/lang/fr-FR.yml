@@ -5,3 +5,12 @@ categories:
   food: "&bBump - Aliments"
   machine: "&bBump - Machine"
   stuff: "&bBump - Staff"
+  tool: "&bBump - l' outil"
+  weapon: "&bBump - Arme magique"
+items:
+  random_helmet:
+    name: "&6Casque aléatoire"
+    lore:
+      - ""
+      - "&b&k|&b- &7&oQuelle est ma chance..."
+      - "&b&k|&b- &e&oL'évaluateur &7&odonne cet aléatoire attribut..."

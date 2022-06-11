@@ -8,6 +8,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * Coke? Or Pepsi? Who knows.
@@ -26,6 +27,7 @@ public class Kele extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
+        Utils.addFoodLevel(p, 6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 2000, 5));
     }
 }

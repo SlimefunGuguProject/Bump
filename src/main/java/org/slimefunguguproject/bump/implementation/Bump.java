@@ -3,6 +3,8 @@ package org.slimefunguguproject.bump.implementation;
 import net.guizhanss.guizhanlib.bstats.bukkit.Metrics;
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
+import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+import org.bukkit.configuration.Configuration;
 import org.slimefunguguproject.bump.core.services.LocalizationService;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
 import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
@@ -47,8 +49,18 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  GitHub: https://github.com/SlimefunGuguProject/Bump");
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
+        // config
+        AddonConfig config = getAddonConfig();
+        Configuration defaultConfig = config.getDefaults();
+        for (String key : defaultConfig.getKeys(true)) {
+            if (!config.contains(key)) {
+                config.set(key, defaultConfig.get(key));
+            }
+        }
+        config.save();
+
         // localization
-        lang = getConfig().getString("options.lang", "en-US");
+        lang = config.getString("options.lang", "en-US");
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
         if (!lang.equals("en-US")) {
@@ -60,7 +72,8 @@ public final class Bump extends AbstractAddon {
         ItemsSetup.setup();
 
         // researches setup
-        if (getConfig().getBoolean("options.enable-research")) {
+        boolean enableResearch = config.getBoolean("options.enable-research", true);
+        if (enableResearch) {
             ResearchSetup.setup();
         }
 
@@ -72,15 +85,14 @@ public final class Bump extends AbstractAddon {
 
         // tasks
         WitherSkullBowTask.start();
+
+        // Metrics setup
+        getMetrics().addCustomChart(new SimplePie("server_language", () -> lang));
+        getMetrics().addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
     }
 
     @Override
     public void disable() {
-    }
-
-    @Override
-    public void setupMetrics(Metrics metrics) {
-        metrics.addCustomChart(new SimplePie("server_language", () -> lang));
     }
 
     @Nonnull

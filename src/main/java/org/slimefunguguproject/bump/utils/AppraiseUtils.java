@@ -20,22 +20,25 @@ import java.util.List;
  * @author haiman233
  */
 public final class AppraiseUtils {
+
     private AppraiseUtils() {
         throw new IllegalStateException("Utility class");
     }
 
     /**
-     * Check if the {@link ItemStack} can be used in appraisal instrument
+     * Check if the {@link ItemStack} is marked as appraisable,
+     * which means it can be used in appraisal instrument
      *
      * @param itemStack if the {@link ItemStack} to be checked
      *
-     * @return if the {@link ItemStack} can be used in appraisal instrument
+     * @return if the {@link ItemStack} is marked as appraisable
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
-
-        return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
+        if (Utils.validateItem(itemStack)) {
+            return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
+        } else {
+            return false;
+        }
     }
 
     /**
@@ -44,8 +47,9 @@ public final class AppraiseUtils {
      * @param itemStack the {@link ItemStack} to be set
      */
     public static void setAppraisable(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
+        if (!Utils.validateItem(itemStack)) {
+            return;
+        }
 
         ItemMeta im = itemStack.getItemMeta();
 
@@ -74,10 +78,11 @@ public final class AppraiseUtils {
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "itemStack should not be null");
-        Validate.notNull(itemStack.getItemMeta(), "itemMeta should not be null");
-
-        return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
+        if (Utils.validateItem(itemStack)) {
+            return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
+        } else {
+            return false;
+        }
     }
 
     @Nonnull

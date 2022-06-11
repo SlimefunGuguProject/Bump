@@ -46,12 +46,12 @@ public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
             if (foodLevel >= 2) {
                 if (maxHealth - health <= foodLevel) {
                     // Food level can be partially converted to full health
-                    Utils.changeFoodLevel(p, (int) (foodLevel - (maxHealth - health)));
+                    Utils.setFoodLevel(p, (int) (foodLevel - (maxHealth - health)));
                     p.setHealth(maxHealth);
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-part");
                 } else {
                     // Food level can be all converted to health
-                    Utils.changeFoodLevel(p, 0);
+                    Utils.setFoodLevel(p, 0);
                     p.setHealth(health + foodLevel);
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-all");
                 }

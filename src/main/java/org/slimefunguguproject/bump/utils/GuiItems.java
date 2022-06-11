@@ -26,4 +26,10 @@ public final class GuiItems {
         Bump.getLocalization().getString("gui.appraisal_paper.name"),
         Bump.getLocalization().getStringArray("gui.appraisal_paper.lore")
     );
+
+    public static ItemStack GRIND_BUTTON = new CustomItemStack(
+        Material.GRINDSTONE,
+        Bump.getLocalization().getString("gui.grind.name"),
+        Bump.getLocalization().getStringArray("gui.grind.lore")
+    );
 }
