@@ -152,7 +152,6 @@ public final class AppraiseManager {
             }
         }
         im.setLore(lore);
-        // check existing
 
         // attributes
         AppraiseType appraiseType;
