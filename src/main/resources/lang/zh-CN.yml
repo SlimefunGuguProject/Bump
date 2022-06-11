@@ -62,6 +62,12 @@ items:
       - ""
       - "&c&k|&7- 哦,你这是个残次品..."
       - ""
+  attribute_grindstone:
+    name: "&b属性砂轮"
+    lore:
+      - ""
+      - "&c&k|&7- 它可以清除属性..."
+      - ""
   sun_energy:
     name: "&e光合能量"
     lore:
@@ -278,6 +284,9 @@ messages:
       invalid: "&c该物品类型不支持鉴定!"
       appraised: "&c该物品已经鉴定过,无法进行鉴定!"
       success: "&a已鉴定武器!"
+    attribute-grindstone:
+      invalid: "&c该物品还未鉴定!"
+      success: "&a已清除鉴定结果!"
 gui:
   appraise:
     name: "&e点击鉴定"
@@ -289,3 +298,8 @@ gui:
     lore:
       - "&7<- 在左侧放入物品"
       - "&7点击这里让物品可以进行鉴定"
+  grind:
+    name: "&e点击清除属性"
+    lore:
+      - "&7<- 在左侧放入已鉴定的物品"
+      - "&7点击这里清除属性"
