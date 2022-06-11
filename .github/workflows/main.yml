@@ -13,7 +13,8 @@ jobs:
     if: startsWith(github.event.head_commit.message, '[CI skip]') == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.2
+      - name: Checkout repository
+        uses: actions/checkout@v3.0.2
       - name: Set up JDK 16
         uses: actions/setup-java@v3.3.0
         with:
@@ -21,3 +22,10 @@ jobs:
           distribution: temurin
       - name: Build with Maven
         run: mvn package --file pom.xml
+      - name: Get build artifact ready
+        run: mkdir staging && cp target/*.jar staging
+      - name: Upload a Build Artifact
+        uses: actions/upload-artifact@v3.0.0
+        with:
+          name: Dev Build
+          path: staging
