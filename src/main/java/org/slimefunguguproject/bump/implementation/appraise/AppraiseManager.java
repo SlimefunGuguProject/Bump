@@ -105,7 +105,7 @@ public final class AppraiseManager {
         List<String> lore = im.getLore();
         for (int i = 0; i < lore.size(); i++) {
             if (lore.get(i).equals(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")))) {
-                String line = Bump.getLocalization().getString("lores.appraised", Utils.getStars(result.getStarts()));
+                String line = Bump.getLocalization().getString("lores.appraised", Utils.getStars(result.getStars()));
                 lore.set(i, ChatUtil.color(line));
                 break;
             }
@@ -113,7 +113,7 @@ public final class AppraiseManager {
         im.setLore(lore);
 
         // Set pdc
-        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) result.getStarts());
+        PersistentDataAPI.setByte(im, Keys.APPRAISE_LEVEL, (byte) result.getStars());
 
         // wrap up
         itemStack.setItemMeta(im);

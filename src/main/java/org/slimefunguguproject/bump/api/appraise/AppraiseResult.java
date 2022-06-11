@@ -48,7 +48,7 @@ public final class AppraiseResult {
      *
      * @return The number of stars of the result
      */
-    public int getStarts() {
+    public int getStars() {
         if (overallPercentage >= 100) {
             return 20;
         } else if (overallPercentage >= 98) {
