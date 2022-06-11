@@ -7,6 +7,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * Sprite.
@@ -25,7 +26,7 @@ public class Xuebi extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        p.setFoodLevel(18);
+        Utils.setFoodLevel(p, 18);
         p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 2000, 4));
     }
 }

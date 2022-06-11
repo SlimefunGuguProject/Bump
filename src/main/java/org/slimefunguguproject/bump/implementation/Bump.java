@@ -49,16 +49,17 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
         // config
-        Configuration defaultConfig = getConfig().getDefaults();
+        AddonConfig config = getAddonConfig();
+        Configuration defaultConfig = config.getDefaults();
         for (String key : defaultConfig.getKeys(true)) {
-            if (!getConfig().contains(key)) {
-                getConfig().set(key, defaultConfig.get(key));
+            if (!config.contains(key)) {
+                config.set(key, defaultConfig.get(key));
             }
         }
-        ((AddonConfig) getConfig()).save();
+        config.save();
 
         // localization
-        lang = getConfig().getString("options.lang", "en-US");
+        lang = config.getString("options.lang", "en-US");
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
         if (!lang.equals("en-US")) {
@@ -70,7 +71,7 @@ public final class Bump extends AbstractAddon {
         ItemsSetup.setup();
 
         // researches setup
-        boolean enableResearch = getConfig().getBoolean("options.enable-research", true);
+        boolean enableResearch = config.getBoolean("options.enable-research", true);
         if (enableResearch) {
             ResearchSetup.setup();
         }

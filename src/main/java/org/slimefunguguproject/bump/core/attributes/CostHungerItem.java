@@ -55,7 +55,7 @@ public interface CostHungerItem extends ItemAttribute {
      */
     default boolean costHunger(Player p) {
         if (checkHunger(p)) {
-            return Utils.changeFoodLevel(p, p.getFoodLevel() - getHungerCost());
+            return Utils.setFoodLevel(p, p.getFoodLevel() - getHungerCost());
         } else {
             return false;
         }
