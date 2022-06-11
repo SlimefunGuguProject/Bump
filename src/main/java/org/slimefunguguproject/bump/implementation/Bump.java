@@ -3,6 +3,8 @@ package org.slimefunguguproject.bump.implementation;
 import net.guizhanss.guizhanlib.bstats.bukkit.Metrics;
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
+import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+import org.bukkit.configuration.Configuration;
 import org.slimefunguguproject.bump.core.services.LocalizationService;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
 import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
@@ -46,6 +48,15 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  Powered By bxx2004");
         sendConsole("&a&l  GitHub: https://github.com/SlimefunGuguProject/Bump");
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
+
+        // config
+        Configuration defaultConfig = getConfig().getDefaults();
+        for (String key : defaultConfig.getKeys(true)) {
+            if (!getConfig().contains(key)) {
+                getConfig().set(key, defaultConfig.get(key));
+            }
+        }
+        ((AddonConfig) getConfig()).save();
 
         // localization
         lang = getConfig().getString("options.lang", "en-US");
