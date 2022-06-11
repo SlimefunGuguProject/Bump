@@ -48,7 +48,9 @@ public class AttributeGrindstone extends MenuBlock implements EnergyNetComponent
 
     public AttributeGrindstone() {
         super(BumpItemGroups.MACHINE, BumpItems.ATTRIBUTE_GRINDSTONE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
-            null
+            SlimefunItems.ELECTRO_MAGNET, BumpItems.APPRAISAL, SlimefunItems.ELECTRO_MAGNET,
+            BumpItems.MECHA_GEAR, BumpItems.CPU, BumpItems.MECHA_GEAR,
+            BumpItems.UPDATE_POWER, BumpItems.ZONGZI, BumpItems.UPDATE_POWER
         });
     }
 
