@@ -3,14 +3,11 @@ package org.slimefunguguproject.bump.implementation.items.machines;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
-import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
 import org.bukkit.Location;
-import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -96,7 +93,7 @@ public class AttributeGrindstone extends MenuBlock implements EnergyNetComponent
         ItemStack item = blockMenu.getItemInSlot(INPUT_SLOT);
 
         // null check
-        if (Utils.validateItem(item)) {
+        if (!Utils.validateItem(item)) {
             Bump.getLocalization().sendMessage(p, "no-input");
             return;
         }
@@ -122,7 +119,7 @@ public class AttributeGrindstone extends MenuBlock implements EnergyNetComponent
 
         ItemStack output = item.clone();
 
-        if (AppraiseUtils.clearAttributes(output)) {
+        if (Bump.getAppraiseManager().clearAttributes(output)) {
             blockMenu.replaceExistingItem(INPUT_SLOT, null);
             blockMenu.pushItem(output, OUTPUT_SLOT);
 
