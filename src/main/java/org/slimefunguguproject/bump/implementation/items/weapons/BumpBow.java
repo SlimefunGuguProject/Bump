@@ -23,8 +23,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
  */
 public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implements DamageableItem, CostHungerItem {
 
-    private final ItemSetting<Boolean> costDurability = new ItemSetting<>(this, "cost-durability", true);
     protected final IntRangeSetting hungerCost;
+    private final ItemSetting<Boolean> costDurability = new ItemSetting<>(this, "cost-durability", true);
 
     @ParametersAreNonnullByDefault
     protected BumpBow(int hunger, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -44,7 +44,8 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
         return costDurability.getValue();
     }
 
-    public @Nonnull ItemSetting<Integer> getHungerCostSetting() {
+    @Nonnull
+    public ItemSetting<Integer> getHungerCostSetting() {
         return hungerCost;
     }
 }

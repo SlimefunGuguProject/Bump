@@ -12,9 +12,8 @@ import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
  * This {@link Listener} will call {@link BowUseHandler}
  * when {@link Player} fires with a bow.
  *
- * @see BowUseHandler
- *
  * @author ybw0014
+ * @see BowUseHandler
  */
 public final class BowShootListener implements Listener {
     @EventHandler

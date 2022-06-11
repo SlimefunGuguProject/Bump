@@ -71,7 +71,6 @@ public final class AppraiseManager {
      * This method applies the {@link AppraiseResult appraisal result} to {@link ItemStack}.
      *
      * @param itemStack The {@link ItemStack} to be appraised
-     *
      * @return If the item is appraised
      */
     public boolean appraiseItem(@Nonnull ItemStack itemStack) {
@@ -124,7 +123,6 @@ public final class AppraiseManager {
      * Purge appraisal result (all attribute modifiers).
      *
      * @param itemStack The {@link ItemStack} to be handled.
-     *
      * @return If the purge process succeeds.
      */
     public boolean clearAttributes(@Nonnull ItemStack itemStack) {

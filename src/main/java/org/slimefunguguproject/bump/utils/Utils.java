@@ -22,9 +22,8 @@ public class Utils {
      * food level if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled
      *
-     * @param p the {@link Player} that food level will be changed
+     * @param p     the {@link Player} that food level will be changed
      * @param level the target food level
-     *
      * @return if the food level is changed
      */
     public static boolean changeFoodLevel(Player p, int level) {
@@ -47,10 +46,10 @@ public class Utils {
      * Get a {@link String} of consecutive stars
      *
      * @param n the number of stars
-     *
      * @return {@link String} of consecutive stars
      */
-    public static @Nonnull String getStars(int n) {
+    @Nonnull
+    public static String getStars(int n) {
         StringBuilder builder = new StringBuilder();
         while (n > 0) {
             builder.append("⭐");
@@ -63,7 +62,6 @@ public class Utils {
      * Just a simple null check wrapper
      *
      * @param itemStack The {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is valid
      */
     public static boolean validateItem(@Nullable ItemStack itemStack) {

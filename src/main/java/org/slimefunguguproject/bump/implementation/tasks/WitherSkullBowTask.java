@@ -33,23 +33,6 @@ public final class WitherSkullBowTask implements Runnable {
         this.duration = duration;
     }
 
-    @Override
-    public void run() {
-        int currentTick = Bump.getSlimefunTickCount();
-
-        Iterator<Map.Entry<WitherSkull, Integer>> it = skullSpawnMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<WitherSkull, Integer> entry = it.next();
-            if (entry.getValue() + duration < currentTick) {
-                WitherSkull skull = entry.getKey();
-                if (skull.isValid()) {
-                    skull.remove();
-                }
-                it.remove();
-            }
-        }
-    }
-
     /**
      * This method starts this task
      */
@@ -72,6 +55,23 @@ public final class WitherSkullBowTask implements Runnable {
     public static void track(@Nonnull WitherSkull skull) {
         Validate.notNull(skull, "Wither skull should not be null. How?");
         instance.trackSkull(skull);
+    }
+
+    @Override
+    public void run() {
+        int currentTick = Bump.getSlimefunTickCount();
+
+        Iterator<Map.Entry<WitherSkull, Integer>> it = skullSpawnMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<WitherSkull, Integer> entry = it.next();
+            if (entry.getValue() + duration < currentTick) {
+                WitherSkull skull = entry.getKey();
+                if (skull.isValid()) {
+                    skull.remove();
+                }
+                it.remove();
+            }
+        }
     }
 
     private void trackSkull(WitherSkull skull) {

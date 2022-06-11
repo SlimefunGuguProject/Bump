@@ -52,6 +52,10 @@ public class AttributeGrindstone extends MenuBlock implements EnergyNetComponent
         });
     }
 
+    public static int getEnergyConsumption() {
+        return ENERGY_CONSUMPTION;
+    }
+
     @Override
     protected void setup(BlockMenuPreset blockMenuPreset) {
         blockMenuPreset.drawBackground(ChestMenuUtils.getBackground(), BACKGROUND);
@@ -126,10 +130,6 @@ public class AttributeGrindstone extends MenuBlock implements EnergyNetComponent
             setCharge(blockMenu.getLocation(), 0);
             Bump.getLocalization().sendMessage(p, "machine.attribute-grindstone.success");
         }
-    }
-
-    public static int getEnergyConsumption() {
-        return ENERGY_CONSUMPTION;
     }
 
     @Nonnull

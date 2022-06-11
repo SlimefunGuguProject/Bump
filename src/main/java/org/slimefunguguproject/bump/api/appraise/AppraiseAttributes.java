@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * This class hold all appraisal attributes used in appraising.
- *
+ * <p>
  * Must add attributes first, and call build().
  *
  * @author ybw0014
@@ -30,11 +30,10 @@ public final class AppraiseAttributes {
      * This method adds an attribute.
      *
      * @param attribute The {@link Attribute} to be changed
-     * @param min The minimum value of attribute
-     * @param max The maximum value of attribute
-     * @param weight The weight used to calculate overall star rate
-     *                   (between 0 and 100, -1 means dividing remaining weight)
-     *
+     * @param min       The minimum value of attribute
+     * @param max       The maximum value of attribute
+     * @param weight    The weight used to calculate overall star rate
+     *                  (between 0 and 100, -1 means dividing remaining weight)
      * @return {@link AppraiseAttributes} itself
      */
     @ParametersAreNonnullByDefault
@@ -65,9 +64,8 @@ public final class AppraiseAttributes {
      * This method adds an attribute, without weight.
      *
      * @param attribute The attribute to be changed
-     * @param min The minimum value of attribute
-     * @param max The maximum value of attribute
-     *
+     * @param min       The minimum value of attribute
+     * @param max       The maximum value of attribute
      * @return {@link AppraiseAttributes} itself
      */
     @ParametersAreNonnullByDefault
@@ -78,7 +76,7 @@ public final class AppraiseAttributes {
     /**
      * This method will calculate the attributes without weight,
      * and divide the remaining overall weight.
-     *
+     * <p>
      * Also, it will mark {@link AppraiseAttributes} no longer accept new attributes.
      *
      * @return {@link AppraiseAttributes} itself

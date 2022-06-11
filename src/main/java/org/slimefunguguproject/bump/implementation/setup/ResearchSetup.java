@@ -33,7 +33,7 @@ public final class ResearchSetup {
     }
 
     @ParametersAreNonnullByDefault
-    private static void createResearch(String key, int cost, ItemStack... itemStacks){
+    private static void createResearch(String key, int cost, ItemStack... itemStacks) {
         new Research(Bump.createKey("research_" + key), ++researchId, Bump.getLocalization().getResearchName("key"), cost)
             .addItems(itemStacks).register();
     }

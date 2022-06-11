@@ -22,11 +22,19 @@ public interface CooldownItem extends ItemAttribute {
      */
     int getCooldown();
 
+    default void setCooldown(@Nonnull ItemStack itemStack) {
+        Validate.notNull(itemStack, "ItemStack should not be null");
+        Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
+
+        ItemMeta im = itemStack.getItemMeta();
+        PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
+        itemStack.setItemMeta(im);
+    }
+
     /**
      * This method checks if given {@link ItemStack} has cooled down.
      *
      * @param itemStack The {@link ItemStack} to be checked
-     *
      * @return if the item can be used now
      */
     default boolean isCooldown(@Nonnull ItemStack itemStack) {
@@ -42,15 +50,6 @@ public interface CooldownItem extends ItemAttribute {
         } else {
             return false;
         }
-    }
-
-    default void setCooldown(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        Validate.isTrue(itemStack.hasItemMeta(), "ItemMeta should not be null");
-
-        ItemMeta im = itemStack.getItemMeta();
-        PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
-        itemStack.setItemMeta(im);
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {

@@ -33,7 +33,6 @@ public interface CostHungerItem extends ItemAttribute {
      * This method will check whether {@link Player}'s food level is sufficient to cost.
      *
      * @param p the {@link Player} that uses the item
-     *
      * @return if player has enough hunger
      */
     default boolean checkHunger(Player p) {
@@ -46,18 +45,17 @@ public interface CostHungerItem extends ItemAttribute {
 
     /**
      * This method will cost hunger of a {@link Player}.
-     *
+     * <p>
      * It will call {@link FoodLevelChangeEvent} and cost {@link Player}'s
      * hunger if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled.
      *
      * @param p the {@link Player} that uses the item
-     *
      * @return if player has reduced enough hunger
      */
     default boolean costHunger(Player p) {
         if (checkHunger(p)) {
-            return Utils.changeFoodLevel(p,p.getFoodLevel() - getHungerCost());
+            return Utils.changeFoodLevel(p, p.getFoodLevel() - getHungerCost());
         } else {
             return false;
         }

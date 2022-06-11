@@ -25,10 +25,9 @@ public final class AppraiseResult {
     /**
      * This method adds an appraised attribute to result
      *
-     * @param attribute The {@link AppraiseAttribute}
-     * @param value The value of the attribute
+     * @param attribute  The {@link AppraiseAttribute}
+     * @param value      The value of the attribute
      * @param percentage The weight of the attribute
-     *
      * @return The {@link AppraiseResult}
      */
     @Nonnull

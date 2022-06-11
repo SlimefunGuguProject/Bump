@@ -51,7 +51,7 @@ public final class ItemsSetup {
                 BumpItems.OLD_COIN, BumpItems.UPDATE_POWER, BumpItems.OLD_COIN
             }
         ).register(plugin);
-        
+
         new SlimefunItem(
             BumpItemGroups.ARMOR,
             BumpItems.RANDOM_HORSE_ARMOR,

@@ -41,7 +41,8 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
         addItemSetting(cooldownInSeconds);
     }
 
-    public @Nonnull ItemSetting<Integer> getHungerCostSetting() {
+    @Nonnull
+    public ItemSetting<Integer> getHungerCostSetting() {
         return hungerCost;
     }
 
@@ -52,7 +53,7 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
     /**
      * This function is called when player use this sword
      *
-     * @param p         the {@link Player} that uses this sword
+     * @param p     the {@link Player} that uses this sword
      * @param sword the {@link ItemStack} of this sword
      */
     public abstract void onItemUse(Player p, ItemStack sword);

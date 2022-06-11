@@ -30,7 +30,6 @@ public final class AppraiseUtils {
      * which means it can be used in appraisal instrument
      *
      * @param itemStack if the {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is marked as appraisable
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
@@ -74,7 +73,6 @@ public final class AppraiseUtils {
      * Check if the {@link ItemStack} is appraised
      *
      * @param itemStack the {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
