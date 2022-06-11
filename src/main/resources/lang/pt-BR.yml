@@ -117,7 +117,7 @@ items:
       - "&b&k|&b- Sprite? ou Coca-Cola?"
       - ""
   peach_wood:
-    name: "&eMadeira de Pêssego"
+    name: "&eMadeira de Mogno"
     lore:
       - ""
       - "&b&k|&b- Refúgio de espíritos malignos"
@@ -142,7 +142,7 @@ items:
       - "&b&k|&b- Muito caro, certifique-se de mantê-lo..."
       - ""
   appraisal_paper_damage:
-    name: "&eIdentificador de qualidade da arma"
+    name: "&eIdentificador de Qualidade da Arma"
     lore:
       - ""
       - "&b&k|&b- Um atributo de ataque aleatório para um determinado item!"
@@ -184,7 +184,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oComo está minha sorte..."
-      - "&b&k|&b- &e&oO avaliador &7&aleatoriamente dá este atributo..."
+      - "&b&k|&b- &e&oO avaliador &7&oaleatoriamente dá este atributo..."
   guard_sword:
     name: "&6Espada do Guardião"
     lore:
@@ -192,7 +192,7 @@ items:
       - "&b&k|&b- &7&oEu vou te guardar até o último momento da vida"
       - ""
   peach_sword:
-    name: "&6Espada de madeira de pêssego"
+    name: "&6Espada de Madeira de Mogno"
     lore:
       - ""
       - "&b&k|&b- &7&oHomenagem ao clássico filme de zumbi..."
@@ -237,7 +237,7 @@ researches:
   stuff: "Itens mágicos"
   old_stuff: "Obtendo ouro"
   bow: "Carregar arcos"
-  peach_sword: "Espada de pêssego"
+  peach_sword: "Espada de mogno"
   normal_sword: "Espada normal"
   soul_sword: "Espada da Alma"
   sky_devil: "Céu ou Demônio"
