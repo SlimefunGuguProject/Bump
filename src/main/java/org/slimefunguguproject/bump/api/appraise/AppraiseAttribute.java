@@ -3,7 +3,6 @@ package org.slimefunguguproject.bump.api.appraise;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * This class represents a single {@link Attribute} with range.

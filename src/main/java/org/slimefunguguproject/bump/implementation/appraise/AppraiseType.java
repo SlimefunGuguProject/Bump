@@ -1,7 +1,7 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
-import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import com.google.common.base.Preconditions;
+import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 import org.slimefunguguproject.bump.utils.BumpTag;

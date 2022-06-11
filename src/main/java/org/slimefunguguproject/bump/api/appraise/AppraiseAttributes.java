@@ -1,8 +1,8 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
-import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;

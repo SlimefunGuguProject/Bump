@@ -1,12 +1,12 @@
 package org.slimefunguguproject.bump.core.services;
 
+import com.google.common.base.Preconditions;
 import net.guizhanss.guizhanlib.localization.Localization;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
-import com.google.common.base.Preconditions;
 import org.bukkit.entity.Player;
 import org.slimefunguguproject.bump.implementation.Bump;
 
