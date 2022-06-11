@@ -15,21 +15,8 @@ record AppraiseAttribute(Attribute attribute, double min, double max) {
     @Override
     @Nonnull
     public String toString() {
-        return "Attribute = " + attribute
-            + "[" + min + " - " + max + "]";
-    }
-
-    @Nonnull
-    public Attribute getAttribute() {
-        return attribute;
-    }
-
-    public double getMin() {
-        return min;
-    }
-
-    public double getMax() {
-        return max;
+        return "Attribute[" + attribute
+            + ", " + min + " - " + max + "]";
     }
 
     public double getPercent(double val) {

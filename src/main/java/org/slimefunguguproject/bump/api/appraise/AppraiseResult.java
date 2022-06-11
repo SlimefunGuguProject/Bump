@@ -86,7 +86,7 @@ public final class AppraiseResult {
         Preconditions.checkNotNull(meta, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
-            Attribute attr = entry.getKey().getAttribute();
+            Attribute attr = entry.getKey().attribute();
             meta.addAttributeModifier(attr,
                 new AttributeModifier(UUID.randomUUID(), attr.name(), entry.getValue(), AppraiseUtils.getOperation(attr), slot)
             );

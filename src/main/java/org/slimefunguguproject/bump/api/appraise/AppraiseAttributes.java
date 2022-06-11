@@ -115,7 +115,7 @@ public final class AppraiseAttributes {
 
         for (Pair<AppraiseAttribute, Double> pair : attributes) {
             AppraiseAttribute attr = pair.getFirstValue();
-            double val = RandomUtil.randomDouble(attr.getMin(), attr.getMax());
+            double val = RandomUtil.randomDouble(attr.min(), attr.max());
             result.add(attr, val, pair.getSecondValue());
         }
 
