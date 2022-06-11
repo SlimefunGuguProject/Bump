@@ -272,7 +272,7 @@ messages:
       activate: "&b&k|&b- &7&o魔殺と天滅、正義をもたらす！"
       end: "&b&k|&b- &7&o強化の時間は終了した！"
     light_bow: "&b&k|&b- &7&o天罰！"
-    wither_skull_bow: "&b&k|&b- &7&oウィザー！"
+    wither_skull_bow: "&b&k|&b- &7&o衰弱！"
   machine:
     appraisal:
       invalid: "&cこのアイテムはまだ鑑定されていない！"
