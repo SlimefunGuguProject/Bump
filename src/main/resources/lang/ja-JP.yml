@@ -245,6 +245,7 @@ messages:
   no-input: "&cアイテムを入れてください。"
   output-no-space: "&c出力の空間が足りない！"
   not-enough-power: "&cエネルギーが足りない！"
+  stacked: "&c積み重ねたものは使えません"
   food:
     xuebi: "&b&k|&b- &7&o涼しい夏！"
     kele: "&b&k|&b- &7&oデブオタクの勝利！"
