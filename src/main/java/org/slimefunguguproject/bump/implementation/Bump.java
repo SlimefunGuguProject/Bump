@@ -1,6 +1,5 @@
 package org.slimefunguguproject.bump.implementation;
 
-import net.guizhanss.guizhanlib.bstats.bukkit.Metrics;
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
@@ -50,14 +49,18 @@ public final class Bump extends AbstractAddon {
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
         // config
+        // TODO: move this to config manager
         AddonConfig config = getAddonConfig();
-        Configuration defaultConfig = config.getDefaults();
-        for (String key : defaultConfig.getKeys(true)) {
-            if (!config.contains(key)) {
-                config.set(key, defaultConfig.get(key));
+        if (config.getInt("version", 1) < 2) {
+            Configuration defaultConfig = config.getDefaults();
+            for (String key : defaultConfig.getKeys(true)) {
+                if (!config.contains(key)) {
+                    config.set(key, defaultConfig.get(key));
+                }
             }
+            config.set("version", 2);
+            config.save();
         }
-        config.save();
 
         // localization
         lang = config.getString("options.lang", "en-US");

@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.utils;
 
+import com.google.common.base.Preconditions;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Material;
@@ -37,9 +38,8 @@ public class Utils {
      * food level if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled
      *
-     * @param p the {@link Player} that food level will be changed
+     * @param p     the {@link Player} that food level will be changed
      * @param level the target food level
-     *
      * @return if the food level is changed
      */
     public static boolean setFoodLevel(Player p, int level) {
@@ -62,10 +62,10 @@ public class Utils {
      * Get a {@link String} of consecutive stars
      *
      * @param n the number of stars
-     *
      * @return {@link String} of consecutive stars
      */
-    public static @Nonnull String getStars(int n) {
+    @Nonnull
+    public static String getStars(int n) {
         StringBuilder builder = new StringBuilder();
         while (n > 0) {
             builder.append("⭐");
@@ -78,10 +78,15 @@ public class Utils {
      * Just a simple null check wrapper
      *
      * @param itemStack The {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is valid
      */
     public static boolean validateItem(@Nullable ItemStack itemStack) {
-        return itemStack != null && itemStack.getType() != Material.AIR;
+        try {
+            Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
+            Preconditions.checkArgument(itemStack.getType() != Material.AIR, "ItemStack should not be empty");
+            return true;
+        } catch (IllegalArgumentException ex) {
+            return false;
+        }
     }
 }

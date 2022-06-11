@@ -1,8 +1,8 @@
 package org.slimefunguguproject.bump.utils;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
-import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
@@ -30,7 +30,6 @@ public final class AppraiseUtils {
      * which means it can be used in appraisal instrument
      *
      * @param itemStack if the {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is marked as appraisable
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
@@ -74,7 +73,6 @@ public final class AppraiseUtils {
      * Check if the {@link ItemStack} is appraised
      *
      * @param itemStack the {@link ItemStack} to be checked
-     *
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
@@ -87,14 +85,11 @@ public final class AppraiseUtils {
 
     @Nonnull
     public static AttributeModifier.Operation getOperation(@Nonnull Attribute attribute) {
-        Validate.notNull(attribute, "Attribute should not be null");
+        Preconditions.checkNotNull(attribute, "Attribute should not be null");
 
-        switch (attribute) {
-            case GENERIC_MOVEMENT_SPEED:
-            case HORSE_JUMP_STRENGTH:
-                return AttributeModifier.Operation.ADD_SCALAR;
-            default:
-                return AttributeModifier.Operation.ADD_NUMBER;
-        }
+        return switch (attribute) {
+            case GENERIC_MOVEMENT_SPEED, HORSE_JUMP_STRENGTH -> AttributeModifier.Operation.ADD_SCALAR;
+            default -> AttributeModifier.Operation.ADD_NUMBER;
+        };
     }
 }

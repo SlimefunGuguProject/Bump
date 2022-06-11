@@ -25,11 +25,10 @@ import javax.annotation.Nonnull;
 
 /**
  * This implements the {@link AppraisalInstrument appraisal instrument}.
- *
+ * <p>
  * It will cost energy and appraise any equipment with appraisable tag.
  *
  * @author ybw0014
- *
  * @see org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper
  */
 public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent {
@@ -57,6 +56,10 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
             BumpItems.MECHA_GEAR, BumpItems.CPU, BumpItems.MECHA_GEAR,
             SlimefunItems.ADVANCED_CIRCUIT_BOARD, SlimefunItems.COOLING_UNIT, SlimefunItems.ADVANCED_CIRCUIT_BOARD
         });
+    }
+
+    public static int getEnergyConsumption() {
+        return ENERGY_CONSUMPTION;
     }
 
     @Override
@@ -147,10 +150,6 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HELMET, itemStack, false)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HORSE_ARMOR, itemStack, false)
             || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_SWORD, itemStack, false);
-    }
-
-    public static int getEnergyConsumption() {
-        return ENERGY_CONSUMPTION;
     }
 
     @Nonnull

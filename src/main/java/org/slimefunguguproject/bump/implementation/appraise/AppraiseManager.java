@@ -2,8 +2,6 @@ package org.slimefunguguproject.bump.implementation.appraise;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
-import org.apache.commons.lang.Validate;
-import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -71,12 +69,10 @@ public final class AppraiseManager {
      * This method applies the {@link AppraiseResult appraisal result} to {@link ItemStack}.
      *
      * @param itemStack The {@link ItemStack} to be appraised
-     *
      * @return If the item is appraised
      */
     public boolean appraiseItem(@Nonnull ItemStack itemStack) {
-        Validate.notNull(itemStack, "ItemStack should not be null");
-        if (itemStack.getType() == Material.AIR) {
+        if (!Utils.validateItem(itemStack)) {
             throw new IllegalArgumentException("ItemStack should not be empty");
         }
 
@@ -124,7 +120,6 @@ public final class AppraiseManager {
      * Purge appraisal result (all attribute modifiers).
      *
      * @param itemStack The {@link ItemStack} to be handled.
-     *
      * @return If the purge process succeeds.
      */
     public boolean clearAttributes(@Nonnull ItemStack itemStack) {

@@ -1,11 +1,14 @@
 package org.slimefunguguproject.bump.core.attributes;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 import org.slimefunguguproject.bump.utils.Utils;
+
+import javax.annotation.Nonnull;
 
 /**
  * This {@link ItemAttribute} indicates that the item will cost hunger when using.
@@ -33,10 +36,11 @@ public interface CostHungerItem extends ItemAttribute {
      * This method will check whether {@link Player}'s food level is sufficient to cost.
      *
      * @param p the {@link Player} that uses the item
-     *
      * @return if player has enough hunger
      */
-    default boolean checkHunger(Player p) {
+    default boolean checkHunger(@Nonnull Player p) {
+        Preconditions.checkNotNull(p, "player cannot be null");
+
         if (p.getGameMode() != GameMode.CREATIVE) {
             return p.getFoodLevel() >= getHungerCost();
         } else {
@@ -46,18 +50,19 @@ public interface CostHungerItem extends ItemAttribute {
 
     /**
      * This method will cost hunger of a {@link Player}.
-     *
+     * <p>
      * It will call {@link FoodLevelChangeEvent} and cost {@link Player}'s
      * hunger if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled.
      *
      * @param p the {@link Player} that uses the item
-     *
      * @return if player has reduced enough hunger
      */
-    default boolean costHunger(Player p) {
+    default boolean costHunger(@Nonnull Player p) {
+        Preconditions.checkNotNull(p, "player cannot be null");
+
         if (checkHunger(p)) {
-            return Utils.setFoodLevel(p,p.getFoodLevel() - getHungerCost());
+            return Utils.setFoodLevel(p, p.getFoodLevel() - getHungerCost());
         } else {
             return false;
         }

@@ -140,7 +140,7 @@ public class AppraisalPaper extends LimitedUseItem {
                     - has not been appraised yet
                     - has not been marked appraisable yet
                  */
-                if (appraiseType.isValidMaterial(input.getType(), sfItem != null)){
+                if (appraiseType.isValidMaterial(input.getType(), sfItem != null)) {
                     if (!AppraiseUtils.isAppraised(input)
                         && !AppraiseUtils.isAppraisable(input)) {
                         // item can be marked appraisable

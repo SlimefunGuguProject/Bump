@@ -1,45 +1,26 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import com.google.common.base.Preconditions;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * This class represents a single {@link Attribute} with range.
  *
  * @author ybw0014
  */
-final class AppraiseAttribute {
-    private final Attribute attribute;
-    private final double min;
-    private final double max;
+record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
 
-    @ParametersAreNonnullByDefault
-    public AppraiseAttribute(Attribute attribute, double min, double max) {
-        this.attribute = attribute;
-        this.min = min;
-        this.max = max;
+    AppraiseAttribute {
+        Preconditions.checkNotNull(attribute, "Attribute cannot be null");
     }
 
     @Override
     @Nonnull
     public String toString() {
-        return "Attribute = " + attribute
-            + "[" + min + " - " + max + "]";
-    }
-
-    @Nonnull
-    public Attribute getAttribute() {
-        return attribute;
-    }
-
-    public double getMin() {
-        return min;
-    }
-
-    public double getMax() {
-        return max;
+        return "Attribute[" + attribute
+            + ", " + min + " - " + max + "]";
     }
 
     public double getPercent(double val) {

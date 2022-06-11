@@ -1,5 +1,6 @@
 package org.slimefunguguproject.bump.implementation.items.weapons;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -7,7 +8,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import org.apache.commons.lang.Validate;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.core.attributes.CostHungerItem;
 import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
@@ -23,8 +23,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
  */
 public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implements DamageableItem, CostHungerItem {
 
-    private final ItemSetting<Boolean> costDurability = new ItemSetting<>(this, "cost-durability", true);
     protected final IntRangeSetting hungerCost;
+    private final ItemSetting<Boolean> costDurability = new ItemSetting<>(this, "cost-durability", true);
 
     @ParametersAreNonnullByDefault
     protected BumpBow(int hunger, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
@@ -34,7 +34,7 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
         addItemSetting(costDurability);
 
         // hunger cost
-        Validate.isTrue(hunger >= 0 && hunger <= 20, "Hunger cost must be between 0 and 20");
+        Preconditions.checkArgument(hunger >= 0 && hunger <= 20, "Hunger cost must be between 0 and 20");
         hungerCost = new IntRangeSetting(this, "hunger-cost", 0, hunger, 20);
         addItemSetting(hungerCost);
     }
@@ -44,7 +44,8 @@ public abstract class BumpBow extends SimpleSlimefunItem<BowUseHandler> implemen
         return costDurability.getValue();
     }
 
-    public @Nonnull ItemSetting<Integer> getHungerCostSetting() {
+    @Nonnull
+    public ItemSetting<Integer> getHungerCostSetting() {
         return hungerCost;
     }
 }

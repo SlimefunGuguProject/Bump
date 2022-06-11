@@ -12,18 +12,17 @@ import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
  * This {@link Listener} will call {@link BowUseHandler}
  * when {@link Player} fires with a bow.
  *
- * @see BowUseHandler
- *
  * @author ybw0014
+ * @see BowUseHandler
  */
 public final class BowShootListener implements Listener {
     @EventHandler
     public void onBowUse(EntityShootBowEvent e) {
-        if (e.getEntity() instanceof Player && e.getProjectile() instanceof Arrow) {
+        if (e.getEntity() instanceof Player player && e.getProjectile() instanceof Arrow) {
             SlimefunItem bow = SlimefunItem.getByItem(e.getBow());
 
             if (bow != null) {
-                bow.callItemHandler(BowUseHandler.class, handler -> handler.onUse(e, (Player) e.getEntity(), e.getBow()));
+                bow.callItemHandler(BowUseHandler.class, handler -> handler.onUse(e, player, e.getBow()));
             }
         }
     }

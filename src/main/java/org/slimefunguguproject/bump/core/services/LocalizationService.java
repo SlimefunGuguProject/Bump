@@ -1,12 +1,12 @@
 package org.slimefunguguproject.bump.core.services;
 
+import com.google.common.base.Preconditions;
 import net.guizhanss.guizhanlib.localization.Localization;
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
 import net.md_5.bungee.api.chat.TextComponent;
-import org.apache.commons.lang.Validate;
 import org.bukkit.entity.Player;
 import org.slimefunguguproject.bump.implementation.Bump;
 
@@ -33,44 +33,44 @@ public final class LocalizationService extends Localization {
 
     @Nonnull
     public String getCategoryName(@Nonnull String categoryId) {
-        Validate.notNull(categoryId, "Category Id cannot be null");
+        Preconditions.checkNotNull(categoryId, "Category Id cannot be null");
 
         return getString("categories." + StringUtil.dehumanize(categoryId).toLowerCase(Locale.ROOT));
     }
 
     @Nonnull
     public String getItemName(@Nonnull String itemId) {
-        Validate.notNull(itemId, "Item Id cannot be null");
+        Preconditions.checkNotNull(itemId, "Item Id cannot be null");
 
         return getString("items." + StringUtil.dehumanize(itemId).toLowerCase(Locale.ROOT) + ".name");
     }
 
     @Nonnull
     public String[] getItemLore(@Nonnull String itemId) {
-        Validate.notNull(itemId, "Item Id cannot be null");
+        Preconditions.checkNotNull(itemId, "Item Id cannot be null");
 
         return getStringArray("items." + StringUtil.dehumanize(itemId).toLowerCase(Locale.ROOT) + ".lore");
     }
 
     @Nonnull
     public String getResearchName(@Nonnull String researchId) {
-        Validate.notNull(researchId, "Research Id cannot be null");
+        Preconditions.checkNotNull(researchId, "Research Id cannot be null");
 
         return getString("researches." + StringUtil.dehumanize(researchId).toLowerCase(Locale.ROOT));
     }
 
     @ParametersAreNonnullByDefault
     public void sendMessage(Player p, String messageKey, Object... args) {
-        Validate.notNull(p, "Player cannot be null");
-        Validate.notNull(messageKey, "Message key cannot be null");
+        Preconditions.checkNotNull(p, "Player cannot be null");
+        Preconditions.checkNotNull(messageKey, "Message key cannot be null");
 
         ChatUtil.send(p, MessageFormat.format(getString("messages." + messageKey), args));
     }
 
     @ParametersAreNonnullByDefault
     public void sendActionbarMessage(Player p, String messageKey, Object... args) {
-        Validate.notNull(p, "Player cannot be null");
-        Validate.notNull(messageKey, "Message key cannot be null");
+        Preconditions.checkNotNull(p, "Player cannot be null");
+        Preconditions.checkNotNull(messageKey, "Message key cannot be null");
 
         String message = MessageFormat.format(getString("messages." + messageKey), args);
 

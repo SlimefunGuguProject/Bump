@@ -1,9 +1,9 @@
 package org.slimefunguguproject.bump.implementation.tasks;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import net.guizhanss.guizhanlib.common.Scheduler;
-import org.apache.commons.lang.Validate;
 import org.bukkit.entity.WitherSkull;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
@@ -33,23 +33,6 @@ public final class WitherSkullBowTask implements Runnable {
         this.duration = duration;
     }
 
-    @Override
-    public void run() {
-        int currentTick = Bump.getSlimefunTickCount();
-
-        Iterator<Map.Entry<WitherSkull, Integer>> it = skullSpawnMap.entrySet().iterator();
-        while (it.hasNext()) {
-            Map.Entry<WitherSkull, Integer> entry = it.next();
-            if (entry.getValue() + duration < currentTick) {
-                WitherSkull skull = entry.getKey();
-                if (skull.isValid()) {
-                    skull.remove();
-                }
-                it.remove();
-            }
-        }
-    }
-
     /**
      * This method starts this task
      */
@@ -70,8 +53,25 @@ public final class WitherSkullBowTask implements Runnable {
      * @param skull the {@link WitherSkull} to be added.
      */
     public static void track(@Nonnull WitherSkull skull) {
-        Validate.notNull(skull, "Wither skull should not be null. How?");
+        Preconditions.checkNotNull(skull, "Wither skull should not be null. How?");
         instance.trackSkull(skull);
+    }
+
+    @Override
+    public void run() {
+        int currentTick = Bump.getSlimefunTickCount();
+
+        Iterator<Map.Entry<WitherSkull, Integer>> it = skullSpawnMap.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry<WitherSkull, Integer> entry = it.next();
+            if (entry.getValue() + duration < currentTick) {
+                WitherSkull skull = entry.getKey();
+                if (skull.isValid()) {
+                    skull.remove();
+                }
+                it.remove();
+            }
+        }
     }
 
     private void trackSkull(WitherSkull skull) {

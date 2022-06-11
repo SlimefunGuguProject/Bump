@@ -1,8 +1,8 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import com.google.common.base.Preconditions;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
-import org.apache.commons.lang.Validate;
 import org.bukkit.attribute.Attribute;
 
 import javax.annotation.Nonnull;
@@ -12,7 +12,7 @@ import java.util.Set;
 
 /**
  * This class hold all appraisal attributes used in appraising.
- *
+ * <p>
  * Must add attributes first, and call build().
  *
  * @author ybw0014
@@ -30,11 +30,10 @@ public final class AppraiseAttributes {
      * This method adds an attribute.
      *
      * @param attribute The {@link Attribute} to be changed
-     * @param min The minimum value of attribute
-     * @param max The maximum value of attribute
-     * @param weight The weight used to calculate overall star rate
-     *                   (between 0 and 100, -1 means dividing remaining weight)
-     *
+     * @param min       The minimum value of attribute
+     * @param max       The maximum value of attribute
+     * @param weight    The weight used to calculate overall star rate
+     *                  (between 0 and 100, -1 means dividing remaining weight)
      * @return {@link AppraiseAttributes} itself
      */
     @ParametersAreNonnullByDefault
@@ -43,11 +42,11 @@ public final class AppraiseAttributes {
             throw new IllegalStateException("No longer accept new attributes");
         }
 
-        Validate.notNull(attribute, "Attribute cannot be null");
-        Validate.isTrue(min <= max, "The minimum value should less than or equal to maximum value");
-        Validate.isTrue(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
+        Preconditions.checkNotNull(attribute, "Attribute cannot be null");
+        Preconditions.checkArgument(min <= max, "The minimum value should less than or equal to maximum value");
+        Preconditions.checkArgument(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
         if (weight != -1) {
-            Validate.isTrue(usedPercentage + weight <= 100, "The overall weight exceeds 100");
+            Preconditions.checkArgument(usedPercentage + weight <= 100, "The overall weight exceeds 100");
         }
 
         AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max);
@@ -65,9 +64,8 @@ public final class AppraiseAttributes {
      * This method adds an attribute, without weight.
      *
      * @param attribute The attribute to be changed
-     * @param min The minimum value of attribute
-     * @param max The maximum value of attribute
-     *
+     * @param min       The minimum value of attribute
+     * @param max       The maximum value of attribute
      * @return {@link AppraiseAttributes} itself
      */
     @ParametersAreNonnullByDefault
@@ -78,7 +76,7 @@ public final class AppraiseAttributes {
     /**
      * This method will calculate the attributes without weight,
      * and divide the remaining overall weight.
-     *
+     * <p>
      * Also, it will mark {@link AppraiseAttributes} no longer accept new attributes.
      *
      * @return {@link AppraiseAttributes} itself
@@ -117,7 +115,7 @@ public final class AppraiseAttributes {
 
         for (Pair<AppraiseAttribute, Double> pair : attributes) {
             AppraiseAttribute attr = pair.getFirstValue();
-            double val = RandomUtil.randomDouble(attr.getMin(), attr.getMax());
+            double val = RandomUtil.randomDouble(attr.min(), attr.max());
             result.add(attr, val, pair.getSecondValue());
         }
 

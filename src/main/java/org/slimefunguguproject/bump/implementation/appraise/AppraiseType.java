@@ -1,7 +1,7 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
+import com.google.common.base.Preconditions;
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
-import org.apache.commons.lang.Validate;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 import org.slimefunguguproject.bump.utils.BumpTag;
@@ -68,51 +68,15 @@ public enum AppraiseType {
     }
 
     /**
-     * Check if the given {@link Material} is valid.
-     *
-     * @param type The {@link Material} to be checked
-     *
-     * @return If the given {@link Material} is valid
-     */
-    public abstract boolean isValidMaterial(@Nonnull Material type);
-
-    /**
-     * Get the {@link EquipmentSlot} for appraisal to be applied to.
-     *
-     * @param type The {@link Material} of appraisal equipment
-     *
-     * @return The target {@link EquipmentSlot}
-     */
-    public abstract EquipmentSlot getEquipmentSlot(@Nonnull Material type);
-
-    /**
-     * Check if the given {@link Material} is valid, with SlimefunItem check.
-     *
-     * @param material the {@link Material} to be checked
-     * @param isSlimefunItem if the item is SlimefunItem
-     *
-     * @return If the given {@link Material} is valid
-     */
-    public boolean isValidMaterial(@Nonnull Material material, boolean isSlimefunItem) {
-        if (isValidMaterial(material)) {
-            return allowVanillaItems || isSlimefunItem;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * Get the {@link AppraiseType} from given {@link Material}.
      *
      * @param material The {@link Material}
-     *
      * @return Appropriate {@link AppraiseType}
-     *
      * @throws IllegalArgumentException when given material is invalid.
      */
     @Nonnull
     public static AppraiseType getFromMaterial(@Nonnull Material material) {
-        Validate.notNull(material, "Material should not be null");
+        Preconditions.checkNotNull(material, "Material should not be null");
 
         for (AppraiseType type : AppraiseType.values()) {
             if (type.isValidMaterial(material)) {
@@ -121,5 +85,36 @@ public enum AppraiseType {
         }
 
         throw new IllegalArgumentException("Invalid material");
+    }
+
+    /**
+     * Check if the given {@link Material} is valid.
+     *
+     * @param type The {@link Material} to be checked
+     * @return If the given {@link Material} is valid
+     */
+    public abstract boolean isValidMaterial(@Nonnull Material type);
+
+    /**
+     * Get the {@link EquipmentSlot} for appraisal to be applied to.
+     *
+     * @param type The {@link Material} of appraisal equipment
+     * @return The target {@link EquipmentSlot}
+     */
+    public abstract EquipmentSlot getEquipmentSlot(@Nonnull Material type);
+
+    /**
+     * Check if the given {@link Material} is valid, with SlimefunItem check.
+     *
+     * @param material       the {@link Material} to be checked
+     * @param isSlimefunItem if the item is SlimefunItem
+     * @return If the given {@link Material} is valid
+     */
+    public boolean isValidMaterial(@Nonnull Material material, boolean isSlimefunItem) {
+        if (isValidMaterial(material)) {
+            return allowVanillaItems || isSlimefunItem;
+        } else {
+            return false;
+        }
     }
 }

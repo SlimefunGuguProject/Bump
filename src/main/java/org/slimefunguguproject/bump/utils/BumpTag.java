@@ -94,7 +94,6 @@ public enum BumpTag {
      * This method returns if given {@link Material} is tagged.
      *
      * @param type the {@link Material} to be determined
-     *
      * @return if given {@link Material} is tagged
      */
     public abstract boolean isTagged(@Nonnull Material type);
@@ -103,7 +102,6 @@ public enum BumpTag {
      * This method returns if given {@link ItemStack} is tagged.
      *
      * @param itemStack the {@link ItemStack} to be determined
-     *
      * @return if given {@link ItemStack} is tagged
      */
     public boolean isTagged(@Nonnull ItemStack itemStack) {
