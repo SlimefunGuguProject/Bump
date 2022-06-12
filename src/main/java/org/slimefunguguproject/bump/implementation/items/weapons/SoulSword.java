@@ -1,8 +1,7 @@
 package org.slimefunguguproject.bump.implementation.items.weapons;
 
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -12,7 +11,9 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import org.slimefunguguproject.bump.utils.Utils;
 
-import javax.annotation.Nonnull;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 
 /**
  * {@link SoulSword Soul sword} will convert hunger to health.

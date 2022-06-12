@@ -1,14 +1,16 @@
 package org.slimefunguguproject.bump.core.attributes;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Preconditions;
-import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.utils.Keys;
 import org.slimefunguguproject.bump.utils.Utils;
 
-import javax.annotation.Nonnull;
+import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 /**
  * This {@link ItemAttribute} indicates that this item has cooldown time.
@@ -54,7 +56,7 @@ public interface CooldownItem extends ItemAttribute {
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {
-        Preconditions.checkNotNull(itemStack, "ItemStack should not be null");
+        Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
 
         if (Utils.validateItem(itemStack)) {
             if (isCooldown(itemStack)) {

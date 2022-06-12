@@ -1,9 +1,10 @@
 package org.slimefunguguproject.bump.utils;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.implementation.Bump;
+
+import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
 /**
  * Some GUI items.

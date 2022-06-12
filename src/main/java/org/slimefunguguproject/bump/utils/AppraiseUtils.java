@@ -1,17 +1,21 @@
 package org.slimefunguguproject.bump.utils;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Preconditions;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-import net.guizhanss.guizhanlib.utils.ChatUtil;
+
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.implementation.Bump;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.List;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+
+import net.guizhanss.guizhanlib.utils.ChatUtil;
 
 /**
  * Utility methods for appraise
@@ -85,7 +89,7 @@ public final class AppraiseUtils {
 
     @Nonnull
     public static AttributeModifier.Operation getOperation(@Nonnull Attribute attribute) {
-        Preconditions.checkNotNull(attribute, "Attribute should not be null");
+        Preconditions.checkArgument(attribute != null, "Attribute should not be null");
 
         return switch (attribute) {
             case GENERIC_MOVEMENT_SPEED, HORSE_JUMP_STRENGTH -> AttributeModifier.Operation.ADD_SCALAR;

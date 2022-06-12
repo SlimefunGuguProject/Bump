@@ -1,8 +1,7 @@
 package org.slimefunguguproject.bump.implementation;
 
-import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
-import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
-import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+import javax.annotation.Nonnull;
+
 import org.bukkit.configuration.Configuration;
 import org.slimefunguguproject.bump.core.services.LocalizationService;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
@@ -11,7 +10,9 @@ import org.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import org.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
 
-import javax.annotation.Nonnull;
+import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
+import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
+import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
 /**
  * Main class for {@link Bump}.

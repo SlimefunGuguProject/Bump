@@ -1,14 +1,18 @@
 package org.slimefunguguproject.bump.api.appraise;
 
-import com.google.common.base.Preconditions;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
-import net.guizhanss.guizhanlib.utils.RandomUtil;
-import org.bukkit.attribute.Attribute;
+import java.util.LinkedHashSet;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.LinkedHashSet;
-import java.util.Set;
+
+import com.google.common.base.Preconditions;
+
+import org.bukkit.attribute.Attribute;
+
+import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+
+import net.guizhanss.guizhanlib.utils.RandomUtil;
 
 /**
  * This class hold all appraisal attributes used in appraising.
@@ -42,7 +46,7 @@ public final class AppraiseAttributes {
             throw new IllegalStateException("No longer accept new attributes");
         }
 
-        Preconditions.checkNotNull(attribute, "Attribute cannot be null");
+        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
         Preconditions.checkArgument(min <= max, "The minimum value should less than or equal to maximum value");
         Preconditions.checkArgument(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
         if (weight != -1) {

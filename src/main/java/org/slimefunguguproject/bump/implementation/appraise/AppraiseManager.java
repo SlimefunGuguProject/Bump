@@ -1,7 +1,13 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-import net.guizhanss.guizhanlib.utils.ChatUtil;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.logging.Level;
+
+import javax.annotation.Nonnull;
+
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
@@ -11,12 +17,9 @@ import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.utils.Keys;
 import org.slimefunguguproject.bump.utils.Utils;
 
-import javax.annotation.Nonnull;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.logging.Level;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+
+import net.guizhanss.guizhanlib.utils.ChatUtil;
 
 /**
  * The {@link AppraiseManager} hold all {@link AppraiseAttributes} for each equipment.

@@ -1,6 +1,15 @@
 package org.slimefunguguproject.bump.implementation.items.weapons;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.common.base.Preconditions;
+
+import org.bukkit.inventory.ItemStack;
+import org.slimefunguguproject.bump.core.attributes.CostHungerItem;
+import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
+import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -8,13 +17,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.DamageableItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import org.bukkit.inventory.ItemStack;
-import org.slimefunguguproject.bump.core.attributes.CostHungerItem;
-import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
-import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * A {@link BumpBow} is a {@link SlimefunItem} which has an {@link ItemSetting} of damageable

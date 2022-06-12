@@ -1,17 +1,19 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.common.base.Preconditions;
+
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.meta.ItemMeta;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
 
 /**
  * An {@link AppraiseResult} represents an appraisal result.
@@ -83,7 +85,7 @@ public final class AppraiseResult {
      */
     @ParametersAreNonnullByDefault
     public void apply(ItemMeta meta, EquipmentSlot slot) {
-        Preconditions.checkNotNull(meta, "ItemMeta cannot be null");
+        Preconditions.checkArgument(meta != null, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
             Attribute attr = entry.getKey().attribute();

@@ -1,17 +1,19 @@
 package org.slimefunguguproject.bump.implementation.items.tools;
 
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
-import io.github.thebusybiscuit.slimefun4.core.handlers.ToolUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import net.guizhanss.guizhanlib.utils.RandomUtil;
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 
-import javax.annotation.Nonnull;
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.core.handlers.ToolUseHandler;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
+
+import net.guizhanss.guizhanlib.utils.RandomUtil;
 
 /**
  * A {@link GetgoldSpade getting-gold shovel} will give player old coin

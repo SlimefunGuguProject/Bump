@@ -1,11 +1,12 @@
 package org.slimefunguguproject.bump.implementation.setup;
 
+import org.bukkit.Material;
+import org.slimefunguguproject.bump.implementation.Bump;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
-import org.bukkit.Material;
-import org.slimefunguguproject.bump.implementation.Bump;
 
 /**
  * This class holds all {@link ItemGroup}s of Bump.

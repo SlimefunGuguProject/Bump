@@ -1,6 +1,5 @@
 package org.slimefunguguproject.bump.implementation.items.weapons;
 
-import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -9,6 +8,8 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+
+import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 /**
  * {@link SkyDevilSword Heaven-demon Crumble Sword} will fire 3 {@link DragonFireball dragon fireballs}
