@@ -1,9 +1,11 @@
 package org.slimefunguguproject.bump.implementation;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+
 import org.slimefunguguproject.bump.api.items.LocalizedItemStack;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import org.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
@@ -28,7 +30,7 @@ public class BumpItems {
     static{
         AppraiseUtils.setAppraisable(RANDOM_HELMET);
     }
-    
+
     public static final SlimefunItemStack RANDOM_HORSE_ARMOR = new LocalizedItemStack(
         "RANDOM_HORSE_ARMOR",
         Material.DIAMOND_HORSE_ARMOR
@@ -66,7 +68,7 @@ public class BumpItems {
         "KOUXIANGTANG",
         Material.SUGAR
     );
-    
+
     public static final SlimefunItemStack ZONGZI = new LocalizedItemStack(
         "ZONGZI",
         Material.GREEN_DYE

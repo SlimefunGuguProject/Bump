@@ -1,10 +1,12 @@
 package org.slimefunguguproject.bump.implementation.setup;
 
+import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
+
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
-import org.bukkit.Material;
-import org.bukkit.inventory.ItemStack;
+
 import org.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;

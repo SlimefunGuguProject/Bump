@@ -1,12 +1,15 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
+import javax.annotation.Nonnull;
+
 import com.google.common.base.Preconditions;
-import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
-import org.slimefunguguproject.bump.utils.BumpTag;
 
-import javax.annotation.Nonnull;
+import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
+
+import org.slimefunguguproject.bump.utils.BumpTag;
 
 /**
  * This enum holds all available appraisal types.
@@ -76,7 +79,7 @@ public enum AppraiseType {
      */
     @Nonnull
     public static AppraiseType getFromMaterial(@Nonnull Material material) {
-        Preconditions.checkNotNull(material, "Material should not be null");
+        Preconditions.checkArgument(material != null, "Material should not be null");
 
         for (AppraiseType type : AppraiseType.values()) {
             if (type.isValidMaterial(material)) {

@@ -1,5 +1,16 @@
 package org.slimefunguguproject.bump.implementation.items.tools;
 
+import java.util.List;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import org.bukkit.Material;
+import org.bukkit.Sound;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
+
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -10,23 +21,17 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
+
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
+
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.InventoryUtil;
-import org.bukkit.Material;
-import org.bukkit.Sound;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
+
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 import org.slimefunguguproject.bump.utils.GuiItems;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.List;
 
 /**
  * An {@link AppraisalPaper quality identifier} can mark available {@link ItemStack items}
@@ -85,99 +90,110 @@ public class AppraisalPaper extends LimitedUseItem {
             // Check old item
             renewOldItem(paperItemStack);
 
+            // Open menu
             ChestMenu menu = new ChestMenu(paperItemStack.getItemMeta().getDisplayName());
-            menu.setPlayerInventoryClickable(true);
-
-            // Setup menu
-            for (int i : BACKGROUND_SLOT) {
-                menu.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
-            }
-            for (int i : INPUT_BORDER) {
-                menu.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-            }
-            for (int i : OUTPUT_BORDER) {
-                menu.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
-            }
-
-            // Add status
-            menu.addItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)), ChestMenuUtils.getEmptyClickHandler());
-
-            // Add menu close handler
-            menu.addMenuCloseHandler((player) -> {
-                InventoryUtil.push(p, menu.getItemInSlot(INPUT_SLOT));
-                InventoryUtil.push(p, menu.getItemInSlot(OUTPUT_SLOT));
-            });
-
-            // Block Appraisal paper click
-            menu.addPlayerInventoryClickHandler((player, slot, item, action) -> {
-                SlimefunItem sfItem = SlimefunItem.getByItem(item);
-                return !(sfItem instanceof AppraisalPaper);
-            });
-
-            // Add appraise button handler
-            menu.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_PAPER, (player, slot, item, action) -> {
-                // Check input slot
-                ItemStack input = menu.getItemInSlot(INPUT_SLOT);
-                SlimefunItem sfItem = SlimefunItem.getByItem(input);
-
-                if (input == null) {
-                    Bump.getLocalization().sendMessage(p, "no-input");
-                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
-                    return false;
-                }
-
-                // Check output slot
-                if (menu.getItemInSlot(OUTPUT_SLOT) != null) {
-                    Bump.getLocalization().sendMessage(p, "output-no-space");
-                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
-                    return false;
-                }
-
-                /*
-                    Validate the item. The item that can be marked appraisable
-                    should meet these requirements:
-                    - matches the appraisal paper type
-                    - has not been appraised yet
-                    - has not been marked appraisable yet
-                 */
-                if (appraiseType.isValidMaterial(input.getType(), sfItem != null)) {
-                    if (!AppraiseUtils.isAppraised(input)
-                        && !AppraiseUtils.isAppraisable(input)) {
-                        // item can be marked appraisable
-                        ItemStack output = input.clone();
-                        AppraiseUtils.setAppraisable(output);
-                        menu.replaceExistingItem(INPUT_SLOT, null);
-                        menu.replaceExistingItem(OUTPUT_SLOT, output);
-
-                        damageItem(p, paperItemStack);
-
-                        /*
-                         * The paper is used up, should close the gui.
-                         * Otherwise, update the status slot.
-                         */
-                        if (paperItemStack.getType() == Material.AIR) {
-                            p.closeInventory();
-                        } else {
-                            menu.replaceExistingItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)));
-
-                            // play sound only if appraisal paper is not broken
-                            p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0F, 1.0F);
-                        }
-
-                        Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
-                    } else {
-                        Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
-                        p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
-                    }
-                } else {
-                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.mismatch");
-                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
-                }
-
-                return false;
-            });
-
+            createMenu(p, menu, paperItemStack);
             menu.open(p);
+        };
+    }
+
+    @ParametersAreNonnullByDefault
+    private void createMenu(Player p, ChestMenu menu, ItemStack paperItemStack) {
+        menu.setPlayerInventoryClickable(true);
+
+        // Setup menu
+        for (int i : BACKGROUND_SLOT) {
+            menu.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
+        }
+        for (int i : INPUT_BORDER) {
+            menu.addItem(i, ChestMenuUtils.getInputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+        for (int i : OUTPUT_BORDER) {
+            menu.addItem(i, ChestMenuUtils.getOutputSlotTexture(), ChestMenuUtils.getEmptyClickHandler());
+        }
+
+        // Add status
+        menu.addItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)), ChestMenuUtils.getEmptyClickHandler());
+
+        // Add menu close handler
+        menu.addMenuCloseHandler((player) -> {
+            InventoryUtil.push(p, menu.getItemInSlot(INPUT_SLOT));
+            InventoryUtil.push(p, menu.getItemInSlot(OUTPUT_SLOT));
+        });
+
+        // Block Appraisal paper click
+        menu.addPlayerInventoryClickHandler((player, slot, item, action) -> {
+            SlimefunItem sfItem = SlimefunItem.getByItem(item);
+            return !(sfItem instanceof AppraisalPaper);
+        });
+
+        // Add appraise button handler
+        menu.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_PAPER, getAppraiseButtonHandler(p, menu, paperItemStack));
+    }
+
+    @Nonnull
+    @ParametersAreNonnullByDefault
+    private ChestMenu.MenuClickHandler getAppraiseButtonHandler(Player p, ChestMenu menu, ItemStack paperItemStack) {
+        return (player, slot, item, action) -> {
+            // Check input slot
+            ItemStack input = menu.getItemInSlot(INPUT_SLOT);
+            SlimefunItem sfItem = SlimefunItem.getByItem(input);
+
+            if (input == null) {
+                Bump.getLocalization().sendMessage(p, "no-input");
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                return false;
+            }
+
+            // Check output slot
+            if (menu.getItemInSlot(OUTPUT_SLOT) != null) {
+                Bump.getLocalization().sendMessage(p, "output-no-space");
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                return false;
+            }
+
+            /*
+                Validate the item. The item that can be marked appraisable
+                should meet these requirements:
+                - matches the appraisal paper type
+                - has not been appraised yet
+                - has not been marked appraisable yet
+             */
+            if (appraiseType.isValidMaterial(input.getType(), sfItem != null)) {
+                if (!AppraiseUtils.isAppraised(input)
+                    && !AppraiseUtils.isAppraisable(input)) {
+                    // item can be marked appraisable
+                    ItemStack output = input.clone();
+                    AppraiseUtils.setAppraisable(output);
+                    menu.replaceExistingItem(INPUT_SLOT, null);
+                    menu.replaceExistingItem(OUTPUT_SLOT, output);
+
+                    damageItem(p, paperItemStack);
+
+                    /*
+                     * The paper is used up, should close the gui.
+                     * Otherwise, update the status slot.
+                     */
+                    if (paperItemStack.getType() == Material.AIR) {
+                        p.closeInventory();
+                    } else {
+                        menu.replaceExistingItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)));
+
+                        // play sound only if appraisal paper is not broken
+                        p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0F, 1.0F);
+                    }
+
+                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
+                } else {
+                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
+                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                }
+            } else {
+                Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.mismatch");
+                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+            }
+
+            return false;
         };
     }
 

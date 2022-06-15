@@ -1,6 +1,7 @@
 package org.slimefunguguproject.bump.utils;
 
 import org.bukkit.NamespacedKey;
+
 import org.slimefunguguproject.bump.implementation.Bump;
 
 /**

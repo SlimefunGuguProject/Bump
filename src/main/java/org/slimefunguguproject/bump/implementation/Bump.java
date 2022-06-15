@@ -1,17 +1,19 @@
 package org.slimefunguguproject.bump.implementation;
 
+import javax.annotation.Nonnull;
+
+import org.bukkit.configuration.Configuration;
+
 import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
-import org.bukkit.configuration.Configuration;
+
 import org.slimefunguguproject.bump.core.services.LocalizationService;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
 import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
 import org.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import org.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
-
-import javax.annotation.Nonnull;
 
 /**
  * Main class for {@link Bump}.
@@ -20,9 +22,10 @@ import javax.annotation.Nonnull;
  */
 public final class Bump extends AbstractAddon {
 
+    private static final String DEFAULT_LANG = "en-US";
+
     // localization
     private LocalizationService localization;
-    private String lang;
 
     // appraise
     private AppraiseManager appraiseManager;
@@ -63,11 +66,11 @@ public final class Bump extends AbstractAddon {
         }
 
         // localization
-        lang = config.getString("options.lang", "en-US");
+        String lang = config.getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
-        if (!lang.equals("en-US")) {
-            localization.addLanguage("en-US");
+        if (!lang.equals(DEFAULT_LANG)) {
+            localization.addLanguage(DEFAULT_LANG);
         }
         sendConsole("&eLoaded language {0}", lang);
 
@@ -96,6 +99,7 @@ public final class Bump extends AbstractAddon {
 
     @Override
     public void disable() {
+        // does nothing yet.
     }
 
     @Nonnull

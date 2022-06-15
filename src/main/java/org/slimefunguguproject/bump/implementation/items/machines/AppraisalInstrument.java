@@ -1,27 +1,30 @@
 package org.slimefunguguproject.bump.implementation.items.machines;
 
+import javax.annotation.Nonnull;
+
+import org.bukkit.Location;
+import org.bukkit.block.Block;
+import org.bukkit.entity.Player;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.inventory.ItemStack;
+
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
+
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
-import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
-import org.bukkit.Location;
-import org.bukkit.block.Block;
-import org.bukkit.entity.Player;
-import org.bukkit.event.block.BlockBreakEvent;
-import org.bukkit.inventory.ItemStack;
+
+import org.slimefunguguproject.bump.api.blocks.AbstractMenuBlock;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 import org.slimefunguguproject.bump.utils.GuiItems;
 import org.slimefunguguproject.bump.utils.Utils;
-
-import javax.annotation.Nonnull;
 
 /**
  * This implements the {@link AppraisalInstrument appraisal instrument}.
@@ -31,7 +34,7 @@ import javax.annotation.Nonnull;
  * @author ybw0014
  * @see org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper
  */
-public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent {
+public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetComponent {
 
     // gui
     private static final int[] BACKGROUND = {
@@ -71,16 +74,6 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
         blockMenuPreset.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_BUTTON);
 
         blockMenuPreset.addMenuClickHandler(APPRAISE_BUTTON, ChestMenuUtils.getEmptyClickHandler());
-    }
-
-    @Override
-    protected int[] getInputSlots() {
-        return new int[0];
-    }
-
-    @Override
-    protected int[] getOutputSlots() {
-        return new int[0];
     }
 
     @Override
@@ -160,6 +153,6 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
 
     @Override
     public int getCapacity() {
-        return ENERGY_CONSUMPTION;
+        return getEnergyConsumption();
     }
 }

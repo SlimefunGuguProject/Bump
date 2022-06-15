@@ -1,17 +1,20 @@
 package org.slimefunguguproject.bump.api.appraise;
 
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.UUID;
+
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.common.base.Preconditions;
+
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.UUID;
+import org.slimefunguguproject.bump.utils.AppraiseUtils;
 
 /**
  * An {@link AppraiseResult} represents an appraisal result.
@@ -19,8 +22,25 @@ import java.util.UUID;
  * @author ybw0014
  */
 public final class AppraiseResult {
+    private static final Map<Integer, Integer> starThreshold = new LinkedHashMap<>();
+
     private final Map<AppraiseAttribute, Double> result = new LinkedHashMap<>();
     private double overallPercentage = 0;
+
+    static {
+        // stars
+        starThreshold.put(100, 20);
+        starThreshold.put(98, 10);
+        starThreshold.put(96, 9);
+        starThreshold.put(92, 8);
+        starThreshold.put(88, 7);
+        starThreshold.put(82, 6);
+        starThreshold.put(74, 5);
+        starThreshold.put(64, 4);
+        starThreshold.put(48, 3);
+        starThreshold.put(30, 2);
+        starThreshold.put(10, 1);
+    }
 
     /**
      * This method adds an appraised attribute to result
@@ -48,31 +68,12 @@ public final class AppraiseResult {
      * @return The number of stars of the result
      */
     public int getStars() {
-        if (overallPercentage >= 100) {
-            return 20;
-        } else if (overallPercentage >= 98) {
-            return 10;
-        } else if (overallPercentage >= 96) {
-            return 9;
-        } else if (overallPercentage >= 92) {
-            return 8;
-        } else if (overallPercentage >= 88) {
-            return 7;
-        } else if (overallPercentage >= 82) {
-            return 6;
-        } else if (overallPercentage >= 74) {
-            return 5;
-        } else if (overallPercentage >= 64) {
-            return 4;
-        } else if (overallPercentage >= 48) {
-            return 3;
-        } else if (overallPercentage >= 30) {
-            return 2;
-        } else if (overallPercentage >= 10) {
-            return 1;
-        } else {
-            return 0;
+        for (Map.Entry<Integer, Integer> entry : starThreshold.entrySet()) {
+            if (overallPercentage >= entry.getKey()) {
+                return entry.getValue();
+            }
         }
+        return 0;
     }
 
     /**
@@ -83,7 +84,7 @@ public final class AppraiseResult {
      */
     @ParametersAreNonnullByDefault
     public void apply(ItemMeta meta, EquipmentSlot slot) {
-        Preconditions.checkNotNull(meta, "ItemMeta cannot be null");
+        Preconditions.checkArgument(meta != null, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
             Attribute attr = entry.getKey().attribute();

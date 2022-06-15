@@ -1,11 +1,13 @@
 package org.slimefunguguproject.bump.implementation.listeners;
 
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import org.bukkit.entity.Arrow;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
+
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+
 import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
 
 /**

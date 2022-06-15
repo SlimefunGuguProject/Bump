@@ -1,6 +1,13 @@
 package org.slimefunguguproject.bump.implementation.items.weapons;
 
+import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
 import com.google.common.base.Preconditions;
+
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
+
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -8,15 +15,11 @@ import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
-import org.bukkit.entity.Player;
-import org.bukkit.inventory.ItemStack;
+
 import org.slimefunguguproject.bump.core.attributes.CooldownItem;
 import org.slimefunguguproject.bump.core.attributes.CostHungerItem;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
-
-import javax.annotation.Nonnull;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 /**
  * A {@link BumpSword} is a {@link SlimefunItem} with an {@link ItemSetting} of hunger cost and cooldown
@@ -29,7 +32,7 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
     protected final IntRangeSetting cooldownInSeconds = new IntRangeSetting(this, "cooldown-in-seconds", 0, 0, Integer.MAX_VALUE);
 
     @ParametersAreNonnullByDefault
-    public BumpSword(int hunger, SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
+    protected BumpSword(int hunger, SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.WEAPON, itemStack, recipeType, recipe);
 
         // hunger cost

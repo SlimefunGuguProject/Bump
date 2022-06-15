@@ -1,18 +1,23 @@
 package org.slimefunguguproject.bump.implementation.tasks;
 
-import com.google.common.base.Preconditions;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
-import net.guizhanss.guizhanlib.common.Scheduler;
-import org.bukkit.entity.WitherSkull;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
-
-import javax.annotation.Nonnull;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
+
+import javax.annotation.Nonnull;
+
+import com.google.common.base.Preconditions;
+
+import org.bukkit.entity.WitherSkull;
+
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+
+import net.guizhanss.guizhanlib.common.Scheduler;
+
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
 /**
  * The {@link WitherSkullBowTask} is responsible for tracking
@@ -53,7 +58,7 @@ public final class WitherSkullBowTask implements Runnable {
      * @param skull the {@link WitherSkull} to be added.
      */
     public static void track(@Nonnull WitherSkull skull) {
-        Preconditions.checkNotNull(skull, "Wither skull should not be null. How?");
+        Preconditions.checkArgument(skull != null, "Wither skull should not be null. How?");
         instance.trackSkull(skull);
     }
 

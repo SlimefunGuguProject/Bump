@@ -1,16 +1,19 @@
 package org.slimefunguguproject.bump.core.handlers;
 
-import io.github.thebusybiscuit.slimefun4.api.exceptions.IncompatibleItemHandlerException;
-import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import java.util.Optional;
+
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityShootBowEvent;
 import org.bukkit.inventory.ItemStack;
-import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
 
-import javax.annotation.Nonnull;
-import java.util.Optional;
+import io.github.thebusybiscuit.slimefun4.api.exceptions.IncompatibleItemHandlerException;
+import io.github.thebusybiscuit.slimefun4.api.items.ItemHandler;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+
+import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
 
 /**
  * This {@link ItemHandler} is triggered when a player right click with a bow.

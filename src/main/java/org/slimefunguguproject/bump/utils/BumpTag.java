@@ -1,10 +1,11 @@
 package org.slimefunguguproject.bump.utils;
 
-import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import javax.annotation.Nonnull;
+import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 
 /**
  * Tags for some materials

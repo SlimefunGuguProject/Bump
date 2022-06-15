@@ -16,4 +16,7 @@ trim_trailing_whitespace = false
 indent_size = 2
 
 [*.java]
-ij_java_imports_layout = |,java.**,|,javax.**,|,com.**,|,org.**,|,io.**,|,me.**,|,*,|,$*
+# Intellij IDEA settings
+ij_java_class_count_to_use_import_on_demand = 9999
+ij_java_imports_layout = |,java.**,|,javax.**,|,com.**,|,org.bukkit.**,|,io.**,|,me.**,|,net.**,|,*,|,$*
+ij_java_names_count_to_use_import_on_demand = 9999
