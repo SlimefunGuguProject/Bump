@@ -19,7 +19,7 @@ public final class BumpItemGroups {
         throw new IllegalStateException("Utility class");
     }
 
-    public static NestedItemGroup MAIN = new NestedItemGroup(
+    public static final NestedItemGroup MAIN = new NestedItemGroup(
         Bump.createKey("bump_main"),
         new CustomItemStack(
             Material.DIAMOND,
@@ -27,7 +27,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup ARMOR = new SubItemGroup(
+    public static final SubItemGroup ARMOR = new SubItemGroup(
         Bump.createKey("bump_armor"),
         MAIN,
         new CustomItemStack(
@@ -36,7 +36,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup FOOD = new SubItemGroup(
+    public static final SubItemGroup FOOD = new SubItemGroup(
         Bump.createKey("bump_food"),
         MAIN,
         new CustomItemStack(
@@ -45,7 +45,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup MACHINE = new SubItemGroup(
+    public static final SubItemGroup MACHINE = new SubItemGroup(
         Bump.createKey("bump_machine"),
         MAIN,
         new CustomItemStack(
@@ -54,7 +54,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup STUFF = new SubItemGroup(
+    public static final SubItemGroup STUFF = new SubItemGroup(
         Bump.createKey("bump_stuff"),
         MAIN,
         new CustomItemStack(
@@ -63,7 +63,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup TOOL = new SubItemGroup(
+    public static final SubItemGroup TOOL = new SubItemGroup(
         Bump.createKey("bump_tool"),
         MAIN,
         new CustomItemStack(
@@ -72,7 +72,7 @@ public final class BumpItemGroups {
         )
     );
 
-    public static SubItemGroup WEAPON = new SubItemGroup(
+    public static final SubItemGroup WEAPON = new SubItemGroup(
         Bump.createKey("bump_weapon"),
         MAIN,
         new CustomItemStack(

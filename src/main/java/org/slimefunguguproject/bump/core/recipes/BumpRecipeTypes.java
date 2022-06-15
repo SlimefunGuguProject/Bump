@@ -15,7 +15,7 @@ public final class BumpRecipeTypes {
         throw new IllegalStateException("Utility class");
     }
 
-    public static RecipeType GETGOLD_SPADE = new RecipeType(
+    public static final RecipeType GETGOLD_SPADE = new RecipeType(
         Bump.createKey("getgold_spade"),
         BumpItems.GETGOLD_SPADE
     );

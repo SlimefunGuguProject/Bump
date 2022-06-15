@@ -18,8 +18,7 @@ import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
-import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
-
+import org.slimefunguguproject.bump.api.blocks.AbstractMenuBlock;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
@@ -35,7 +34,7 @@ import org.slimefunguguproject.bump.utils.Utils;
  * @author ybw0014
  * @see org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper
  */
-public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent {
+public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetComponent {
 
     // gui
     private static final int[] BACKGROUND = {
@@ -75,16 +74,6 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
         blockMenuPreset.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_BUTTON);
 
         blockMenuPreset.addMenuClickHandler(APPRAISE_BUTTON, ChestMenuUtils.getEmptyClickHandler());
-    }
-
-    @Override
-    protected int[] getInputSlots() {
-        return new int[0];
-    }
-
-    @Override
-    protected int[] getOutputSlots() {
-        return new int[0];
     }
 
     @Override
@@ -164,6 +153,6 @@ public class AppraisalInstrument extends MenuBlock implements EnergyNetComponent
 
     @Override
     public int getCapacity() {
-        return ENERGY_CONSUMPTION;
+        return getEnergyConsumption();
     }
 }

@@ -90,7 +90,7 @@ public final class AppraiseAttributes {
             throw new IllegalStateException("No longer accept new attributes");
         }
 
-        if (usedPercentage < 100 && noPercentAttributes.size() == 0) {
+        if (usedPercentage < 100 && noPercentAttributes.isEmpty()) {
             throw new IllegalArgumentException("Used percentage is less than 100");
         }
 

@@ -32,7 +32,7 @@ public abstract class BumpSword extends SimpleSlimefunItem<ItemUseHandler> imple
     protected final IntRangeSetting cooldownInSeconds = new IntRangeSetting(this, "cooldown-in-seconds", 0, 0, Integer.MAX_VALUE);
 
     @ParametersAreNonnullByDefault
-    public BumpSword(int hunger, SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
+    protected BumpSword(int hunger, SlimefunItemStack itemStack, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.WEAPON, itemStack, recipeType, recipe);
 
         // hunger cost

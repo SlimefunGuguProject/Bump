@@ -11,13 +11,23 @@ import org.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
-import org.slimefunguguproject.bump.implementation.items.food.*;
+import org.slimefunguguproject.bump.implementation.items.food.Fangbianmian;
+import org.slimefunguguproject.bump.implementation.items.food.Kele;
+import org.slimefunguguproject.bump.implementation.items.food.Kouxiangtang;
+import org.slimefunguguproject.bump.implementation.items.food.Latiao;
+import org.slimefunguguproject.bump.implementation.items.food.Xuebi;
+import org.slimefunguguproject.bump.implementation.items.food.Zongzi;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import org.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import org.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
 import org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import org.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
-import org.slimefunguguproject.bump.implementation.items.weapons.*;
+import org.slimefunguguproject.bump.implementation.items.weapons.DevilSword;
+import org.slimefunguguproject.bump.implementation.items.weapons.LightBow;
+import org.slimefunguguproject.bump.implementation.items.weapons.SkyDevilSword;
+import org.slimefunguguproject.bump.implementation.items.weapons.SkySword;
+import org.slimefunguguproject.bump.implementation.items.weapons.SoulSword;
+import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
 /**
  * This class is used to set up items.

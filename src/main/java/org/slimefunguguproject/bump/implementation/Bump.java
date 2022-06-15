@@ -22,6 +22,8 @@ import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
  */
 public final class Bump extends AbstractAddon {
 
+    private static final String DEFAULT_LANG = "en-US";
+
     // localization
     private LocalizationService localization;
     private String lang;
@@ -65,11 +67,11 @@ public final class Bump extends AbstractAddon {
         }
 
         // localization
-        lang = config.getString("options.lang", "en-US");
+        lang = config.getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
-        if (!lang.equals("en-US")) {
-            localization.addLanguage("en-US");
+        if (!lang.equals(DEFAULT_LANG)) {
+            localization.addLanguage(DEFAULT_LANG);
         }
         sendConsole("&eLoaded language {0}", lang);
 
@@ -98,6 +100,7 @@ public final class Bump extends AbstractAddon {
 
     @Override
     public void disable() {
+        // does nothing yet.
     }
 
     @Nonnull

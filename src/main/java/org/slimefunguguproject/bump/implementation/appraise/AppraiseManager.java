@@ -1,7 +1,7 @@
 package org.slimefunguguproject.bump.implementation.appraise;
 
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
 import java.util.logging.Level;
@@ -30,7 +30,7 @@ import org.slimefunguguproject.bump.utils.Utils;
  */
 public final class AppraiseManager {
 
-    private final Map<AppraiseType, AppraiseAttributes> attributesMap = new HashMap<>();
+    private final Map<AppraiseType, AppraiseAttributes> attributesMap = new EnumMap<>(AppraiseType.class);
     private final String appraisedLorePrefix;
 
     public AppraiseManager() {
