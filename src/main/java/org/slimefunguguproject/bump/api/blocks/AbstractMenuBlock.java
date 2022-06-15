@@ -27,7 +27,7 @@ public abstract class AbstractMenuBlock extends MenuBlock {
      * @param recipe     the recipe of this {@link MenuBlock}
      */
     @ParametersAreNonnullByDefault
-    public AbstractMenuBlock(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    protected AbstractMenuBlock(ItemGroup itemGroup, SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(itemGroup, item, recipeType, recipe);
     }
 
