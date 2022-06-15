@@ -26,7 +26,6 @@ public final class Bump extends AbstractAddon {
 
     // localization
     private LocalizationService localization;
-    private String lang;
 
     // appraise
     private AppraiseManager appraiseManager;
@@ -67,7 +66,7 @@ public final class Bump extends AbstractAddon {
         }
 
         // localization
-        lang = config.getString("options.lang", DEFAULT_LANG);
+        String lang = config.getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
         if (!lang.equals(DEFAULT_LANG)) {
