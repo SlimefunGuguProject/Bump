@@ -11,11 +11,12 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.slimefunguguproject.bump.implementation.Bump;
 
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 import net.guizhanss.guizhanlib.utils.ChatUtil;
+
+import org.slimefunguguproject.bump.implementation.Bump;
 
 /**
  * Utility methods for appraise

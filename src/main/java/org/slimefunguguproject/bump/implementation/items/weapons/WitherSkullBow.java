@@ -5,14 +5,15 @@ import javax.annotation.Nonnull;
 import org.bukkit.Sound;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.inventory.ItemStack;
-import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
 
 import io.github.thebusybiscuit.slimefun4.api.items.settings.IntRangeSetting;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+
+import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.tasks.WitherSkullBowTask;
 
 /**
  * {@link WitherSkullBow Withered bow} will launch {@link WitherSkull} when using.

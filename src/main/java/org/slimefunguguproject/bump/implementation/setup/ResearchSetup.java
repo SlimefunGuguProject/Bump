@@ -3,10 +3,11 @@ package org.slimefunguguproject.bump.implementation.setup;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.inventory.ItemStack;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
 
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
+
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
 
 /**
  * This class is used to set up {@link Research Researches}.

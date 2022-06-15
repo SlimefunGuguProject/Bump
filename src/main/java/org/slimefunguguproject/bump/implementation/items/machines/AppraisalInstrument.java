@@ -7,12 +7,6 @@ import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
-import org.slimefunguguproject.bump.utils.AppraiseUtils;
-import org.slimefunguguproject.bump.utils.GuiItems;
-import org.slimefunguguproject.bump.utils.Utils;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
@@ -25,6 +19,13 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
 import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
+
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import org.slimefunguguproject.bump.utils.AppraiseUtils;
+import org.slimefunguguproject.bump.utils.GuiItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * This implements the {@link AppraisalInstrument appraisal instrument}.

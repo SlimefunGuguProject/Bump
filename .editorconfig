@@ -16,4 +16,4 @@ trim_trailing_whitespace = false
 indent_size = 2
 
 [*.java]
-ij_java_imports_layout = |,java.**,|,javax.**,|,com.**,|,org.**,|,io.**,|,me.**,|,*,|,$*
+ij_java_imports_layout = |,java.**,|,javax.**,|,com.**,|,org.bukkit.**,|,io.**,|,me.**,|,net.**,|,*,|,$*

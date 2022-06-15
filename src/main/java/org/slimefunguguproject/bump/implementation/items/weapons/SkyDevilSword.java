@@ -6,10 +6,11 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.scheduler.BukkitRunnable;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
 
 /**
  * {@link SkyDevilSword Heaven-demon Crumble Sword} will fire 3 {@link DragonFireball dragon fireballs}

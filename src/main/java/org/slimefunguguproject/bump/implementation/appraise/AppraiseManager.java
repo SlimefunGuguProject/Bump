@@ -11,15 +11,16 @@ import javax.annotation.Nonnull;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+
+import net.guizhanss.guizhanlib.utils.ChatUtil;
+
 import org.slimefunguguproject.bump.api.appraise.AppraiseAttributes;
 import org.slimefunguguproject.bump.api.appraise.AppraiseResult;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.utils.Keys;
 import org.slimefunguguproject.bump.utils.Utils;
-
-import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
-
-import net.guizhanss.guizhanlib.utils.ChatUtil;
 
 /**
  * The {@link AppraiseManager} hold all {@link AppraiseAttributes} for each equipment.

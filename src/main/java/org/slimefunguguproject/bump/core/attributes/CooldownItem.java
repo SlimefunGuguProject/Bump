@@ -6,11 +6,12 @@ import com.google.common.base.Preconditions;
 
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.slimefunguguproject.bump.utils.Keys;
-import org.slimefunguguproject.bump.utils.Utils;
 
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
+
+import org.slimefunguguproject.bump.utils.Keys;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * This {@link ItemAttribute} indicates that this item has cooldown time.

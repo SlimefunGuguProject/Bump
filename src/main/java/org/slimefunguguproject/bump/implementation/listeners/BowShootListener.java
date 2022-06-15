@@ -5,9 +5,10 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.EntityShootBowEvent;
-import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+
+import org.slimefunguguproject.bump.core.handlers.BowUseHandler;
 
 /**
  * This {@link Listener} will call {@link BowUseHandler}

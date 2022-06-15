@@ -7,11 +7,12 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.meta.ItemMeta;
-import org.slimefunguguproject.bump.implementation.Bump;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 
 import net.guizhanss.guizhanlib.utils.ChatUtil;
+
+import org.slimefunguguproject.bump.implementation.Bump;
 
 /**
  * This is an extended {@link SlimefunItemStack} that loads name and lore

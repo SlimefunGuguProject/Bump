@@ -5,10 +5,11 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
-import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
 
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+
+import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * Sprite.

@@ -9,14 +9,15 @@ import javax.annotation.Nonnull;
 import com.google.common.base.Preconditions;
 
 import org.bukkit.entity.WitherSkull;
-import org.slimefunguguproject.bump.implementation.Bump;
-import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import net.guizhanss.guizhanlib.common.Scheduler;
+
+import org.slimefunguguproject.bump.implementation.Bump;
+import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
 
 /**
  * The {@link WitherSkullBowTask} is responsible for tracking

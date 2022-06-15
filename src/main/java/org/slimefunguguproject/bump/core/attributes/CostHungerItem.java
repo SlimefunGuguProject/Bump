@@ -7,10 +7,11 @@ import com.google.common.base.Preconditions;
 import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
-import org.slimefunguguproject.bump.utils.Utils;
 
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
+
+import org.slimefunguguproject.bump.utils.Utils;
 
 /**
  * This {@link ItemAttribute} indicates that the item will cost hunger when using.

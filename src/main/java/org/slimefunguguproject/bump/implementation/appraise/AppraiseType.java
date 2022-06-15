@@ -6,9 +6,10 @@ import com.google.common.base.Preconditions;
 
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
-import org.slimefunguguproject.bump.utils.BumpTag;
 
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
+
+import org.slimefunguguproject.bump.utils.BumpTag;
 
 /**
  * This enum holds all available appraisal types.

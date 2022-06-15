@@ -2,14 +2,15 @@ package org.slimefunguguproject.bump.implementation;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
+
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
+import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
+
 import org.slimefunguguproject.bump.api.items.LocalizedItemStack;
 import org.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import org.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import org.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
-
-import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
-import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
 /**
  * This class holds all {@link SlimefunItemStack} of Bump.
