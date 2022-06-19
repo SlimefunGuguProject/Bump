@@ -75,7 +75,7 @@ We support these languages：
 
 - `en-US` English (United States)
   - Thanks @UniverseNetwork for English translation
-- `en-UK` English （United Kingdom）
+- `en-UK` English (United Kingdom)
 - `zh-CN` Simplified Chinese
 - `zh-TW` Traditional Chinese
 - `ru-RU` Russian
