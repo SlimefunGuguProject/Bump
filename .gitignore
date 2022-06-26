@@ -2,6 +2,7 @@
 /.settings/
 /target/
 /.idea/
+/.gradle/
 *.iml
 .project
 .classpath
