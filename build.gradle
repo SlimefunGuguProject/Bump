@@ -12,10 +12,6 @@ repositories {
     maven {
         url = uri('https://jitpack.io')
     }
-
-    maven {
-        url = uri('https://repo.maven.apache.org/maven2/')
-    }
 }
 
 dependencies {
@@ -26,13 +22,23 @@ dependencies {
 }
 
 shadowJar {
-    relocate 'net.guizhanss.guizhanlib', 'org.slimefunguguproject.guizhanlib'
+    relocate 'net.guizhanss.guizhanlib', 'org.slimefunguguproject.bump.guizhanlib'
     minimize()
 }
 
 group = 'org.slimefunguguproject'
 description = 'Bump'
 java.sourceCompatibility = JavaVersion.VERSION_16
+
+processResources {
+    expand project.properties
+    def props = [version: version]
+    inputs.properties props
+    filteringCharset 'UTF-8'
+    filesMatching('plugin.yml') {
+        expand props
+    }
+}
 
 tasks.withType(JavaCompile) {
     options.encoding = 'UTF-8'
