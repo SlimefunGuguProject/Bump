@@ -20,12 +20,16 @@ jobs:
         with:
           java-version: 16
           distribution: temurin
-      - name: Build with Maven
-        run: mvn package --file pom.xml
+      - name: Validate Gradle wrapper
+        uses: gradle/wrapper-validation-action@e6e38bacfdf1a337459f332974bb2327a31aaf4b
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@0d13054264b0bb894ded474f08ebb30921341cee
+        with:
+          arguments: build
       - name: Get build artifact ready
-        run: mkdir staging && cp target/*.jar staging
+        run: mkdir staging && cp build/libs/*.jar staging
       - name: Upload a Build Artifact
         uses: actions/upload-artifact@v3.1.0
         with:
-          name: Dev Build
+          name: dev-build
           path: staging
