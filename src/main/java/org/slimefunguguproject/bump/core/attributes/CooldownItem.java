@@ -2,8 +2,6 @@ package org.slimefunguguproject.bump.core.attributes;
 
 import javax.annotation.Nonnull;
 
-import com.google.common.base.Preconditions;
-
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -47,9 +45,9 @@ public interface CooldownItem extends ItemAttribute {
             if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
                 long lastUsed = PersistentDataAPI.getLong(im, Keys.LAST_USED);
 
-                return lastUsed + getCooldown() * 1000L <= System.currentTimeMillis();
+                return lastUsed + getCooldown() * 1000L < System.currentTimeMillis();
             } else {
-                return false;
+                return true;
             }
         } else {
             return false;
@@ -57,8 +55,6 @@ public interface CooldownItem extends ItemAttribute {
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {
-        Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
-
         if (Utils.validateItem(itemStack)) {
             if (isCooldown(itemStack)) {
                 setCooldown(itemStack);

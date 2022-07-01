@@ -39,7 +39,7 @@ import org.slimefunguguproject.bump.utils.GuiItems;
  *
  * @author ybw0014
  */
-@ParametersAreNonnullByDefault
+@SuppressWarnings("deprecation")
 public class AppraisalPaper extends LimitedUseItem {
 
     public static final int MAX_USES = 5;
@@ -61,6 +61,7 @@ public class AppraisalPaper extends LimitedUseItem {
 
     private final AppraiseType appraiseType;
 
+    @ParametersAreNonnullByDefault
     public AppraisalPaper(SlimefunItemStack item, AppraiseType appraiseType, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
 
@@ -70,6 +71,7 @@ public class AppraisalPaper extends LimitedUseItem {
         addItemHandler(getItemHandler());
     }
 
+    @Nonnull
     @Override
     public ItemUseHandler getItemHandler() {
         return e -> {
