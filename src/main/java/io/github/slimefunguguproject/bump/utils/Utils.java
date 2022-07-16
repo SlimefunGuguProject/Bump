@@ -12,13 +12,11 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-@ParametersAreNonnullByDefault
+import lombok.experimental.UtilityClass;
+
+@UtilityClass
 @SuppressWarnings("ConstantConditions")
 public final class Utils {
-    private Utils() {
-        throw new IllegalStateException("Utility class");
-    }
-
     /**
      * Get a {@link String} of consecutive stars
      *

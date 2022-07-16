@@ -15,6 +15,8 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
+import lombok.experimental.UtilityClass;
+
 import net.guizhanss.guizhanlib.utils.ChatUtil;
 
 /**
@@ -23,11 +25,8 @@ import net.guizhanss.guizhanlib.utils.ChatUtil;
  * @author ybw0014
  * @author haiman233
  */
+@UtilityClass
 public final class AppraiseUtils {
-    private AppraiseUtils() {
-        throw new IllegalStateException("Utility class");
-    }
-
     /**
      * Check if the {@link ItemStack} is marked as appraisable,
      * which means it can be used in appraisal instrument

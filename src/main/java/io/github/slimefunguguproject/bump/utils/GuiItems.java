@@ -6,11 +6,14 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Some GUI items.
  *
  * @author ybw0014
  */
+@UtilityClass
 public final class GuiItems {
     public static final ItemStack APPRAISE_BUTTON = new CustomItemStack(
         Material.NAME_TAG,
@@ -27,8 +30,4 @@ public final class GuiItems {
         Bump.getLocalization().getString("gui.grind.name"),
         Bump.getLocalization().getStringArray("gui.grind.lore")
     );
-
-    private GuiItems() {
-        throw new IllegalStateException("Utility class");
-    }
 }

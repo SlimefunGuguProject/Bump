@@ -12,6 +12,8 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 
+import lombok.Getter;
+
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
 /**
@@ -21,6 +23,7 @@ import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
  */
 public final class BumpRegistry {
     // config
+    @Getter
     private final AddonConfig config;
 
     // appraise
@@ -30,11 +33,6 @@ public final class BumpRegistry {
     @ParametersAreNonnullByDefault
     public BumpRegistry(JavaPlugin plugin, AddonConfig config) {
         this.config = config;
-    }
-
-    @Nonnull
-    public AddonConfig getConfig() {
-        return config;
     }
 
     @Nonnull

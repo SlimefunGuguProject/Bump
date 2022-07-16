@@ -5,16 +5,15 @@ import org.bukkit.GameMode;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.FoodLevelChangeEvent;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * Utility methods about player's food level.
  *
  * @author ybw0014
  */
+@UtilityClass
 public class FoodLevelUtils {
-    private FoodLevelUtils() {
-        throw new IllegalStateException("Utility class");
-    }
-
     /**
      * This method calls {@link FoodLevelChangeEvent} and add {@link Player}'s
      * food level if {@link Player}'s {@link GameMode} is not creative and
