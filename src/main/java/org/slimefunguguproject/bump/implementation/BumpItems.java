@@ -19,10 +19,6 @@ import org.slimefunguguproject.bump.utils.Utils;
  * @author ybw0014
  */
 public final class BumpItems {
-    private BumpItems() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static final SlimefunItemStack RANDOM_HELMET;
     public static final SlimefunItemStack RANDOM_HORSE_ARMOR;
     public static final SlimefunItemStack XUEBI;
@@ -296,5 +292,9 @@ public final class BumpItems {
         SKY_DEVIL_SWORD.addUnsafeEnchantment(Enchantment.LOYALTY, 5);
 
         // endregion weapon
+    }
+
+    private BumpItems() {
+        throw new IllegalStateException("Utility class");
     }
 }

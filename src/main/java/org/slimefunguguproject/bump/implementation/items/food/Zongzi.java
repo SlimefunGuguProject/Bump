@@ -19,7 +19,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Zongzi extends ItemFood {
 
     public Zongzi() {
-        super(BumpItems.ZONGZI, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
+        super(BumpItems.ZONGZI, RecipeType.MAGIC_WORKBENCH, new ItemStack[]{
             new ItemStack(Material.LILY_PAD), new ItemStack(Material.ACACIA_LEAVES), new ItemStack(Material.LILY_PAD),
             new ItemStack(Material.ACACIA_LEAVES), new ItemStack(Material.WHEAT), new ItemStack(Material.ACACIA_LEAVES),
             new ItemStack(Material.LILY_PAD), new ItemStack(Material.ACACIA_LEAVES), new ItemStack(Material.LILY_PAD)

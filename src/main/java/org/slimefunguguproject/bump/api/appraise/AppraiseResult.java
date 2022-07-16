@@ -24,9 +24,6 @@ import org.slimefunguguproject.bump.utils.AppraiseUtils;
 public final class AppraiseResult {
     private static final Map<Integer, Integer> starThreshold = new LinkedHashMap<>();
 
-    private final Map<AppraiseAttribute, Double> result = new LinkedHashMap<>();
-    private double overallPercentage = 0;
-
     static {
         // stars
         starThreshold.put(100, 20);
@@ -41,6 +38,9 @@ public final class AppraiseResult {
         starThreshold.put(30, 2);
         starThreshold.put(10, 1);
     }
+
+    private final Map<AppraiseAttribute, Double> result = new LinkedHashMap<>();
+    private double overallPercentage = 0;
 
     /**
      * This method adds an appraised attribute to result

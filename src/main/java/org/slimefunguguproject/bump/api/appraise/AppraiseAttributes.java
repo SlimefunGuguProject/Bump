@@ -15,9 +15,9 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 
 /**
- * This class hold all appraisal attributes used in appraising.
+ * This class hold all {@link AppraiseAttribute appraisal attributes} used in appraising.
  * <p>
- * Must add attributes first, and call build().
+ * Must add attributes first, and call {@link #build()}.
  *
  * @author ybw0014
  */

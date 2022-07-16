@@ -25,7 +25,7 @@ import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 public class GetgoldSpade extends SimpleSlimefunItem<ToolUseHandler> {
 
     public GetgoldSpade() {
-        super(BumpItemGroups.TOOL, BumpItems.GETGOLD_SPADE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+        super(BumpItemGroups.TOOL, BumpItems.GETGOLD_SPADE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             null, SlimefunItems.GOLD_24K, null,
             null, new ItemStack(Material.STICK), null,
             null, new ItemStack(Material.STICK), null

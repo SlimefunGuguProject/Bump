@@ -4,12 +4,12 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.inventory.ItemStack;
 
-import org.slimefunguguproject.bump.core.attributes.AppraisableItem;
-
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+
+import org.slimefunguguproject.bump.core.attributes.AppraisableItem;
 
 /**
  * A {@link RandomEquipment} is an item that is an {@link AppraisableItem}.

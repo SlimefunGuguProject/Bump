@@ -20,9 +20,8 @@ public class FoodLevelUtils {
      * food level if {@link Player}'s {@link GameMode} is not creative and
      * the event is not cancelled
      *
-     * @param p the {@link Player} that food level will be changed
+     * @param p     the {@link Player} that food level will be changed
      * @param level the level to be added
-     *
      * @return if the food level is added
      */
     public static boolean add(Player p, int level) {

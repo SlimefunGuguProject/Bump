@@ -11,12 +11,12 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
  * @author ybw0014
  */
 public final class BumpRecipeTypes {
-    private BumpRecipeTypes() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static final RecipeType GETGOLD_SPADE = new RecipeType(
         Bump.createKey("getgold_spade"),
         BumpItems.GETGOLD_SPADE
     );
+
+    private BumpRecipeTypes() {
+        throw new IllegalStateException("Utility class");
+    }
 }

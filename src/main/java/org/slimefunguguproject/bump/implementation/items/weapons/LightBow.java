@@ -21,7 +21,7 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
 public class LightBow extends BumpBow {
 
     public LightBow() {
-        super(10, BumpItems.LIGHT_BOW, RecipeType.ARMOR_FORGE, new ItemStack[] {
+        super(10, BumpItems.LIGHT_BOW, RecipeType.ARMOR_FORGE, new ItemStack[]{
             SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
             SlimefunItems.POWER_CRYSTAL, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
             SlimefunItems.STAFF_STORM

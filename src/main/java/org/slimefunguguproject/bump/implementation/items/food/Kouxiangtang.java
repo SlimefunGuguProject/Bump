@@ -19,7 +19,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Kouxiangtang extends ItemFood {
 
     public Kouxiangtang() {
-        super(BumpItems.KOUXIANGTANG, RecipeType.COMPRESSOR, new ItemStack[] {
+        super(BumpItems.KOUXIANGTANG, RecipeType.COMPRESSOR, new ItemStack[]{
             SlimefunItems.MAGIC_SUGAR
         });
     }

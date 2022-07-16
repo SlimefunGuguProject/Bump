@@ -51,7 +51,7 @@ public class AttributeGrindstone extends AbstractMenuBlock implements EnergyNetC
     private static final int ENERGY_CONSUMPTION = 1314;
 
     public AttributeGrindstone() {
-        super(BumpItemGroups.MACHINE, BumpItems.ATTRIBUTE_GRINDSTONE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+        super(BumpItemGroups.MACHINE, BumpItems.ATTRIBUTE_GRINDSTONE, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             SlimefunItems.ELECTRO_MAGNET, BumpItems.APPRAISAL, SlimefunItems.ELECTRO_MAGNET,
             BumpItems.MECHA_GEAR, BumpItems.CPU, BumpItems.MECHA_GEAR,
             BumpItems.UPDATE_POWER, BumpItems.ZONGZI, BumpItems.UPDATE_POWER

@@ -20,7 +20,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Fangbianmian extends ItemFood {
 
     public Fangbianmian() {
-        super(BumpItems.FANGBIANMIAN, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
+        super(BumpItems.FANGBIANMIAN, RecipeType.MAGIC_WORKBENCH, new ItemStack[]{
             new ItemStack(Material.WATER_BUCKET), new ItemStack(Material.WATER_BUCKET), new ItemStack(Material.WATER_BUCKET),
             BumpItems.KSF_STUFF, BumpItems.KSF_STUFF, BumpItems.KSF_STUFF,
             SlimefunItems.WHEAT_FLOUR, SlimefunItems.WHEAT_FLOUR, SlimefunItems.WHEAT_FLOUR

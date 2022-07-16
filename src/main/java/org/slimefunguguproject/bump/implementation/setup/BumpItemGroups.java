@@ -15,10 +15,6 @@ import org.slimefunguguproject.bump.implementation.Bump;
  * @author ybw0014
  */
 public final class BumpItemGroups {
-    private BumpItemGroups() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static final NestedItemGroup MAIN = new NestedItemGroup(
         Bump.createKey("bump_main"),
         new CustomItemStack(
@@ -26,7 +22,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("main")
         )
     );
-
     public static final SubItemGroup ARMOR = new SubItemGroup(
         Bump.createKey("bump_armor"),
         MAIN,
@@ -35,7 +30,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("armor")
         )
     );
-
     public static final SubItemGroup FOOD = new SubItemGroup(
         Bump.createKey("bump_food"),
         MAIN,
@@ -44,7 +38,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("food")
         )
     );
-
     public static final SubItemGroup MACHINE = new SubItemGroup(
         Bump.createKey("bump_machine"),
         MAIN,
@@ -53,7 +46,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("machine")
         )
     );
-
     public static final SubItemGroup STUFF = new SubItemGroup(
         Bump.createKey("bump_stuff"),
         MAIN,
@@ -62,7 +54,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("stuff")
         )
     );
-
     public static final SubItemGroup TOOL = new SubItemGroup(
         Bump.createKey("bump_tool"),
         MAIN,
@@ -71,7 +62,6 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("tool")
         )
     );
-
     public static final SubItemGroup WEAPON = new SubItemGroup(
         Bump.createKey("bump_weapon"),
         MAIN,
@@ -79,4 +69,9 @@ public final class BumpItemGroups {
             Material.IRON_SWORD,
             Bump.getLocalization().getCategoryName("weapon")
         )
-    );}
+    );
+
+    private BumpItemGroups() {
+        throw new IllegalStateException("Utility class");
+    }
+}

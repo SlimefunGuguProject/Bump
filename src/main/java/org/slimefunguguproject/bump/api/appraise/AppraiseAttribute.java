@@ -25,13 +25,12 @@ record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
     }
 
     /**
-     * Get the percentile of value.
+     * Get the percentile of result value within range.
      * <p>
      * Return range from 0 to 100.
      *
-     * @param value The value.
-     *
-     * @return The percentile of value.
+     * @param value The result value.
+     * @return The percentile of the result value.
      */
     public double getPercent(double value) {
         if (value <= min) {

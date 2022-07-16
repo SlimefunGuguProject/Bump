@@ -24,7 +24,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
 
     public SoulSword() {
-        super(BumpItemGroups.WEAPON, BumpItems.SOUL_SWORD, RecipeType.ARMOR_FORGE, new ItemStack[] {
+        super(BumpItemGroups.WEAPON, BumpItems.SOUL_SWORD, RecipeType.ARMOR_FORGE, new ItemStack[]{
             null, null, null,
             BumpItems.SOUL_PAPER, new ItemStack(Material.DIAMOND_SWORD), BumpItems.SOUL_PAPER,
             null, null, null

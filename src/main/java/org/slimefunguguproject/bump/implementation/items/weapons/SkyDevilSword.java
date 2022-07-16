@@ -2,6 +2,7 @@ package org.slimefunguguproject.bump.implementation.items.weapons;
 
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Player;
+import org.bukkit.entity.Projectile;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
@@ -11,6 +12,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
 
 /**
  * {@link SkyDevilSword Heaven-demon Crumble Sword} will fire 3 {@link DragonFireball dragon fireballs}
@@ -21,7 +23,7 @@ import org.slimefunguguproject.bump.implementation.BumpItems;
 public class SkyDevilSword extends BumpSword {
 
     public SkyDevilSword() {
-        super(5, BumpItems.SKY_DEVIL_SWORD, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[] {
+        super(5, BumpItems.SKY_DEVIL_SWORD, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
             null, null, null,
             BumpItems.SKY_SWORD, BumpItems.UPDATE_POWER, BumpItems.DEVIL_SWORD,
             null, null, null
@@ -42,7 +44,8 @@ public class SkyDevilSword extends BumpSword {
             @Override
             public void run() {
                 if (count > 0) {
-                    p.launchProjectile(DragonFireball.class);
+                    Projectile projectile = p.launchProjectile(DragonFireball.class);
+                    WeaponProjectileTask.track(projectile);
                     count--;
                 } else {
                     this.cancel();

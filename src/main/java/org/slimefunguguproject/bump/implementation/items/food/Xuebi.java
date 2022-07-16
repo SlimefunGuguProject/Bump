@@ -19,7 +19,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Xuebi extends ConsumableFood {
 
     public Xuebi() {
-        super(BumpItems.XUEBI, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
+        super(BumpItems.XUEBI, RecipeType.MAGIC_WORKBENCH, new ItemStack[]{
             BumpItems.WATER_SUGAR, new ItemStack(Material.WATER_BUCKET), BumpItems.WATER_SUGAR,
             new ItemStack(Material.WATER_BUCKET), BumpItems.WATER_SUGAR, new ItemStack(Material.WATER_BUCKET),
             BumpItems.WATER_SUGAR, new ItemStack(Material.WATER_BUCKET), BumpItems.WATER_SUGAR

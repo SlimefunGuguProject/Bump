@@ -20,7 +20,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Kele extends ConsumableFood {
 
     public Kele() {
-        super(BumpItems.KELE, RecipeType.MAGIC_WORKBENCH, new ItemStack[] {
+        super(BumpItems.KELE, RecipeType.MAGIC_WORKBENCH, new ItemStack[]{
             BumpItems.WATER_SUGAR, new ItemStack(Material.WATER_BUCKET), BumpItems.WATER_SUGAR,
             new ItemStack(Material.WATER_BUCKET), SlimefunItems.MAGIC_SUGAR, new ItemStack(Material.WATER_BUCKET),
             BumpItems.WATER_SUGAR, new ItemStack(Material.WATER_BUCKET), BumpItems.WATER_SUGAR

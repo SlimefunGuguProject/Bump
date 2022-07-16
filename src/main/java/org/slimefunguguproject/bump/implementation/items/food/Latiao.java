@@ -19,7 +19,7 @@ import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 public class Latiao extends ConsumableFood {
 
     public Latiao() {
-        super(BumpItems.LATIAO, RecipeType.COMPRESSOR, new ItemStack[] {
+        super(BumpItems.LATIAO, RecipeType.COMPRESSOR, new ItemStack[]{
             SlimefunItems.WHEAT_FLOUR
         });
     }
