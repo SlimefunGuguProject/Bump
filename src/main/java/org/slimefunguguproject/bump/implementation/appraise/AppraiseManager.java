@@ -25,6 +25,8 @@ import org.slimefunguguproject.bump.utils.Utils;
 /**
  * The {@link AppraiseManager} hold all {@link AppraiseAttributes} for each equipment.
  *
+ * TODO: make values configurable, api based.
+ *
  * @author ybw0014
  * @author haiman233
  */

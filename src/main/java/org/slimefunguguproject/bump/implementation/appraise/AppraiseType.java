@@ -14,6 +14,8 @@ import org.slimefunguguproject.bump.utils.BumpTag;
 /**
  * This enum holds all available appraisal types.
  *
+ * TODO: move this to api package and allow to add more types.
+ *
  * @author ybw0014
  */
 public enum AppraiseType {

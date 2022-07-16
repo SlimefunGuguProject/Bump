@@ -8,6 +8,7 @@ import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
+import org.slimefunguguproject.bump.core.BumpRegistry;
 import org.slimefunguguproject.bump.core.services.LocalizationService;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
 import org.slimefunguguproject.bump.implementation.listeners.BowShootListener;
@@ -29,6 +30,8 @@ public final class Bump extends AbstractAddon {
 
     // appraise
     private AppraiseManager appraiseManager;
+
+    private BumpRegistry registry;
 
     public Bump() {
         super("SlimefunGuguProject", "Bump", "main", "options.auto-update", "options.lang");
@@ -115,5 +118,10 @@ public final class Bump extends AbstractAddon {
     @Nonnull
     public static AppraiseManager getAppraiseManager() {
         return inst().appraiseManager;
+    }
+
+    @Nonnull
+    public static BumpRegistry getRegistry() {
+        return inst().registry;
     }
 }
