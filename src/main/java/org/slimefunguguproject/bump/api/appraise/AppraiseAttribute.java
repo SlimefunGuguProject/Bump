@@ -24,13 +24,22 @@ record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
             + ", " + min + " - " + max + "]";
     }
 
-    public double getPercent(double val) {
-        if (val <= min) {
+    /**
+     * Get the percentile of value.
+     * <p>
+     * Return range from 0 to 100.
+     *
+     * @param value The value.
+     *
+     * @return The percentile of value.
+     */
+    public double getPercent(double value) {
+        if (value <= min) {
             return 0;
-        } else if (val >= max) {
+        } else if (value >= max) {
             return 100;
         } else {
-            return (val - min) / (max - min) * 100.0D;
+            return (value - min) / (max - min) * 100.0D;
         }
     }
 }

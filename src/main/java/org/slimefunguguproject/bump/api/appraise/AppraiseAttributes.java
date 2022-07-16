@@ -21,6 +21,7 @@ import net.guizhanss.guizhanlib.utils.RandomUtil;
  *
  * @author ybw0014
  */
+@SuppressWarnings("ConstantConditions")
 public final class AppraiseAttributes {
     // The set contains all attributes
     private final Set<Pair<AppraiseAttribute, Double>> attributes = new LinkedHashSet<>();

@@ -24,6 +24,7 @@ import org.slimefunguguproject.bump.implementation.Bump;
  *
  * @author ybw0014
  */
+@SuppressWarnings("ConstantConditions")
 public final class LocalizationService extends Localization {
     public LocalizationService(Bump plugin) {
         super(plugin);
