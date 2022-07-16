@@ -29,16 +29,15 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class is used to set up items.
  *
  * @author ybw0014
  */
+@UtilityClass
 public final class ItemsSetup {
-    private ItemsSetup() {
-        throw new IllegalStateException("Utility class");
-    }
-
     public static void setup() {
         Bump plugin = Bump.getInstance();
 

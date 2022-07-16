@@ -8,17 +8,16 @@ import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.researches.Research;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class is used to set up {@link Research Researches}.
  *
  * @author ybw0014
  */
+@UtilityClass
 public final class ResearchSetup {
     private static int researchId = 114514;
-
-    private ResearchSetup() {
-        throw new IllegalStateException("Utility class");
-    }
 
     public static void setup() {
         createResearch("food", 18, BumpItems.XUEBI, BumpItems.KELE, BumpItems.FANGBIANMIAN, BumpItems.LATIAO, BumpItems.KOUXIANGTANG);

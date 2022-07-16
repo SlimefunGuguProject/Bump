@@ -12,11 +12,14 @@ import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class holds all {@link SlimefunItemStack} of Bump.
  *
  * @author ybw0014
  */
+@UtilityClass
 public final class BumpItems {
     public static final SlimefunItemStack RANDOM_HELMET;
     public static final SlimefunItemStack RANDOM_HORSE_ARMOR;
@@ -291,9 +294,5 @@ public final class BumpItems {
         SKY_DEVIL_SWORD.addUnsafeEnchantment(Enchantment.LOYALTY, 5);
 
         // endregion weapon
-    }
-
-    private BumpItems() {
-        throw new IllegalStateException("Utility class");
     }
 }

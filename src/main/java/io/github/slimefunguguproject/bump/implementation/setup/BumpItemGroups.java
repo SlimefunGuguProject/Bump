@@ -8,11 +8,14 @@ import io.github.thebusybiscuit.slimefun4.api.items.groups.NestedItemGroup;
 import io.github.thebusybiscuit.slimefun4.api.items.groups.SubItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
+import lombok.experimental.UtilityClass;
+
 /**
  * This class holds all {@link ItemGroup}s of Bump.
  *
  * @author ybw0014
  */
+@UtilityClass
 public final class BumpItemGroups {
     public static final NestedItemGroup MAIN = new NestedItemGroup(
         Bump.createKey("bump_main"),
@@ -69,8 +72,4 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("weapon")
         )
     );
-
-    private BumpItemGroups() {
-        throw new IllegalStateException("Utility class");
-    }
 }
