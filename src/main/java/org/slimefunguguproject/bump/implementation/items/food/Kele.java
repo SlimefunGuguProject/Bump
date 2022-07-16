@@ -10,7 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Coke? Or Pepsi? Who knows.
@@ -29,7 +29,7 @@ public class Kele extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.addFoodLevel(p, 6);
+        FoodLevelUtils.add(p, 6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.DOLPHINS_GRACE, 2000, 5));
     }
 }

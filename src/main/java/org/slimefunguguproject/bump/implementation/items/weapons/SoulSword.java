@@ -14,7 +14,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunIte
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * {@link SoulSword Soul sword} will convert hunger to health.
@@ -48,12 +48,12 @@ public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
             if (foodLevel >= 2) {
                 if (maxHealth - health <= foodLevel) {
                     // Food level can be partially converted to full health
-                    Utils.setFoodLevel(p, (int) (foodLevel - (maxHealth - health)));
+                    FoodLevelUtils.set(p, (int) (foodLevel - (maxHealth - health)));
                     p.setHealth(maxHealth);
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-part");
                 } else {
                     // Food level can be all converted to health
-                    Utils.setFoodLevel(p, 0);
+                    FoodLevelUtils.set(p, 0);
                     p.setHealth(health + foodLevel);
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-all");
                 }

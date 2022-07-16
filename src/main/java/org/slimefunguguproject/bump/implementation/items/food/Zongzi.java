@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Zongzi. Rice dumpling
@@ -28,7 +28,7 @@ public class Zongzi extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.addFoodLevel(p, 8);
+        FoodLevelUtils.add(p, 8);
         p.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 100, 1));
         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 1000, 1));
         p.addPotionEffect(new PotionEffect(PotionEffectType.INCREASE_DAMAGE, 100, 1));

@@ -9,7 +9,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Latiao. Spicy stick.
@@ -26,7 +26,7 @@ public class Latiao extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.addFoodLevel(p, 2);
+        FoodLevelUtils.add(p, 2);
         p.addPotionEffect(new PotionEffect(PotionEffectType.ABSORPTION, 48, 2));
     }
 }

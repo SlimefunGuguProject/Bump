@@ -25,7 +25,6 @@ import org.slimefunguguproject.bump.implementation.Bump;
  * @author haiman233
  */
 public final class AppraiseUtils {
-
     private AppraiseUtils() {
         throw new IllegalStateException("Utility class");
     }

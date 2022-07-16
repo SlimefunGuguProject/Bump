@@ -9,7 +9,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Chewing gum.
@@ -26,7 +26,7 @@ public class Kouxiangtang extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.addFoodLevel(p, 6);
+        FoodLevelUtils.add(p, 6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 1000, 5));
     }
 }

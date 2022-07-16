@@ -9,7 +9,7 @@ import org.bukkit.potion.PotionEffectType;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Sprite.
@@ -28,7 +28,7 @@ public class Xuebi extends ConsumableFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.setFoodLevel(p, 18);
+        FoodLevelUtils.add(p, 6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.LUCK, 2000, 4));
     }
 }

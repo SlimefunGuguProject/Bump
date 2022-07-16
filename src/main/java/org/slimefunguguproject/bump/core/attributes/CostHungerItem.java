@@ -11,7 +11,7 @@ import org.bukkit.event.entity.FoodLevelChangeEvent;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * This {@link ItemAttribute} indicates that the item will cost hunger when using.
@@ -65,7 +65,7 @@ public interface CostHungerItem extends ItemAttribute {
         Preconditions.checkArgument(p != null, "player cannot be null");
 
         if (checkHunger(p)) {
-            return Utils.setFoodLevel(p, p.getFoodLevel() - getHungerCost());
+            return FoodLevelUtils.set(p, p.getFoodLevel() - getHungerCost());
         } else {
             return false;
         }

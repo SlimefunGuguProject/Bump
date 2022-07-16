@@ -10,7 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
 import org.slimefunguguproject.bump.implementation.BumpItems;
-import org.slimefunguguproject.bump.utils.Utils;
+import org.slimefunguguproject.bump.utils.FoodLevelUtils;
 
 /**
  * Instant noodle.
@@ -29,7 +29,7 @@ public class Fangbianmian extends ItemFood {
 
     @Override
     public void applyFoodEffects(Player p) {
-        Utils.setFoodLevel(p, 20);
+        FoodLevelUtils.set(p, 20);
         p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1500, 5));
     }
 }
