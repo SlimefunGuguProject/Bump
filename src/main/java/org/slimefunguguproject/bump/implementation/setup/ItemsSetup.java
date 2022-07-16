@@ -11,6 +11,7 @@ import org.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
 import org.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import org.slimefunguguproject.bump.implementation.items.RandomEquipment;
 import org.slimefunguguproject.bump.implementation.items.food.Fangbianmian;
 import org.slimefunguguproject.bump.implementation.items.food.Kele;
 import org.slimefunguguproject.bump.implementation.items.food.Kouxiangtang;
@@ -43,7 +44,7 @@ public final class ItemsSetup {
         Bump plugin = Bump.getInstance();
 
         // <editor-fold defaultstate="collapsed" desc="Armor">
-        new SlimefunItem(
+        new RandomEquipment(
             BumpItemGroups.ARMOR,
             BumpItems.RANDOM_HELMET,
             RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -54,7 +55,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new SlimefunItem(
+        new RandomEquipment(
             BumpItemGroups.ARMOR,
             BumpItems.RANDOM_HORSE_ARMOR,
             RecipeType.ENHANCED_CRAFTING_TABLE,
@@ -241,7 +242,7 @@ public final class ItemsSetup {
             }
         ).register(plugin);
 
-        new SlimefunItem(
+        new RandomEquipment(
             BumpItemGroups.WEAPON,
             BumpItems.RANDOM_SWORD,
             RecipeType.ENHANCED_CRAFTING_TABLE,

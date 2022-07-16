@@ -8,6 +8,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.attributes.EnergyNetComponent;
 import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponentType;
@@ -21,6 +22,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 import org.slimefunguguproject.bump.api.blocks.AbstractMenuBlock;
 import org.slimefunguguproject.bump.implementation.Bump;
 import org.slimefunguguproject.bump.implementation.BumpItems;
+import org.slimefunguguproject.bump.implementation.items.RandomEquipment;
 import org.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import org.slimefunguguproject.bump.utils.AppraiseUtils;
 import org.slimefunguguproject.bump.utils.GuiItems;
@@ -138,11 +140,10 @@ public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetC
         }
     }
 
-    private boolean validate(ItemStack itemStack) {
-        return AppraiseUtils.isAppraisable(itemStack)
-            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HELMET, itemStack, false)
-            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_HORSE_ARMOR, itemStack, false)
-            || SlimefunUtils.isItemSimilar(BumpItems.RANDOM_SWORD, itemStack, false);
+    private boolean validate(@Nonnull ItemStack itemStack) {
+        SlimefunItem sfItem = SlimefunItem.getByItem(itemStack);
+
+        return sfItem instanceof RandomEquipment || AppraiseUtils.isAppraisable(itemStack);
     }
 
     @Nonnull
