@@ -1,6 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.items.machines;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Location;
 import org.bukkit.block.Block;
@@ -8,7 +9,6 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.slimefunguguproject.bump.api.blocks.AbstractMenuBlock;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
@@ -24,6 +24,7 @@ import io.github.thebusybiscuit.slimefun4.core.networks.energy.EnergyNetComponen
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 
+import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
 
@@ -35,24 +36,10 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenuPreset;
  * @author ybw0014
  * @see AppraisalPaper
  */
-public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetComponent {
-
-    // gui
-    private static final int[] BACKGROUND = {
-        0, 4, 8, 9, 17, 18, 22, 26
-    };
-    private static final int[] INPUT_BACKGROUND = {
-        1, 2, 3, 10, 12, 19, 20, 21
-    };
-    private static final int[] OUTPUT_BACKGROUND = {
-        5, 6, 7, 14, 16, 23, 24, 25
-    };
-    private static final int INPUT_SLOT = 11;
-    private static final int APPRAISE_BUTTON = 13;
-    private static final int OUTPUT_SLOT = 15;
+public class AppraisalInstrument extends SimpleMenuBlock {
 
     // energy
-    private static final int ENERGY_CONSUMPTION = 114514;
+    public static final int ENERGY_CONSUMPTION = 114514;
 
     public AppraisalInstrument() {
         super(BumpItemGroups.MACHINE, BumpItems.APPRAISAL, RecipeType.ENHANCED_CRAFTING_TABLE, new ItemStack[]{
@@ -62,40 +49,20 @@ public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetC
         });
     }
 
-    public static int getEnergyConsumption() {
-        return ENERGY_CONSUMPTION;
+    @Override
+    @Nonnull
+    public ItemStack getOperationSlotItem() {
+        return GuiItems.APPRAISE_BUTTON;
     }
 
+    @ParametersAreNonnullByDefault
     @Override
-    protected void setup(BlockMenuPreset blockMenuPreset) {
-        blockMenuPreset.drawBackground(ChestMenuUtils.getBackground(), BACKGROUND);
-        blockMenuPreset.drawBackground(ChestMenuUtils.getInputSlotTexture(), INPUT_BACKGROUND);
-        blockMenuPreset.drawBackground(ChestMenuUtils.getOutputSlotTexture(), OUTPUT_BACKGROUND);
-
-        blockMenuPreset.addItem(APPRAISE_BUTTON, GuiItems.APPRAISE_BUTTON);
-
-        blockMenuPreset.addMenuClickHandler(APPRAISE_BUTTON, ChestMenuUtils.getEmptyClickHandler());
-    }
-
-    @Override
-    protected void onBreak(@Nonnull BlockBreakEvent e, @Nonnull BlockMenu menu) {
-        super.onBreak(e, menu);
-        Location location = menu.getLocation();
-        menu.dropItems(location, INPUT_SLOT);
-        menu.dropItems(location, OUTPUT_SLOT);
-    }
-
-    @Override
-    protected void onNewInstance(@Nonnull BlockMenu blockMenu, @Nonnull Block b) {
-        super.onNewInstance(blockMenu, b);
-        blockMenu.addMenuClickHandler(APPRAISE_BUTTON, (player, i, itemStack, clickAction) -> {
-            appraise(blockMenu, player);
-            return false;
-        });
+    protected void onOperate(BlockMenu menu, Block b, Player p, ClickAction action) {
+        appraise(menu, p);
     }
 
     private void appraise(@Nonnull BlockMenu blockMenu, @Nonnull Player p) {
-        ItemStack item = blockMenu.getItemInSlot(INPUT_SLOT);
+        ItemStack item = blockMenu.getItemInSlot(getInputSlot());
 
         // null check
         if (!Utils.validateItem(item)) {
@@ -116,14 +83,14 @@ public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetC
         }
 
         // check output slot
-        if (blockMenu.getItemInSlot(OUTPUT_SLOT) != null) {
+        if (blockMenu.getItemInSlot(getOutputSlot()) != null) {
             Bump.getLocalization().sendMessage(p, "output-no-space");
             return;
         }
 
         // check energy
         int charge = getCharge(blockMenu.getLocation());
-        if (charge < getEnergyConsumption()) {
+        if (charge < ENERGY_CONSUMPTION) {
             Bump.getLocalization().sendMessage(p, "not-enough-power");
             return;
         }
@@ -131,8 +98,8 @@ public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetC
         ItemStack output = item.clone();
 
         if (Bump.getAppraiseManager().appraiseItem(output)) {
-            blockMenu.replaceExistingItem(INPUT_SLOT, null);
-            blockMenu.pushItem(output, OUTPUT_SLOT);
+            blockMenu.replaceExistingItem(getInputSlot(), null);
+            blockMenu.pushItem(output, getOutputSlot());
 
             setCharge(blockMenu.getLocation(), 0);
             Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
@@ -145,14 +112,8 @@ public class AppraisalInstrument extends AbstractMenuBlock implements EnergyNetC
         return sfItem instanceof RandomEquipment || AppraiseUtils.isAppraisable(itemStack);
     }
 
-    @Nonnull
-    @Override
-    public EnergyNetComponentType getEnergyComponentType() {
-        return EnergyNetComponentType.CONSUMER;
-    }
-
     @Override
     public int getCapacity() {
-        return getEnergyConsumption();
+        return ENERGY_CONSUMPTION;
     }
 }

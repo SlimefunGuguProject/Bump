@@ -112,13 +112,13 @@ public final class BumpItems {
         APPRAISAL = new LocalizedItemStack(
             "APPRAISAL",
             Material.BELL,
-            LoreBuilder.power(AppraisalInstrument.getEnergyConsumption(), " " + Bump.getLocalization().getString("lores.per-use"))
+            LoreBuilder.power(AppraisalInstrument.ENERGY_CONSUMPTION, " " + Bump.getLocalization().getString("lores.per-use"))
         );
 
         ATTRIBUTE_GRINDSTONE = new LocalizedItemStack(
             "ATTRIBUTE_GRINDSTONE",
             Material.GRINDSTONE,
-            LoreBuilder.power(AttributeGrindstone.getEnergyConsumption(), " " + Bump.getLocalization().getString("lores.per-use"))
+            LoreBuilder.power(AttributeGrindstone.ENERGY_CONSUMPTION, " " + Bump.getLocalization().getString("lores.per-use"))
         );
         // endregion machine
 
