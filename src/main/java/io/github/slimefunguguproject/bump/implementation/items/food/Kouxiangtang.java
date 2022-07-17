@@ -1,5 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.items.food;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.potion.PotionEffect;
@@ -24,7 +26,7 @@ public class Kouxiangtang extends ItemFood {
     }
 
     @Override
-    public void applyFoodEffects(Player p) {
+    public void applyFoodEffects(@Nonnull Player p) {
         FoodLevelUtils.add(p, 6);
         p.addPotionEffect(new PotionEffect(PotionEffectType.LEVITATION, 1000, 5));
     }

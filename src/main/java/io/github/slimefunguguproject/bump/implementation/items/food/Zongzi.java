@@ -1,5 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.items.food;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -26,7 +28,7 @@ public class Zongzi extends ItemFood {
     }
 
     @Override
-    public void applyFoodEffects(Player p) {
+    public void applyFoodEffects(@Nonnull Player p) {
         FoodLevelUtils.add(p, 8);
         p.addPotionEffect(new PotionEffect(PotionEffectType.CONDUIT_POWER, 100, 1));
         p.addPotionEffect(new PotionEffect(PotionEffectType.GLOWING, 1000, 1));

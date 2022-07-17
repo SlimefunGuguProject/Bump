@@ -39,7 +39,7 @@ public final class WeaponProjectileTask implements Runnable {
      * This method starts this task
      */
     public static void start() {
-        int duration = Bump.getRegistry().getConfig().getInt("weapons.projectile-duration", 0);
+        int duration = Bump.getRegistry().getConfig().getInt("weapons.projectile-duration", 0, 60);
         if (duration > 0) {
             Scheduler.repeat(Slimefun.getTickerTask().getTickRate(), new WeaponProjectileTask(duration));
         }
