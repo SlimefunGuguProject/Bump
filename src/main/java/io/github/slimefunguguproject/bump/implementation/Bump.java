@@ -6,9 +6,8 @@ import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
 import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
-import io.github.slimefunguguproject.bump.implementation.listeners.BowShootListener;
-import io.github.slimefunguguproject.bump.implementation.listeners.SkySwordListener;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
+import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
 
@@ -103,8 +102,7 @@ public final class Bump extends AbstractAddon {
         appraiseManager = new AppraiseManager();
 
         // listeners
-        getServer().getPluginManager().registerEvents(new BowShootListener(), this);
-        getServer().getPluginManager().registerEvents(new SkySwordListener(), this);
+        ListenerSetup.setup(this);
 
         // tasks
         WeaponProjectileTask.start();

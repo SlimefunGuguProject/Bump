@@ -11,7 +11,9 @@ import com.google.common.base.Preconditions;
 import org.bukkit.entity.Projectile;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 import net.guizhanss.guizhanlib.common.Scheduler;
 
@@ -74,5 +76,6 @@ public final class WeaponProjectileTask implements Runnable {
 
     private void trackProjectile(Projectile projectile) {
         projectileMap.put(projectile, Bump.getSlimefunTickCount());
+        PersistentDataAPI.setBoolean(projectile, Keys.PROJECTILE, true);
     }
 }
