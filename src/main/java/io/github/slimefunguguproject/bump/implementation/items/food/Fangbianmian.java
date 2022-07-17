@@ -1,7 +1,5 @@
 package io.github.slimefunguguproject.bump.implementation.items.food;
 
-import javax.annotation.Nonnull;
-
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -29,7 +27,7 @@ public class Fangbianmian extends ItemFood {
     }
 
     @Override
-    public void applyFoodEffects(@Nonnull Player p) {
+    public void applyFoodEffects(Player p) {
         FoodLevelUtils.set(p, 20);
         p.addPotionEffect(new PotionEffect(PotionEffectType.HEALTH_BOOST, 1500, 5));
     }

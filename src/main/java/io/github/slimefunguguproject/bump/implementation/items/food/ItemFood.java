@@ -6,7 +6,6 @@ import java.util.UUID;
 import javax.annotation.Nonnull;
 
 import org.bukkit.GameMode;
-import org.bukkit.NamespacedKey;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -18,12 +17,10 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
-import io.github.thebusybiscuit.slimefun4.implementation.items.SimpleSlimefunItem;
 import io.github.thebusybiscuit.slimefun4.implementation.items.blocks.UnplaceableBlock;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.ItemUtils;
 
 import net.guizhanss.guizhanlib.common.Cooldown;
-import net.guizhanss.guizhanlib.common.Scheduler;
 
 /**
  * A {@link ItemFood} is a {@link SlimefunItem} that is based on a non-food item.
@@ -77,5 +74,5 @@ public abstract class ItemFood extends UnplaceableBlock {
         };
     }
 
-    public abstract void applyFoodEffects(@Nonnull Player p);
+    public abstract void applyFoodEffects(Player p);
 }
