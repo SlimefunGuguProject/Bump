@@ -3,6 +3,7 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons;
 import javax.annotation.Nonnull;
 
 import org.bukkit.Sound;
+import org.bukkit.entity.Projectile;
 import org.bukkit.entity.WitherSkull;
 import org.bukkit.inventory.ItemStack;
 
@@ -36,13 +37,12 @@ public class WitherSkullBow extends BumpBow {
             if (costHunger(p)) {
                 damageItem(p, item);
 
-                e.setCancelled(true);
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.wither_skull_bow");
 
                 p.playSound(p.getLocation(), Sound.ENTITY_WITHER_SHOOT, 1.0F, 1.0F);
 
-                WitherSkull skull = p.launchProjectile(WitherSkull.class);
-                WeaponProjectileTask.track(skull);
+                Projectile projectile = p.launchProjectile(WitherSkull.class);
+                WeaponProjectileTask.track(projectile);
             } else {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
             }

@@ -1,6 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.items.weapons;
 
 import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.SmallFireball;
@@ -33,6 +34,7 @@ public class DevilSword extends BumpSword {
         for (int i = 0; i < 20; i++) {
             Projectile projectile = p.launchProjectile(SmallFireball.class);
             WeaponProjectileTask.track(projectile);
+            p.playSound(p.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 1.0F, 1.0F);
             p.spawnParticle(Particle.ENCHANTMENT_TABLE, p.getLocation(), 1);
         }
     }

@@ -31,13 +31,13 @@ public class SkyDevilSword extends BumpSword {
 
     @Override
     public void onItemUse(Player p, ItemStack itemStack) {
-        Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.activate");
+        Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.activated");
 
         p.setGlowing(true);
         p.addPotionEffect(new PotionEffect(PotionEffectType.SPEED, 300, 3));
         p.addPotionEffect(new PotionEffect(PotionEffectType.DAMAGE_RESISTANCE, 300, 3));
 
-        (new BukkitRunnable() {
+        new BukkitRunnable() {
             int count = 3;
 
             @Override
@@ -47,11 +47,11 @@ public class SkyDevilSword extends BumpSword {
                     WeaponProjectileTask.track(projectile);
                     count--;
                 } else {
-                    this.cancel();
+                    cancel();
                     p.setGlowing(false);
-                    Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.end");
+                    Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_devil_sword.deactivated");
                 }
             }
-        }).runTaskTimer(Bump.getInstance(), 1L, 100L);
+        }.runTaskTimer(Bump.getInstance(), 1L, 100L);
     }
 }
