@@ -117,7 +117,7 @@ public class AppraisalPaper extends LimitedUseItem {
         menu.addItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)), ChestMenuUtils.getEmptyClickHandler());
 
         // Add menu close handler
-        menu.addMenuCloseHandler((player) -> {
+        menu.addMenuCloseHandler(player -> {
             InventoryUtil.push(p, menu.getItemInSlot(INPUT_SLOT));
             InventoryUtil.push(p, menu.getItemInSlot(OUTPUT_SLOT));
         });

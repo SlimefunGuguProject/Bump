@@ -2,7 +2,6 @@ package io.github.slimefunguguproject.bump.utils;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.common.base.Preconditions;
 

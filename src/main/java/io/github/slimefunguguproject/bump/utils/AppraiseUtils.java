@@ -15,9 +15,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
-import lombok.experimental.UtilityClass;
-
 import net.guizhanss.guizhanlib.utils.ChatUtil;
+
+import lombok.experimental.UtilityClass;
 
 /**
  * Utility methods for appraise

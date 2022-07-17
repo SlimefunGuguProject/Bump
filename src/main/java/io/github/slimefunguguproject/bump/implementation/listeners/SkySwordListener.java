@@ -21,12 +21,13 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
 public final class SkySwordListener implements Listener {
     @EventHandler
     public void onPlayerHitGround(@Nonnull EntityDamageEvent e) {
-        if (e.getEntity() instanceof Player p && e.getCause() == EntityDamageEvent.DamageCause.FALL) {
-            if (PersistentDataAPI.getBoolean(p, Keys.SKY_SWORD_PROTECTED)) {
-                e.setCancelled(true);
-                Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_sword.protected");
-                PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, false);
-            }
+        if (e.getEntity() instanceof Player p
+            && e.getCause() == EntityDamageEvent.DamageCause.FALL
+            && PersistentDataAPI.getBoolean(p, Keys.SKY_SWORD_PROTECTED)
+        ) {
+            e.setCancelled(true);
+            Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_sword.protected");
+            PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, false);
         }
     }
 }

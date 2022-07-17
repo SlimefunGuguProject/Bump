@@ -12,9 +12,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
 
-import lombok.Getter;
-
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+
+import lombok.Getter;
 
 /**
  * This class holds {@link Map Maps} and {@link List Lists} related to Bump.
