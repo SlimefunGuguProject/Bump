@@ -3,6 +3,7 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons;
 import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
@@ -56,6 +57,8 @@ public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
                     p.setHealth(health + foodLevel);
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-all");
                 }
+
+                p.playSound(p.getLocation(), Sound.AMBIENT_CAVE, 1.0F, 1.0F);
             } else {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
             }

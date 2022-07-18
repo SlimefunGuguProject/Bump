@@ -6,6 +6,7 @@ import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.util.Vector;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
@@ -33,7 +34,11 @@ public class SkySword extends BumpSword {
     @ParametersAreNonnullByDefault
     public void onItemUse(Player p, ItemStack itemStack) {
         Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_sword.activated");
-        p.setVelocity(p.getLocation().getDirection().multiply(0.5D));
+
+        // directly up
+        Vector vector = new Vector(0, 1, 0);
+        p.setVelocity(vector);
+
         p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 1.0F);
         for (int i = 0; i < 20; i++) {
             p.spawnParticle(Particle.EXPLOSION_HUGE, p.getLocation(), 1);

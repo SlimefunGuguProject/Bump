@@ -53,7 +53,8 @@ public final class WeaponProjectileTask implements Runnable {
      * @param projectile the {@link Projectile} to be added.
      */
     public static void track(@Nonnull Projectile projectile) {
-        Preconditions.checkArgument(projectile != null, "Projectile cannot not be null. How?");
+        Preconditions.checkArgument(projectile != null, "Projectile cannot not be null.");
+        Preconditions.checkState(instance != null, "The task instance cannot be null.");
         instance.trackProjectile(projectile);
     }
 

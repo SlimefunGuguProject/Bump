@@ -1,5 +1,6 @@
 package io.github.slimefunguguproject.bump.implementation.items.weapons;
 
+import org.bukkit.Sound;
 import org.bukkit.entity.DragonFireball;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
@@ -43,6 +44,7 @@ public class SkyDevilSword extends BumpSword {
             @Override
             public void run() {
                 if (count > 0) {
+                    p.playSound(p.getLocation(), Sound.ENTITY_ENDER_DRAGON_SHOOT, 1.0F, 1.0F);
                     Projectile projectile = p.launchProjectile(DragonFireball.class);
                     WeaponProjectileTask.track(projectile);
                     count--;

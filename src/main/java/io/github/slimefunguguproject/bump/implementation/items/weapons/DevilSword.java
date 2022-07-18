@@ -31,10 +31,12 @@ public class DevilSword extends BumpSword {
     @Override
     public void onItemUse(Player p, ItemStack itemStack) {
         Bump.getLocalization().sendActionbarMessage(p, "weapon.devil_sword");
+
+        p.playSound(p.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 1.0F, 1.0F);
+
         for (int i = 0; i < 20; i++) {
             Projectile projectile = p.launchProjectile(SmallFireball.class);
             WeaponProjectileTask.track(projectile);
-            p.playSound(p.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 1.0F, 1.0F);
             p.spawnParticle(Particle.ENCHANTMENT_TABLE, p.getLocation(), 1);
         }
     }

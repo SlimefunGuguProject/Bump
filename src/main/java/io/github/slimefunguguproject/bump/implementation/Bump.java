@@ -2,6 +2,8 @@ package io.github.slimefunguguproject.bump.implementation;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Bukkit;
+
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
@@ -69,7 +71,7 @@ public final class Bump extends AbstractAddon {
         sendConsole("&6&l                                  \\ \\_\\ ");
         sendConsole("&6&l                                   \\/_/ ");
         sendConsole("&a&l  Bump 2 for Slimefun4 RC-30+");
-        sendConsole("&a&l  Powered By bxx2004");
+        sendConsole("&a&l  Powered By bxx2004, SlimefunGuguProject");
         sendConsole("&a&l  GitHub: https://github.com/SlimefunGuguProject/Bump");
         sendConsole("&a&l  Issues: https://github.com/SlimefunGuguProject/Bump/issues");
 
@@ -114,6 +116,6 @@ public final class Bump extends AbstractAddon {
 
     @Override
     public void disable() {
-        // does nothing yet.
+        Bukkit.getScheduler().cancelTasks(this);
     }
 }
