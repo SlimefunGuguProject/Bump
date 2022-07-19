@@ -2,6 +2,7 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
 import org.bukkit.inventory.ItemStack;
@@ -38,15 +39,16 @@ public class LightBow extends BumpBow {
                 return;
             }
 
+            Location targetLocation = target.getLocation();
+
             if (costHunger(p)) {
                 damageItem(p, item);
 
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.light_bow");
 
                 for (int i = 0; i < 10; i++) {
-                    p.getWorld().strikeLightning(target.getLocation());
+                    p.getWorld().strikeLightning(targetLocation);
                 }
-
             } else {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
             }

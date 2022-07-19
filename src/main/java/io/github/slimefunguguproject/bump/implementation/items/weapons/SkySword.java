@@ -36,7 +36,7 @@ public class SkySword extends BumpSword {
         Bump.getLocalization().sendActionbarMessage(p, "weapon.sky_sword.activated");
 
         // directly up
-        Vector vector = new Vector(0, 1, 0);
+        Vector vector = new Vector(0, 3, 0);
         p.setVelocity(vector);
 
         p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EXPLODE, 1.0F, 1.0F);
