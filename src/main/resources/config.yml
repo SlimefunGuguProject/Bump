@@ -1,5 +1,5 @@
 # DO NOT modify this
-version: 2
+version: 3
 
 options:
   # Auto update
@@ -8,3 +8,7 @@ options:
   lang: en-US
   # Enable researches
   enable-researches: true
+
+weapons:
+  # The duration of projectiles launched by any Bump weapon (in Slimefun ticks)
+  projectile-duration: 10
