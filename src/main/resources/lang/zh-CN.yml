@@ -24,25 +24,25 @@ items:
     name: "&6雪碧"
     lore:
       - ""
-      - "&b&k|&b- 很甜很甜, 还冒着气泡!"
+      - "&b&k|&b- 很甜很甜，还冒着气泡！"
       - ""
   kele:
     name: "&e可乐"
     lore:
       - ""
-      - "&b&k|&b- 冰力十足,喝了真精神,还会飞呢!"
+      - "&b&k|&b- 冰力十足，喝了真精神，还会飞呢！"
       - ""
   fangbianmian:
     name: "&e康师傅方便面"
     lore:
       - ""
-      - "&b&k|&b- 这个味,对辣!"
+      - "&b&k|&b- 这个味，对辣！"
       - ""
   latiao:
     name: "&e辣条"
     lore:
       - ""
-      - "&b&k|&b- 爽,吃了之后还不忘舔舔辣油..."
+      - "&b&k|&b- 爽，吃了之后还不忘舔舔辣油..."
       - ""
   kouxiangtang:
     name: "&e口香糖"
@@ -60,7 +60,7 @@ items:
     name: "&b鉴定仪"
     lore:
       - ""
-      - "&c&k|&7- 哦,你这是个残次品..."
+      - "&c&k|&7- 哦，你这是个残次品..."
       - ""
   attribute_grindstone:
     name: "&b属性砂轮"
@@ -138,28 +138,28 @@ items:
     name: "&e摸金铲"
     lore:
       - ""
-      - "&b&k|&b- 在沙子里一定几率挖出破损的金币!"
+      - "&b&k|&b- 在沙子里一定几率挖出破损的金币！"
       - ""
   appraisal_paper_armor:
     name: "&e护甲品质鉴定符"
     lore:
       - ""
-      - "&b&k|&b- 给定物品随机一个护甲属性!"
-      - "&b&k|&b- 非常昂贵,一定要保存好..."
+      - "&b&k|&b- 给定物品随机一个护甲属性！"
+      - "&b&k|&b- 非常昂贵，一定要保存好..."
       - ""
   appraisal_paper_damage:
     name: "&e武器品质鉴定符"
     lore:
       - ""
-      - "&b&k|&b- 给定物品随机一个攻击属性!"
-      - "&b&k|&b- 非常昂贵,一定要保存好..."
+      - "&b&k|&b- 给定物品随机一个攻击属性！"
+      - "&b&k|&b- 非常昂贵，一定要保存好..."
       - ""
   appraisal_paper_horse_armor:
     name: "&e马铠品质鉴定符"
     lore:
       - ""
-      - "&b&k|&b- 给定物品随机一个护甲属性!"
-      - "&b&k|&b- 非常昂贵,一定要保存好..."
+      - "&b&k|&b- 给定物品随机一个护甲属性！"
+      - "&b&k|&b- 非常昂贵，一定要保存好..."
       - ""
   light_bow:
     name: "&6神罚之弓"
@@ -195,7 +195,7 @@ items:
     name: "&6守护之剑"
     lore:
       - ""
-      - "&b&k|&b- &7&o我守护着你,到生命的最后一刻..."
+      - "&b&k|&b- &7&o我守护着你，到生命的最后一刻..."
       - ""
   peach_sword:
     name: "&6桃木剑"
@@ -215,21 +215,21 @@ items:
     name: "&6破天剑"
     lore:
       - ""
-      - "&b&k|&b- &7&o破天,多么霸气的名字..."
+      - "&b&k|&b- &7&o破天，多么霸气的名字..."
       - "&b&k|&b- &e&o右键 &7&o将自己冲向天际..."
       - ""
   devil_sword:
     name: "&6斩魔剑"
     lore:
       - ""
-      - "&b&k|&b- &7&o斩魔,多么威武的称号..."
+      - "&b&k|&b- &7&o斩魔，多么威武的称号..."
       - "&b&k|&b- &e&o右键 &7&o发出圣火横扫一切黑暗..."
       - ""
   sky_devil_sword:
     name: "&6破天斩魔剑"
     lore:
       - ""
-      - "&b&k|&b- &7&o破天斩魔,相继发出强大的能量..."
+      - "&b&k|&b- &7&o破天斩魔，相继发出强大的能量..."
       - "&b&k|&b- &e&o右键 &7&o连续向前发射三次吐息并且提升自己..."
       - ""
 lores:
@@ -248,40 +248,48 @@ researches:
   soul_sword: "灵魂之剑"
   sky_devil: "斩天破魔"
 messages:
-  no-input: "&c请放入物品!"
-  output-no-space: "&c输出空间不足!"
-  not-enough-power: "&c电力不足!"
+  no-input: "&c请放入物品！"
+  output-no-space: "&c输出空间不足！"
+  not-enough-power: "&c电力不足！"
   stacked: "&c你不能使用堆叠的物品。"
   food:
-    xuebi: "&b&k|&b- &7&o清凉一夏!"
-    kele: "&b&k|&b- &7&o肥宅的胜利!"
-    fangbianmian: "&b&k|&b- &7&o童年的味道!"
-    latiao: "&b&k|&b- &7&o这辣，才够味!"
-    kouxiangtang: "&b&k|&b- &7&o仙气飘飘!"
-    zongzi: "&b&k|&b- &7&o是甜粽子还是咸粽子呢?"
+    cooldown: "&b&k|&b- &7&o你需要等待一段时间才能再次食用！"
+    xuebi: "&b&k|&b- &7&o清凉一夏！"
+    kele: "&b&k|&b- &7&o肥宅的胜利！"
+    fangbianmian: "&b&k|&b- &7&o童年的味道！"
+    latiao: "&b&k|&b- &7&o这辣，才够味！"
+    kouxiangtang: "&b&k|&b- &7&o仙气飘飘！"
+    zongzi: "&b&k|&b- &7&o是甜粽子还是咸粽子呢？"
   tool:
-    getgold_spade: "&b&k|&b- &7&oOMG, 金子..."
+    getgold_spade: "&b&k|&b- &7&o哇，是金子..."
     appraisal_paper:
-      invalid: "&c该物品无法进行鉴定!"
-      mismatch: "&c该鉴定符与物品不兼容!"
-      success: "&a该物品现在可以进行鉴定了!"
+      invalid: "&c该物品无法进行鉴定！"
+      mismatch: "&c该鉴定符与物品不兼容！"
+      success: "&a该物品现在可以进行鉴定了！"
   weapon:
-    unavailable: "&b&k|&b- &7&o你现在无法发动该技能!"
-    low-food-level: "&b&k|&b- &7&o你的饱食度太低!"
+    unavailable: "&b&k|&b- &7&o你现在无法发动该技能！"
+    low-food-level: "&b&k|&b- &7&o你的饱食度太低！"
+    cooldown: "&b&k|&b- &7&o你需要等待一段时间才能再次使用武器技能！"
     soul_sword:
-      converted-part: "&b&k|&b- &7&o已将部分饱食度转化为生命值!"
-      converted-all: "&b&k|&b- &7&o已将全部饱食度转化为生命值!"
-    devil_sword: "&b&k|&b- &7&o斩魔, 一刀致命!"
-    light_bow: "&b&k|&b- &7&o神罚!"
-    wither_skull_bow: "&b&k|&b- &7&o凋零!"
+      converted-part: "&b&k|&b- &7&o已将部分饱食度转化为生命值！"
+      converted-all: "&b&k|&b- &7&o已将全部饱食度转化为生命值！"
+    devil_sword: "&b&k|&b- &7&o斩魔，一刀致命！"
+    sky_sword:
+      activated: "&b&k|&b- &7&o破天，一飞冲天！"
+      protected: "&b&k|&b- &7&o破天剑保护了你免受摔落伤害！"
+    sky_devil_sword:
+      activated: "&b&k|&b- &7&o破天斩魔，天降正义！"
+      deactivated: "&b&k|&b- &7&o强化时间已经结束！"
+    light_bow: "&b&k|&b- &7&o神罚！"
+    wither_skull_bow: "&b&k|&b- &7&o凋零！"
   machine:
     appraisal:
-      invalid: "&c该物品类型不支持鉴定!"
-      appraised: "&c该物品已经鉴定过,无法进行鉴定!"
-      success: "&a已鉴定武器!"
+      invalid: "&c该物品类型不支持鉴定！"
+      appraised: "&c该物品已经鉴定过，无法进行鉴定！"
+      success: "&a已鉴定!"
     attribute-grindstone:
-      invalid: "&c该物品还未鉴定!"
-      success: "&a已清除鉴定结果!"
+      invalid: "&c该物品还未鉴定！"
+      success: "&a已清除鉴定结果！"
 gui:
   appraise:
     name: "&e点击鉴定"
