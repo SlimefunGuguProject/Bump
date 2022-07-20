@@ -266,6 +266,11 @@ messages:
       converted-part: "&b&k|&b- &7&o已將部分飽食度轉化為生命值!"
       converted-all: "&b&k|&b- &7&o已將全部飽食度轉化為生命值!"
     devil_sword: "&b&k|&b- &7&o斬魔, 一刀致命!"
+    sky_sword:
+      activated: "&b&k|&b- &7&o破天, 一飛沖天!"
+    sky_devil_sword:
+      activated: "&b&k|&b- &7&o破天斬魔,天降正義!"
+      deactivated: "&b&k|&b- &7&o強化時間已經結束!"
     light_bow: "&b&k|&b- &7&o神罰!"
     wither_skull_bow: "&b&k|&b- &7&o凋零!"
   machine:
