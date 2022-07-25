@@ -1,11 +1,7 @@
 package io.github.slimefunguguproject.bump.utils;
 
 import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
 
-import com.google.common.base.Preconditions;
-
-import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
@@ -38,7 +34,7 @@ public final class Utils {
      * @param item The {@link ItemStack} to be dealt with.
      */
     public static void glowItem(@Nonnull ItemStack item) {
-        if (!validateItem(item)) {
+        if (!ValidateUtils.validateItem(item)) {
             return;
         }
 
@@ -46,21 +42,5 @@ public final class Utils {
         itemMeta.addEnchant(Enchantment.LUCK, 1, true);
         itemMeta.addItemFlags(ItemFlag.HIDE_ENCHANTS);
         item.setItemMeta(itemMeta);
-    }
-
-    /**
-     * Just a simple null check wrapper
-     *
-     * @param itemStack The {@link ItemStack} to be checked
-     * @return if the {@link ItemStack} is valid
-     */
-    public static boolean validateItem(@Nullable ItemStack itemStack) {
-        try {
-            Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
-            Preconditions.checkArgument(itemStack.getType() != Material.AIR, "ItemStack should not be empty");
-            return true;
-        } catch (IllegalArgumentException ex) {
-            return false;
-        }
     }
 }

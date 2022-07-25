@@ -29,7 +29,7 @@ import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
  *
  * @author ybw0014
  */
-public abstract class SimpleMenuBlock extends MenuBlock  implements EnergyNetComponent {
+public abstract class SimpleMenuBlock extends MenuBlock implements EnergyNetComponent {
 
     // gui
     private static final int[] BACKGROUND = {

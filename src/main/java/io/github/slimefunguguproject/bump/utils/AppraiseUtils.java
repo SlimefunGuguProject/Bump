@@ -35,7 +35,7 @@ public final class AppraiseUtils {
      * @return if the {@link ItemStack} is marked as appraisable
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
-        if (Utils.validateItem(itemStack)) {
+        if (ValidateUtils.validateItem(itemStack)) {
             return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
         } else {
             return false;
@@ -48,7 +48,7 @@ public final class AppraiseUtils {
      * @param itemStack the {@link ItemStack} to be set
      */
     public static void setAppraisable(@Nonnull ItemStack itemStack) {
-        if (!Utils.validateItem(itemStack)) {
+        if (!ValidateUtils.validateItem(itemStack)) {
             return;
         }
 
@@ -78,7 +78,7 @@ public final class AppraiseUtils {
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
-        if (Utils.validateItem(itemStack)) {
+        if (ValidateUtils.validateItem(itemStack)) {
             return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
         } else {
             return false;

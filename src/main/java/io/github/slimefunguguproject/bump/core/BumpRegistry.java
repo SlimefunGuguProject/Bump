@@ -10,7 +10,8 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
@@ -27,21 +28,13 @@ public final class BumpRegistry {
     private final AddonConfig config;
 
     // appraise
+    @Getter
     private final Map<String, AppraiseType> appraiseTypeIds = new HashMap<>();
+    @Getter
     private final List<AppraiseType> appraiseTypes = new ArrayList<>();
 
     @ParametersAreNonnullByDefault
     public BumpRegistry(JavaPlugin plugin, AddonConfig config) {
         this.config = config;
-    }
-
-    @Nonnull
-    public Map<String, AppraiseType> getAppraiseTypeIds() {
-        return appraiseTypeIds;
-    }
-
-    @Nonnull
-    public List<AppraiseType> getAllAppraiseTypes() {
-        return appraiseTypes;
     }
 }

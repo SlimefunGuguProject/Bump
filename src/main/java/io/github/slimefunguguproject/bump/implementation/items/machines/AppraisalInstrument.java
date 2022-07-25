@@ -14,7 +14,7 @@ import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPa
 import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
-import io.github.slimefunguguproject.bump.utils.Utils;
+import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -30,7 +30,7 @@ import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
  * @author ybw0014
  * @see AppraisalPaper
  */
-public class AppraisalInstrument extends SimpleMenuBlock {
+public final class AppraisalInstrument extends SimpleMenuBlock {
 
     // energy
     public static final int ENERGY_CONSUMPTION = 114514;
@@ -59,7 +59,7 @@ public class AppraisalInstrument extends SimpleMenuBlock {
         ItemStack item = blockMenu.getItemInSlot(getInputSlot());
 
         // null check
-        if (!Utils.validateItem(item)) {
+        if (!ValidateUtils.validateItem(item)) {
             Bump.getLocalization().sendMessage(p, "no-input");
             return;
         }

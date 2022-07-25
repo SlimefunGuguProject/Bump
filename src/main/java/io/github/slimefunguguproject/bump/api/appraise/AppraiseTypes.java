@@ -1,4 +1,4 @@
-package io.github.slimefunguguproject.bump.implementation.appraise;
+package io.github.slimefunguguproject.bump.api.appraise;
 
 import javax.annotation.Nonnull;
 
@@ -12,13 +12,11 @@ import io.github.slimefunguguproject.bump.utils.BumpTag;
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 
 /**
- * This enum holds all available appraisal types.
- * <p>
- * TODO: move this to api package and allow to add more types.
+ * This class holds an appraisal type. It is bind to a collection of
  *
  * @author ybw0014
  */
-public enum AppraiseType {
+public enum AppraiseTypes {
     WEAPON(false) {
         @Override
         public boolean isValidMaterial(@Nonnull Material type) {
@@ -68,22 +66,22 @@ public enum AppraiseType {
 
     private final boolean allowVanillaItems;
 
-    AppraiseType(boolean allowVanillaItems) {
+    AppraiseTypes(boolean allowVanillaItems) {
         this.allowVanillaItems = allowVanillaItems;
     }
 
     /**
-     * Get the {@link AppraiseType} from given {@link Material}.
+     * Get the {@link AppraiseTypes} from given {@link Material}.
      *
      * @param material The {@link Material}
-     * @return Appropriate {@link AppraiseType}
+     * @return Appropriate {@link AppraiseTypes}
      * @throws IllegalArgumentException when given material is invalid.
      */
     @Nonnull
-    public static AppraiseType getFromMaterial(@Nonnull Material material) {
+    public static AppraiseTypes getFromMaterial(@Nonnull Material material) {
         Preconditions.checkArgument(material != null, "Material should not be null");
 
-        for (AppraiseType type : AppraiseType.values()) {
+        for (AppraiseTypes type : AppraiseTypes.values()) {
             if (type.isValidMaterial(material)) {
                 return type;
             }

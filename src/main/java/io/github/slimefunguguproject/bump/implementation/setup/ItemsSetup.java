@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
 import io.github.slimefunguguproject.bump.implementation.items.food.Fangbianmian;
 import io.github.slimefunguguproject.bump.implementation.items.food.Kele;
@@ -188,7 +188,7 @@ public final class ItemsSetup {
 
         new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_ARMOR,
-            AppraiseType.ARMOR,
+            AppraiseTypes.ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HELMET
@@ -197,7 +197,7 @@ public final class ItemsSetup {
 
         new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_DAMAGE,
-            AppraiseType.WEAPON,
+            AppraiseTypes.WEAPON,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_SWORD
@@ -206,7 +206,7 @@ public final class ItemsSetup {
 
         new AppraisalPaper(
             BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
-            AppraiseType.HORSE_ARMOR,
+            AppraiseTypes.HORSE_ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HORSE_ARMOR

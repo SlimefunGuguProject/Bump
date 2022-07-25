@@ -12,7 +12,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
 import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
@@ -58,13 +58,13 @@ public class AppraisalPaper extends LimitedUseItem {
     private static final int APPRAISE_BUTTON = 13;
     private static final int OUTPUT_SLOT = 15;
 
-    private final AppraiseType appraiseType;
+    private final AppraiseTypes appraiseTypes;
 
     @ParametersAreNonnullByDefault
-    public AppraisalPaper(SlimefunItemStack item, AppraiseType appraiseType, RecipeType recipeType, ItemStack[] recipe) {
+    public AppraisalPaper(SlimefunItemStack item, AppraiseTypes appraiseTypes, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
 
-        this.appraiseType = appraiseType;
+        this.appraiseTypes = appraiseTypes;
 
         setMaxUseCount(MAX_USES);
         addItemHandler(getItemHandler());
@@ -160,7 +160,7 @@ public class AppraisalPaper extends LimitedUseItem {
                 - has not been appraised yet
                 - has not been marked appraisable yet
              */
-            if (appraiseType.isValidMaterial(input.getType(), sfItem != null)) {
+            if (appraiseTypes.isValidMaterial(input.getType(), sfItem != null)) {
                 if (!AppraiseUtils.isAppraised(input)
                     && !AppraiseUtils.isAppraisable(input)) {
                     // item can be marked appraisable

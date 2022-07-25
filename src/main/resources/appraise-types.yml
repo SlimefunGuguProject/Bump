@@ -1,0 +1,25 @@
+# Refer to our wiki to learn more:
+sword:
+  name: "剑"
+  description:
+    - "可鉴定任意粘液科技剑"
+  equipment-type: SLIMEFUN
+  check-material: true
+  valid-materials:
+    - WOODEN_SWORD
+    - STONE_SWORD
+    - IRON_SWORD
+    - GOLD_SWORD
+    - DIAMOND_SWORD
+    - NETHERITE_SWORD
+  valid-slimefun-items:
+    - GRANDPA_STICK
+  attributes:
+    GENERIC_ATTACK_DAMAGE:
+      min: 0
+      max: 30
+      weight: 40
+    GENERIC_ATTACK_SPEED:
+      min: -3
+      max: 10
+      weight: 25

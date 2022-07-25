@@ -20,7 +20,7 @@ record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
     @Override
     @Nonnull
     public String toString() {
-        return "Attribute[" + attribute
+        return "AppraiseAttribute[" + attribute
             + ", " + min + " - " + max + "]";
     }
 

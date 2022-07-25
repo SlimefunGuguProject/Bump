@@ -22,8 +22,8 @@ repositories {
 dependencies {
     implementation 'net.guizhanss:GuizhanLib:0.9.9'
 
-    compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
-    compileOnly 'io.github.Slimefun:Slimefun4:RC-30'
+    compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
+    compileOnly 'io.github.Slimefun:Slimefun4:RC-32'
     compileOnly 'com.google.code.findbugs:jsr305:3.0.2'
     compileOnly 'org.projectlombok:lombok:1.18.24'
 

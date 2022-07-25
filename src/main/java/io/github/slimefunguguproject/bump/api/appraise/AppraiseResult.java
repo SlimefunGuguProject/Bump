@@ -22,10 +22,10 @@ import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
  * @author ybw0014
  */
 public final class AppraiseResult {
+    // TODO: configurable
     private static final Map<Integer, Integer> starThreshold = new LinkedHashMap<>();
 
     static {
-        // stars
         starThreshold.put(100, 20);
         starThreshold.put(98, 10);
         starThreshold.put(96, 9);
