@@ -34,7 +34,7 @@ public final class Utils {
      * @param item The {@link ItemStack} to be dealt with.
      */
     public static void glowItem(@Nonnull ItemStack item) {
-        if (!ValidateUtils.validateItem(item)) {
+        if (!ValidateUtils.noAirItem(item)) {
             return;
         }
 

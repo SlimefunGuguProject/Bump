@@ -8,7 +8,6 @@ import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
-import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
@@ -21,7 +20,7 @@ import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
-import net.guizhanss.guizhanlib.utils.ChatUtil;
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 /**
  * The {@link AppraiseManager} hold all {@link AppraiseType} for each equipment.
@@ -79,7 +78,7 @@ public final class AppraiseManager {
      * @return If the item is appraised
      */
     public boolean appraiseItem(@Nonnull ItemStack itemStack) {
-        if (!ValidateUtils.validateItem(itemStack)) {
+        if (!ValidateUtils.noAirItem(itemStack)) {
             throw new IllegalArgumentException("ItemStack should not be empty");
         }
 
@@ -130,7 +129,7 @@ public final class AppraiseManager {
      * @return If the purge process succeeds.
      */
     public boolean clearAttributes(@Nonnull ItemStack itemStack) {
-        if (!ValidateUtils.validateItem(itemStack)) {
+        if (!ValidateUtils.noAirItem(itemStack)) {
             return false;
         }
 

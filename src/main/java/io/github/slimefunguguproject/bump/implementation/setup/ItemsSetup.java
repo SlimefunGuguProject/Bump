@@ -7,6 +7,7 @@ import io.github.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
 import io.github.slimefunguguproject.bump.implementation.items.food.Fangbianmian;
 import io.github.slimefunguguproject.bump.implementation.items.food.Kele;

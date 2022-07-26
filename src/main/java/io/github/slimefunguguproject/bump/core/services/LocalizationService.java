@@ -13,7 +13,8 @@ import org.bukkit.entity.Player;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 
 import net.guizhanss.guizhanlib.localization.Localization;
-import net.guizhanss.guizhanlib.utils.ChatUtil;
+import net.guizhanss.guizhanlib.localization.MinecraftLocalization;
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -25,7 +26,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author ybw0014
  */
 @SuppressWarnings("ConstantConditions")
-public final class LocalizationService extends Localization {
+public final class LocalizationService extends MinecraftLocalization {
     public LocalizationService(Bump plugin) {
         super(plugin);
     }

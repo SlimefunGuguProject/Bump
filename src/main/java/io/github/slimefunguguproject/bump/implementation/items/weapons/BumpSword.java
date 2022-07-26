@@ -11,7 +11,7 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.core.attributes.CooldownItem;
 import io.github.slimefunguguproject.bump.core.attributes.CostHungerItem;
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemSetting;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;

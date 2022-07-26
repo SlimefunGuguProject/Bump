@@ -2,6 +2,10 @@ package io.github.slimefunguguproject.bump.implementation;
 
 import javax.annotation.Nonnull;
 
+import org.bstats.bukkit.Metrics;
+
+import org.bstats.charts.SimplePie;
+
 import org.bukkit.Bukkit;
 
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
@@ -13,7 +17,6 @@ import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
 
-import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
@@ -29,14 +32,14 @@ public final class Bump extends AbstractAddon {
     // localization
     private LocalizationService localization;
 
+    // registry
+    private BumpRegistry registry;
+
     // appraise
     private AppraiseManager appraiseManager;
 
-    private BumpRegistry registry;
-
     public Bump() {
-        super("SlimefunGuguProject", "Bump", "main", "options.auto-update", "options.lang");
-        enableMetrics(14870);
+        super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
     }
 
     @Nonnull
@@ -110,8 +113,9 @@ public final class Bump extends AbstractAddon {
         WeaponProjectileTask.start();
 
         // Metrics setup
-        getMetrics().addCustomChart(new SimplePie("server_language", () -> lang));
-        getMetrics().addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
+        final Metrics metrics = new Metrics(this, 14870);
+        metrics.addCustomChart(new SimplePie("server_language", () -> lang));
+        metrics.addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
     }
 
     @Override

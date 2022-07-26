@@ -24,7 +24,7 @@ public interface CooldownItem extends ItemAttribute {
     int getCooldown();
 
     default void setCooldown(@Nonnull ItemStack itemStack) {
-        if (ValidateUtils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             ItemMeta im = itemStack.getItemMeta();
             PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
             itemStack.setItemMeta(im);
@@ -38,7 +38,7 @@ public interface CooldownItem extends ItemAttribute {
      * @return if the item can be used now
      */
     default boolean isCooldown(@Nonnull ItemStack itemStack) {
-        if (ValidateUtils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             ItemMeta im = itemStack.getItemMeta();
 
             if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
@@ -54,7 +54,7 @@ public interface CooldownItem extends ItemAttribute {
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {
-        if (ValidateUtils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             if (isCooldown(itemStack)) {
                 setCooldown(itemStack);
                 return true;

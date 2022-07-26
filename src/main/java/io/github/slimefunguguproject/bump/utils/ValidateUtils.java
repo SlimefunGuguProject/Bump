@@ -20,12 +20,12 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class ValidateUtils {
     /**
-     * Check not null or air item.
+     * Validate the given {@link ItemStack} is not {@code null} or an air item.
      *
-     * @param itemStack The {@link ItemStack} to be checked
-     * @return if the {@link ItemStack} is valid
+     * @param itemStack The {@link ItemStack} to be validated.
+     * @return if the {@link ItemStack} is valid.
      */
-    public static boolean validateItem(@Nullable ItemStack itemStack) {
+    public static boolean noAirItem(@Nullable ItemStack itemStack) {
         try {
             Preconditions.checkArgument(itemStack != null, "ItemStack cannot be null");
             Preconditions.checkArgument(itemStack.getType() != Material.AIR, "ItemStack cannot be empty");

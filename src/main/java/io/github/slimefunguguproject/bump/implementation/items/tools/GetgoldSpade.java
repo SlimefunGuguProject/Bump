@@ -7,7 +7,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ToolUseHandler;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;

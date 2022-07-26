@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;

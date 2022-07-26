@@ -15,9 +15,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
-import net.guizhanss.guizhanlib.utils.ChatUtil;
-
 import lombok.experimental.UtilityClass;
+
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 /**
  * Utility methods for appraise
@@ -29,14 +29,14 @@ import lombok.experimental.UtilityClass;
 public final class AppraiseUtils {
     /**
      * Check if the {@link ItemStack} is marked as appraisable,
-     * which means it can be used in appraisal instrument
+     * which means it can be used in appraisal instrument.
      *
-     * @param itemStack if the {@link ItemStack} to be checked
-     * @return if the {@link ItemStack} is marked as appraisable
+     * @param itemStack The {@link ItemStack} to be checked.
+     * @return Whether the {@link ItemStack} is marked as appraisable.
      */
     public static boolean isAppraisable(@Nonnull ItemStack itemStack) {
-        if (ValidateUtils.validateItem(itemStack)) {
-            return PersistentDataAPI.getByte(itemStack.getItemMeta(), Keys.APPRAISABLE) == 1;
+        if (ValidateUtils.noAirItem(itemStack)) {
+            return PersistentDataAPI.getBoolean(itemStack.getItemMeta(), Keys.APPRAISABLE);
         } else {
             return false;
         }
@@ -48,7 +48,7 @@ public final class AppraiseUtils {
      * @param itemStack the {@link ItemStack} to be set
      */
     public static void setAppraisable(@Nonnull ItemStack itemStack) {
-        if (!ValidateUtils.validateItem(itemStack)) {
+        if (!ValidateUtils.noAirItem(itemStack)) {
             return;
         }
 
@@ -66,7 +66,7 @@ public final class AppraiseUtils {
         im.setLore(lore);
 
         // set pdc
-        PersistentDataAPI.setByte(im, Keys.APPRAISABLE, (byte) 1);
+        PersistentDataAPI.setBoolean(im, Keys.APPRAISABLE, true);
 
         itemStack.setItemMeta(im);
     }
@@ -78,7 +78,7 @@ public final class AppraiseUtils {
      * @return if the {@link ItemStack} is appraised
      */
     public static boolean isAppraised(@Nonnull ItemStack itemStack) {
-        if (ValidateUtils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             return PersistentDataAPI.hasByte(itemStack.getItemMeta(), Keys.APPRAISE_LEVEL);
         } else {
             return false;

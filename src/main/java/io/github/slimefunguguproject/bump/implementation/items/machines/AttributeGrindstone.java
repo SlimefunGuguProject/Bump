@@ -9,7 +9,7 @@ import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
@@ -54,7 +54,7 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         ItemStack item = blockMenu.getItemInSlot(getInputSlot());
 
         // null check
-        if (!ValidateUtils.validateItem(item)) {
+        if (!ValidateUtils.noAirItem(item)) {
             Bump.getLocalization().sendMessage(p, "no-input");
             return;
         }

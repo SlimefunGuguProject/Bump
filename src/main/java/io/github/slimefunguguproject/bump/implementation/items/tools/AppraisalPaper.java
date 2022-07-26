@@ -13,7 +13,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -29,8 +29,8 @@ import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
 
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 
-import net.guizhanss.guizhanlib.utils.ChatUtil;
-import net.guizhanss.guizhanlib.utils.InventoryUtil;
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
+import net.guizhanss.guizhanlib.minecraft.utils.InventoryUtil;
 
 /**
  * An {@link AppraisalPaper quality identifier} can mark available {@link ItemStack items}

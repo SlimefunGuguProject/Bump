@@ -20,7 +20,8 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.guizhanss:GuizhanLib:0.9.9'
+    implementation 'net.guizhanss:GuizhanLib-api:1.0.0'
+    implementation 'org.bstats:bstats-bukkit:3.0.0'
 
     compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
     compileOnly 'io.github.Slimefun:Slimefun4:RC-32'
@@ -32,6 +33,7 @@ dependencies {
 
 shadowJar {
     relocate 'net.guizhanss.guizhanlib', 'org.slimefunguguproject.bump.guizhanlib'
+    relocate 'org.bstats', 'org.slimefunguguproject.bump.bstats'
     minimize()
 }
 
