@@ -12,6 +12,7 @@ import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
 import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
+import io.github.slimefunguguproject.bump.implementation.setup.ItemGroupsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
@@ -94,8 +95,11 @@ public final class Bump extends AbstractAddon {
         }
         sendConsole("&eLoaded language {0}", lang);
 
+        // item groups setup
+        ItemGroupsSetup.setup(this);
+
         // items setup
-        ItemsSetup.setup();
+        ItemsSetup.setup(this);
 
         // researches setup
         boolean enableResearch = getRegistry().getConfig().getBoolean("options.enable-research", true);

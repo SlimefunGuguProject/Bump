@@ -21,6 +21,7 @@ repositories {
 
 dependencies {
     implementation 'net.guizhanss:GuizhanLib-api:1.0.0'
+    implementation 'dev.sefiraat:SefiLib:0.1.4.1'
     implementation 'org.bstats:bstats-bukkit:3.0.0'
 
     compileOnly 'org.spigotmc:spigot-api:1.19-R0.1-SNAPSHOT'
@@ -33,6 +34,7 @@ dependencies {
 
 shadowJar {
     relocate 'net.guizhanss.guizhanlib', 'org.slimefunguguproject.bump.guizhanlib'
+    relocate 'dev.sefiraat.sefilib', 'org.slimefunguguproject.bump.sefilib'
     relocate 'org.bstats', 'org.slimefunguguproject.bump.bstats'
     minimize()
 }

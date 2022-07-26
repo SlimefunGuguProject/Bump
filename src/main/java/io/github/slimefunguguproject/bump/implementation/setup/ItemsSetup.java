@@ -1,5 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.setup;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
@@ -26,6 +28,7 @@ import io.github.slimefunguguproject.bump.implementation.items.weapons.SkyDevilS
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkySword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SoulSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -39,9 +42,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public final class ItemsSetup {
-    public static void setup() {
-        Bump plugin = Bump.getInstance();
-
+    public static void setup(@Nonnull SlimefunAddon plugin) {
         // <editor-fold defaultstate="collapsed" desc="Armor">
         new RandomEquipment(
             BumpItemGroups.ARMOR,
