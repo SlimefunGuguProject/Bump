@@ -1,5 +1,11 @@
 {
     "values": [
-        "#bump:sword"
+        "#bump:sword",
+        "#bump:pickaxe",
+        "#bump:axe",
+        "#bump:shovel",
+        "#bump:hoe",
+        "#bump:fishing_rod",
+        "minecraft:trident"
     ]
 }
