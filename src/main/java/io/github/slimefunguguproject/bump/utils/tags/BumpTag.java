@@ -57,7 +57,7 @@ public enum BumpTag implements Tag<Material> {
      * This includes all horse armors.
      */
     HORSE_ARMOR,
-    
+
     /**
      * This includes all axes.
      */
@@ -67,72 +67,62 @@ public enum BumpTag implements Tag<Material> {
      * This includes all pickaxes.
      */
     PICKAXE,
-    
+
     /**
      * This includes all shovels.
      */
     SHOVEL,
-        
-   /**
+
+    /**
      * This includes all hoes.
      */
-    
     HOE,
-    
+
     /**
      * This includes all fishing rods.
      */
-    
     FISHING_ROD,
-    
+
     /**
      * This includes all bows.
      */
-    
     BOW,
-    
+
     /**
-     * This includes all heads.
+     * This includes all kinds of heads.
      */
-    
     HEAD,
-    
+
     /**
-     * This includes all materials that is suitable for main hand.
+     * This includes all materials that is suitable for main hand slot.
      */
-    
     HAND_SLOT,
 
     /**
-     * This includes all materials that is suitable for off hand.
+     * This includes all materials that is suitable for off hand slot.
      */
-    
-    OFF_HAND_SLOT;
-    
-    /**
-     * This includes all materials that is suitable for head.
-     */
-    
-    HEAD_SLOT;
+    OFF_HAND_SLOT,
 
     /**
-     * This includes all materials that is suitable for chest.
+     * This includes all materials that is suitable for head slot.
      */
-    
-    CHEST_SLOT;
-    
+    HEAD_SLOT,
+
     /**
-     * This includes all materials that is suitable for legs.
+     * This includes all materials that is suitable for chest slot.
      */
-    
-    LEGS_SLOT;
-    
+    CHEST_SLOT,
+
     /**
-     * This includes all materials that is suitable for feet.
+     * This includes all materials that is suitable for legs slot.
      */
-    
+    LEGS_SLOT,
+
+    /**
+     * This includes all materials that is suitable for feet slot.
+     */
     FEET_SLOT;
-    
+
     /**
      * Cached values.
      */

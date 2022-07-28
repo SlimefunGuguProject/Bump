@@ -29,7 +29,6 @@ import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.JsonUtils;
 import io.github.slimefunguguproject.bump.utils.Patterns;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
-import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
 
 /**
  * The {@link TagParser} is responsible for parsing a JSON file into a {@link BumpTag}.
@@ -100,7 +99,7 @@ class TagParser implements Keyed {
             if (material != null) {
                 materials.add(material);
             }
-        } else if (PatternUtils.SLIMEFUN_TAG.matcher(value).matches()) {
+        } else if (Patterns.BUMP_TAG.matcher(value).matches()) {
             String keyValue = CommonPatterns.COLON.split(value)[1].toUpperCase(Locale.ROOT);
             BumpTag tag = BumpTag.getTag(keyValue);
 
