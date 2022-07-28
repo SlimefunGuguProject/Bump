@@ -1,5 +1,7 @@
 {
     "values": [
         "#bump:chestplate",
+        "#bump:horse_armor",
+        "minecraft:saddle"
     ]
 }
