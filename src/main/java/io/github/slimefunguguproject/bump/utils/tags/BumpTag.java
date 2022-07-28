@@ -108,7 +108,31 @@ public enum BumpTag implements Tag<Material> {
      */
     
     OFF_HAND_SLOT;
+    
+    /**
+     * This includes all materials that is suitable for head.
+     */
+    
+    HEAD_SLOT;
 
+    /**
+     * This includes all materials that is suitable for chest.
+     */
+    
+    CHEST_SLOT;
+    
+    /**
+     * This includes all materials that is suitable for legs.
+     */
+    
+    LEGS_SLOT;
+    
+    /**
+     * This includes all materials that is suitable for feet.
+     */
+    
+    FEET_SLOT;
+    
     /**
      * Cached values.
      */
