@@ -76,12 +76,26 @@ public enum BumpTag implements Tag<Material> {
    /**
      * This includes all hoes.
      */
+    
     HOE,
     
     /**
      * This includes all fishing rods.
      */
+    
     FISHING_ROD,
+    
+    /**
+     * This includes all bows.
+     */
+    
+    BOW,
+    
+    /**
+     * This includes all heads.
+     */
+    
+    HEAD,
     
     /**
      * This includes all materials that is suitable for main hand.
@@ -92,6 +106,7 @@ public enum BumpTag implements Tag<Material> {
     /**
      * This includes all materials that is suitable for off hand.
      */
+    
     OFF_HAND_SLOT;
 
     /**
