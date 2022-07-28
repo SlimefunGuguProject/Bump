@@ -57,10 +57,36 @@ public enum BumpTag implements Tag<Material> {
      * This includes all horse armors.
      */
     HORSE_ARMOR,
+    
+    /**
+     * This includes all axes.
+     */
+    AXE,
 
+    /**
+     * This includes all pickaxes.
+     */
+    PICKAXE,
+    
+    /**
+     * This includes all shovels.
+     */
+    SHOVEL,
+        
+   /**
+     * This includes all hoes.
+     */
+    HOE,
+    
+    /**
+     * This includes all fishing rods.
+     */
+    FISHING_ROD,
+    
     /**
      * This includes all materials that is suitable for main hand.
      */
+    
     HAND_SLOT,
 
     /**
