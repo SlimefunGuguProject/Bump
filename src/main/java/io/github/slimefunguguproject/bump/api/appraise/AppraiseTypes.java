@@ -7,7 +7,7 @@ import com.google.common.base.Preconditions;
 import org.bukkit.Material;
 import org.bukkit.inventory.EquipmentSlot;
 
-import io.github.slimefunguguproject.bump.utils.BumpTag;
+import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 
 import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 

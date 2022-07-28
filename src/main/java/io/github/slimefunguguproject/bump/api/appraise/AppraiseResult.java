@@ -1,5 +1,6 @@
 package io.github.slimefunguguproject.bump.api.appraise;
 
+import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.UUID;
@@ -39,26 +40,12 @@ public final class AppraiseResult {
         starThreshold.put(10, 1);
     }
 
-    private final Map<AppraiseAttribute, Double> result = new LinkedHashMap<>();
-    private double overallPercentage = 0;
+    private final Map<AppraiseAttribute, Double> result;
+    private final double totalPercentile;
 
-    /**
-     * This method adds an appraised attribute to result
-     *
-     * @param attribute  The {@link AppraiseAttribute}
-     * @param value      The value of the attribute
-     * @param percentage The weight of the attribute
-     * @return The {@link AppraiseResult}
-     */
-    @Nonnull
-    public AppraiseResult add(@Nonnull AppraiseAttribute attribute, double value, double percentage) {
-        if (result.containsKey(attribute)) {
-            return this;
-        }
-
-        result.put(attribute, value);
-        overallPercentage += attribute.getPercent(value) * percentage / 100.0D;
-        return this;
+    private AppraiseResult(@Nonnull Builder builder) {
+        this.result = Map.copyOf(builder.result);
+        this.totalPercentile = builder.totalPercentile;
     }
 
     /**
@@ -69,7 +56,7 @@ public final class AppraiseResult {
      */
     public int getStars() {
         for (Map.Entry<Integer, Integer> entry : starThreshold.entrySet()) {
-            if (overallPercentage >= entry.getKey()) {
+            if (totalPercentile >= entry.getKey()) {
                 return entry.getValue();
             }
         }
@@ -87,10 +74,37 @@ public final class AppraiseResult {
         Preconditions.checkArgument(meta != null, "ItemMeta cannot be null");
 
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
-            Attribute attr = entry.getKey().attribute();
+            Attribute attr = entry.getKey().getAttribute();
             meta.addAttributeModifier(attr,
                 new AttributeModifier(UUID.randomUUID(), attr.name(), entry.getValue(), AppraiseUtils.getOperation(attr), slot)
             );
+        }
+    }
+
+    /**
+     * This builder class is used to generate a {@link AppraiseResult}.
+     * <p>
+     * I want the result map immutable.
+     */
+    public static class Builder {
+        private final Map<AppraiseAttribute, Double> result = new HashMap<>();
+        private double totalPercentile = 0;
+
+        /**
+         * This method adds an appraised attribute with its value to result.
+         *
+         * @param attribute The {@link AppraiseAttribute}.
+         * @param result    The value of the attribute
+         * @return This {@link Builder}
+         */
+        public Builder add(AppraiseAttribute attribute, double result) {
+            this.result.put(attribute, result);
+            totalPercentile += attribute.getWeightedPercentile(result);
+            return this;
+        }
+
+        public AppraiseResult build() {
+            return new AppraiseResult(this);
         }
     }
 }

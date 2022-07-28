@@ -5,8 +5,11 @@ import java.util.Arrays;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.function.Function;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
@@ -16,13 +19,16 @@ import com.google.common.base.Preconditions;
 
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeIdConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
-import io.github.thebusybiscuit.slimefun4.libraries.dough.collections.Pair;
+import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 
+import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 
@@ -40,6 +46,9 @@ import lombok.experimental.Accessors;
 @Accessors(makeFinal = true)
 @SuppressWarnings("ConstantConditions")
 public class AppraiseType {
+    /**
+     * Numbers, lowercase letters, and underscores are allowed in ID.
+     */
     private static final Pattern ID_PATTERN = Pattern.compile("^[0-9a-z_]+$");
 
     /**
@@ -49,22 +58,23 @@ public class AppraiseType {
     private final String id;
 
     /**
-     * This holds all added {@link AppraiseAttribute} with weight.
+     * This holds all added {@link AppraiseAttribute}.
      */
-    private final Set<Pair<AppraiseAttribute, Double>> attributes = new LinkedHashSet<>();
-
-    /**
-     * This holds all added {@link AppraiseAttribute} without weight.
-     */
-    private final Set<AppraiseAttribute> noPercentAttributes = new HashSet<>();
+    private final Set<AppraiseAttribute> attributes = new LinkedHashSet<>();
 
     /**
      * This holds all valid materials.
      * <p>
-     * When {@link #checkMaterial()} is enabled, this will be used.
+     * When {@link #checkMaterial()} is enabled, the appraisal machine will check
+     * the material of specified item.
      */
     @Getter
     private final Set<Material> validMaterials = new HashSet<>();
+
+    /**
+     * This holds all valid Slimefun item IDs.
+     */
+    private final List<String> validSlimefunItems = new ArrayList<>();
 
     /**
      * This is the name of {@link AppraiseType}.
@@ -90,10 +100,21 @@ public class AppraiseType {
     @Getter
     private boolean checkMaterial;
 
-    // item type
+    /**
+     * This indicates the acceptable type of equipment for appraising.
+     */
     @Getter
     private EquipmentType equipmentType = EquipmentType.ANY;
-    // register state
+
+    /**
+     * This indicates the equipment slot type.
+     */
+    @Getter
+    private EquipmentSlotType equipmentSlotType = EquipmentSlotType.HAND;
+
+    /**
+     * This indicates the register state of this {@link AppraiseType}.
+     */
     @Accessors(fluent = true)
     @Getter
     private boolean isRegistered;
@@ -191,6 +212,19 @@ public class AppraiseType {
     }
 
     /**
+     * Set the {@link EquipmentSlotType} of this {@link AppraiseType}.
+     *
+     * @param type The {@link EquipmentSlotType}.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType setEquipmentSlotType(EquipmentSlotType type) {
+        checkState();
+        this.equipmentSlotType = type;
+        return this;
+    }
+
+    /**
      * This method adds an {@link Attribute} as {@link AppraiseAttribute}.
      *
      * @param attribute The {@link Attribute} to be added
@@ -211,11 +245,10 @@ public class AppraiseType {
             Preconditions.checkArgument(usedPercentile + weight <= 100, "The overall weight exceeds 100");
         }
 
-        AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max);
-        if (weight == -1) {
-            noPercentAttributes.add(attr);
-        } else {
-            attributes.add(new Pair<>(attr, weight));
+        AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max, weight);
+        attributes.add(attr);
+
+        if (weight != -1) {
             usedPercentile += weight;
         }
 
@@ -254,6 +287,38 @@ public class AppraiseType {
     }
 
     /**
+     * Add valid Slimefun item ids.
+     * <p>
+     * Note that this will set the {@link EquipmentType} to SLIMEFUN.
+     *
+     * @param slimefunItemIds The array of valid Slimefun item id.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType addValidSlimefunItemIds(String... slimefunItemIds) {
+        checkState();
+        ValidateUtils.noNullElements(slimefunItemIds);
+        validSlimefunItems.addAll(Arrays.asList(slimefunItemIds));
+        return this;
+    }
+
+    /**
+     * Add valid Slimefun item ids.
+     * <p>
+     * Note that this will set the {@link EquipmentType} to SLIMEFUN.
+     *
+     * @param slimefunItemIds The {@link List} of valid Slimefun item id.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType addValidSlimefunItemIds(List<String> slimefunItemIds) {
+        checkState();
+        ValidateUtils.noNullElements(slimefunItemIds);
+        validSlimefunItems.addAll(slimefunItemIds);
+        return this;
+    }
+
+    /**
      * This method will register this {@link AppraiseType}.
      * It will calculate the attributes without weight,
      * and divide the remaining overall weight.
@@ -261,7 +326,6 @@ public class AppraiseType {
      * @return {@link AppraiseType} itself
      */
     public final AppraiseType register() {
-
         final BumpRegistry registry = Bump.getRegistry();
 
         // check id
@@ -270,19 +334,22 @@ public class AppraiseType {
             throw new AppraiseTypeIdConflictException(this, existing);
         }
 
+        final Set<AppraiseAttribute> noWeightAttributes = attributes.stream()
+            .filter(appraiseAttribute -> appraiseAttribute.getWeight() == -1)
+            .collect(Collectors.toSet());
+
         // check percentile
-        if (usedPercentile < 100 && noPercentAttributes.isEmpty()) {
+        if (usedPercentile < 100 && noWeightAttributes.isEmpty()) {
             throw new IllegalArgumentException("Used percentile is less than 100");
         }
 
-        // split all attributes without weight
-        int num = noPercentAttributes.size();
+        // split remaining weight
+        int num = noWeightAttributes.size();
         double percentile = (100 - usedPercentile) / num;
-        for (AppraiseAttribute attr : noPercentAttributes) {
-            attributes.add(new Pair<>(attr, percentile));
+        for (AppraiseAttribute attr : noWeightAttributes) {
+            attr.setWeight(percentile);
             usedPercentile += percentile;
         }
-        noPercentAttributes.clear();
 
         // registry
         registry.getAppraiseTypeIds().put(id, this);
@@ -295,10 +362,54 @@ public class AppraiseType {
     /**
      * Check if this {@link AppraiseType} is registered.
      */
-    private void checkState() {
+    protected final void checkState() {
         if (isRegistered()) {
             throw new IllegalStateException("This appraise type is already registered");
         }
+    }
+
+    /**
+     * This method checks if specified {@link ItemStack} fit this {@link AppraiseType}.
+     *
+     * @param itemStack The {@link ItemStack} to be checked.
+     * @return If the {@link ItemStack} fit this {@link AppraiseType}.
+     */
+    public boolean isValidItem(@Nonnull ItemStack itemStack) {
+        // Material check
+        if (checkMaterial() && !validMaterials.contains(itemStack.getType())) {
+            return false;
+        }
+
+        // Equipment type check
+        Optional<SlimefunItem> sfItem = Optional.ofNullable(SlimefunItem.getByItem(itemStack));
+        switch (getEquipmentType()) {
+            case VANILLA -> {
+                if (sfItem.isPresent()) {
+                    return false;
+                }
+            }
+            case SLIMEFUN -> {
+                if (sfItem.isEmpty()) {
+                    return false;
+                }
+                // Valid slimefun item
+                if (!isApplicableSlimefunItem(sfItem.get())) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
+    /**
+     * This is the default method to check if a {@link SlimefunItem} fit this {@link AppraiseType}.
+     *
+     * @param sfItem The {@link SlimefunItem} to be checked.
+     * @return If the {@link SlimefunItem} fit this {@link AppraiseType}.
+     */
+    public boolean isApplicableSlimefunItem(@Nonnull SlimefunItem sfItem) {
+        String id = sfItem.getId();
+        return validSlimefunItems.isEmpty() || validSlimefunItems.contains(id);
     }
 
     @Override
@@ -322,29 +433,65 @@ public class AppraiseType {
     }
 
     /**
-     * This method will generate random values as appraisal result.
+     * This method will generate random values as {@link AppraiseResult}.
      *
-     * @return The {@link AppraiseResult appraisal result}
+     * @return The {@link AppraiseResult}.
      */
     @Nonnull
     public AppraiseResult appraise() {
-        AppraiseResult result = new AppraiseResult();
+        AppraiseResult.Builder builder = new AppraiseResult.Builder();
 
-        for (Pair<AppraiseAttribute, Double> pair : attributes) {
-            AppraiseAttribute attr = pair.getFirstValue();
-            double val = RandomUtil.randomDouble(attr.min(), attr.max());
-            result.add(attr, val, pair.getSecondValue());
+        for (AppraiseAttribute attr : attributes) {
+            double value = RandomUtil.randomDouble(attr.getMin(), attr.getMax());
+            builder.add(attr, value);
         }
 
-        return result;
+        return builder.build();
     }
 
     /**
-     * This enum holds the valid type of appraisable items.
+     * This enum holds the acceptable type of appraisable items.
      */
     enum EquipmentType {
         ANY,
         SLIMEFUN,
         VANILLA
+    }
+
+    /**
+     * This enum holds all available type of {@link EquipmentSlot}.
+     */
+    enum EquipmentSlotType {
+        HAND(EquipmentSlot.HAND),
+        OFF_HAND(EquipmentSlot.OFF_HAND),
+        ARMOR(material -> {
+            if (MinecraftTag.HELMET.isTagged(material)) {
+                return EquipmentSlot.HEAD;
+            } else if (MinecraftTag.CHESTPLATE.isTagged(material)
+                && MinecraftTag.HORSE_ARMOR.isTagged(material)) {
+                return EquipmentSlot.CHEST;
+            } else if (MinecraftTag.LEGGINGS.isTagged(material)) {
+                return EquipmentSlot.LEGS;
+            } else if (MinecraftTag.BOOTS.isTagged(material)) {
+                return EquipmentSlot.FEET;
+            } else {
+                return EquipmentSlot.HAND;
+            }
+        });
+
+        final Function<Material, EquipmentSlot> function;
+
+        EquipmentSlotType(EquipmentSlot slot) {
+            this(material -> slot);
+        }
+
+        EquipmentSlotType(Function<Material, EquipmentSlot> function) {
+            this.function = function;
+        }
+
+        public EquipmentSlot getSlot(@Nonnull Material material) {
+            Preconditions.checkArgument(material != null, "Material cannot be null");
+            return function.apply(material);
+        }
     }
 }

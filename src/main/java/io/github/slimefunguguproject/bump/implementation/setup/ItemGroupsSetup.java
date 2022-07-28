@@ -21,6 +21,7 @@ public final class ItemGroupsSetup {
         BumpItemGroups.MAIN.addItemGroup(BumpItemGroups.TOOL);
         BumpItemGroups.MAIN.addItemGroup(BumpItemGroups.ARMOR);
         BumpItemGroups.MAIN.addItemGroup(BumpItemGroups.WEAPON);
+        BumpItemGroups.MAIN.addItemGroup(BumpItemGroups.APPRAISE_INFO);
 
         BumpItemGroups.MAIN.register(addon);
 
@@ -30,5 +31,6 @@ public final class ItemGroupsSetup {
         BumpItemGroups.TOOL.register(addon);
         BumpItemGroups.ARMOR.register(addon);
         BumpItemGroups.WEAPON.register(addon);
+        BumpItemGroups.APPRAISE_INFO.register(addon);
     }
 }

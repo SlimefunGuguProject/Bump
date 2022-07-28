@@ -68,4 +68,12 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("weapon")
         )
     );
+    public static final AppraiseInfoGroup APPRAISE_INFO = new AppraiseInfoGroup(
+        Bump.getLocalization().getCategoryName("appraise_info"),
+        Bump.createKey("appraise_info"),
+        new CustomItemStack(
+            Material.NAME_TAG,
+            Bump.getLocalization().getCategoryName("appraise_info")
+        )
+    );
 }

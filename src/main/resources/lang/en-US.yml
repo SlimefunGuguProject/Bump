@@ -7,6 +7,7 @@ categories:
   stuff: "&bBump - Stuff"
   tool: "&bBump - Tool"
   weapon: "&bBump - Magic Weapon"
+  appraise_info: "&eBump - Appraise Information"
 items:
   random_helmet:
     name: "&6Random Helmet"
@@ -306,3 +307,10 @@ gui:
     lore:
       - "&7<- Put appraised items on the left side"
       - "&7Click here to purge attributes"
+appraise_info:
+  name: "&bAppraise type: &e{0}"
+  equipment_type:
+    lore: "Applicable item type: {0}"
+    any: "Any item"
+    vanilla: "Vanilla items only"
+    slimefun: "Slimefun items only"

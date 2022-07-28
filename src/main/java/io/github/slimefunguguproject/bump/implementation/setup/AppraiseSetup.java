@@ -1,5 +1,9 @@
 package io.github.slimefunguguproject.bump.implementation.setup;
 
+import javax.annotation.Nonnull;
+
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
+
 import lombok.experimental.UtilityClass;
 
 /**
@@ -9,7 +13,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public final class AppraiseSetup {
-    public static void setup() {
+    public static void setup(@Nonnull SlimefunAddon plugin) {
 
     }
 }

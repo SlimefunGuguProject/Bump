@@ -1,19 +1,18 @@
 # Refer to our wiki to learn more:
 sword:
-  name: "剑"
+  name: "Sword"
   description:
-    - "可鉴定任意粘液科技剑"
+    - "Any Slimefun sword."
   equipment-type: SLIMEFUN
   check-material: true
   valid-materials:
     - WOODEN_SWORD
     - STONE_SWORD
     - IRON_SWORD
-    - GOLD_SWORD
+    - GOLDEN_SWORD
     - DIAMOND_SWORD
     - NETHERITE_SWORD
-  valid-slimefun-items:
-    - GRANDPA_STICK
+  equipment-slot: HAND
   attributes:
     GENERIC_ATTACK_DAMAGE:
       min: 0
@@ -23,3 +22,107 @@ sword:
       min: -3
       max: 10
       weight: 25
+    GENERIC_MOVEMENT_SPEED:
+      min: -0.4
+      max: 0.6
+      weight: 15
+    GENERIC_LUCK:
+      min: -3
+      max: 10
+      weight: 10
+    GENERIC_ATTACK_KNOCKBACK:
+      min: -2
+      max: 12
+      weight: 10
+
+armor:
+  name: "Armor"
+  description:
+    - "Any Slimefun armor."
+  equipment-type: SLIMEFUN
+  check-material: true
+  valid-materials:
+    - WOODEN_HELMET
+    - STONE_HELMET
+    - IRON_HELMET
+    - GOLDEN_HELMET
+    - DIAMOND_HELMET
+    - NETHERITE_HELMET
+    - WOODEN_CHESTPLATE
+    - STONE_CHESTPLATE
+    - IRON_CHESTPLATE
+    - GOLDEN_CHESTPLATE
+    - DIAMOND_CHESTPLATE
+    - NETHERITE_CHESTPLATE
+    - WOODEN_LEGGINGS
+    - STONE_LEGGINGS
+    - IRON_LEGGINGS
+    - GOLDEN_LEGGINGS
+    - DIAMOND_LEGGINGS
+    - NETHERITE_LEGGINGS
+    - WOODEN_BOOTS
+    - STONE_BOOTS
+    - IRON_BOOTS
+    - GOLDEN_BOOTS
+    - DIAMOND_BOOTS
+    - NETHERITE_BOOTS
+  equipment-slot: ARMOR
+  attributes:
+    GENERIC_ARMOR:
+      min: 0
+      max: 30
+      weight: 40
+    GENERIC_ARMOR_TOUGHNESS:
+      min: -2
+      max: 12
+      weight: 25
+    GENERIC_MAX_HEALTH:
+      min: -5
+      max: 12
+      weight: 15
+    GENERIC_KNOCKBACK_RESISTANCE:
+      min: -0.2
+      max: 0.8
+      weight: 10
+    GENERIC_FLYING_SPEED:
+      min: -3
+      max: 5
+      weight: 7
+    ZOMBIE_SPAWN_REINFORCEMENTS:
+      min: -5
+      max: 5
+      weight: 3
+
+horse_armor:
+  name: "Horse Armor"
+  description:
+    - "Any vanilla horse armor."
+  equipment-type: VANILLA
+  check-material: true
+  valid-materials:
+    - LEATHER_HORSE_ARMOR
+    - IRON_HORSE_ARMOR
+    - GOLDEN_HORSE_ARMOR
+    - DIAMOND_HORSE_ARMOR
+  equipment-slot: ARMOR
+  attributes:
+    GENERIC_ATTACK_DAMAGE:
+      min: 0
+      max: 30
+      weight: 40
+    GENERIC_ATTACK_SPEED:
+      min: -3
+      max: 10
+      weight: 25
+    GENERIC_MOVEMENT_SPEED:
+      min: -0.4
+      max: 0.6
+      weight: 15
+    GENERIC_LUCK:
+      min: -3
+      max: 10
+      weight: 10
+    GENERIC_ATTACK_KNOCKBACK:
+      min: -2
+      max: 12
+      weight: 10
