@@ -25,6 +25,7 @@ import io.github.slimefunguguproject.bump.implementation.Bump;
  * Tags for some materials.
  *
  * @author ybw0014
+ * @author haiman233
  */
 @SuppressWarnings("ConstantConditions")
 public enum BumpTag implements Tag<Material> {

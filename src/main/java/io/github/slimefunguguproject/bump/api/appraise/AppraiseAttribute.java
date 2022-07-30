@@ -2,43 +2,26 @@ package io.github.slimefunguguproject.bump.api.appraise;
 
 import javax.annotation.Nonnull;
 
-import com.google.common.base.Preconditions;
-
 import org.bukkit.attribute.Attribute;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NonNull;
 
 /**
  * This class represents a single {@link Attribute} with range and weight.
  *
  * @author ybw0014
  */
-@SuppressWarnings("ConstantConditions")
+@AllArgsConstructor
 @Getter
 final class AppraiseAttribute {
-
+    @NonNull
     private final Attribute attribute;
     private final double min;
     private final double max;
 
     private double weight;
-
-    /**
-     * Initialize this attribute.
-     *
-     * @param attribute The {@link Attribute}.
-     * @param min       The minimum value of attribute.
-     * @param max       The maximum value of attribute.
-     * @param weight    The weight of this attribute. Set to -1 for further changes.
-     */
-    public AppraiseAttribute(@Nonnull Attribute attribute, double min, double max, double weight) {
-        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
-
-        this.attribute = attribute;
-        this.min = min;
-        this.max = max;
-        this.weight = weight;
-    }
 
     /**
      * Set the weight of this attribute.

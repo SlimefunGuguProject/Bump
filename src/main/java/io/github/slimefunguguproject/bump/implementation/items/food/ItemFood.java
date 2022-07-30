@@ -43,7 +43,7 @@ public abstract class ItemFood extends UnplaceableBlock {
             e.cancel();
             Player p = e.getPlayer();
 
-            if (cooldown.has(p.getUniqueId())) {
+            if (!cooldown.check(p.getUniqueId())) {
                 Bump.getLocalization().sendActionbarMessage(p, "food.cooldown");
                 return;
             }

@@ -2,16 +2,12 @@ package io.github.slimefunguguproject.bump.implementation;
 
 import javax.annotation.Nonnull;
 
-import org.bstats.bukkit.Metrics;
-
-import org.bstats.charts.SimplePie;
-
 import org.bukkit.Bukkit;
 
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
+import io.github.slimefunguguproject.bump.implementation.setup.AppraiseSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemGroupsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
@@ -20,6 +16,9 @@ import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileT
 
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 
 /**
  * Main class for {@link Bump}.
@@ -36,31 +35,18 @@ public final class Bump extends AbstractAddon {
     // registry
     private BumpRegistry registry;
 
-    // appraise
-    private AppraiseManager appraiseManager;
-
     public Bump() {
         super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
     }
 
     @Nonnull
-    private static Bump inst() {
-        return getInstance();
-    }
-
-    @Nonnull
     public static LocalizationService getLocalization() {
-        return inst().localization;
-    }
-
-    @Nonnull
-    public static AppraiseManager getAppraiseManager() {
-        return inst().appraiseManager;
+        return ((Bump) getInstance()).localization;
     }
 
     @Nonnull
     public static BumpRegistry getRegistry() {
-        return inst().registry;
+        return ((Bump) getInstance()).registry;
     }
 
     @Override
@@ -82,6 +68,8 @@ public final class Bump extends AbstractAddon {
         // config
         AddonConfig config = getAddonConfig();
         new ConfigUpdateService(config);
+
+        AddonConfig appraiseTypesConfig = new AddonConfig("appraise-types.yml");
 
         // registry
         registry = new BumpRegistry(this, config);
@@ -108,7 +96,8 @@ public final class Bump extends AbstractAddon {
         }
 
         // appraise setup
-        appraiseManager = new AppraiseManager();
+        AppraiseSetup.setupTypes(appraiseTypesConfig);
+        AppraiseSetup.setupStars();
 
         // listeners
         ListenerSetup.setup(this);

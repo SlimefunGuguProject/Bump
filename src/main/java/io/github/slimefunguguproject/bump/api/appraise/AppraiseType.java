@@ -2,13 +2,12 @@ package io.github.slimefunguguproject.bump.api.appraise;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.function.Function;
-import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
@@ -25,10 +24,11 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeIdConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.utils.Patterns;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 
-import net.guizhanss.guizhanlib.minecraft.MinecraftTag;
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 
@@ -47,34 +47,10 @@ import lombok.experimental.Accessors;
 @SuppressWarnings("ConstantConditions")
 public class AppraiseType {
     /**
-     * Numbers, lowercase letters, and underscores are allowed in ID.
-     */
-    private static final Pattern ID_PATTERN = Pattern.compile("^[0-9a-z_]+$");
-
-    /**
      * This is the ID of {@link AppraiseType}.
      */
     @Getter
     private final String id;
-
-    /**
-     * This holds all added {@link AppraiseAttribute}.
-     */
-    private final Set<AppraiseAttribute> attributes = new LinkedHashSet<>();
-
-    /**
-     * This holds all valid materials.
-     * <p>
-     * When {@link #checkMaterial()} is enabled, the appraisal machine will check
-     * the material of specified item.
-     */
-    @Getter
-    private final Set<Material> validMaterials = new HashSet<>();
-
-    /**
-     * This holds all valid Slimefun item IDs.
-     */
-    private final List<String> validSlimefunItems = new ArrayList<>();
 
     /**
      * This is the name of {@link AppraiseType}.
@@ -87,6 +63,11 @@ public class AppraiseType {
      */
     @Getter
     private List<String> description = new ArrayList<>();
+
+    /**
+     * This holds all added {@link AppraiseAttribute}.
+     */
+    private Set<AppraiseAttribute> attributes = new LinkedHashSet<>();
 
     /**
      * This indicates the used percentile of added {@link AppraiseAttribute}.
@@ -107,10 +88,25 @@ public class AppraiseType {
     private EquipmentType equipmentType = EquipmentType.ANY;
 
     /**
-     * This indicates the equipment slot type.
+     * This holds all valid {@link Material materials}.
+     * <p>
+     * When {@link #checkMaterial()} is enabled, the appraisal machine will check
+     * the material of specified item.
      */
     @Getter
-    private EquipmentSlotType equipmentSlotType = EquipmentSlotType.HAND;
+    private Set<Material> validMaterials = new HashSet<>();
+
+    /**
+     * This holds all valid acceptable {@link EquipmentSlot}.
+     */
+    @Getter
+    private Set<EquipmentSlot> validEquipmentSlots = new HashSet<>();
+
+    /**
+     * This holds all valid Slimefun item IDs.
+     */
+    @Getter
+    private Set<String> validSlimefunItemIds = new HashSet<>();
 
     /**
      * This indicates the register state of this {@link AppraiseType}.
@@ -120,6 +116,14 @@ public class AppraiseType {
     private boolean isRegistered;
 
     /**
+     * This indicates the {@link SlimefunAddon} that registered this {@link AppraiseType}.
+     * <p>
+     * Will be null if this {@link AppraiseType} has not been registered.
+     */
+    @Getter
+    private SlimefunAddon addon;
+
+    /**
      * Initialize {@link AppraiseType} with ID.
      *
      * @param id The ID of {@link AppraiseType}.
@@ -127,7 +131,7 @@ public class AppraiseType {
     @ParametersAreNonnullByDefault
     public AppraiseType(String id) {
         Preconditions.checkArgument(id != null, "ID cannot be null");
-        Preconditions.checkArgument(ID_PATTERN.matcher(id).matches(), "ID must be [0-9a-z_]+");
+        Preconditions.checkArgument(Patterns.APPRAISE_TYPE_ID.matcher(id).matches(), "ID must be [0-9a-z_]+");
 
         this.id = id;
         this.name = StringUtil.humanize(id);
@@ -166,10 +170,8 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType setDescription(String... description) {
-        checkState();
         ValidateUtils.noNullElements(description);
-        this.description = Arrays.asList(description);
-        return this;
+        return setDescription(Arrays.asList(description));
     }
 
     /**
@@ -208,19 +210,6 @@ public class AppraiseType {
     public final AppraiseType setEquipmentType(EquipmentType type) {
         checkState();
         this.equipmentType = type;
-        return this;
-    }
-
-    /**
-     * Set the {@link EquipmentSlotType} of this {@link AppraiseType}.
-     *
-     * @param type The {@link EquipmentSlotType}.
-     * @return This {@link AppraiseType}.
-     */
-    @ParametersAreNonnullByDefault
-    public final AppraiseType setEquipmentSlotType(EquipmentSlotType type) {
-        checkState();
-        this.equipmentSlotType = type;
         return this;
     }
 
@@ -276,13 +265,24 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidMaterials(Material... materials) {
+        return addValidMaterials(Arrays.asList(materials));
+    }
+
+    /**
+     * Add valid materials.
+     *
+     * @param materials The {@link Collection} of valid {@link Material}.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType addValidMaterials(Collection<Material> materials) {
         checkState();
         for (Material mat : materials) {
             if (mat == Material.AIR) {
                 throw new IllegalArgumentException("Material cannot be AIR");
             }
         }
-        validMaterials.addAll(Arrays.asList(materials));
+        validMaterials.addAll(materials);
         return this;
     }
 
@@ -296,10 +296,8 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidSlimefunItemIds(String... slimefunItemIds) {
-        checkState();
         ValidateUtils.noNullElements(slimefunItemIds);
-        validSlimefunItems.addAll(Arrays.asList(slimefunItemIds));
-        return this;
+        return addValidSlimefunItemIds(Arrays.asList(slimefunItemIds));
     }
 
     /**
@@ -314,7 +312,34 @@ public class AppraiseType {
     public final AppraiseType addValidSlimefunItemIds(List<String> slimefunItemIds) {
         checkState();
         ValidateUtils.noNullElements(slimefunItemIds);
-        validSlimefunItems.addAll(slimefunItemIds);
+        equipmentType = EquipmentType.SLIMEFUN;
+        validSlimefunItemIds.addAll(slimefunItemIds);
+        return this;
+    }
+
+    /**
+     * Add valid equipment slots.
+     *
+     * @param equipmentSlots The {@link List} of valid equipment slots.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType addValidEquipmentSlots(EquipmentSlot... equipmentSlots) {
+        ValidateUtils.noNullElements(equipmentSlots);
+        return addValidEquipmentSlots(Arrays.asList(equipmentSlots));
+    }
+
+    /**
+     * Add valid equipment slots.
+     *
+     * @param equipmentSlots The {@link List} of valid equipment slots.
+     * @return This {@link AppraiseType}.
+     */
+    @ParametersAreNonnullByDefault
+    public final AppraiseType addValidEquipmentSlots(List<EquipmentSlot> equipmentSlots) {
+        checkState();
+        ValidateUtils.noNullElements(equipmentSlots);
+        validEquipmentSlots.addAll(equipmentSlots);
         return this;
     }
 
@@ -325,7 +350,9 @@ public class AppraiseType {
      *
      * @return {@link AppraiseType} itself
      */
-    public final AppraiseType register() {
+    public final AppraiseType register(@Nonnull SlimefunAddon addon) {
+        Preconditions.checkArgument(addon != null, "Addon cannot be null");
+
         final BumpRegistry registry = Bump.getRegistry();
 
         // check id
@@ -355,7 +382,14 @@ public class AppraiseType {
         registry.getAppraiseTypeIds().put(id, this);
         registry.getAppraiseTypes().add(this);
 
+        // unmodifiable
+        attributes = Set.copyOf(attributes);
+        validMaterials = Set.copyOf(validMaterials);
+        validEquipmentSlots = Set.copyOf(validEquipmentSlots);
+        validSlimefunItemIds = Set.copyOf(validSlimefunItemIds);
+
         isRegistered = true;
+        this.addon = addon;
         return this;
     }
 
@@ -398,6 +432,7 @@ public class AppraiseType {
                 }
             }
         }
+        // if passes check then return true
         return true;
     }
 
@@ -409,7 +444,7 @@ public class AppraiseType {
      */
     public boolean isApplicableSlimefunItem(@Nonnull SlimefunItem sfItem) {
         String id = sfItem.getId();
-        return validSlimefunItems.isEmpty() || validSlimefunItems.contains(id);
+        return validSlimefunItemIds.isEmpty() || validSlimefunItemIds.contains(id);
     }
 
     @Override
@@ -429,7 +464,7 @@ public class AppraiseType {
     @Nonnull
     @Override
     public String toString() {
-        return "AppraiseType[id = " + getId() + ", name = " + getName() + "]";
+        return "AppraiseType[" + getId() + "]";
     }
 
     /**
@@ -439,7 +474,7 @@ public class AppraiseType {
      */
     @Nonnull
     public AppraiseResult appraise() {
-        AppraiseResult.Builder builder = new AppraiseResult.Builder();
+        AppraiseResult.Builder builder = new AppraiseResult.Builder(this);
 
         for (AppraiseAttribute attr : attributes) {
             double value = RandomUtil.randomDouble(attr.getMin(), attr.getMax());
@@ -456,42 +491,5 @@ public class AppraiseType {
         ANY,
         SLIMEFUN,
         VANILLA
-    }
-
-    /**
-     * This enum holds all available type of {@link EquipmentSlot}.
-     */
-    enum EquipmentSlotType {
-        HAND(EquipmentSlot.HAND),
-        OFF_HAND(EquipmentSlot.OFF_HAND),
-        ARMOR(material -> {
-            if (MinecraftTag.HELMET.isTagged(material)) {
-                return EquipmentSlot.HEAD;
-            } else if (MinecraftTag.CHESTPLATE.isTagged(material)
-                && MinecraftTag.HORSE_ARMOR.isTagged(material)) {
-                return EquipmentSlot.CHEST;
-            } else if (MinecraftTag.LEGGINGS.isTagged(material)) {
-                return EquipmentSlot.LEGS;
-            } else if (MinecraftTag.BOOTS.isTagged(material)) {
-                return EquipmentSlot.FEET;
-            } else {
-                return EquipmentSlot.HAND;
-            }
-        });
-
-        final Function<Material, EquipmentSlot> function;
-
-        EquipmentSlotType(EquipmentSlot slot) {
-            this(material -> slot);
-        }
-
-        EquipmentSlotType(Function<Material, EquipmentSlot> function) {
-            this.function = function;
-        }
-
-        public EquipmentSlot getSlot(@Nonnull Material material) {
-            Preconditions.checkArgument(material != null, "Material cannot be null");
-            return function.apply(material);
-        }
     }
 }
