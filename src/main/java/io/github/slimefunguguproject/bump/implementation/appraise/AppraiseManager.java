@@ -13,7 +13,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseResult;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
-import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.slimefunguguproject.bump.utils.Utils;

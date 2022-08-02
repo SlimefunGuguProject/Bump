@@ -1,6 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.items.tools;
 
 import java.util.List;
+import java.util.Set;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -11,11 +12,12 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
+import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -34,7 +36,7 @@ import net.guizhanss.guizhanlib.minecraft.utils.InventoryUtil;
 
 /**
  * An {@link AppraisalPaper quality identifier} can mark available {@link ItemStack items}
- * as appraisable. It has limited uses now.
+ * as appraisable.
  *
  * @author ybw0014
  */
@@ -58,13 +60,9 @@ public class AppraisalPaper extends LimitedUseItem {
     private static final int APPRAISE_BUTTON = 13;
     private static final int OUTPUT_SLOT = 15;
 
-    private final AppraiseTypes appraiseTypes;
-
     @ParametersAreNonnullByDefault
-    public AppraisalPaper(SlimefunItemStack item, AppraiseTypes appraiseTypes, RecipeType recipeType, ItemStack[] recipe) {
+    public AppraisalPaper(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
-
-        this.appraiseTypes = appraiseTypes;
 
         setMaxUseCount(MAX_USES);
         addItemHandler(getItemHandler());
@@ -87,9 +85,6 @@ public class AppraisalPaper extends LimitedUseItem {
                 Bump.getLocalization().sendMessage(p, "stacked");
                 return;
             }
-
-            // Check old item
-            renewOldItem(paperItemStack);
 
             // Open menu
             ChestMenu menu = new ChestMenu(paperItemStack.getItemMeta().getDisplayName());
@@ -140,7 +135,7 @@ public class AppraisalPaper extends LimitedUseItem {
             ItemStack input = menu.getItemInSlot(INPUT_SLOT);
             SlimefunItem sfItem = SlimefunItem.getByItem(input);
 
-            if (input == null) {
+            if (!ValidateUtils.noAirItem(input)) {
                 Bump.getLocalization().sendMessage(p, "no-input");
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
                 return false;
@@ -153,44 +148,32 @@ public class AppraisalPaper extends LimitedUseItem {
                 return false;
             }
 
-            /*
-                Validate the item. The item that can be marked appraisable
-                should meet these requirements:
-                - matches the appraisal paper type
-                - has not been appraised yet
-                - has not been marked appraisable yet
-             */
-            if (appraiseTypes.isValidMaterial(input.getType(), sfItem != null)) {
-                if (!AppraiseUtils.isAppraised(input)
-                    && !AppraiseUtils.isAppraisable(input)) {
-                    // item can be marked appraisable
-                    ItemStack output = input.clone();
-                    AppraiseUtils.setAppraisable(output);
-                    menu.replaceExistingItem(INPUT_SLOT, null);
-                    menu.replaceExistingItem(OUTPUT_SLOT, output);
+            // validate item
+            if (isValidItem(input)) {
+                // item can be marked appraisable
+                ItemStack output = input.clone();
+                AppraiseUtils.setAppraisable(output);
+                menu.replaceExistingItem(INPUT_SLOT, null);
+                menu.replaceExistingItem(OUTPUT_SLOT, output);
 
-                    damageItem(p, paperItemStack);
+                damageItem(p, paperItemStack);
 
-                    /*
-                     * The paper is used up, should close the gui.
-                     * Otherwise, update the status slot.
-                     */
-                    if (paperItemStack.getType() == Material.AIR) {
-                        p.closeInventory();
-                    } else {
-                        menu.replaceExistingItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)));
-
-                        // play sound only if appraisal paper is not broken
-                        p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0F, 1.0F);
-                    }
-
-                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
+                /*
+                 * The paper is used up, should close the gui.
+                 * Otherwise, update the status slot.
+                 */
+                if (paperItemStack.getType() == Material.AIR) {
+                    p.closeInventory();
                 } else {
-                    Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
-                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                    menu.replaceExistingItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)));
+
+                    // play sound only if appraisal paper is not broken
+                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0F, 1.0F);
                 }
+
+                Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
             } else {
-                Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.mismatch");
+                Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
                 p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
             }
 
@@ -199,24 +182,26 @@ public class AppraisalPaper extends LimitedUseItem {
     }
 
     /**
-     * Check old
+     * Validate the item. The item that can be marked appraisable
+     * should meet these requirements:
+     * - has not been appraised yet
+     * - has not been marked appraisable yet
+     *
+     * @param itemStack The {@link ItemStack} to be validated.
+     * @return If the {@link ItemStack} is applicable to appraisal paper.
      */
-    private void renewOldItem(@Nonnull ItemStack itemStack) {
-        ItemMeta meta = itemStack.getItemMeta();
-        List<String> lore = meta.getLore();
-
-        // Check line of uses
-        for (String line : lore) {
-            if (PatternUtils.USES_LEFT_LORE.matcher(line).matches()) {
-                return;
+    private boolean isValidItem(@Nonnull ItemStack itemStack) {
+        final List<AppraiseType> types = Bump.getRegistry().getAppraiseTypes();
+        // find any match type
+        for (AppraiseType type : types) {
+            if (type.isValidItem(itemStack)
+                && !AppraiseUtils.isAppraised(itemStack)
+                && !AppraiseUtils.isAppraisable(itemStack)
+            ) {
+                return true;
             }
         }
-
-        // No uses line, append
-        lore.add(ChatUtil.color(LoreBuilder.usesLeft(getMaxUseCount())));
-
-        meta.setLore(lore);
-        itemStack.setItemMeta(meta);
+        return false;
     }
 
     private int getUsesLeft(@Nonnull ItemStack itemStack) {

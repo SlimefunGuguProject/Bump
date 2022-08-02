@@ -13,19 +13,25 @@ import lombok.experimental.UtilityClass;
 @SuppressWarnings("ConstantConditions")
 public final class Utils {
     /**
-     * Get a {@link String} of consecutive stars
+     * Get a {@link String} of consecutive stars, maximum at 10.
+     * <p>
+     * When there are over 10 stars, returns number + star.
      *
-     * @param n the number of stars
-     * @return {@link String} of consecutive stars
+     * @param n The number of stars
+     * @return {@link String} of consecutive stars.
      */
     @Nonnull
     public static String getStars(int n) {
-        StringBuilder builder = new StringBuilder();
-        while (n > 0) {
-            builder.append("⭐");
-            n--;
+        if (n <= 10) {
+            StringBuilder builder = new StringBuilder();
+            while (n > 0) {
+                builder.append("⭐");
+                n--;
+            }
+            return builder.toString();
+        } else {
+            return n + " ⭐";
         }
-        return builder.toString();
     }
 
     /**

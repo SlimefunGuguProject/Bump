@@ -6,26 +6,21 @@ import org.bukkit.NamespacedKey;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.api.player.PlayerProfile;
 import io.github.thebusybiscuit.slimefun4.core.guide.SlimefunGuideMode;
 
-import dev.sefiraat.sefilib.slimefun.itemgroup.MainFlexGroup;
+import dev.sefiraat.sefilib.slimefun.itemgroup.SimpleFlexGroup;
 
 /**
  * A flex item group that displays apprase types.
  *
  * @author ybw0014
  */
-public final class AppraiseInfoGroup extends MainFlexGroup {
-    /**
-     * Creates a new MainFlexGroup
-     *
-     * @param name The name of the Group, this will be displayed when opened
-     * @param key  The {@link NamespacedKey} used to assign this group
-     * @param item The {@link ItemStack} which will act as the display item
-     */
+public final class AppraiseInfoGroup extends SimpleFlexGroup {
+
     public AppraiseInfoGroup(String name, NamespacedKey key, ItemStack item) {
-        super(name, key, item);
+        super(Bump.getInstance(), name, key, item);
     }
 
     @Override

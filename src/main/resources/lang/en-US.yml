@@ -264,8 +264,8 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
+      legacy: "&bUpgrading this legacy quality identifier."
       invalid: "&cThis item is not appraisable!"
-      mismatch: "&cThe quality identifier is incompatible with this item!"
       success: "&aThis item can be appraised now!"
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"

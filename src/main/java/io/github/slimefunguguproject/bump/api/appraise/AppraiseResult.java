@@ -1,10 +1,13 @@
 package io.github.slimefunguguproject.bump.api.appraise;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import javax.annotation.Nonnull;
+import javax.annotation.Nullable;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
@@ -16,10 +19,15 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
+import io.github.slimefunguguproject.bump.utils.Keys;
+import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 import lombok.Getter;
+
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 /**
  * An {@link AppraiseResult} contains results of attributes and
@@ -64,7 +72,7 @@ public final class AppraiseResult {
      *
      * @return The number of stars of the result
      */
-    public int getStars() {
+    public byte getStars() {
         for (Map.Entry<Byte, Byte> entry : Bump.getRegistry().getStarThresholds().entrySet()) {
             if (totalPercentile >= entry.getKey()) {
                 return entry.getValue();
@@ -79,13 +87,15 @@ public final class AppraiseResult {
      * @param itemStack The {@link ItemStack}.
      */
     @ParametersAreNonnullByDefault
-    public void apply(ItemStack itemStack) {
+    public void apply(@Nullable ItemStack itemStack) {
         if (!ValidateUtils.noAirItem(itemStack)) {
             throw new IllegalArgumentException("ItemStack cannot be null or air.");
         }
         ItemMeta meta = itemStack.getItemMeta();
         Material material = itemStack.getType();
+        byte stars = getStars();
 
+        // attributes
         for (Map.Entry<AppraiseAttribute, Double> entry : result.entrySet()) {
             Attribute attr = entry.getKey().getAttribute();
 
@@ -99,6 +109,26 @@ public final class AppraiseResult {
                 }
             }
         }
+
+        // lore
+        String loreLine = Bump.getLocalization().getString("lores.appraised", Utils.getStars(stars));
+        if (meta.hasLore()) {
+            List<String> lore = meta.getLore();
+            for (int i = 0; i < lore.size(); i++) {
+                if (lore.get(i).equals(ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")))) {
+                    lore.set(i, ChatUtil.color(loreLine));
+                    break;
+                }
+            }
+            meta.setLore(lore);
+        } else {
+            List<String> lore = new ArrayList<>();
+            lore.add(ChatUtil.color(loreLine));
+            meta.setLore(lore);
+        }
+
+        // pdc
+        PersistentDataAPI.setByte(meta, Keys.APPRAISE_LEVEL, stars);
 
         itemStack.setItemMeta(meta);
     }

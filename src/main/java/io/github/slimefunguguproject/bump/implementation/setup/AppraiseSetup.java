@@ -36,7 +36,7 @@ public final class AppraiseSetup {
 
     public static void setupStars() {
         final AddonConfig config = Bump.getRegistry().getConfig();
-        final Map<Integer, Integer> starThreshold = Bump.getRegistry().getStarThresholds();
+        final Map<Byte, Byte> starThreshold = Bump.getRegistry().getStarThresholds();
         ConfigurationSection section = config.getConfigurationSection("appraise.stars");
         if (section == null) {
             Bump.log(Level.WARNING, "Config section 'appraise.stars' is missing in config. Using default star thresholds.");
@@ -55,18 +55,18 @@ public final class AppraiseSetup {
         }
     }
 
-    private void setDefaultStarThreshold(@Nonnull Map<Integer, Integer> starThreshold) {
+    private void setDefaultStarThreshold(@Nonnull Map<Byte, Byte> starThreshold) {
         starThreshold.clear();
-        starThreshold.put(100, 20);
-        starThreshold.put(98, 10);
-        starThreshold.put(96, 9);
-        starThreshold.put(92, 8);
-        starThreshold.put(88, 7);
-        starThreshold.put(82, 6);
-        starThreshold.put(74, 5);
-        starThreshold.put(64, 4);
-        starThreshold.put(48, 3);
-        starThreshold.put(30, 2);
-        starThreshold.put(10, 1);
+        starThreshold.put((byte) 100, (byte) 20);
+        starThreshold.put((byte) 98, (byte) 10);
+        starThreshold.put((byte) 96, (byte) 9);
+        starThreshold.put((byte) 92, (byte) 8);
+        starThreshold.put((byte) 88, (byte) 7);
+        starThreshold.put((byte) 82, (byte) 6);
+        starThreshold.put((byte) 74, (byte) 5);
+        starThreshold.put((byte) 64, (byte) 4);
+        starThreshold.put((byte) 48, (byte) 3);
+        starThreshold.put((byte) 30, (byte) 2);
+        starThreshold.put((byte) 10, (byte) 1);
     }
 }

@@ -17,6 +17,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import com.google.common.base.Preconditions;
 
 import org.bukkit.Material;
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
@@ -24,7 +25,6 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeIdConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.utils.Patterns;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
@@ -47,13 +47,13 @@ import lombok.experimental.Accessors;
 @SuppressWarnings("ConstantConditions")
 public class AppraiseType {
     /**
-     * This is the ID of {@link AppraiseType}.
+     * This is the {@link NamespacedKey} of {@link AppraiseType}.
      */
     @Getter
-    private final String id;
+    private final NamespacedKey key;
 
     /**
-     * This is the name of {@link AppraiseType}.
+     * This is the display name of {@link AppraiseType}.
      */
     @Getter
     private String name;
@@ -124,28 +124,27 @@ public class AppraiseType {
     private SlimefunAddon addon;
 
     /**
-     * Initialize {@link AppraiseType} with ID.
+     * Initialize {@link AppraiseType} with {@link NamespacedKey}.
      *
-     * @param id The ID of {@link AppraiseType}.
+     * @param key The {@link NamespacedKey} of {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
-    public AppraiseType(String id) {
-        Preconditions.checkArgument(id != null, "ID cannot be null");
-        Preconditions.checkArgument(Patterns.APPRAISE_TYPE_ID.matcher(id).matches(), "ID must be [0-9a-z_]+");
+    public AppraiseType(NamespacedKey key) {
+        Preconditions.checkArgument(key != null, "NamespacedKey cannot be null");
 
-        this.id = id;
-        this.name = StringUtil.humanize(id);
+        this.key = key;
+        this.name = StringUtil.humanize(key.getKey());
     }
 
     /**
-     * Retrieve a {@link AppraiseType} by its id.
+     * Retrieve a {@link AppraiseType} by its {@link NamespacedKey}.
      *
-     * @param id The ID of the {@link AppraiseType}.
-     * @return The {@link AppraiseType} associated with that id. Null if not exist.
+     * @param key The {@link NamespacedKey} of the {@link AppraiseType}.
+     * @return The {@link AppraiseType} associated with that {@link NamespacedKey}. {@code null} if not exist.
      */
     @Nullable
-    public static AppraiseType getById(@Nonnull String id) {
-        return Bump.getRegistry().getAppraiseTypeIds().get(id);
+    public static AppraiseType getByKey(@Nonnull NamespacedKey key) {
+        return Bump.getRegistry().getAppraiseTypeKeys().get(key);
     }
 
     /**
@@ -356,7 +355,7 @@ public class AppraiseType {
         final BumpRegistry registry = Bump.getRegistry();
 
         // check id
-        AppraiseType existing = registry.getAppraiseTypeIds().get(id);
+        AppraiseType existing = registry.getAppraiseTypeKeys().get(key);
         if (existing != null) {
             throw new AppraiseTypeIdConflictException(this, existing);
         }
@@ -379,7 +378,7 @@ public class AppraiseType {
         }
 
         // registry
-        registry.getAppraiseTypeIds().put(id, this);
+        registry.getAppraiseTypeKeys().put(key, this);
         registry.getAppraiseTypes().add(this);
 
         // unmodifiable
@@ -449,8 +448,8 @@ public class AppraiseType {
 
     @Override
     public final boolean equals(Object obj) {
-        if (obj instanceof AppraiseType type) {
-            return type.getId().equals(getId());
+        if (obj instanceof AppraiseType other) {
+            return this.getKey().equals(other.getKey());
         } else {
             return false;
         }
@@ -458,13 +457,13 @@ public class AppraiseType {
 
     @Override
     public final int hashCode() {
-        return getId().hashCode();
+        return getKey().hashCode();
     }
 
     @Nonnull
     @Override
     public String toString() {
-        return "AppraiseType[" + getId() + "]";
+        return "AppraiseType[" + getKey() + "]";
     }
 
     /**

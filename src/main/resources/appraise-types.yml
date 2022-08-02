@@ -5,14 +5,10 @@ sword:
     - "Any Slimefun sword."
   equipment-type: SLIMEFUN
   check-material: true
-  valid-materials:
-    - WOODEN_SWORD
-    - STONE_SWORD
-    - IRON_SWORD
-    - GOLDEN_SWORD
-    - DIAMOND_SWORD
-    - NETHERITE_SWORD
-  equipment-slot: HAND
+  materials:
+    - "#bump:sword"
+  equipment-slots:
+    - HAND
   attributes:
     GENERIC_ATTACK_DAMAGE:
       min: 0
@@ -41,32 +37,16 @@ armor:
     - "Any Slimefun armor."
   equipment-type: SLIMEFUN
   check-material: true
-  valid-materials:
-    - WOODEN_HELMET
-    - STONE_HELMET
-    - IRON_HELMET
-    - GOLDEN_HELMET
-    - DIAMOND_HELMET
-    - NETHERITE_HELMET
-    - WOODEN_CHESTPLATE
-    - STONE_CHESTPLATE
-    - IRON_CHESTPLATE
-    - GOLDEN_CHESTPLATE
-    - DIAMOND_CHESTPLATE
-    - NETHERITE_CHESTPLATE
-    - WOODEN_LEGGINGS
-    - STONE_LEGGINGS
-    - IRON_LEGGINGS
-    - GOLDEN_LEGGINGS
-    - DIAMOND_LEGGINGS
-    - NETHERITE_LEGGINGS
-    - WOODEN_BOOTS
-    - STONE_BOOTS
-    - IRON_BOOTS
-    - GOLDEN_BOOTS
-    - DIAMOND_BOOTS
-    - NETHERITE_BOOTS
-  equipment-slot: ARMOR
+  materials:
+    - "#bump:helmet"
+    - "#bump:chestplate"
+    - "#bump:leggings"
+    - "#bump:boots"
+  equipment-slots:
+    - HEAD
+    - CHEST
+    - LEGS
+    - FEET
   attributes:
     GENERIC_ARMOR:
       min: 0
@@ -96,15 +76,13 @@ armor:
 horse_armor:
   name: "Horse Armor"
   description:
-    - "Any vanilla horse armor."
-  equipment-type: VANILLA
+    - "Any horse armor."
+  equipment-type: ANY
   check-material: true
-  valid-materials:
-    - LEATHER_HORSE_ARMOR
-    - IRON_HORSE_ARMOR
-    - GOLDEN_HORSE_ARMOR
-    - DIAMOND_HORSE_ARMOR
-  equipment-slot: ARMOR
+  materials:
+    - "#bump:horse_armor"
+  equipment-slots:
+    - CHEST
   attributes:
     GENERIC_ATTACK_DAMAGE:
       min: 0

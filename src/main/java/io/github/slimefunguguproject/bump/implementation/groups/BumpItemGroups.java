@@ -7,7 +7,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 
 import dev.sefiraat.sefilib.slimefun.itemgroup.DummyItemGroup;
-import dev.sefiraat.sefilib.slimefun.itemgroup.MainFlexGroup;
+import dev.sefiraat.sefilib.slimefun.itemgroup.SimpleFlexGroup;
 import lombok.experimental.UtilityClass;
 
 /**
@@ -17,7 +17,8 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public final class BumpItemGroups {
-    public static final MainFlexGroup MAIN = new MainFlexGroup(
+    public static final SimpleFlexGroup MAIN = new SimpleFlexGroup(
+        Bump.getInstance(),
         Bump.getLocalization().getCategoryName("main"),
         Bump.createKey("main"),
         new CustomItemStack(
@@ -33,6 +34,7 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("stuff")
         )
     );
+
     public static final ItemGroup FOOD = new DummyItemGroup(
         Bump.createKey("food"),
         new CustomItemStack(
@@ -40,6 +42,7 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("food")
         )
     );
+
     public static final ItemGroup MACHINE = new DummyItemGroup(
         Bump.createKey("machine"),
         new CustomItemStack(
@@ -47,6 +50,7 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("machine")
         )
     );
+
     public static final ItemGroup TOOL = new DummyItemGroup(
         Bump.createKey("tool"),
         new CustomItemStack(
@@ -54,6 +58,7 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("tool")
         )
     );
+
     public static final ItemGroup ARMOR = new DummyItemGroup(
         Bump.createKey("armor"),
         new CustomItemStack(
@@ -61,6 +66,7 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("armor")
         )
     );
+
     public static final ItemGroup WEAPON = new DummyItemGroup(
         Bump.createKey("weapon"),
         new CustomItemStack(
@@ -68,12 +74,21 @@ public final class BumpItemGroups {
             Bump.getLocalization().getCategoryName("weapon")
         )
     );
+
     public static final AppraiseInfoGroup APPRAISE_INFO = new AppraiseInfoGroup(
         Bump.getLocalization().getCategoryName("appraise_info"),
         Bump.createKey("appraise_info"),
         new CustomItemStack(
             Material.NAME_TAG,
             Bump.getLocalization().getCategoryName("appraise_info")
+        )
+    );
+
+    public static final ItemGroup LEGACY = new DummyItemGroup(
+        Bump.createKey("legacy"),
+        new CustomItemStack(
+            Material.BARRIER,
+            "Never gonna give you up~"
         )
     );
 }

@@ -43,6 +43,7 @@ public final class BumpItems {
     public static final SlimefunItemStack PEACH_WOOD;
     public static final SlimefunItemStack UPDATE_POWER;
     public static final SlimefunItemStack GETGOLD_SPADE;
+    public static final SlimefunItemStack APPRAISAL_PAPER;
     public static final SlimefunItemStack APPRAISAL_PAPER_ARMOR;
     public static final SlimefunItemStack APPRAISAL_PAPER_DAMAGE;
     public static final SlimefunItemStack APPRAISAL_PAPER_HORSE_ARMOR;
@@ -183,6 +184,12 @@ public final class BumpItems {
         GETGOLD_SPADE = new LocalizedItemStack(
             "GETGOLD_SPADE",
             Material.GOLDEN_SHOVEL
+        );
+
+        APPRAISAL_PAPER = new LocalizedItemStack(
+            "APPRAISAL_PAPER",
+            Material.PAPER,
+            LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
         );
 
         APPRAISAL_PAPER_ARMOR = new LocalizedItemStack(

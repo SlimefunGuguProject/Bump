@@ -5,7 +5,6 @@ import javax.annotation.Nonnull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.slimefunguguproject.bump.api.appraise.AppraiseTypes;
 import io.github.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
@@ -21,6 +20,7 @@ import io.github.slimefunguguproject.bump.implementation.items.machines.Attribut
 import io.github.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
 import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
+import io.github.slimefunguguproject.bump.implementation.items.legacy.LegacyAppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DevilSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.LightBow;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkyDevilSword;
@@ -188,26 +188,31 @@ public final class ItemsSetup {
         new GetgoldSpade().register(plugin);
 
         new AppraisalPaper(
-            BumpItems.APPRAISAL_PAPER_ARMOR,
-            AppraiseTypes.ARMOR,
+            BumpItems.APPRAISAL_PAPER,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HELMET
             }
         ).register(plugin);
 
-        new AppraisalPaper(
+        new LegacyAppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[]{
+                BumpItems.RANDOM_HELMET
+            }
+        ).register(plugin);
+
+        new LegacyAppraisalPaper(
             BumpItems.APPRAISAL_PAPER_DAMAGE,
-            AppraiseTypes.WEAPON,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_SWORD
             }
         ).register(plugin);
 
-        new AppraisalPaper(
+        new LegacyAppraisalPaper(
             BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
-            AppraiseTypes.HORSE_ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HORSE_ARMOR
