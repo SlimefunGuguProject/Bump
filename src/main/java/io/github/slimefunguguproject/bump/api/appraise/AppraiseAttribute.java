@@ -32,7 +32,7 @@ final class AppraiseAttribute {
      */
     public void setWeight(double weight) {
         if (weight != -1) {
-            throw new UnsupportedOperationException("You cannot change the weight");
+            throw new UnsupportedOperationException("You cannot change the weight when it is set");
         }
         this.weight = weight;
     }

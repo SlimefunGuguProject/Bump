@@ -1,23 +1,36 @@
 package io.github.slimefunguguproject.bump.implementation.items.machines;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
+import com.google.common.collect.Multimap;
 
+import org.bukkit.attribute.Attribute;
+import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
+import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
+import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
+
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 /**
  * The {@link AttributeGrindstone} can purge the appraisal result from
@@ -42,6 +55,11 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
     @Nonnull
     public ItemStack getOperationSlotItem() {
         return GuiItems.GRIND_BUTTON;
+    }
+
+    @Override
+    public int getCapacity() {
+        return ENERGY_CONSUMPTION;
     }
 
     @ParametersAreNonnullByDefault
@@ -79,18 +97,53 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         }
 
         ItemStack output = item.clone();
+        clearAttributes(output);
+        blockMenu.replaceExistingItem(getInputSlot(), null);
+        blockMenu.pushItem(output, getOutputSlot());
 
-        if (Bump.getAppraiseManager().clearAttributes(output)) {
-            blockMenu.replaceExistingItem(getInputSlot(), null);
-            blockMenu.pushItem(output, getOutputSlot());
-
-            setCharge(blockMenu.getLocation(), 0);
-            Bump.getLocalization().sendMessage(p, "machine.attribute-grindstone.success");
-        }
+        setCharge(blockMenu.getLocation(), 0);
+        Bump.getLocalization().sendMessage(p, "machine.attribute-grindstone.success");
     }
 
-    @Override
-    public int getCapacity() {
-        return ENERGY_CONSUMPTION;
+    private void clearAttributes(@Nonnull ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+        // check the appraising version
+        byte version = PersistentDataAPI.getByte(meta, Keys.APPRAISE_VERSION, (byte) 1);
+
+        if (version == 1) {
+            // legacy version, remove all attribute modifiers
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                if (BumpTag.getTag(slot.name() + "_SLOT").isTagged(itemStack.getType())) {
+                    meta.removeAttributeModifier(slot);
+                }
+            }
+        } else {
+            // new version (for now), remove all bump attribute modifiers
+            Multimap<Attribute, AttributeModifier> modifierMap = meta.getAttributeModifiers();
+        }
+
+        // set pdc
+        PersistentDataAPI.setBoolean(meta, Keys.APPRAISABLE, true);
+        PersistentDataAPI.remove(meta, Keys.APPRAISE_LEVEL);
+
+        // set lore
+        String appraisedLore = ChatUtil.color(Bump.getLocalization().getString("lores.appraised"));
+        String appraisedLorePrefix = appraisedLore.substring(0, appraisedLore.indexOf("{0}"));
+        List<String> lore;
+        if (meta.hasLore()) {
+            lore = meta.getLore();
+        } else {
+            lore = new ArrayList<>();
+        }
+        for (int i = 0; i < lore.size(); i++) {
+            if (lore.get(i).startsWith(appraisedLorePrefix)) {
+                lore.set(i, ChatUtil.color(Bump.getLocalization().getString("lores.not-appraised")));
+                break;
+            }
+        }
+        meta.setLore(lore);
+
+        // done
+        itemStack.setItemMeta(meta);
     }
 }

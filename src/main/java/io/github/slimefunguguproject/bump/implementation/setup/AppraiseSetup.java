@@ -1,5 +1,6 @@
 package io.github.slimefunguguproject.bump.implementation.setup;
 
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.logging.Level;
@@ -9,6 +10,7 @@ import javax.annotation.Nonnull;
 import org.bukkit.configuration.ConfigurationSection;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
@@ -26,9 +28,16 @@ public final class AppraiseSetup {
         Set<String> types = config.getKeys(false);
         for (String type : types) {
             try {
-                AppraiseType appraiseType = new AppraiseType(type)
-                    .setName(config.getString(type + ".name"));
-            } catch (IllegalArgumentException ex) {
+                String name = config.getString(type + ".name");
+                List<String> description = config.getStringList(type + ".description");
+                String equipmentType = config.getString(type + ".equipment-type");
+
+
+                AppraiseType appraiseType = new AppraiseType(Bump.createKey(type))
+                    .setName(name)
+                    .setDescription(description)
+                    .setEquipmentType(AppraiseType.EquipmentType.valueOf(equipmentType));
+            } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException ex) {
                 Bump.log(Level.SEVERE, "An error occured while trying to register appraise type {0}: {1}", type, ex.getMessage());
             }
         }
@@ -46,11 +55,19 @@ public final class AppraiseSetup {
         Set<String> keys = section.getKeys(false);
         try {
             for (String keyStr : keys) {
-                int key = Integer.parseInt(keyStr);
-                int value = section.getInt(keyStr);
+                byte key = Byte.parseByte(keyStr);
+                if (key < 0) {
+                    throw new IllegalArgumentException();
+                }
+                int intValue = section.getInt(keyStr);
+                if (intValue < 0 || intValue > 127) {
+                    throw new IllegalArgumentException();
+                }
+                byte value = (byte) intValue;
+                starThreshold.put(key, value);
             }
-        } catch (NumberFormatException ex) {
-            Bump.log(Level.SEVERE, ex, "An error occured while trying to load appraise star thresholds.");
+        } catch (IllegalArgumentException ex) {
+            Bump.log(Level.SEVERE, ex, "You cannot set appraise star out of range 0 to 127!");
             setDefaultStarThreshold(starThreshold);
         }
     }

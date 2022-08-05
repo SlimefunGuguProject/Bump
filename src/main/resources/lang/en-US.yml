@@ -141,6 +141,13 @@ items:
       - ""
       - "&b&k|&b- There is a certain chance to dig out broken gold coins in the sand!"
       - ""
+  appraisal_paper:
+    name: "&eQuality Identifier"
+    lore:
+      - ""
+      - "&b&k|&b- Add some random attributes for applicable items!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
+      - ""
   appraisal_paper_armor:
     name: "&eArmor Quality Identifier"
     lore:
@@ -253,6 +260,8 @@ messages:
   output-no-space: "&cNo output space!"
   not-enough-power: "&cNot enough energy."
   stacked: "&cYou cannot use this item when stacked."
+  legacy: "&cYou are using a legacy item. You will need to upgrade it to new one."
+  deprecated: "&cYou are using a deprecated item, it will be removed soon."
   food:
     cooldown: "&b&k|&b- &7&oYou need to wait for a while to eat this again!"
     xuebi: "&b&k|&b- &7&oA cool summer!!"
@@ -264,7 +273,7 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
-      legacy: "&bUpgrading this legacy quality identifier."
+      legacy: "&cYour legacy quality identifiers have been upgraded."
       invalid: "&cThis item is not appraisable!"
       success: "&aThis item can be appraised now!"
   weapon:

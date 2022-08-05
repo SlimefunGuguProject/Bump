@@ -6,6 +6,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
+import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
@@ -49,6 +50,11 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         return GuiItems.APPRAISE_BUTTON;
     }
 
+    @Override
+    public int getCapacity() {
+        return ENERGY_CONSUMPTION;
+    }
+
     @ParametersAreNonnullByDefault
     @Override
     protected void onOperate(BlockMenu menu, Block b, Player p, ClickAction action) {
@@ -90,14 +96,12 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         }
 
         ItemStack output = item.clone();
+        appraiseItem(output);
+        blockMenu.replaceExistingItem(getInputSlot(), null);
+        blockMenu.pushItem(output, getOutputSlot());
 
-        if (Bump.getAppraiseManager().appraiseItem(output)) {
-            blockMenu.replaceExistingItem(getInputSlot(), null);
-            blockMenu.pushItem(output, getOutputSlot());
-
-            setCharge(blockMenu.getLocation(), 0);
-            Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
-        }
+        setCharge(blockMenu.getLocation(), 0);
+        Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
     }
 
     private boolean validate(@Nonnull ItemStack itemStack) {
@@ -106,8 +110,8 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         return sfItem instanceof RandomEquipment || AppraiseUtils.isAppraisable(itemStack);
     }
 
-    @Override
-    public int getCapacity() {
-        return ENERGY_CONSUMPTION;
+    private void appraiseItem(@Nonnull ItemStack itemStack) {
+        ItemMeta meta = itemStack.getItemMeta();
+
     }
 }

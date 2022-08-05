@@ -183,15 +183,15 @@ public class AppraisalPaper extends LimitedUseItem {
 
     /**
      * Validate the item. The item that can be marked appraisable
-     * should meet these requirements:
-     * - has not been appraised yet
-     * - has not been marked appraisable yet
+     * should meet these requirements:<br>
+     * - has not been appraised yet<br>
+     * - has not been marked appraisable yet<br>
      *
      * @param itemStack The {@link ItemStack} to be validated.
      * @return If the {@link ItemStack} is applicable to appraisal paper.
      */
     private boolean isValidItem(@Nonnull ItemStack itemStack) {
-        final List<AppraiseType> types = Bump.getRegistry().getAppraiseTypes();
+        final Set<AppraiseType> types = Bump.getRegistry().getAppraiseTypes();
         // find any match type
         for (AppraiseType type : types) {
             if (type.isValidItem(itemStack)

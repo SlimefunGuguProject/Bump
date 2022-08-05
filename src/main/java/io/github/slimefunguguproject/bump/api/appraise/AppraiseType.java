@@ -22,7 +22,7 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeIdConflictException;
+import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
@@ -347,6 +347,8 @@ public class AppraiseType {
      * It will calculate the attributes without weight,
      * and divide the remaining overall weight.
      *
+     * @param addon The {@link SlimefunAddon} that register this {@link AppraiseType}
+     *
      * @return {@link AppraiseType} itself
      */
     public final AppraiseType register(@Nonnull SlimefunAddon addon) {
@@ -357,7 +359,7 @@ public class AppraiseType {
         // check id
         AppraiseType existing = registry.getAppraiseTypeKeys().get(key);
         if (existing != null) {
-            throw new AppraiseTypeIdConflictException(this, existing);
+            throw new AppraiseTypeKeyConflictException(this, existing);
         }
 
         final Set<AppraiseAttribute> noWeightAttributes = attributes.stream()
@@ -486,7 +488,7 @@ public class AppraiseType {
     /**
      * This enum holds the acceptable type of appraisable items.
      */
-    enum EquipmentType {
+    public enum EquipmentType {
         ANY,
         SLIMEFUN,
         VANILLA
