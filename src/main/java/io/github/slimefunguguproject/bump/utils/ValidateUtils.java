@@ -23,6 +23,7 @@ public final class ValidateUtils {
      * Validate the given {@link ItemStack} is not {@code null} or an air item.
      *
      * @param itemStack The {@link ItemStack} to be validated.
+     *
      * @return if the {@link ItemStack} is valid.
      */
     public static boolean noAirItem(@Nullable ItemStack itemStack) {
@@ -64,7 +65,7 @@ public final class ValidateUtils {
             if (!it.hasNext()) {
                 return;
             }
-        } while(it.next() != null);
+        } while (it.next() != null);
 
         throw new IllegalArgumentException("Collection cannot contain null elements");
     }

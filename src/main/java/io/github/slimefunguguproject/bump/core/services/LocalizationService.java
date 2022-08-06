@@ -8,6 +8,7 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.common.base.Preconditions;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
@@ -66,11 +67,11 @@ public final class LocalizationService extends MinecraftLocalization {
     }
 
     @ParametersAreNonnullByDefault
-    public void sendMessage(Player p, String messageKey, Object... args) {
-        Preconditions.checkArgument(p != null, "Player cannot be null");
+    public void sendMessage(CommandSender sender, String messageKey, Object... args) {
+        Preconditions.checkArgument(sender != null, "CommandSender cannot be null");
         Preconditions.checkArgument(messageKey != null, "Message key cannot be null");
 
-        ChatUtil.send(p, MessageFormat.format(getString("messages." + messageKey), args));
+        ChatUtil.send(sender, MessageFormat.format(getString("messages." + messageKey), args));
     }
 
     @ParametersAreNonnullByDefault

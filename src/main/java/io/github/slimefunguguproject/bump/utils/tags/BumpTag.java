@@ -163,6 +163,7 @@ public enum BumpTag implements Tag<Material> {
      * Get the {@link BumpTag} with specified name.
      *
      * @param value The name of {@link BumpTag}.
+     *
      * @return The {@link BumpTag}. Null if name doesn't exist.
      */
     @Nullable

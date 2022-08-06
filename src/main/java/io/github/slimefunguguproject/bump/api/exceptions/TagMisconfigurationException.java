@@ -24,7 +24,7 @@ public class TagMisconfigurationException extends Exception {
      * This constructs a new {@link TagMisconfigurationException} for the given
      * {@link }'s {@link NamespacedKey} with the provided context.
      *
-     * @param key The {@link NamespacedKey} of {@link BumpTag}
+     * @param key     The {@link NamespacedKey} of {@link BumpTag}
      * @param message The message to display
      */
     @ParametersAreNonnullByDefault
@@ -36,7 +36,7 @@ public class TagMisconfigurationException extends Exception {
      * This constructs a new {@link io.github.thebusybiscuit.slimefun4.api.exceptions.TagMisconfigurationException} for the given
      * {@link BumpTag}'s {@link NamespacedKey} with the provided context.
      *
-     * @param key The {@link NamespacedKey} of {@link BumpTag}
+     * @param key   The {@link NamespacedKey} of {@link BumpTag}
      * @param cause The {@link Throwable} which has caused this to happen
      */
     @ParametersAreNonnullByDefault

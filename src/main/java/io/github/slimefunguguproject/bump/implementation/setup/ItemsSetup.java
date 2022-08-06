@@ -15,12 +15,12 @@ import io.github.slimefunguguproject.bump.implementation.items.food.Kouxiangtang
 import io.github.slimefunguguproject.bump.implementation.items.food.Latiao;
 import io.github.slimefunguguproject.bump.implementation.items.food.Xuebi;
 import io.github.slimefunguguproject.bump.implementation.items.food.Zongzi;
+import io.github.slimefunguguproject.bump.implementation.items.legacy.LegacyAppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import io.github.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
 import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
-import io.github.slimefunguguproject.bump.implementation.items.legacy.LegacyAppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DevilSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.LightBow;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkyDevilSword;

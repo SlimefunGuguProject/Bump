@@ -29,5 +29,4 @@ public class AppraiseTypeKeyConflictException extends RuntimeException {
     public AppraiseTypeKeyConflictException(AppraiseType type1, AppraiseType type2) {
         super("Two appraise types have conflicting NamespacedKey: " + type1 + " and " + type2);
     }
-
 }

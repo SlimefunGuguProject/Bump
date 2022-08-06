@@ -25,9 +25,9 @@ import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
-import lombok.Getter;
-
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
+
+import lombok.Getter;
 
 /**
  * An {@link AppraiseResult} contains results of attributes and
@@ -150,6 +150,7 @@ public final class AppraiseResult {
          *
          * @param attribute The {@link AppraiseAttribute}.
          * @param result    The value of the attribute
+         *
          * @return This {@link Builder}
          */
         Builder add(AppraiseAttribute attribute, double result) {

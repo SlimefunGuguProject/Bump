@@ -57,6 +57,7 @@ class TagParser implements Keyed {
      * matched {@link Material Materials} and {@link Tag Tags}.
      *
      * @param callback A callback to run after successfully parsing the input.
+     *
      * @throws TagMisconfigurationException This is thrown whenever the given input is malformed or no adequate
      *                                      {@link Material} or {@link Tag} could be found
      */

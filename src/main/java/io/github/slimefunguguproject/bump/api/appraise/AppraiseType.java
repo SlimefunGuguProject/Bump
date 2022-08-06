@@ -140,6 +140,7 @@ public class AppraiseType {
      * Retrieve a {@link AppraiseType} by its {@link NamespacedKey}.
      *
      * @param key The {@link NamespacedKey} of the {@link AppraiseType}.
+     *
      * @return The {@link AppraiseType} associated with that {@link NamespacedKey}. {@code null} if not exist.
      */
     @Nullable
@@ -151,6 +152,7 @@ public class AppraiseType {
      * Set the name of this {@link AppraiseType}.
      *
      * @param name The name.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -165,6 +167,7 @@ public class AppraiseType {
      * Set the description of this {@link AppraiseType}.
      *
      * @param description The description, in array.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -177,6 +180,7 @@ public class AppraiseType {
      * Set the description of this {@link AppraiseType}.
      *
      * @param description The description, in array.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -191,6 +195,7 @@ public class AppraiseType {
      * Set if this {@link AppraiseType} check item material when appraising.
      *
      * @param value Whether to check item material.
+     *
      * @return This {@link AppraiseType}.
      */
     public final AppraiseType checkMaterial(boolean value) {
@@ -203,6 +208,7 @@ public class AppraiseType {
      * Set the {@link EquipmentType} of this {@link AppraiseType}.
      *
      * @param type The {@link EquipmentType}.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -220,6 +226,7 @@ public class AppraiseType {
      * @param max       The maximum value of attribute
      * @param weight    The weight used to calculate overall star rate
      *                  (between 0 and 100, -1 means dividing remaining weight)
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -249,6 +256,7 @@ public class AppraiseType {
      * @param attribute The {@link Attribute} to be changed
      * @param min       The minimum value of attribute
      * @param max       The maximum value of attribute
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -260,6 +268,7 @@ public class AppraiseType {
      * Add valid materials.
      *
      * @param materials The array of valid {@link Material}.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -271,6 +280,7 @@ public class AppraiseType {
      * Add valid materials.
      *
      * @param materials The {@link Collection} of valid {@link Material}.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -287,10 +297,9 @@ public class AppraiseType {
 
     /**
      * Add valid Slimefun item ids.
-     * <p>
-     * Note that this will set the {@link EquipmentType} to SLIMEFUN.
      *
      * @param slimefunItemIds The array of valid Slimefun item id.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -301,17 +310,15 @@ public class AppraiseType {
 
     /**
      * Add valid Slimefun item ids.
-     * <p>
-     * Note that this will set the {@link EquipmentType} to SLIMEFUN.
      *
      * @param slimefunItemIds The {@link List} of valid Slimefun item id.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidSlimefunItemIds(List<String> slimefunItemIds) {
         checkState();
         ValidateUtils.noNullElements(slimefunItemIds);
-        equipmentType = EquipmentType.SLIMEFUN;
         validSlimefunItemIds.addAll(slimefunItemIds);
         return this;
     }
@@ -320,6 +327,7 @@ public class AppraiseType {
      * Add valid equipment slots.
      *
      * @param equipmentSlots The {@link List} of valid equipment slots.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -332,6 +340,7 @@ public class AppraiseType {
      * Add valid equipment slots.
      *
      * @param equipmentSlots The {@link List} of valid equipment slots.
+     *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
@@ -407,6 +416,7 @@ public class AppraiseType {
      * This method checks if specified {@link ItemStack} fit this {@link AppraiseType}.
      *
      * @param itemStack The {@link ItemStack} to be checked.
+     *
      * @return If the {@link ItemStack} fit this {@link AppraiseType}.
      */
     public boolean isValidItem(@Nonnull ItemStack itemStack) {
@@ -417,35 +427,29 @@ public class AppraiseType {
 
         // Equipment type check
         Optional<SlimefunItem> sfItem = Optional.ofNullable(SlimefunItem.getByItem(itemStack));
-        switch (getEquipmentType()) {
-            case VANILLA -> {
-                if (sfItem.isPresent()) {
-                    return false;
-                }
-            }
-            case SLIMEFUN -> {
-                if (sfItem.isEmpty()) {
-                    return false;
-                }
-                // Valid slimefun item
-                if (!isApplicableSlimefunItem(sfItem.get())) {
-                    return false;
-                }
-            }
-        }
-        // if passes check then return true
-        return true;
+        return switch (getEquipmentType()) {
+            case VANILLA -> sfItem.isEmpty();
+            case SLIMEFUN -> sfItem.isPresent() && isAcceptableSlimefunItem(sfItem);
+            case ANY -> sfItem.isEmpty() || isAcceptableSlimefunItem(sfItem);
+        };
     }
 
     /**
      * This is the default method to check if a {@link SlimefunItem} fit this {@link AppraiseType}.
      *
      * @param sfItem The {@link SlimefunItem} to be checked.
+     *
      * @return If the {@link SlimefunItem} fit this {@link AppraiseType}.
      */
-    public boolean isApplicableSlimefunItem(@Nonnull SlimefunItem sfItem) {
-        String id = sfItem.getId();
-        return validSlimefunItemIds.isEmpty() || validSlimefunItemIds.contains(id);
+    public boolean isAcceptableSlimefunItem(@Nonnull Optional<SlimefunItem> sfItem) {
+        if (sfItem.isEmpty()) {
+            // if Slimefun item not exist, just no
+            return false;
+        } else {
+            // otherwise, check it
+            String id = sfItem.get().getId();
+            return validSlimefunItemIds.isEmpty() || validSlimefunItemIds.contains(id);
+        }
     }
 
     @Override

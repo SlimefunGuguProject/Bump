@@ -300,6 +300,12 @@ messages:
     attribute-grindstone:
       invalid: "&cThis item is not appraised yet."
       success: "&aThe appraisal result is purged!"
+console:
+  loading-language: "Loading language {0}."
+  loading-appraise-types: "Loading appraise types from config."
+  loading-appraise-type: "Loading appraise type {0}"
+  appraise-type-disabled: "The appraise type {0} is disabled, ignoring."
+  appraise-type-loaded: "Loaded appraise type {0}."
 gui:
   appraise:
     name: "&eClick to appraise"

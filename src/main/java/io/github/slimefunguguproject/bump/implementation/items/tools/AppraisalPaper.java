@@ -1,6 +1,5 @@
 package io.github.slimefunguguproject.bump.implementation.items.tools;
 
-import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Nonnull;
@@ -10,7 +9,6 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
@@ -27,11 +25,9 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
 import io.github.thebusybiscuit.slimefun4.libraries.dough.items.CustomItemStack;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 import io.github.thebusybiscuit.slimefun4.utils.LoreBuilder;
-import io.github.thebusybiscuit.slimefun4.utils.PatternUtils;
 
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 
-import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 import net.guizhanss.guizhanlib.minecraft.utils.InventoryUtil;
 
 /**
@@ -188,6 +184,7 @@ public class AppraisalPaper extends LimitedUseItem {
      * - has not been marked appraisable yet<br>
      *
      * @param itemStack The {@link ItemStack} to be validated.
+     *
      * @return If the {@link ItemStack} is applicable to appraisal paper.
      */
     private boolean isValidItem(@Nonnull ItemStack itemStack) {

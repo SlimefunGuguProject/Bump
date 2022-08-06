@@ -18,6 +18,7 @@ public final class Utils {
      * When there are over 10 stars, returns number + star.
      *
      * @param n The number of stars
+     *
      * @return {@link String} of consecutive stars.
      */
     @Nonnull

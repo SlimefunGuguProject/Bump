@@ -8,10 +8,12 @@ import java.util.logging.Level;
 import javax.annotation.Nonnull;
 
 import org.bukkit.configuration.ConfigurationSection;
+import org.bukkit.configuration.InvalidConfigurationException;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.utils.ConfigUtils;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
@@ -25,19 +27,41 @@ import lombok.experimental.UtilityClass;
 @UtilityClass
 public final class AppraiseSetup {
     public static void setupTypes(@Nonnull AddonConfig config) {
+        Bump.log(Level.INFO, Bump.getLocalization().getString("console.loading-appraise-types"));
         Set<String> types = config.getKeys(false);
         for (String type : types) {
+            if (!config.getBoolean(type + ".enabled")) {
+                Bump.log(Level.INFO, Bump.getLocalization().getString("console.appraise-type-disabled"), type);
+                continue;
+            }
+
             try {
+                // raw values
                 String name = config.getString(type + ".name");
                 List<String> description = config.getStringList(type + ".description");
-                String equipmentType = config.getString(type + ".equipment-type");
+                String equipmentTypeStr = config.getString(type + ".equipment-type");
+                boolean checkMaterial = config.getBoolean(type + ".check-material");
+                List<String> validMaterials = config.getStringList(type + ".materials");
+                List<String> validSlimefunItemIds = config.getStringList(type + ".slimefun-items");
+                List<String> equipmentSlots = config.getStringList(type + ".equipment-slot");
+                ConfigurationSection attributesSection = config.getConfigurationSection(type + ".attributes");
 
+                // parsed values
+                AppraiseType.EquipmentType equipmentType = AppraiseType.EquipmentType.valueOf(equipmentTypeStr);
 
                 AppraiseType appraiseType = new AppraiseType(Bump.createKey(type))
                     .setName(name)
                     .setDescription(description)
-                    .setEquipmentType(AppraiseType.EquipmentType.valueOf(equipmentType));
-            } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException ex) {
+                    .setEquipmentType(equipmentType)
+                    .checkMaterial(checkMaterial)
+                    .addValidMaterials(ConfigUtils.parseMaterials(validMaterials));
+
+                if (equipmentType == AppraiseType.EquipmentType.SLIMEFUN) {
+                    appraiseType.addValidSlimefunItemIds(validSlimefunItemIds);
+                }
+
+                Bump.log(Level.INFO, Bump.getLocalization().getString("console.appraise-type-loaded"), type);
+            } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException | InvalidConfigurationException ex) {
                 Bump.log(Level.SEVERE, "An error occured while trying to register appraise type {0}: {1}", type, ex.getMessage());
             }
         }

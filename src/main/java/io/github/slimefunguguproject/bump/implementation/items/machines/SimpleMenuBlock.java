@@ -108,11 +108,11 @@ public abstract class SimpleMenuBlock extends MenuBlock implements EnergyNetComp
 
     @Override
     protected final int[] getInputSlots() {
-        return new int[] { INPUT_SLOT };
+        return new int[]{INPUT_SLOT};
     }
 
     @Override
     protected final int[] getOutputSlots() {
-        return new int[] { OUTPUT_SLOT };
+        return new int[]{OUTPUT_SLOT};
     }
 }

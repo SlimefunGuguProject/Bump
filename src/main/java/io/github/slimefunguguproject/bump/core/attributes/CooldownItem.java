@@ -35,6 +35,7 @@ public interface CooldownItem extends ItemAttribute {
      * This method checks if given {@link ItemStack} has cooled down.
      *
      * @param itemStack The {@link ItemStack} to be checked
+     *
      * @return if the item can be used now
      */
     default boolean isCooldown(@Nonnull ItemStack itemStack) {

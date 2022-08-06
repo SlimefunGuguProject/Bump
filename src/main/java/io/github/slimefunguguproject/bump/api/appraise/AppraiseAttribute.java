@@ -56,12 +56,23 @@ final class AppraiseAttribute {
         }
     }
 
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.attribute.hashCode();
+        hash = 13 * hash + Double.hashCode(this.min);
+        hash = 13 * hash + Double.hashCode(this.max);
+        hash = 13 * hash + Double.hashCode(this.weight);
+        return hash;
+    }
+
     /**
      * Get the percentile of result value within range.
      * <p>
      * Return range from 0 to 100.
      *
      * @param value The result value.
+     *
      * @return The percentile of the result value.
      */
     public double getPercentile(double value) {
@@ -78,6 +89,7 @@ final class AppraiseAttribute {
      * Get the weighted percentile of result value.
      *
      * @param value The result value.
+     *
      * @return The weighted percentile of the result value.
      */
     public double getWeightedPercentile(double value) {
