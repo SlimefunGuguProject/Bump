@@ -7,6 +7,7 @@ import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
 
@@ -45,6 +46,7 @@ public final class AppraiseSetup {
                 List<String> validSlimefunItemIds = config.getStringList(type + ".slimefun-items");
                 List<String> equipmentSlots = config.getStringList(type + ".equipment-slot");
                 ConfigurationSection attributesSection = config.getConfigurationSection(type + ".attributes");
+                Set<String> attributes = attributesSection.getKeys(false);
 
                 // parsed values
                 AppraiseType.EquipmentType equipmentType = AppraiseType.EquipmentType.valueOf(equipmentTypeStr);
@@ -53,16 +55,23 @@ public final class AppraiseSetup {
                     .setName(name)
                     .setDescription(description)
                     .setEquipmentType(equipmentType)
+                    .addValidEquipmentSlots(ConfigUtils.parseEquipmentSlots(equipmentSlots))
                     .checkMaterial(checkMaterial)
-                    .addValidMaterials(ConfigUtils.parseMaterials(validMaterials));
+                    .addValidMaterials(ConfigUtils.parseMaterials(validMaterials))
+                    .addValidSlimefunItemIds(validSlimefunItemIds);
 
-                if (equipmentType == AppraiseType.EquipmentType.SLIMEFUN) {
-                    appraiseType.addValidSlimefunItemIds(validSlimefunItemIds);
+                for (String attr : attributes) {
+                    Attribute attribute = Attribute.valueOf(attr);
+                    double min = attributesSection.getDouble(attr + ".min");
+                    double max = attributesSection.getDouble(attr + ".max");
+                    double weight = attributesSection.getDouble(attr + ".weight", -1);
+                    appraiseType.addAttribute(attribute, min, max, weight);
                 }
 
+                appraiseType.register(Bump.getInstance());
                 Bump.log(Level.INFO, Bump.getLocalization().getString("console.appraise-type-loaded"), type);
             } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException | InvalidConfigurationException ex) {
-                Bump.log(Level.SEVERE, "An error occured while trying to register appraise type {0}: {1}", type, ex.getMessage());
+                Bump.log(Level.SEVERE, "An error has occurred while trying to register appraise type {0}: {1}", type, ex.getMessage());
             }
         }
     }

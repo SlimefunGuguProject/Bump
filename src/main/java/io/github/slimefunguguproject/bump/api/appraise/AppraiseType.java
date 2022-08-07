@@ -109,13 +109,6 @@ public class AppraiseType {
     private Set<String> validSlimefunItemIds = new HashSet<>();
 
     /**
-     * This indicates the register state of this {@link AppraiseType}.
-     */
-    @Accessors(fluent = true)
-    @Getter
-    private boolean isRegistered;
-
-    /**
      * This indicates the {@link SlimefunAddon} that registered this {@link AppraiseType}.
      * <p>
      * Will be null if this {@link AppraiseType} has not been registered.
@@ -298,7 +291,7 @@ public class AppraiseType {
     /**
      * Add valid Slimefun item ids.
      *
-     * @param slimefunItemIds The array of valid Slimefun item id.
+     * @param slimefunItemIds The array of valid Slimefun item ids.
      *
      * @return This {@link AppraiseType}.
      */
@@ -311,12 +304,12 @@ public class AppraiseType {
     /**
      * Add valid Slimefun item ids.
      *
-     * @param slimefunItemIds The {@link List} of valid Slimefun item id.
+     * @param slimefunItemIds The {@link Collection} of valid Slimefun item ids.
      *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
-    public final AppraiseType addValidSlimefunItemIds(List<String> slimefunItemIds) {
+    public final AppraiseType addValidSlimefunItemIds(Collection<String> slimefunItemIds) {
         checkState();
         ValidateUtils.noNullElements(slimefunItemIds);
         validSlimefunItemIds.addAll(slimefunItemIds);
@@ -326,7 +319,7 @@ public class AppraiseType {
     /**
      * Add valid equipment slots.
      *
-     * @param equipmentSlots The {@link List} of valid equipment slots.
+     * @param equipmentSlots The array of valid equipment slots.
      *
      * @return This {@link AppraiseType}.
      */
@@ -339,12 +332,12 @@ public class AppraiseType {
     /**
      * Add valid equipment slots.
      *
-     * @param equipmentSlots The {@link List} of valid equipment slots.
+     * @param equipmentSlots The {@link Collection} of valid equipment slots.
      *
      * @return This {@link AppraiseType}.
      */
     @ParametersAreNonnullByDefault
-    public final AppraiseType addValidEquipmentSlots(List<EquipmentSlot> equipmentSlots) {
+    public final AppraiseType addValidEquipmentSlots(Collection<EquipmentSlot> equipmentSlots) {
         checkState();
         ValidateUtils.noNullElements(equipmentSlots);
         validEquipmentSlots.addAll(equipmentSlots);
@@ -398,9 +391,17 @@ public class AppraiseType {
         validEquipmentSlots = Set.copyOf(validEquipmentSlots);
         validSlimefunItemIds = Set.copyOf(validSlimefunItemIds);
 
-        isRegistered = true;
         this.addon = addon;
         return this;
+    }
+
+    /**
+     * Returns if this {@link AppraiseType} has been registered.
+     *
+     * @return if this {@link AppraiseType} has been registered.
+     */
+    public final boolean isRegistered() {
+        return addon != null;
     }
 
     /**
