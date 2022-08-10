@@ -301,11 +301,14 @@ messages:
       invalid: "&cThis item is not appraised yet."
       success: "&aThe appraisal result is purged!"
 console:
-  loading-language: "Loading language {0}."
   loading-appraise-types: "Loading appraise types from config."
-  loading-appraise-type: "Loading appraise type {0}"
-  appraise-type-disabled: "The appraise type {0} is disabled, ignoring."
-  appraise-type-loaded: "Loaded appraise type {0}."
+  loading-appraise-type: "Loading appraise type '{0}'."
+  disabled-appraise-type: "The appraise type '{0}' is disabled, ignoring."
+  loaded-appraise-type: "Loaded appraise type '{0}'."
+  error-loading-appraise-type: "An error has occurred while loading appraise type '{0}': {1}"
+  missing-appraise-stars: "Config section 'appraise.stars' is missing."
+  use-default-appraise-stars: "Using default appraise stars settings."
+  invalid-appraise-stars: "You can only set appraise stars to between 0 and 127!"
 gui:
   appraise:
     name: "&eClick to appraise"
@@ -324,8 +327,9 @@ gui:
       - "&7Click here to purge attributes"
 appraise_info:
   name: "&bAppraise type: &e{0}"
+  click: "&eClick to view details"
   equipment_type:
-    lore: "Applicable item type: {0}"
+    name: "&aApplicable equipment type: &b{0}"
     any: "Any item"
     vanilla: "Vanilla items only"
     slimefun: "Slimefun items only"

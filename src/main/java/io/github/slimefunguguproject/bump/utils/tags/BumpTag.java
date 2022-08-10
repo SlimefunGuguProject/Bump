@@ -146,6 +146,12 @@ public enum BumpTag implements Tag<Material> {
 
     BumpTag() {
         this.key = Bump.createKey(name().toLowerCase(Locale.ROOT));
+    }
+
+    /**
+     * Reload this {@link BumpTag} from resources.
+     */
+    public void reload() {
         try {
             new TagParser(this).parse((materials, additionalTags) -> {
                 this.materials.clear();
@@ -156,6 +162,15 @@ public enum BumpTag implements Tag<Material> {
             });
         } catch (TagMisconfigurationException ex) {
             Bump.log(Level.SEVERE, ex, "An error has occurred while trying to load Bump tag: " + name());
+        }
+    }
+
+    /**
+     * Reload all tags.
+     */
+    public static void reloadAll() {
+        for (BumpTag tag : cachedValues) {
+            tag.reload();
         }
     }
 

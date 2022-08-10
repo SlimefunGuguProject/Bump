@@ -2,6 +2,7 @@ package io.github.slimefunguguproject.bump.core.services;
 
 import java.text.MessageFormat;
 import java.util.Locale;
+import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -83,5 +84,15 @@ public final class LocalizationService extends MinecraftLocalization {
 
         BaseComponent[] components = TextComponent.fromLegacyText(ChatUtil.color(message));
         p.spigot().sendMessage(ChatMessageType.ACTION_BAR, components);
+    }
+
+    @ParametersAreNonnullByDefault
+    public void log(Level level, String key, Object... args) {
+        Preconditions.checkArgument(level != null, "Log level cannot be null");
+        Preconditions.checkArgument(key != null, "Key cannot be null");
+
+        String message = MessageFormat.format(getString("console." + key), args);
+
+        Bump.log(level, message);
     }
 }

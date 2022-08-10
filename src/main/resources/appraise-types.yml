@@ -3,13 +3,13 @@ sword:
   enabled: true
   name: "Sword"
   description:
-    - "Any Slimefun sword."
+  - "Any Slimefun sword."
   equipment-type: SLIMEFUN
   check-material: true
   materials:
-    - "#bump:sword"
+  - "#bump:sword"
   equipment-slots:
-    - HAND
+  - HAND
   attributes:
     GENERIC_ATTACK_DAMAGE:
       min: 0
@@ -36,19 +36,19 @@ armor:
   enabled: true
   name: "Armor"
   description:
-    - "Any Slimefun armor."
+  - "Any Slimefun armor."
   equipment-type: SLIMEFUN
   check-material: true
   materials:
-    - "#bump:helmet"
-    - "#bump:chestplate"
-    - "#bump:leggings"
-    - "#bump:boots"
+  - "#bump:helmet"
+  - "#bump:chestplate"
+  - "#bump:leggings"
+  - "#bump:boots"
   equipment-slots:
-    - HEAD
-    - CHEST
-    - LEGS
-    - FEET
+  - HEAD
+  - CHEST
+  - LEGS
+  - FEET
   attributes:
     GENERIC_ARMOR:
       min: 0
@@ -79,13 +79,13 @@ horse_armor:
   enabled: true
   name: "Horse Armor"
   description:
-    - "Any horse armor."
+  - "Any horse armor."
   equipment-type: ANY
   check-material: true
   materials:
-    - "#bump:horse_armor"
+  - "#bump:horse_armor"
   equipment-slots:
-    - CHEST
+  - CHEST
   attributes:
     GENERIC_ATTACK_DAMAGE:
       min: 0

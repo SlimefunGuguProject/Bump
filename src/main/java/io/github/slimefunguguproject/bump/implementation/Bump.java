@@ -1,5 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation;
 
+import java.util.logging.Level;
+
 import javax.annotation.Nonnull;
 
 import org.bukkit.Bukkit;
@@ -13,6 +15,7 @@ import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
+import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
@@ -69,19 +72,18 @@ public final class Bump extends AbstractAddon {
         AddonConfig config = getAddonConfig();
         new ConfigUpdateService(config);
 
-        AddonConfig appraiseTypesConfig = new AddonConfig("appraise-types.yml");
-
         // registry
         registry = new BumpRegistry(this, config);
 
         // localization
+        log(Level.INFO, "Loading language...");
         String lang = getRegistry().getConfig().getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
         if (!lang.equals(DEFAULT_LANG)) {
             localization.addLanguage(DEFAULT_LANG);
         }
-        sendConsole("&eLoaded language {0}", lang);
+        log(Level.INFO, "Loaded language {0}", lang);
 
         // item groups setup
         ItemGroupsSetup.setup(this);
@@ -95,8 +97,11 @@ public final class Bump extends AbstractAddon {
             ResearchSetup.setup();
         }
 
+        // tags
+        BumpTag.reloadAll();
+
         // appraise setup
-        AppraiseSetup.setupTypes(appraiseTypesConfig);
+        AppraiseSetup.setupTypes();
         AppraiseSetup.setupStars();
 
         // listeners

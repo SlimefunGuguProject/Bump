@@ -3,6 +3,8 @@ package io.github.slimefunguguproject.bump.api.appraise;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+import java.util.Collections;
+import java.util.EnumSet;
 import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.List;
@@ -22,12 +24,16 @@ import org.bukkit.attribute.Attribute;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+
+import dev.sefiraat.sefilib.slimefun.itemgroup.MenuItem;
 
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
@@ -94,13 +100,13 @@ public class AppraiseType {
      * the material of specified item.
      */
     @Getter
-    private Set<Material> validMaterials = new HashSet<>();
+    private Set<Material> validMaterials = EnumSet.noneOf(Material.class);
 
     /**
      * This holds all valid acceptable {@link EquipmentSlot}.
      */
     @Getter
-    private Set<EquipmentSlot> validEquipmentSlots = new HashSet<>();
+    private Set<EquipmentSlot> validEquipmentSlots = EnumSet.noneOf(EquipmentSlot.class);
 
     /**
      * This holds all valid Slimefun item IDs.
@@ -386,12 +392,13 @@ public class AppraiseType {
         registry.getAppraiseTypes().add(this);
 
         // unmodifiable
-        attributes = Set.copyOf(attributes);
-        validMaterials = Set.copyOf(validMaterials);
-        validEquipmentSlots = Set.copyOf(validEquipmentSlots);
-        validSlimefunItemIds = Set.copyOf(validSlimefunItemIds);
+        attributes = Collections.unmodifiableSet(attributes);
+        validMaterials = Collections.unmodifiableSet(validMaterials);
+        validEquipmentSlots = Collections.unmodifiableSet(validEquipmentSlots);
+        validSlimefunItemIds = Collections.unmodifiableSet(validSlimefunItemIds);
 
         this.addon = addon;
+
         return this;
     }
 
@@ -406,6 +413,8 @@ public class AppraiseType {
 
     /**
      * Check if this {@link AppraiseType} is registered.
+     *
+     * @throws IllegalStateException if this {@link AppraiseType} is registered.
      */
     protected final void checkState() {
         if (isRegistered()) {
@@ -430,8 +439,8 @@ public class AppraiseType {
         Optional<SlimefunItem> sfItem = Optional.ofNullable(SlimefunItem.getByItem(itemStack));
         return switch (getEquipmentType()) {
             case VANILLA -> sfItem.isEmpty();
-            case SLIMEFUN -> sfItem.isPresent() && isAcceptableSlimefunItem(sfItem);
-            case ANY -> sfItem.isEmpty() || isAcceptableSlimefunItem(sfItem);
+            case SLIMEFUN -> sfItem.isPresent() && isAcceptableSlimefunItem(sfItem.get());
+            case ANY -> sfItem.isEmpty() || isAcceptableSlimefunItem(sfItem.get());
         };
     }
 
@@ -442,15 +451,9 @@ public class AppraiseType {
      *
      * @return If the {@link SlimefunItem} fit this {@link AppraiseType}.
      */
-    public boolean isAcceptableSlimefunItem(@Nonnull Optional<SlimefunItem> sfItem) {
-        if (sfItem.isEmpty()) {
-            // if Slimefun item not exist, just no
-            return false;
-        } else {
-            // otherwise, check it
-            String id = sfItem.get().getId();
-            return validSlimefunItemIds.isEmpty() || validSlimefunItemIds.contains(id);
-        }
+    public boolean isAcceptableSlimefunItem(@Nonnull SlimefunItem sfItem) {
+        String id = sfItem.getId();
+        return validSlimefunItemIds.isEmpty() || validSlimefunItemIds.contains(id);
     }
 
     @Override
@@ -494,8 +497,19 @@ public class AppraiseType {
      * This enum holds the acceptable type of appraisable items.
      */
     public enum EquipmentType {
+        /**
+         * Any vanilla or slimefun item is acceptable.
+         */
         ANY,
+
+        /**
+         * Only Slimefun items are acceptable.
+         */
         SLIMEFUN,
+
+        /**
+         * Only vanilla items are acceptable.
+         */
         VANILLA
     }
 }

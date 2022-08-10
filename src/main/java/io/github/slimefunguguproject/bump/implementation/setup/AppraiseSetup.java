@@ -22,17 +22,21 @@ import lombok.experimental.UtilityClass;
 
 /**
  * This class set up the default appraisal types.
+ * <p>
+ * The logs in this class should be localizable.
  *
  * @author ybw0014
  */
 @UtilityClass
 public final class AppraiseSetup {
-    public static void setupTypes(@Nonnull AddonConfig config) {
-        Bump.log(Level.INFO, Bump.getLocalization().getString("console.loading-appraise-types"));
+    public static void setupTypes() {
+        AddonConfig config = new AddonConfig("appraise-types.yml");
+        Bump.getLocalization().log(Level.INFO, "loading-appraise-types");
         Set<String> types = config.getKeys(false);
         for (String type : types) {
+            Bump.getLocalization().log(Level.INFO, "loading-appraise-type", type);
             if (!config.getBoolean(type + ".enabled")) {
-                Bump.log(Level.INFO, Bump.getLocalization().getString("console.appraise-type-disabled"), type);
+                Bump.getLocalization().log(Level.INFO, "disabled-appraise-type", type);
                 continue;
             }
 
@@ -69,9 +73,9 @@ public final class AppraiseSetup {
                 }
 
                 appraiseType.register(Bump.getInstance());
-                Bump.log(Level.INFO, Bump.getLocalization().getString("console.appraise-type-loaded"), type);
+                Bump.getLocalization().log(Level.INFO, "loaded-appraise-type", type);
             } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException | InvalidConfigurationException ex) {
-                Bump.log(Level.SEVERE, "An error has occurred while trying to register appraise type {0}: {1}", type, ex.getMessage());
+                Bump.getLocalization().log(Level.SEVERE, "error-loading-appraise-type", type, ex.getMessage());
             }
         }
     }
@@ -81,7 +85,8 @@ public final class AppraiseSetup {
         final Map<Byte, Byte> starThreshold = Bump.getRegistry().getStarThresholds();
         ConfigurationSection section = config.getConfigurationSection("appraise.stars");
         if (section == null) {
-            Bump.log(Level.WARNING, "Config section 'appraise.stars' is missing in config. Using default star thresholds.");
+            Bump.getLocalization().log(Level.INFO, "missing-appraise-stars");
+            Bump.getLocalization().log(Level.INFO, "use-default-appraise-stars");
             setDefaultStarThreshold(starThreshold);
             return;
         }
@@ -89,7 +94,7 @@ public final class AppraiseSetup {
         try {
             for (String keyStr : keys) {
                 byte key = Byte.parseByte(keyStr);
-                if (key < 0) {
+                if (key < 0 || key > 100) {
                     throw new IllegalArgumentException();
                 }
                 int intValue = section.getInt(keyStr);
@@ -100,7 +105,8 @@ public final class AppraiseSetup {
                 starThreshold.put(key, value);
             }
         } catch (IllegalArgumentException ex) {
-            Bump.log(Level.SEVERE, ex, "You cannot set appraise star out of range 0 to 127!");
+            Bump.getLocalization().log(Level.INFO, "invalid-appraise-stars");
+            Bump.getLocalization().log(Level.INFO, "use-default-appraise-stars");
             setDefaultStarThreshold(starThreshold);
         }
     }
