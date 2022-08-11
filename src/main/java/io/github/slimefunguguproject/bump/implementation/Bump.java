@@ -15,6 +15,7 @@ import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
+import io.github.slimefunguguproject.bump.utils.WikiUtils;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
@@ -96,6 +97,9 @@ public final class Bump extends AbstractAddon {
         if (enableResearch) {
             ResearchSetup.setup();
         }
+
+        // wiki setup
+        WikiUtils.setupJson();
 
         // tags
         BumpTag.reloadAll();
