@@ -330,6 +330,22 @@ appraise_info:
   click: "&eClick to view details"
   equipment_type:
     name: "&aApplicable equipment type: &b{0}"
-    any: "Any item"
-    vanilla: "Vanilla items only"
-    slimefun: "Slimefun items only"
+    any: "&7Any item"
+    vanilla: "&7Vanilla items only"
+    slimefun: "&7Slimefun items only"
+  material:
+    name: "&aCheck equipment material: &b{0}"
+    lore_enabled:
+      - "&7These materials will be checked:"
+    lore_enabled_more: "&7And {0} more..."
+    lore_disabled:
+      - "&7Material will not be checked."
+  equipment_slot:
+    name: "&aEquipment slots"
+    lore:
+      - "&7Attributes will be applied"
+      - "&7to the equipment slot(s):"
+  attribute:
+    name: "&eAttribute: &9{0}"
+    range: "&7Range: {0} - {1}"
+    weight: "&7Weight(%): {0}"

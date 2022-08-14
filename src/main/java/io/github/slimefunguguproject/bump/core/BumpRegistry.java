@@ -17,6 +17,7 @@ import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
 import lombok.Getter;
+import lombok.Setter;
 
 /**
  * This class holds {@link Map Maps} and {@link List Lists} related to Bump.
@@ -35,6 +36,11 @@ public final class BumpRegistry {
     private final Set<AppraiseType> appraiseTypes = new HashSet<>();
     @Getter
     private final Map<Byte, Byte> starThresholds = new LinkedHashMap<>();
+
+    // language
+    @Getter
+    @Setter
+    private String language;
 
     @ParametersAreNonnullByDefault
     public BumpRegistry(JavaPlugin plugin, AddonConfig config) {

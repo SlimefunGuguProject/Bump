@@ -15,7 +15,7 @@ import lombok.NonNull;
  */
 @AllArgsConstructor
 @Getter
-final class AppraiseAttribute {
+public final class AppraiseAttribute {
     @NonNull
     private final Attribute attribute;
     private final double min;

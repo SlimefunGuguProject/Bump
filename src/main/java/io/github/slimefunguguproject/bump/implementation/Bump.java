@@ -81,6 +81,7 @@ public final class Bump extends AbstractAddon {
         String lang = getRegistry().getConfig().getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
+        getRegistry().setLanguage(lang);
         if (!lang.equals(DEFAULT_LANG)) {
             localization.addLanguage(DEFAULT_LANG);
         }

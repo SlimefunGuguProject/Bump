@@ -21,19 +21,16 @@ import com.google.common.base.Preconditions;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
+import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 
-import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
-
-import dev.sefiraat.sefilib.slimefun.itemgroup.MenuItem;
 
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
@@ -70,9 +67,13 @@ public class AppraiseType {
     @Getter
     private List<String> description = new ArrayList<>();
 
+    @Getter
+    private String permission;
+
     /**
      * This holds all added {@link AppraiseAttribute}.
      */
+    @Getter
     private Set<AppraiseAttribute> attributes = new LinkedHashSet<>();
 
     /**
@@ -144,6 +145,7 @@ public class AppraiseType {
      */
     @Nullable
     public static AppraiseType getByKey(@Nonnull NamespacedKey key) {
+        Preconditions.checkArgument(key != null, "NamespacedKey cannot be null");
         return Bump.getRegistry().getAppraiseTypeKeys().get(key);
     }
 
@@ -188,6 +190,37 @@ public class AppraiseType {
         ValidateUtils.noNullElements(description);
         this.description = description;
         return this;
+    }
+
+    /**
+     * Set the permission of this {@link AppraiseType}.
+     *
+     * @param permission The permission.
+     *
+     * @return This {@link AppraiseType}.
+     */
+    public final AppraiseType setPermission(@Nullable String permission) {
+        checkState();
+        this.permission = permission;
+        return this;
+    }
+
+    /**
+     * Check if {@link Player} have permission for this {@link AppraiseType}.
+     *
+     * @param p The {@link Player} to be checked.
+     *
+     * @return If the {@link Player} have permission.
+     */
+    @ParametersAreNonnullByDefault
+    public boolean hasPermission(Player p) {
+        Preconditions.checkArgument(p != null, "Player cannot be null");
+
+        if (getPermission() == null) {
+            return true;
+        } else {
+            return p.hasPermission(getPermission());
+        }
     }
 
     /**
