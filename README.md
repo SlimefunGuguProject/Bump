@@ -12,46 +12,16 @@ Bump is a Slimefun addon that adds magic weapons, food and an appraisal system.
 
 ## Download
 
-### 2.0
+### 2.0+
 
 Bump 2.0 is refactored by @ybw0014, and maintained by @ybw0014 and @haiman233. It depends on Slimefun RC-30, and adds localization service.  
 
-Minecraft version: 1.14 and above  
+Minecraft version: 1.16 and above  
 Slimefun version: RC-30 and above
 
 Click the image below to download：
 
 [![Buils Status](https://builds.guizhanss.net/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.net/SlimefunGuguProject/Bump/main)
-
-<details><summary>Old versions (not recommeded, only Simplified Chinese)</summary>
-
-### 1.1
-
-Bump 1.1 was refactored by haiman233 and zimzaza4 due to the API relocation update in Slimefun RC-27.  
-Minecraft version: 1.16 - 1.17  
-Slimefun version: RC-27 and above
-
-See [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.1)
-
-### 1.0
-
-Bump 1.0 was refactored by Lobbytech-MC based on the original MCBBS version.  
-Minecraft version: 1.16 - 1.17  
-Slimefun version: RC-21 - RC-26
-
-See [releases](https://github.com/SlimefunGuguProject/Bump/releases/tag/v1.0)
-
-### mcbbs original version
-
-This is the original version published by bxx2004 in mcbbs.  
-Minecraft version: 1.15 - 1.16  
-Slimefun version: RC-16 - RC-21  
-
-**Requires CS-CoreLib**
-
-Visit [mcbbs thread](https://www.mcbbs.net/thread-1125935-1-1.html) to download
-
-</details>
 
 ## About Bump
 
