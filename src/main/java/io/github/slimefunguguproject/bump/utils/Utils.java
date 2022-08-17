@@ -58,7 +58,9 @@ public final class Utils {
 
     /**
      * Get the material name.
+     *
      * @param material The {@link Material}
+     *
      * @return The material name in Simplified Chinese if GuizhanLibPlugin exists. Otherwise, in English.
      */
     public static String getMaterialName(@Nonnull Material material) {

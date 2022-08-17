@@ -149,23 +149,6 @@ public enum BumpTag implements Tag<Material> {
     }
 
     /**
-     * Reload this {@link BumpTag} from resources.
-     */
-    public void reload() {
-        try {
-            new TagParser(this).parse((materialSet, additionalTagSet) -> {
-                materials.clear();
-                materials.addAll(materialSet);
-
-                additionalTags.clear();
-                additionalTags.addAll(additionalTagSet);
-            });
-        } catch (TagMisconfigurationException ex) {
-            Bump.log(Level.SEVERE, ex, "An error has occurred while trying to load Bump tag: " + name());
-        }
-    }
-
-    /**
      * Reload all tags.
      */
     public static void reloadAll() {
@@ -186,6 +169,23 @@ public enum BumpTag implements Tag<Material> {
         Preconditions.checkArgument(value != null, "Tag cannot be null!");
 
         return nameLookup.get(value);
+    }
+
+    /**
+     * Reload this {@link BumpTag} from resources.
+     */
+    public void reload() {
+        try {
+            new TagParser(this).parse((materialSet, additionalTagSet) -> {
+                materials.clear();
+                materials.addAll(materialSet);
+
+                additionalTags.clear();
+                additionalTags.addAll(additionalTagSet);
+            });
+        } catch (TagMisconfigurationException ex) {
+            Bump.log(Level.SEVERE, ex, "An error has occurred while trying to load Bump tag: " + name());
+        }
     }
 
     @Nonnull

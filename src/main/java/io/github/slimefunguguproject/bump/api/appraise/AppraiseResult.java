@@ -137,7 +137,7 @@ public final class AppraiseResult {
     /**
      * This builder class is used to generate a {@link AppraiseResult}.
      */
-     static class Builder {
+    static class Builder {
         private final AppraiseType appraiseType;
         private final Map<AppraiseAttribute, Double> result = new HashMap<>();
         private double totalPercentile = 0;
