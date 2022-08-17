@@ -1,7 +1,6 @@
 package io.github.slimefunguguproject.bump.utils;
 
 import java.lang.reflect.InvocationTargetException;
-import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
@@ -10,8 +9,6 @@ import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
-
-import io.github.slimefunguguproject.bump.implementation.Bump;
 
 import net.guizhanss.guizhanlib.utils.StringUtil;
 

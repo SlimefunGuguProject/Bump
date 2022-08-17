@@ -153,12 +153,12 @@ public enum BumpTag implements Tag<Material> {
      */
     public void reload() {
         try {
-            new TagParser(this).parse((materials, additionalTags) -> {
-                this.materials.clear();
-                this.materials.addAll(materials);
+            new TagParser(this).parse((materialSet, additionalTagSet) -> {
+                materials.clear();
+                materials.addAll(materialSet);
 
-                this.additionalTags.clear();
-                this.additionalTags.addAll(additionalTags);
+                additionalTags.clear();
+                additionalTags.addAll(additionalTagSet);
             });
         } catch (TagMisconfigurationException ex) {
             Bump.log(Level.SEVERE, ex, "An error has occurred while trying to load Bump tag: " + name());

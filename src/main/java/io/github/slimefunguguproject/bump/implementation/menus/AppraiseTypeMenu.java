@@ -3,7 +3,6 @@ package io.github.slimefunguguproject.bump.implementation.menus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
-import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -19,14 +18,13 @@ import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseAttribute;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.Strings;
 import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
-
-import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
@@ -108,9 +106,7 @@ public final class AppraiseTypeMenu {
         return new CustomItemStack(
             Material.ANVIL,
             Bump.getLocalization().getString("appraise_info.name", type.getName()),
-            type.getDescription().stream()
-                .map(line -> ChatUtil.color(ChatColor.GRAY + line))
-                .collect(Collectors.toList())
+            AppraiseUtils.getDescriptionLore(type)
         );
     }
 

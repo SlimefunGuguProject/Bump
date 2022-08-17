@@ -114,27 +114,7 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         // check the appraising version
         byte version = PersistentDataAPI.getByte(meta, Keys.APPRAISE_VERSION, (byte) 1);
 
-        if (version == 1) {
-            // legacy version, remove all attribute modifiers
-            for (EquipmentSlot slot : EquipmentSlot.values()) {
-                if (BumpTag.getTag(slot.name() + "_SLOT").isTagged(itemStack.getType())) {
-                    meta.removeAttributeModifier(slot);
-                }
-            }
-        } else {
-            // new version (for now), remove all bump attribute modifiers
-            Multimap<Attribute, AttributeModifier> modifierMap = meta.getAttributeModifiers();
-            if (modifierMap != null) {
-                for (Map.Entry<Attribute, AttributeModifier> entry : modifierMap.entries()) {
-                    Attribute attribute = entry.getKey();
-                    AttributeModifier modifier = entry.getValue();
-                    NamespacedKey key = NamespacedKey.fromString(modifier.getName(), Bump.getInstance());
-                    if (key != null && AppraiseType.getByKey(key) != null) {
-                        meta.removeAttributeModifier(attribute, modifier);
-                    }
-                }
-            }
-        }
+        removeModifiers(itemStack, meta, version);
 
         // set pdc
         PersistentDataAPI.setBoolean(meta, Keys.APPRAISABLE, true);
@@ -159,5 +139,30 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
 
         // done
         itemStack.setItemMeta(meta);
+    }
+
+    @ParametersAreNonnullByDefault
+    private void removeModifiers(ItemStack itemStack, ItemMeta meta, byte version) {
+        if (version == 1) {
+            // legacy version, remove all attribute modifiers
+            for (EquipmentSlot slot : EquipmentSlot.values()) {
+                if (BumpTag.getTag(slot.name() + "_SLOT").isTagged(itemStack.getType())) {
+                    meta.removeAttributeModifier(slot);
+                }
+            }
+        } else {
+            // new version (for now), remove all bump attribute modifiers
+            Multimap<Attribute, AttributeModifier> modifierMap = meta.getAttributeModifiers();
+            if (modifierMap != null) {
+                for (Map.Entry<Attribute, AttributeModifier> entry : modifierMap.entries()) {
+                    Attribute attribute = entry.getKey();
+                    AttributeModifier modifier = entry.getValue();
+                    NamespacedKey key = NamespacedKey.fromString(modifier.getName(), Bump.getInstance());
+                    if (key != null && AppraiseType.getByKey(key) != null) {
+                        meta.removeAttributeModifier(attribute, modifier);
+                    }
+                }
+            }
+        }
     }
 }

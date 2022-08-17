@@ -129,7 +129,6 @@ public class AppraisalPaper extends LimitedUseItem {
         return (player, slot, item, action) -> {
             // Check input slot
             ItemStack input = menu.getItemInSlot(INPUT_SLOT);
-            SlimefunItem sfItem = SlimefunItem.getByItem(input);
 
             if (!ValidateUtils.noAirItem(input)) {
                 Bump.getLocalization().sendMessage(p, "no-input");
