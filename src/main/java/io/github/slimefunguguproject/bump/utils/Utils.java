@@ -71,7 +71,6 @@ public final class Utils {
             return String.valueOf(result);
         } catch (ClassNotFoundException | NoSuchMethodException | NullPointerException
             | IllegalAccessException | InvocationTargetException e) {
-            Bump.log(Level.WARNING, e, "mat");
             return StringUtil.humanize(material.toString());
         }
     }
