@@ -33,7 +33,7 @@ dependencies {
 }
 
 shadowJar {
-    relocate 'net.guizhanss.guizhanlib', 'io.github.slimefunguguproject.bump.guizhanlib'
+    // relocate 'net.guizhanss.guizhanlib', 'io.github.slimefunguguproject.bump.guizhanlib'
     relocate 'dev.sefiraat.sefilib', 'io.github.slimefunguguproject.bump.sefilib'
     relocate 'org.bstats', 'io.github.slimefunguguproject.bump.bstats'
     minimize()
