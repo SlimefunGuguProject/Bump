@@ -81,7 +81,7 @@ public abstract class SimpleMenuBlock extends MenuBlock implements EnergyNetComp
 
     @ParametersAreNonnullByDefault
     @Override
-    protected final void onNewInstance(BlockMenu blockMenu, Block b) {
+    protected void onNewInstance(BlockMenu blockMenu, Block b) {
         super.onNewInstance(blockMenu, b);
         blockMenu.addMenuClickHandler(OPERATION_SLOT, (player, slot, itemStack, clickAction) -> {
             onOperate(blockMenu, b, player, clickAction);

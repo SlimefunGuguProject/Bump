@@ -2,12 +2,14 @@ package io.github.slimefunguguproject.bump.implementation.items.machines;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.common.collect.Multimap;
 
+import org.bukkit.NamespacedKey;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.block.Block;
@@ -16,6 +18,7 @@ import org.bukkit.inventory.EquipmentSlot;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
@@ -121,6 +124,16 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         } else {
             // new version (for now), remove all bump attribute modifiers
             Multimap<Attribute, AttributeModifier> modifierMap = meta.getAttributeModifiers();
+            if (modifierMap != null) {
+                for (Map.Entry<Attribute, AttributeModifier> entry : modifierMap.entries()) {
+                    Attribute attribute = entry.getKey();
+                    AttributeModifier modifier = entry.getValue();
+                    NamespacedKey key = NamespacedKey.fromString(modifier.getName(), Bump.getInstance());
+                    if (key != null && AppraiseType.getByKey(key) != null) {
+                        meta.removeAttributeModifier(attribute, modifier);
+                    }
+                }
+            }
         }
 
         // set pdc

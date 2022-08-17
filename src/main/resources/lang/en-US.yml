@@ -273,7 +273,7 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
-      legacy: "&cYour legacy quality identifiers have been upgraded."
+      legacy: "&bYour legacy quality identifiers have been upgraded."
       invalid: "&cThis item is not appraisable!"
       success: "&aThis item can be appraised now!"
   weapon:
@@ -295,6 +295,7 @@ messages:
   machine:
     appraisal:
       invalid: "&cThe item does not support being appraised!"
+      not-accepted: "&cCurrent appraise type does not accept this item."
       appraised: "&cSorry that the item cannot be identified or has already been appraised!"
       success: "&aAppraisal!"
     attribute-grindstone:
@@ -302,10 +303,10 @@ messages:
       success: "&aThe appraisal result is purged!"
 console:
   loading-appraise-types: "Loading appraise types from config."
-  loading-appraise-type: "Loading appraise type '{0}'."
-  disabled-appraise-type: "The appraise type '{0}' is disabled, ignoring."
-  loaded-appraise-type: "Loaded appraise type '{0}'."
-  error-loading-appraise-type: "An error has occurred while loading appraise type '{0}': {1}"
+  loading-appraise-type: "Loading appraise type \"{0}\"."
+  disabled-appraise-type: "The appraise type \"{0}\" is disabled, ignoring."
+  loaded-appraise-type: "Loaded appraise type \"{0}\"."
+  error-loading-appraise-type: "An error has occurred while loading appraise type \"{0}\": {1}"
   missing-appraise-stars: "Config section 'appraise.stars' is missing."
   use-default-appraise-stars: "Using default appraise stars settings."
   invalid-appraise-stars: "You can only set appraise stars to between 0 and 127!"
@@ -315,6 +316,17 @@ gui:
     lore:
       - "&7<- Put the items to be appraised on the left side"
       - "&7Click here to appraise"
+  appraise_type_selector:
+    name: "&bCurrent type: &e{0}"
+    lore:
+      - ""
+      - "&7View details in Bump's category"
+      - "&eClick to select type"
+  appraise_type_selector_menu:
+    title: "&6Select appraise type"
+    lore:
+      - ""
+      - "&eClick to select this type"
   appraisal_paper:
     name: "&eClick to apply"
     lore:
@@ -336,7 +348,7 @@ appraise_info:
   material:
     name: "&aCheck equipment material: &b{0}"
     lore_enabled:
-      - "&7These materials will be checked:"
+      - "&7Only these materials are accepted:"
     lore_enabled_more: "&7And {0} more..."
     lore_disabled:
       - "&7Material will not be checked."
@@ -347,5 +359,7 @@ appraise_info:
       - "&7to the equipment slot(s):"
   attribute:
     name: "&eAttribute: &9{0}"
-    range: "&7Range: {0} - {1}"
-    weight: "&7Weight(%): {0}"
+    range: "&7Range: &b{0} &7~ &b{1}"
+    weight: "&7Weight: &b{0}%"
+attributes:
+

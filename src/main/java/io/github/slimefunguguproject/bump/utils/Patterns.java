@@ -13,4 +13,5 @@ import lombok.experimental.UtilityClass;
 public final class Patterns {
     public static final Pattern MINECRAFT_NAMESPACEDKEY = Pattern.compile("minecraft:[a-z0-9/._-]+");
     public static final Pattern BUMP_TAG = Pattern.compile("#bump:[a-z_]+");
+    public static final Pattern BUMP_TAG_CONFIG = Pattern.compile("bump:[a-z_]+");
 }

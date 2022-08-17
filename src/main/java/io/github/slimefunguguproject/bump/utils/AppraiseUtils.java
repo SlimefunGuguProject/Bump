@@ -2,16 +2,19 @@ package io.github.slimefunguguproject.bump.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
 import com.google.common.base.Preconditions;
 
+import org.bukkit.ChatColor;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.attribute.AttributeModifier;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
@@ -90,11 +93,20 @@ public final class AppraiseUtils {
 
     @Nonnull
     public static AttributeModifier.Operation getOperation(@Nonnull Attribute attribute) {
-        Preconditions.checkArgument(attribute != null, "Attribute should not be null");
+        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
 
         return switch (attribute) {
             case GENERIC_MOVEMENT_SPEED, HORSE_JUMP_STRENGTH -> AttributeModifier.Operation.ADD_SCALAR;
             default -> AttributeModifier.Operation.ADD_NUMBER;
         };
+    }
+
+    @Nonnull
+    public static List<String> getDescriptionLore(@Nonnull AppraiseType type) {
+        Preconditions.checkArgument(type != null, "Appraise type cannot be null");
+
+        return type.getDescription().stream()
+            .map(line -> ChatUtil.color(ChatColor.GRAY + line))
+            .collect(Collectors.toList());
     }
 }

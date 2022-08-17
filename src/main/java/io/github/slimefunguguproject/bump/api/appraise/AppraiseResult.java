@@ -104,7 +104,7 @@ public final class AppraiseResult {
                 BumpTag tag = BumpTag.getTag(slot.name() + "_SLOT");
                 if (tag.isTagged(material)) {
                     meta.addAttributeModifier(attr,
-                        new AttributeModifier(UUID.randomUUID(), attr.name(), entry.getValue(), AppraiseUtils.getOperation(attr), slot)
+                        new AttributeModifier(UUID.randomUUID(), appraiseType.getKey().toString(), entry.getValue(), AppraiseUtils.getOperation(attr), slot)
                     );
                 }
             }
@@ -129,6 +129,7 @@ public final class AppraiseResult {
 
         // pdc
         PersistentDataAPI.setByte(meta, Keys.APPRAISE_LEVEL, stars);
+        PersistentDataAPI.setByte(meta, Keys.APPRAISE_VERSION, (byte) 2);
 
         itemStack.setItemMeta(meta);
     }
@@ -136,7 +137,7 @@ public final class AppraiseResult {
     /**
      * This builder class is used to generate a {@link AppraiseResult}.
      */
-    static class Builder {
+     static class Builder {
         private final AppraiseType appraiseType;
         private final Map<AppraiseAttribute, Double> result = new HashMap<>();
         private double totalPercentile = 0;

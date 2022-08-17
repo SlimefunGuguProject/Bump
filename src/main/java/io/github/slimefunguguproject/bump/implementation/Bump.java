@@ -87,6 +87,13 @@ public final class Bump extends AbstractAddon {
         }
         log(Level.INFO, "Loaded language {0}", lang);
 
+        // tags
+        BumpTag.reloadAll();
+
+        // appraise setup
+        AppraiseSetup.setupTypes();
+        AppraiseSetup.setupStars();
+
         // item groups setup
         ItemGroupsSetup.setup(this);
 
@@ -101,13 +108,6 @@ public final class Bump extends AbstractAddon {
 
         // wiki setup
         WikiUtils.setupJson();
-
-        // tags
-        BumpTag.reloadAll();
-
-        // appraise setup
-        AppraiseSetup.setupTypes();
-        AppraiseSetup.setupStars();
 
         // listeners
         ListenerSetup.setup(this);

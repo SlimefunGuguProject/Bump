@@ -7,7 +7,7 @@ sword:
   equipment-type: SLIMEFUN
   check-material: true
   materials:
-  - "#bump:sword"
+  - bump:sword
   equipment-slots:
   - HAND
   attributes:
@@ -40,10 +40,10 @@ armor:
   equipment-type: SLIMEFUN
   check-material: true
   materials:
-  - "#bump:helmet"
-  - "#bump:chestplate"
-  - "#bump:leggings"
-  - "#bump:boots"
+  - bump:helmet
+  - bump:chestplate
+  - bump:leggings
+  - bump:boots
   equipment-slots:
   - HEAD
   - CHEST
@@ -83,7 +83,7 @@ horse_armor:
   equipment-type: ANY
   check-material: true
   materials:
-  - "#bump:horse_armor"
+  - bump:horse_armor
   equipment-slots:
   - CHEST
   attributes:

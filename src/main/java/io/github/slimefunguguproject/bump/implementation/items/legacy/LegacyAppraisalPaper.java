@@ -52,7 +52,7 @@ public class LegacyAppraisalPaper extends LimitedUseItem {
             int usesLeft = getUsesLeft(paperItemStack);
             int amount = paperItemStack.getAmount();
 
-            ItemStack newItem = BumpItems.APPRAISAL_PAPER;
+            ItemStack newItem = BumpItems.APPRAISAL_PAPER.clone();
             newItem.setAmount(amount);
 
             ItemMeta newMeta = newItem.getItemMeta();

@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.guizhanss:GuizhanLib-api:1.0.0'
+    implementation 'net.guizhanss:GuizhanLib-api:1.0.2'
     implementation 'dev.sefiraat:SefiLib:0.1.4.5'
     implementation 'org.bstats:bstats-bukkit:3.0.0'
 

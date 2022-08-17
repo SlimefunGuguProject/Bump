@@ -7,9 +7,11 @@ import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
+import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.InvalidConfigurationException;
+import org.bukkit.inventory.EquipmentSlot;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
@@ -48,20 +50,22 @@ public final class AppraiseSetup {
                 boolean checkMaterial = config.getBoolean(type + ".check-material");
                 List<String> validMaterials = config.getStringList(type + ".materials");
                 List<String> validSlimefunItemIds = config.getStringList(type + ".slimefun-items");
-                List<String> equipmentSlots = config.getStringList(type + ".equipment-slot");
+                List<String> validEquipmentSlots = config.getStringList(type + ".equipment-slots");
                 ConfigurationSection attributesSection = config.getConfigurationSection(type + ".attributes");
                 Set<String> attributes = attributesSection.getKeys(false);
 
                 // parsed values
                 AppraiseType.EquipmentType equipmentType = AppraiseType.EquipmentType.valueOf(equipmentTypeStr);
+                Set<EquipmentSlot> equipmentSlots = ConfigUtils.parseEquipmentSlots(validEquipmentSlots);
+                Set<Material> materials = ConfigUtils.parseMaterials(validMaterials);
 
                 AppraiseType appraiseType = new AppraiseType(Bump.createKey(type))
                     .setName(name)
                     .setDescription(description)
                     .setEquipmentType(equipmentType)
-                    .addValidEquipmentSlots(ConfigUtils.parseEquipmentSlots(equipmentSlots))
+                    .addValidEquipmentSlots(equipmentSlots)
                     .checkMaterial(checkMaterial)
-                    .addValidMaterials(ConfigUtils.parseMaterials(validMaterials))
+                    .addValidMaterials(materials)
                     .addValidSlimefunItemIds(validSlimefunItemIds);
 
                 for (String attr : attributes) {

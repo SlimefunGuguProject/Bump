@@ -51,7 +51,7 @@ public final class ConfigUtils {
                 } else {
                     throw new InvalidConfigurationException("Invalid minecraft material: " + value);
                 }
-            } else if (Patterns.BUMP_TAG.matcher(value).matches()) {
+            } else if (Patterns.BUMP_TAG_CONFIG.matcher(value).matches()) {
                 String keyValue = CommonPatterns.COLON.split(value)[1].toUpperCase(Locale.ROOT);
                 BumpTag tag = BumpTag.getTag(keyValue);
 
