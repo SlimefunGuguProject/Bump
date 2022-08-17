@@ -2,6 +2,7 @@ package io.github.slimefunguguproject.bump.utils;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 
@@ -106,6 +107,6 @@ public final class AppraiseUtils {
 
         return type.getDescription().stream()
             .map(line -> ChatUtil.color(ChatColor.GRAY + line))
-            .toList();
+            .collect(Collectors.toList());
     }
 }
