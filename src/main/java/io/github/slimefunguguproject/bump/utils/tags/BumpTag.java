@@ -209,20 +209,20 @@ public enum BumpTag implements Tag<Material> {
         }
     }
 
+    @Nonnull
     @Override
-    public @Nonnull
-    Set<Material> getValues() {
+    public Set<Material> getValues() {
         if (additionalTags.isEmpty()) {
             return Collections.unmodifiableSet(materials);
         } else {
-            Set<Material> materials = EnumSet.noneOf(Material.class);
-            materials.addAll(this.materials);
+            Set<Material> values = EnumSet.noneOf(Material.class);
+            values.addAll(materials);
 
             for (Tag<Material> tag : additionalTags) {
-                materials.addAll(tag.getValues());
+                values.addAll(tag.getValues());
             }
 
-            return materials;
+            return values;
         }
     }
 
