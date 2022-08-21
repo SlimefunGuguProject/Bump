@@ -8,6 +8,7 @@ categories:
   tool: "&bBump - Tool"
   weapon: "&bBump - Magic Weapon"
   appraise_info: "&eBump - Appraise Information"
+  wiki: "&eBump - Wiki"
 items:
   random_helmet:
     name: "&6Random Helmet"
@@ -244,6 +245,7 @@ lores:
   per-use: "&7per use"
   not-appraised: "&b&k|&b- &7&oNot appraised"
   appraised: "&b&k|&b- &7&oAppraised &b| &dLevel: &e&l{0}"
+  click-to-open: "&7\u21E8 &aClick to open"
 researches:
   food: "Bump food"
   random_equipment: "Random equipment"
@@ -262,6 +264,7 @@ messages:
   stacked: "&cYou cannot use this item when stacked."
   legacy: "&cYou are using a legacy item. You will need to upgrade it to new one."
   deprecated: "&cYou are using a deprecated item, it will be removed soon."
+  click-here: "&eClick here:"
   food:
     cooldown: "&b&k|&b- &7&oYou need to wait for a while to eat this again!"
     xuebi: "&b&k|&b- &7&oA cool summer!!"

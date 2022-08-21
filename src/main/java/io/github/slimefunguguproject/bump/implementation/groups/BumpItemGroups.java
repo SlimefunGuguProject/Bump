@@ -1,6 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation.groups;
 
 import org.bukkit.Material;
+import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup;
@@ -25,6 +26,13 @@ public final class BumpItemGroups {
             Material.DIAMOND,
             Bump.getLocalization().getCategoryName("main")
         )
+    );
+
+    public static final ItemStack WIKI = new CustomItemStack(
+        Material.KNOWLEDGE_BOOK,
+        Bump.getLocalization().getCategoryName("wiki"),
+        "",
+        Bump.getLocalization().getString("lores.click-to-open")
     );
 
     public static final ItemGroup STUFF = new DummyItemGroup(
