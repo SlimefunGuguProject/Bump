@@ -46,6 +46,7 @@ public final class AppraiseSetup {
                 // raw values
                 String name = config.getString(type + ".name");
                 List<String> description = config.getStringList(type + ".description");
+                String permission = config.getString(type + ".permission");
                 String equipmentTypeStr = config.getString(type + ".equipment-type");
                 boolean checkMaterial = config.getBoolean(type + ".check-material");
                 List<String> validMaterials = config.getStringList(type + ".materials");
@@ -61,6 +62,7 @@ public final class AppraiseSetup {
 
                 AppraiseType appraiseType = new AppraiseType(Bump.createKey(type))
                     .setName(name)
+                    .setPermission(permission)
                     .setDescription(description)
                     .setEquipmentType(equipmentType)
                     .addValidEquipmentSlots(equipmentSlots)

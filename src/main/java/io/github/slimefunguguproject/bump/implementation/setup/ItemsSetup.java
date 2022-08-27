@@ -19,8 +19,8 @@ import io.github.slimefunguguproject.bump.implementation.items.legacy.LegacyAppr
 import io.github.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import io.github.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
-import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
+import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DevilSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.LightBow;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkyDevilSword;
@@ -187,8 +187,8 @@ public final class ItemsSetup {
         // <editor-fold defaultstate="collapsed" desc="Tools">
         new GetgoldSpade().register(plugin);
 
-        new AppraisalPaper(
-            BumpItems.APPRAISAL_PAPER,
+        new QualityIdentifier(
+            BumpItems.QUALITY_IDENTIFIER,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HELMET

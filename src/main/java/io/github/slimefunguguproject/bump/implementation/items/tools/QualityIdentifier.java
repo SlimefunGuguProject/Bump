@@ -6,11 +6,11 @@ import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
@@ -31,13 +31,13 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu;
 import net.guizhanss.guizhanlib.minecraft.utils.InventoryUtil;
 
 /**
- * An {@link AppraisalPaper quality identifier} can mark available {@link ItemStack items}
+ * A quality identifier can mark available {@link ItemStack}
  * as appraisable.
  *
  * @author ybw0014
  */
 @SuppressWarnings("deprecation")
-public class AppraisalPaper extends LimitedUseItem {
+public class QualityIdentifier extends LimitedUseItem {
 
     public static final int MAX_USES = 5;
 
@@ -57,7 +57,7 @@ public class AppraisalPaper extends LimitedUseItem {
     private static final int OUTPUT_SLOT = 15;
 
     @ParametersAreNonnullByDefault
-    public AppraisalPaper(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
+    public QualityIdentifier(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
         super(BumpItemGroups.TOOL, item, recipeType, recipe);
 
         setMaxUseCount(MAX_USES);
@@ -93,6 +93,11 @@ public class AppraisalPaper extends LimitedUseItem {
     private void createMenu(Player p, ChestMenu menu, ItemStack paperItemStack) {
         menu.setPlayerInventoryClickable(true);
 
+        // Open sound
+        menu.addMenuOpeningHandler(player -> {
+            BumpSound.QUALITY_IDENTIFIER_OPEN.playFor(p);
+        });
+
         // Setup menu
         for (int i : BACKGROUND_SLOT) {
             menu.addItem(i, ChestMenuUtils.getBackground(), ChestMenuUtils.getEmptyClickHandler());
@@ -113,10 +118,10 @@ public class AppraisalPaper extends LimitedUseItem {
             InventoryUtil.push(p, menu.getItemInSlot(OUTPUT_SLOT));
         });
 
-        // Block Appraisal paper click
+        // Block Quality identifier click
         menu.addPlayerInventoryClickHandler((player, slot, item, action) -> {
             SlimefunItem sfItem = SlimefunItem.getByItem(item);
-            return !(sfItem instanceof AppraisalPaper);
+            return !(sfItem instanceof QualityIdentifier);
         });
 
         // Add appraise button handler
@@ -132,14 +137,14 @@ public class AppraisalPaper extends LimitedUseItem {
 
             if (!ValidateUtils.noAirItem(input)) {
                 Bump.getLocalization().sendMessage(p, "no-input");
-                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                BumpSound.QUALITY_IDENTIFIER_FAIL.playFor(player);
                 return false;
             }
 
             // Check output slot
             if (menu.getItemInSlot(OUTPUT_SLOT) != null) {
                 Bump.getLocalization().sendMessage(p, "output-no-space");
-                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                BumpSound.QUALITY_IDENTIFIER_FAIL.playFor(player);
                 return false;
             }
 
@@ -163,13 +168,13 @@ public class AppraisalPaper extends LimitedUseItem {
                     menu.replaceExistingItem(INFO_SLOT, getUsesLeftItem(getUsesLeft(paperItemStack)));
 
                     // play sound only if appraisal paper is not broken
-                    p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_CELEBRATE, 1.0F, 1.0F);
+                    BumpSound.QUALITY_IDENTIFIER_SUCCEED.playFor(player);
                 }
 
                 Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.success");
             } else {
                 Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.invalid");
-                p.playSound(p.getLocation(), Sound.ENTITY_VILLAGER_NO, 1.0F, 1.0F);
+                BumpSound.QUALITY_IDENTIFIER_FAIL.playFor(player);
             }
 
             return false;

@@ -9,6 +9,7 @@ import org.bukkit.Bukkit;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
+import io.github.slimefunguguproject.bump.core.services.sounds.SoundService;
 import io.github.slimefunguguproject.bump.implementation.setup.AppraiseSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemGroupsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
@@ -39,6 +40,9 @@ public final class Bump extends AbstractAddon {
     // registry
     private BumpRegistry registry;
 
+    // services
+    private SoundService soundService;
+
     public Bump() {
         super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
     }
@@ -51,6 +55,11 @@ public final class Bump extends AbstractAddon {
     @Nonnull
     public static BumpRegistry getRegistry() {
         return ((Bump) getInstance()).registry;
+    }
+
+    @Nonnull
+    public static SoundService getSoundService() {
+        return ((Bump) getInstance()).soundService;
     }
 
     @Override
@@ -89,6 +98,10 @@ public final class Bump extends AbstractAddon {
 
         // tags
         BumpTag.reloadAll();
+
+        // sound service
+        soundService = new SoundService(new AddonConfig("sounds.yml"));
+        soundService.load(true);
 
         // appraise setup
         AppraiseSetup.setupTypes();

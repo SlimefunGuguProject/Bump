@@ -5,7 +5,6 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
@@ -41,7 +40,6 @@ public abstract class ConsumableFood extends SimpleSlimefunItem<ItemConsumptionH
                 ItemUtils.consumeItem(e.getItem(), false);
             }
 
-            p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EAT, 1, 1);
             this.applyFoodEffects(p);
         };
     }

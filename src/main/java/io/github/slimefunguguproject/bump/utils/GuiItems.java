@@ -40,7 +40,7 @@ public final class GuiItems {
     );
 
     @Nonnull
-    public static ItemStack getAppraiseTypeSelector(@Nonnull AppraiseType type) {
+    public static ItemStack appraiseTypeSelector(@Nonnull AppraiseType type) {
         Preconditions.checkArgument(type != null, "Appraise type cannot be null");
 
         List<String> lore = AppraiseUtils.getDescriptionLore(type);

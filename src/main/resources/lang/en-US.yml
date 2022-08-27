@@ -258,6 +258,7 @@ researches:
   soul_sword: "Soul sword"
   sky_devil: "Heaven or Demon"
 messages:
+  no-permission: "&cYou don't have permission."
   no-input: "&cPlease put in items."
   output-no-space: "&cNo output space!"
   not-enough-power: "&cNot enough energy."
@@ -313,6 +314,10 @@ console:
   missing-appraise-stars: "Config section 'appraise.stars' is missing."
   use-default-appraise-stars: "Using default appraise stars settings."
   invalid-appraise-stars: "You can only set appraise stars to between 0 and 127!"
+  error-sound: "An error has occurred while loading sound config: {0}"
+  invalid-sound-config: "Cannot find sound config for BumpSound: {0}"
+  invalid-sound-volume: "Invalid sound volume for BumpSound \"{0}\": {1} (must be at least {2})"
+  invalid-sound-pitch: "Invalid sound pitch for BumpSound \"{0}\": {1} (must be at least {2})"
 gui:
   appraise:
     name: "&eClick to appraise"

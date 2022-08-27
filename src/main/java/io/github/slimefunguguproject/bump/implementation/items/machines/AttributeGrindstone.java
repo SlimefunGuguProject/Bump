@@ -19,6 +19,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
@@ -78,18 +79,21 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         // null check
         if (!ValidateUtils.noAirItem(item)) {
             Bump.getLocalization().sendMessage(p, "no-input");
+            BumpSound.ATTRIBUTE_GRINDSTONE_FAIL.playFor(p);
             return;
         }
 
         // check if input item is appraised
         if (!AppraiseUtils.isAppraised(item)) {
             Bump.getLocalization().sendMessage(p, "machine.attribute-grindstone.invalid");
+            BumpSound.ATTRIBUTE_GRINDSTONE_FAIL.playFor(p);
             return;
         }
 
         // check output slot
         if (blockMenu.getItemInSlot(getOutputSlot()) != null) {
             Bump.getLocalization().sendMessage(p, "output-no-space");
+            BumpSound.ATTRIBUTE_GRINDSTONE_FAIL.playFor(p);
             return;
         }
 
@@ -97,6 +101,7 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
         int charge = getCharge(blockMenu.getLocation());
         if (charge < ENERGY_CONSUMPTION) {
             Bump.getLocalization().sendMessage(p, "not-enough-power");
+            BumpSound.ATTRIBUTE_GRINDSTONE_FAIL.playFor(p);
             return;
         }
 
@@ -107,6 +112,7 @@ public final class AttributeGrindstone extends SimpleMenuBlock {
 
         setCharge(blockMenu.getLocation(), 0);
         Bump.getLocalization().sendMessage(p, "machine.attribute-grindstone.success");
+        BumpSound.ATTRIBUTE_GRINDSTONE_SUCCEED.playFor(p);
     }
 
     private void clearAttributes(@Nonnull ItemStack itemStack) {

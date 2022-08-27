@@ -5,18 +5,18 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import org.bukkit.Location;
 import org.bukkit.NamespacedKey;
-import org.bukkit.Sound;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseResult;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
-import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
+import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.GuiItems;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
@@ -29,12 +29,12 @@ import me.mrCookieSlime.Slimefun.api.BlockStorage;
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu;
 
 /**
- * This implements the {@link AppraisalInstrument appraisal instrument}.
+ * This implements the {@link AppraisalInstrument}.
  * <p>
  * It will cost energy and appraise any equipment with appraisable tag.
  *
  * @author ybw0014
- * @see AppraisalPaper
+ * @see QualityIdentifier
  */
 public final class AppraisalInstrument extends SimpleMenuBlock {
 
@@ -82,7 +82,7 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         new AppraisalInstrumentSelector(type -> {
             BlockStorage.addBlockInfo(l, APPRAISE_TYPE_KEY, type.getKey().toString());
             updateSelector(blockMenu, l);
-            p.playSound(p.getLocation(), Sound.ENTITY_ARROW_HIT_PLAYER, 1.0F, 1.0F);
+            BumpSound.APPRAISE_TYPE_SELECT.playFor(p);
             blockMenu.open(p);
         }, () -> blockMenu.open(p)).open(p);
     }
@@ -94,24 +94,28 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         // null check
         if (!ValidateUtils.noAirItem(item)) {
             Bump.getLocalization().sendMessage(p, "no-input");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
         // validate input
         if (!validate(item)) {
             Bump.getLocalization().sendMessage(p, "machine.appraisal.invalid");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
         // check if input item is already appraised
         if (AppraiseUtils.isAppraised(item)) {
             Bump.getLocalization().sendMessage(p, "machine.appraisal.appraised");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
         // check output slot
         if (blockMenu.getItemInSlot(getOutputSlot()) != null) {
             Bump.getLocalization().sendMessage(p, "output-no-space");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
@@ -119,13 +123,20 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         int charge = getCharge(blockMenu.getLocation());
         if (charge < ENERGY_CONSUMPTION) {
             Bump.getLocalization().sendMessage(p, "not-enough-power");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
         // Check current appraise type
         AppraiseType type = getCurrentType(blockMenu.getLocation());
+        if (!type.hasPermission(p)) {
+            Bump.getLocalization().sendMessage(p, "no-permission");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
+            return;
+        }
         if (!type.isValidItem(item)) {
             Bump.getLocalization().sendMessage(p, "machine.appraisal.not-accepted");
+            BumpSound.APPRAISAL_INSTRUMENT_FAIL.playFor(p);
             return;
         }
 
@@ -139,6 +150,7 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
 
         setCharge(blockMenu.getLocation(), 0);
         Bump.getLocalization().sendMessage(p, "machine.appraisal.success");
+        BumpSound.APPRAISAL_INSTRUMENT_SUCCEED.playFor(p);
     }
 
     private boolean validate(@Nonnull ItemStack itemStack) {
@@ -147,9 +159,10 @@ public final class AppraisalInstrument extends SimpleMenuBlock {
         return sfItem instanceof RandomEquipment || AppraiseUtils.isAppraisable(itemStack);
     }
 
+    @ParametersAreNonnullByDefault
     private void updateSelector(BlockMenu menu, Location l) {
         AppraiseType type = getCurrentType(l);
-        menu.replaceExistingItem(APPRAISE_TYPE_SLOT, GuiItems.getAppraiseTypeSelector(type));
+        menu.replaceExistingItem(APPRAISE_TYPE_SLOT, GuiItems.appraiseTypeSelector(type));
         menu.addMenuClickHandler(APPRAISE_TYPE_SLOT, (player, slot, itemStack, clickAction) -> {
             openSelector(player, menu, l);
             return false;

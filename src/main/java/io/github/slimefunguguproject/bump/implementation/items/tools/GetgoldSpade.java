@@ -43,6 +43,10 @@ public class GetgoldSpade extends SimpleSlimefunItem<ToolUseHandler> {
                 return;
             }
 
+            if (BumpItems.OLD_COIN.getItem().isDisabledIn(e.getBlock().getWorld())) {
+                return;
+            }
+
             drops.clear();
             drops.add(BumpItems.OLD_COIN);
 
