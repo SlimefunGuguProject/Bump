@@ -1,5 +1,6 @@
 package io.github.slimefunguguproject.bump.core.services.sounds;
 
+import java.util.EnumMap;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.logging.Level;
@@ -23,7 +24,7 @@ public final class SoundService {
 
     private final AddonConfig config;
 
-    private final Map<BumpSound, SoundConfig> soundMap = new HashMap<>();
+    private final Map<BumpSound, SoundConfig> soundMap = new EnumMap<>(BumpSound.class);
 
     /**
      * Initialize {@link SoundService}.

@@ -142,7 +142,7 @@ items:
       - ""
       - "&b&k|&b- There is a certain chance to dig out broken gold coins in the sand!"
       - ""
-  appraisal_paper:
+  quality_identifier:
     name: "&eQuality Identifier"
     lore:
       - ""

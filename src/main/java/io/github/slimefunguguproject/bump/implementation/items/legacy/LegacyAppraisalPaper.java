@@ -26,7 +26,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
  * @deprecated This represents legacy quality identifiers, and will be removed soon.
  */
 @Deprecated
-public class LegacyAppraisalPaper extends LimitedUseItem {
+public final class LegacyAppraisalPaper extends LimitedUseItem {
 
     @ParametersAreNonnullByDefault
     public LegacyAppraisalPaper(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
