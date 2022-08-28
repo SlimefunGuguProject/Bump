@@ -7,6 +7,8 @@ categories:
   stuff: "&bBump - 魔法物品"
   tool: "&bBump - 工具"
   weapon: "&bBump - 魔法武器"
+  appraise_info: "&eBump - 鉴定类型信息"
+  wiki: "&eBump - Wiki"
 items:
   random_helmet:
     name: "&6随机头盔"
@@ -140,6 +142,13 @@ items:
       - ""
       - "&b&k|&b- 在沙子里一定几率挖出破损的金币！"
       - ""
+  quality_identifier:
+    name: "&e品质鉴定符"
+    lore:
+      - ""
+      - "&b&k|&b- 为可用的物品添加随机属性！"
+      - "&b&k|&b- 非常昂贵，一定要保存好..."
+      - ""
   appraisal_paper_armor:
     name: "&e护甲品质鉴定符"
     lore:
@@ -236,6 +245,7 @@ lores:
   per-use: "&7每次使用"
   not-appraised: "&b&k|&b- &7&o未鉴定"
   appraised: "&b&k|&b- &7&o已鉴定 &b| &d等级: &e&l{0}"
+  click-to-open: "&7\u21E8 &a单击打开"
 researches:
   food: "Bump 食物"
   random_equipment: "随机装备"
@@ -248,10 +258,14 @@ researches:
   soul_sword: "灵魂之剑"
   sky_devil: "斩天破魔"
 messages:
+  no-permission: "&c你没有权限。"
   no-input: "&c请放入物品！"
   output-no-space: "&c输出空间不足！"
   not-enough-power: "&c电力不足！"
   stacked: "&c你不能使用堆叠的物品。"
+  legacy: "&c你正在使用旧物品。你需要将它升级为新物品。"
+  deprecated: "&c你正在使用废弃的物品，它将在不久后移除。"
+  click-here: "&e单击此处:"
   food:
     cooldown: "&b&k|&b- &7&o你需要等待一段时间才能再次食用！"
     xuebi: "&b&k|&b- &7&o清凉一夏！"
@@ -263,6 +277,7 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&o哇，是金子..."
     appraisal_paper:
+      legacy: "&b你的旧版品质鉴定符已更新。"
       invalid: "&c该物品无法进行鉴定！"
       success: "&a该物品现在可以进行鉴定了！"
   weapon:
@@ -284,17 +299,42 @@ messages:
   machine:
     appraisal:
       invalid: "&c该物品类型不支持鉴定！"
+      not-accepted: "&c当前的鉴定类型不接受该物品。"
       appraised: "&c该物品已经鉴定过，无法进行鉴定！"
       success: "&a已鉴定!"
     attribute-grindstone:
       invalid: "&c该物品还未鉴定！"
       success: "&a已清除鉴定结果！"
+console:
+  loading-appraise-types: "正在从配置文件中加载所有鉴定类型。"
+  loading-appraise-type: "正在加载鉴定类型 \"{0}\"。"
+  disabled-appraise-type: "鉴定类型 \"{0}\" 已被禁用，跳过加载。"
+  loaded-appraise-type: "已加载鉴定类型 \"{0}\"。"
+  error-loading-appraise-type: "加载鉴定类型 \"{0}\" 时发生错误: {1}"
+  missing-appraise-stars: "配置文件中缺少 'appraise.stars' 部分。"
+  use-default-appraise-stars: "正在使用默认鉴定星级设置。"
+  invalid-appraise-stars: "你只能设置星级为 0 到 127 之间！"
+  error-sound: "加载声音配置时发生错误: {0}"
+  invalid-sound-config: "无法找到Bump的声音配置: {0}"
+  invalid-sound-volume: "声音 \"{0}\" 的音量设置无效: {1} (必须至少为 {2})"
+  invalid-sound-pitch: "声音 \"{0}\" 的音高设置无效: {1} (必须至少为 {2})"
 gui:
   appraise:
     name: "&e点击鉴定"
     lore:
       - "&7<- 在左侧放入需要鉴定的物品"
       - "&7点击这里开始鉴定"
+  appraise_type_selector:
+    name: "&b当前类型: &e{0}"
+    lore:
+      - ""
+      - "&7在Bump分类中查看详情"
+      - "&e点击选择该类型"
+  appraise_type_selector_menu:
+    title: "&6选择鉴定类型"
+    lore:
+      - ""
+      - "&e点击选择该类型"
   appraisal_paper:
     name: "&e点击应用"
     lore:
@@ -305,4 +345,28 @@ gui:
     lore:
       - "&7<- 在左侧放入已鉴定的物品"
       - "&7点击这里清除属性"
+appraise_info:
+  name: "&b鉴定类型: &e{0}"
+  click: "&e点击查看详情"
+  equipment_type:
+    name: "&a可接受的物品类型: &b{0}"
+    any: "&7任意物品"
+    vanilla: "&7仅原版物品"
+    slimefun: "&7仅粘液科技物品"
+  material:
+    name: "&a是否检测物品的材料: &b{0}"
+    lore_enabled:
+      - "&7仅允许以下材料:"
+    lore_enabled_more: "&7还有 {0} 个更多..."
+    lore_disabled:
+      - "&7不会检测物品的材料。"
+  equipment_slot:
+    name: "&a装备栏位"
+    lore:
+      - "&7属性将应用到"
+      - "&7以下装备栏位："
+  attribute:
+    name: "&e属性： &9{0}"
+    range: "&7范围： &b{0} &7~ &b{1}"
+    weight: "&7权重： &b{0}%"
 
