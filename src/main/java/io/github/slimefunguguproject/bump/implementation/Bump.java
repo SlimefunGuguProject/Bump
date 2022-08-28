@@ -18,6 +18,7 @@ import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
 import io.github.slimefunguguproject.bump.utils.WikiUtils;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
@@ -87,7 +88,7 @@ public final class Bump extends AbstractAddon {
 
         // localization
         log(Level.INFO, "Loading language...");
-        String lang = getRegistry().getConfig().getString("options.lang", DEFAULT_LANG);
+        String lang = config.getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
         getRegistry().setLanguage(lang);
@@ -95,6 +96,17 @@ public final class Bump extends AbstractAddon {
             localization.addLanguage(DEFAULT_LANG);
         }
         log(Level.INFO, "Loaded language {0}", lang);
+
+        // check slimefun version
+        Slimefun slimefun = Slimefun.instance();
+        if (slimefun != null && lang.equalsIgnoreCase("en-US") && !lang.startsWith("zh-")) {
+            if (slimefun.getPluginVersion().endsWith("-canary") || slimefun.getPluginVersion().endsWith("-release")) {
+                log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
+                log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
+                log(Level.WARNING, "你需要在 /plugins/Bump/config.yml 中，");
+                log(Level.WARNING, "设置 options.lang 为 zh-CN 来将Bump的语言改为简体中文。");
+            }
+        }
 
         // tags
         BumpTag.reloadAll();
@@ -114,7 +126,7 @@ public final class Bump extends AbstractAddon {
         ItemsSetup.setup(this);
 
         // researches setup
-        boolean enableResearch = getRegistry().getConfig().getBoolean("options.enable-research", true);
+        boolean enableResearch = config.getBoolean("options.enable-research", true);
         if (enableResearch) {
             ResearchSetup.setup();
         }
