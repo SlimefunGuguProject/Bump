@@ -99,8 +99,8 @@ public final class Bump extends AbstractAddon {
 
         // check slimefun version
         Slimefun slimefun = Slimefun.instance();
-        if (slimefun != null && lang.equalsIgnoreCase(DEFAULT_LANG)
-            && !lang.startsWith("zh-") && isSCSlimefun(slimefun.getPluginVersion())
+        if (slimefun != null && isSCSlimefun(slimefun.getPluginVersion())
+            && lang.equalsIgnoreCase(DEFAULT_LANG) && !lang.startsWith("zh-")
         ) {
             log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
             log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
@@ -156,7 +156,7 @@ public final class Bump extends AbstractAddon {
         return "https://slimefun-addons-wiki.guizhanss.cn/bump/{0}";
     }
 
-    private boolean isSCSlimefun(@Nonnull String pluginVersion) {
-        return pluginVersion.endsWith("-canary") || pluginVersion.endsWith("-release");
+    private boolean isSCSlimefun(@Nonnull String sfVersion) {
+        return sfVersion.endsWith("-canary") || sfVersion.endsWith("-release");
     }
 }
