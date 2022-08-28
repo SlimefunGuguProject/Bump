@@ -264,7 +264,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&o哇，是金子..."
     appraisal_paper:
       invalid: "&c该物品无法进行鉴定！"
-      mismatch: "&c该鉴定符与物品不兼容！"
       success: "&a该物品现在可以进行鉴定了！"
   weapon:
     unavailable: "&b&k|&b- &7&o你现在无法发动该技能！"
@@ -306,3 +305,4 @@ gui:
     lore:
       - "&7<- 在左侧放入已鉴定的物品"
       - "&7点击这里清除属性"
+
