@@ -2,18 +2,21 @@ package io.github.slimefunguguproject.bump.core.services;
 
 import java.text.MessageFormat;
 import java.util.Locale;
+import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.common.base.Preconditions;
 
+import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 
 import net.guizhanss.guizhanlib.localization.Localization;
-import net.guizhanss.guizhanlib.utils.ChatUtil;
+import net.guizhanss.guizhanlib.localization.MinecraftLocalization;
+import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
 import net.md_5.bungee.api.ChatMessageType;
 import net.md_5.bungee.api.chat.BaseComponent;
@@ -25,7 +28,7 @@ import net.md_5.bungee.api.chat.TextComponent;
  * @author ybw0014
  */
 @SuppressWarnings("ConstantConditions")
-public final class LocalizationService extends Localization {
+public final class LocalizationService extends MinecraftLocalization {
     public LocalizationService(Bump plugin) {
         super(plugin);
     }
@@ -65,11 +68,11 @@ public final class LocalizationService extends Localization {
     }
 
     @ParametersAreNonnullByDefault
-    public void sendMessage(Player p, String messageKey, Object... args) {
-        Preconditions.checkArgument(p != null, "Player cannot be null");
+    public void sendMessage(CommandSender sender, String messageKey, Object... args) {
+        Preconditions.checkArgument(sender != null, "CommandSender cannot be null");
         Preconditions.checkArgument(messageKey != null, "Message key cannot be null");
 
-        ChatUtil.send(p, MessageFormat.format(getString("messages." + messageKey), args));
+        ChatUtil.send(sender, MessageFormat.format(getString("messages." + messageKey), args));
     }
 
     @ParametersAreNonnullByDefault
@@ -81,5 +84,15 @@ public final class LocalizationService extends Localization {
 
         BaseComponent[] components = TextComponent.fromLegacyText(ChatUtil.color(message));
         p.spigot().sendMessage(ChatMessageType.ACTION_BAR, components);
+    }
+
+    @ParametersAreNonnullByDefault
+    public void log(Level level, String key, Object... args) {
+        Preconditions.checkArgument(level != null, "Log level cannot be null");
+        Preconditions.checkArgument(key != null, "Key cannot be null");
+
+        String message = MessageFormat.format(getString("console." + key), args);
+
+        Bump.log(level, message);
     }
 }

@@ -1,0 +1,16 @@
+{
+    "values": [
+        "minecraft:flint_and_steel",
+        "minecraft:shield",
+        "minecraft:totem_of_undying",
+        "minecraft:map",
+        "minecraft:filled_map",
+        "minecraft:compass",
+        "minecraft:recovery_compass",
+        "minecraft:clock",
+        "minecraft:bundle",
+        "minecraft:shears",
+        "minecraft:goat_horn",
+        "minecraft:spyglass"
+    ]
+}

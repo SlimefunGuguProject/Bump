@@ -6,7 +6,7 @@ import org.bukkit.enchantments.Enchantment;
 import io.github.slimefunguguproject.bump.api.items.LocalizedItemStack;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
-import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
+import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
 import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
@@ -43,6 +43,7 @@ public final class BumpItems {
     public static final SlimefunItemStack PEACH_WOOD;
     public static final SlimefunItemStack UPDATE_POWER;
     public static final SlimefunItemStack GETGOLD_SPADE;
+    public static final SlimefunItemStack QUALITY_IDENTIFIER;
     public static final SlimefunItemStack APPRAISAL_PAPER_ARMOR;
     public static final SlimefunItemStack APPRAISAL_PAPER_DAMAGE;
     public static final SlimefunItemStack APPRAISAL_PAPER_HORSE_ARMOR;
@@ -185,22 +186,28 @@ public final class BumpItems {
             Material.GOLDEN_SHOVEL
         );
 
+        QUALITY_IDENTIFIER = new LocalizedItemStack(
+            "QUALITY_IDENTIFIER",
+            Material.PAPER,
+            LoreBuilder.usesLeft(QualityIdentifier.MAX_USES)
+        );
+
         APPRAISAL_PAPER_ARMOR = new LocalizedItemStack(
             "APPRAISAL_PAPER_ARMOR",
             Material.PAPER,
-            LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
+            LoreBuilder.usesLeft(QualityIdentifier.MAX_USES)
         );
 
         APPRAISAL_PAPER_DAMAGE = new LocalizedItemStack(
             "APPRAISAL_PAPER_DAMAGE",
             Material.PAPER,
-            LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
+            LoreBuilder.usesLeft(QualityIdentifier.MAX_USES)
         );
 
         APPRAISAL_PAPER_HORSE_ARMOR = new LocalizedItemStack(
             "APPRAISAL_PAPER_HORSE_ARMOR",
             Material.PAPER,
-            LoreBuilder.usesLeft(AppraisalPaper.MAX_USES)
+            LoreBuilder.usesLeft(QualityIdentifier.MAX_USES)
         );
 
         GETGOLD_SPADE.addUnsafeEnchantment(Enchantment.MENDING, 3);

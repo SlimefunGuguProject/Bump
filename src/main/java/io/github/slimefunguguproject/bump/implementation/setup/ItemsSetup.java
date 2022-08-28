@@ -1,12 +1,13 @@
 package io.github.slimefunguguproject.bump.implementation.setup;
 
+import javax.annotation.Nonnull;
+
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
-import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseType;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
 import io.github.slimefunguguproject.bump.implementation.items.food.Fangbianmian;
 import io.github.slimefunguguproject.bump.implementation.items.food.Kele;
@@ -14,17 +15,19 @@ import io.github.slimefunguguproject.bump.implementation.items.food.Kouxiangtang
 import io.github.slimefunguguproject.bump.implementation.items.food.Latiao;
 import io.github.slimefunguguproject.bump.implementation.items.food.Xuebi;
 import io.github.slimefunguguproject.bump.implementation.items.food.Zongzi;
+import io.github.slimefunguguproject.bump.implementation.items.legacy.LegacyAppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AppraisalInstrument;
 import io.github.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone;
 import io.github.slimefunguguproject.bump.implementation.items.stuff.StuffItem;
-import io.github.slimefunguguproject.bump.implementation.items.tools.AppraisalPaper;
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetgoldSpade;
+import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DevilSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.LightBow;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkyDevilSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SkySword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SoulSword;
 import io.github.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow;
+import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
@@ -38,9 +41,7 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public final class ItemsSetup {
-    public static void setup() {
-        Bump plugin = Bump.getInstance();
-
+    public static void setup(@Nonnull SlimefunAddon plugin) {
         // <editor-fold defaultstate="collapsed" desc="Armor">
         new RandomEquipment(
             BumpItemGroups.ARMOR,
@@ -186,27 +187,32 @@ public final class ItemsSetup {
         // <editor-fold defaultstate="collapsed" desc="Tools">
         new GetgoldSpade().register(plugin);
 
-        new AppraisalPaper(
-            BumpItems.APPRAISAL_PAPER_ARMOR,
-            AppraiseType.ARMOR,
+        new QualityIdentifier(
+            BumpItems.QUALITY_IDENTIFIER,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HELMET
             }
         ).register(plugin);
 
-        new AppraisalPaper(
+        new LegacyAppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[]{
+                BumpItems.RANDOM_HELMET
+            }
+        ).register(plugin);
+
+        new LegacyAppraisalPaper(
             BumpItems.APPRAISAL_PAPER_DAMAGE,
-            AppraiseType.WEAPON,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_SWORD
             }
         ).register(plugin);
 
-        new AppraisalPaper(
+        new LegacyAppraisalPaper(
             BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
-            AppraiseType.HORSE_ARMOR,
             RecipeType.SMELTERY,
             new ItemStack[]{
                 BumpItems.RANDOM_HORSE_ARMOR

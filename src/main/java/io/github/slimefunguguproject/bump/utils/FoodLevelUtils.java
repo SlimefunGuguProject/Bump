@@ -21,6 +21,7 @@ public class FoodLevelUtils {
      *
      * @param p     the {@link Player} that food level will be changed
      * @param level the level to be added
+     *
      * @return if the food level is added
      */
     public static boolean add(Player p, int level) {
@@ -35,6 +36,7 @@ public class FoodLevelUtils {
      *
      * @param p     the {@link Player} that food level will be changed
      * @param level the target food level
+     *
      * @return if the food level is changed
      */
     public static boolean set(Player p, int level) {

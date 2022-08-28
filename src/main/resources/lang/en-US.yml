@@ -7,6 +7,8 @@ categories:
   stuff: "&bBump - Stuff"
   tool: "&bBump - Tool"
   weapon: "&bBump - Magic Weapon"
+  appraise_info: "&eBump - Appraise Information"
+  wiki: "&eBump - Wiki"
 items:
   random_helmet:
     name: "&6Random Helmet"
@@ -140,6 +142,13 @@ items:
       - ""
       - "&b&k|&b- There is a certain chance to dig out broken gold coins in the sand!"
       - ""
+  quality_identifier:
+    name: "&eQuality Identifier"
+    lore:
+      - ""
+      - "&b&k|&b- Add some random attributes for applicable items!"
+      - "&b&k|&b- Very expensive, be sure to keep it..."
+      - ""
   appraisal_paper_armor:
     name: "&eArmor Quality Identifier"
     lore:
@@ -236,6 +245,7 @@ lores:
   per-use: "&7per use"
   not-appraised: "&b&k|&b- &7&oNot appraised"
   appraised: "&b&k|&b- &7&oAppraised &b| &dLevel: &e&l{0}"
+  click-to-open: "&7\u21E8 &aClick to open"
 researches:
   food: "Bump food"
   random_equipment: "Random equipment"
@@ -248,10 +258,14 @@ researches:
   soul_sword: "Soul sword"
   sky_devil: "Heaven or Demon"
 messages:
+  no-permission: "&cYou don't have permission."
   no-input: "&cPlease put in items."
   output-no-space: "&cNo output space!"
   not-enough-power: "&cNot enough energy."
   stacked: "&cYou cannot use this item when stacked."
+  legacy: "&cYou are using a legacy item. You will need to upgrade it to new one."
+  deprecated: "&cYou are using a deprecated item, it will be removed soon."
+  click-here: "&eClick here:"
   food:
     cooldown: "&b&k|&b- &7&oYou need to wait for a while to eat this again!"
     xuebi: "&b&k|&b- &7&oA cool summer!!"
@@ -263,8 +277,8 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG, gold..."
     appraisal_paper:
+      legacy: "&bYour legacy quality identifiers have been upgraded."
       invalid: "&cThis item is not appraisable!"
-      mismatch: "&cThe quality identifier is incompatible with this item!"
       success: "&aThis item can be appraised now!"
   weapon:
     unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
@@ -285,17 +299,42 @@ messages:
   machine:
     appraisal:
       invalid: "&cThe item does not support being appraised!"
+      not-accepted: "&cCurrent appraise type does not accept this item."
       appraised: "&cSorry that the item cannot be identified or has already been appraised!"
       success: "&aAppraisal!"
     attribute-grindstone:
       invalid: "&cThis item is not appraised yet."
       success: "&aThe appraisal result is purged!"
+console:
+  loading-appraise-types: "Loading appraise types from config."
+  loading-appraise-type: "Loading appraise type \"{0}\"."
+  disabled-appraise-type: "The appraise type \"{0}\" is disabled, ignoring."
+  loaded-appraise-type: "Loaded appraise type \"{0}\"."
+  error-loading-appraise-type: "An error has occurred while loading appraise type \"{0}\": {1}"
+  missing-appraise-stars: "Config section 'appraise.stars' is missing."
+  use-default-appraise-stars: "Using default appraise stars settings."
+  invalid-appraise-stars: "You can only set appraise stars to between 0 and 127!"
+  error-sound: "An error has occurred while loading sound config: {0}"
+  invalid-sound-config: "Cannot find sound config for BumpSound: {0}"
+  invalid-sound-volume: "Invalid sound volume for BumpSound \"{0}\": {1} (must be at least {2})"
+  invalid-sound-pitch: "Invalid sound pitch for BumpSound \"{0}\": {1} (must be at least {2})"
 gui:
   appraise:
     name: "&eClick to appraise"
     lore:
       - "&7<- Put the items to be appraised on the left side"
       - "&7Click here to appraise"
+  appraise_type_selector:
+    name: "&bCurrent type: &e{0}"
+    lore:
+      - ""
+      - "&7View details in Bump's category"
+      - "&eClick to select type"
+  appraise_type_selector_menu:
+    title: "&6Select appraise type"
+    lore:
+      - ""
+      - "&eClick to select this type"
   appraisal_paper:
     name: "&eClick to apply"
     lore:
@@ -306,3 +345,29 @@ gui:
     lore:
       - "&7<- Put appraised items on the left side"
       - "&7Click here to purge attributes"
+appraise_info:
+  name: "&bAppraise type: &e{0}"
+  click: "&eClick to view details"
+  equipment_type:
+    name: "&aApplicable equipment type: &b{0}"
+    any: "&7Any item"
+    vanilla: "&7Vanilla items only"
+    slimefun: "&7Slimefun items only"
+  material:
+    name: "&aCheck equipment material: &b{0}"
+    lore_enabled:
+      - "&7Only these materials are accepted:"
+    lore_enabled_more: "&7And {0} more..."
+    lore_disabled:
+      - "&7Material will not be checked."
+  equipment_slot:
+    name: "&aEquipment slots"
+    lore:
+      - "&7Attributes will be applied"
+      - "&7to the equipment slot(s):"
+  attribute:
+    name: "&eAttribute: &9{0}"
+    range: "&7Range: &b{0} &7~ &b{1}"
+    weight: "&7Weight: &b{0}%"
+attributes:
+

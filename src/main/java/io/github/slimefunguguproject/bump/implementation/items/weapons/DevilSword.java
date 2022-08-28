@@ -1,12 +1,12 @@
 package io.github.slimefunguguproject.bump.implementation.items.weapons;
 
 import org.bukkit.Particle;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.entity.Projectile;
 import org.bukkit.entity.SmallFireball;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
@@ -32,7 +32,7 @@ public class DevilSword extends BumpSword {
     public void onItemUse(Player p, ItemStack itemStack) {
         Bump.getLocalization().sendActionbarMessage(p, "weapon.devil_sword");
 
-        p.playSound(p.getLocation(), Sound.ENTITY_BLAZE_SHOOT, 1.0F, 1.0F);
+        BumpSound.DEVIL_SWORD_USE.playFor(p);
 
         for (int i = 0; i < 20; i++) {
             Projectile projectile = p.launchProjectile(SmallFireball.class);

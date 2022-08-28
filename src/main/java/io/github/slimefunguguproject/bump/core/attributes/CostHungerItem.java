@@ -17,6 +17,7 @@ import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
  *
  * @author ybw0014
  */
+@SuppressWarnings("ConstantConditions")
 public interface CostHungerItem extends ItemAttribute {
     /**
      * This method returns the {@link ItemSetting} of hunger cost.
@@ -38,6 +39,7 @@ public interface CostHungerItem extends ItemAttribute {
      * This method will check whether {@link Player}'s food level is sufficient to cost.
      *
      * @param p the {@link Player} that uses the item
+     *
      * @return if player has enough hunger
      */
     default boolean checkHunger(@Nonnull Player p) {
@@ -58,6 +60,7 @@ public interface CostHungerItem extends ItemAttribute {
      * the event is not cancelled.
      *
      * @param p the {@link Player} that uses the item
+     *
      * @return if player has reduced enough hunger
      */
     default boolean costHunger(@Nonnull Player p) {

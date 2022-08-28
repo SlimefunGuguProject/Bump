@@ -15,8 +15,6 @@ import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
-import net.guizhanss.guizhanlib.common.Scheduler;
-
 /**
  * The {@link WeaponProjectileTask} is responsible for tracking
  * {@link Projectile} fired from Bump weapons.
@@ -43,7 +41,7 @@ public final class WeaponProjectileTask implements Runnable {
     public static void start() {
         int duration = Bump.getRegistry().getConfig().getInt("weapons.projectile-duration", 0, 60);
         if (duration > 0) {
-            Scheduler.repeat(Slimefun.getTickerTask().getTickRate(), new WeaponProjectileTask(duration));
+            Bump.getScheduler().repeat(Slimefun.getTickerTask().getTickRate(), new WeaponProjectileTask(duration));
         }
     }
 

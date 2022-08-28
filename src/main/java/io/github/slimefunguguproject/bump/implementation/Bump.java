@@ -1,5 +1,7 @@
 package io.github.slimefunguguproject.bump.implementation;
 
+import java.util.logging.Level;
+
 import javax.annotation.Nonnull;
 
 import org.bukkit.Bukkit;
@@ -7,15 +9,22 @@ import org.bukkit.Bukkit;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
 import io.github.slimefunguguproject.bump.core.services.LocalizationService;
-import io.github.slimefunguguproject.bump.implementation.appraise.AppraiseManager;
+import io.github.slimefunguguproject.bump.core.services.sounds.SoundService;
+import io.github.slimefunguguproject.bump.implementation.setup.AppraiseSetup;
+import io.github.slimefunguguproject.bump.implementation.setup.ItemGroupsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ItemsSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ListenerSetup;
 import io.github.slimefunguguproject.bump.implementation.setup.ResearchSetup;
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask;
+import io.github.slimefunguguproject.bump.utils.WikiUtils;
+import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
+import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
-import net.guizhanss.guizhanlib.bstats.charts.SimplePie;
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+
+import org.bstats.bukkit.Metrics;
+import org.bstats.charts.SimplePie;
 
 /**
  * Main class for {@link Bump}.
@@ -29,34 +38,29 @@ public final class Bump extends AbstractAddon {
     // localization
     private LocalizationService localization;
 
-    // appraise
-    private AppraiseManager appraiseManager;
-
+    // registry
     private BumpRegistry registry;
 
-    public Bump() {
-        super("SlimefunGuguProject", "Bump", "main", "options.auto-update", "options.lang");
-        enableMetrics(14870);
-    }
+    // services
+    private SoundService soundService;
 
-    @Nonnull
-    private static Bump inst() {
-        return getInstance();
+    public Bump() {
+        super("SlimefunGuguProject", "Bump", "main", "options.auto-update");
     }
 
     @Nonnull
     public static LocalizationService getLocalization() {
-        return inst().localization;
-    }
-
-    @Nonnull
-    public static AppraiseManager getAppraiseManager() {
-        return inst().appraiseManager;
+        return ((Bump) getInstance()).localization;
     }
 
     @Nonnull
     public static BumpRegistry getRegistry() {
-        return inst().registry;
+        return ((Bump) getInstance()).registry;
+    }
+
+    @Nonnull
+    public static SoundService getSoundService() {
+        return ((Bump) getInstance()).soundService;
     }
 
     @Override
@@ -83,25 +87,52 @@ public final class Bump extends AbstractAddon {
         registry = new BumpRegistry(this, config);
 
         // localization
-        String lang = getRegistry().getConfig().getString("options.lang", DEFAULT_LANG);
+        log(Level.INFO, "Loading language...");
+        String lang = config.getString("options.lang", DEFAULT_LANG);
         localization = new LocalizationService(this);
         localization.addLanguage(lang);
+        getRegistry().setLanguage(lang);
         if (!lang.equals(DEFAULT_LANG)) {
             localization.addLanguage(DEFAULT_LANG);
         }
-        sendConsole("&eLoaded language {0}", lang);
+        log(Level.INFO, "Loaded language {0}", lang);
+
+        // check slimefun version
+        Slimefun slimefun = Slimefun.instance();
+        if (slimefun != null && isSCSlimefun(slimefun.getPluginVersion())
+            && lang.equalsIgnoreCase(DEFAULT_LANG) && !lang.startsWith("zh-")
+        ) {
+            log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
+            log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
+            log(Level.WARNING, "你需要在 /plugins/Bump/config.yml 中，");
+            log(Level.WARNING, "设置 options.lang 为 zh-CN 来将Bump的语言改为简体中文。");
+        }
+
+        // tags
+        BumpTag.reloadAll();
+
+        // sound service
+        soundService = new SoundService(new AddonConfig("sounds.yml"));
+        soundService.load(true);
+
+        // appraise setup
+        AppraiseSetup.setupTypes();
+        AppraiseSetup.setupStars();
+
+        // item groups setup
+        ItemGroupsSetup.setup(this);
 
         // items setup
-        ItemsSetup.setup();
+        ItemsSetup.setup(this);
 
         // researches setup
-        boolean enableResearch = getRegistry().getConfig().getBoolean("options.enable-research", true);
+        boolean enableResearch = config.getBoolean("options.enable-research", true);
         if (enableResearch) {
             ResearchSetup.setup();
         }
 
-        // appraise setup
-        appraiseManager = new AppraiseManager();
+        // wiki setup
+        WikiUtils.setupJson();
 
         // listeners
         ListenerSetup.setup(this);
@@ -110,12 +141,22 @@ public final class Bump extends AbstractAddon {
         WeaponProjectileTask.start();
 
         // Metrics setup
-        getMetrics().addCustomChart(new SimplePie("server_language", () -> lang));
-        getMetrics().addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
+        final Metrics metrics = new Metrics(this, 14870);
+        metrics.addCustomChart(new SimplePie("server_language", () -> lang));
+        metrics.addCustomChart(new SimplePie("enable_research", () -> enableResearch ? "enabled" : "disabled"));
     }
 
     @Override
     public void disable() {
         Bukkit.getScheduler().cancelTasks(this);
+    }
+
+    @Nonnull
+    public String getWikiURL() {
+        return "https://slimefun-addons-wiki.guizhanss.cn/bump/{0}";
+    }
+
+    private boolean isSCSlimefun(@Nonnull String sfVersion) {
+        return sfVersion.endsWith("-canary") || sfVersion.endsWith("-release");
     }
 }

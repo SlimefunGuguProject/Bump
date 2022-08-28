@@ -3,14 +3,14 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons;
 import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
-import org.bukkit.Sound;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.utils.FoodLevelUtils;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.core.handlers.ItemUseHandler;
@@ -58,7 +58,7 @@ public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
                     Bump.getLocalization().sendActionbarMessage(p, "weapon.soul_sword.converted-all");
                 }
 
-                p.playSound(p.getLocation(), Sound.AMBIENT_CAVE, 1.0F, 1.0F);
+                BumpSound.SOUL_SWORD_USE.playFor(p);
             } else {
                 Bump.getLocalization().sendActionbarMessage(p, "weapon.low-food-level");
             }

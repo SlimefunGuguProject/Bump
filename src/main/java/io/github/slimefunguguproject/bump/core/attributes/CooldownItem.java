@@ -6,7 +6,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.utils.Keys;
-import io.github.slimefunguguproject.bump.utils.Utils;
+import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
@@ -24,7 +24,7 @@ public interface CooldownItem extends ItemAttribute {
     int getCooldown();
 
     default void setCooldown(@Nonnull ItemStack itemStack) {
-        if (Utils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             ItemMeta im = itemStack.getItemMeta();
             PersistentDataAPI.setLong(im, Keys.LAST_USED, System.currentTimeMillis());
             itemStack.setItemMeta(im);
@@ -35,10 +35,11 @@ public interface CooldownItem extends ItemAttribute {
      * This method checks if given {@link ItemStack} has cooled down.
      *
      * @param itemStack The {@link ItemStack} to be checked
+     *
      * @return if the item can be used now
      */
     default boolean isCooldown(@Nonnull ItemStack itemStack) {
-        if (Utils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             ItemMeta im = itemStack.getItemMeta();
 
             if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
@@ -54,7 +55,7 @@ public interface CooldownItem extends ItemAttribute {
     }
 
     default boolean checkCooldown(@Nonnull ItemStack itemStack) {
-        if (Utils.validateItem(itemStack)) {
+        if (ValidateUtils.noAirItem(itemStack)) {
             if (isCooldown(itemStack)) {
                 setCooldown(itemStack);
                 return true;

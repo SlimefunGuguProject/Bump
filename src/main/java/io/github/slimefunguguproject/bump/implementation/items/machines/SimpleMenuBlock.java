@@ -29,7 +29,7 @@ import net.guizhanss.guizhanlib.slimefun.machines.MenuBlock;
  *
  * @author ybw0014
  */
-public abstract class SimpleMenuBlock extends MenuBlock  implements EnergyNetComponent {
+public abstract class SimpleMenuBlock extends MenuBlock implements EnergyNetComponent {
 
     // gui
     private static final int[] BACKGROUND = {
@@ -81,7 +81,7 @@ public abstract class SimpleMenuBlock extends MenuBlock  implements EnergyNetCom
 
     @ParametersAreNonnullByDefault
     @Override
-    protected final void onNewInstance(BlockMenu blockMenu, Block b) {
+    protected void onNewInstance(BlockMenu blockMenu, Block b) {
         super.onNewInstance(blockMenu, b);
         blockMenu.addMenuClickHandler(OPERATION_SLOT, (player, slot, itemStack, clickAction) -> {
             onOperate(blockMenu, b, player, clickAction);
@@ -108,11 +108,11 @@ public abstract class SimpleMenuBlock extends MenuBlock  implements EnergyNetCom
 
     @Override
     protected final int[] getInputSlots() {
-        return new int[] { INPUT_SLOT };
+        return new int[]{INPUT_SLOT};
     }
 
     @Override
     protected final int[] getOutputSlots() {
-        return new int[] { OUTPUT_SLOT };
+        return new int[]{OUTPUT_SLOT};
     }
 }

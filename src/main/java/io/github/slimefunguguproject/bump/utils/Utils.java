@@ -1,9 +1,8 @@
 package io.github.slimefunguguproject.bump.utils;
 
-import javax.annotation.Nonnull;
-import javax.annotation.Nullable;
+import java.lang.reflect.InvocationTargetException;
 
-import com.google.common.base.Preconditions;
+import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
@@ -11,25 +10,34 @@ import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
+import net.guizhanss.guizhanlib.utils.StringUtil;
+
 import lombok.experimental.UtilityClass;
 
 @UtilityClass
 @SuppressWarnings("ConstantConditions")
 public final class Utils {
     /**
-     * Get a {@link String} of consecutive stars
+     * Get a {@link String} of consecutive stars, maximum at 10.
+     * <p>
+     * When there are over 10 stars, returns number + star.
      *
-     * @param n the number of stars
-     * @return {@link String} of consecutive stars
+     * @param n The number of stars
+     *
+     * @return {@link String} of consecutive stars.
      */
     @Nonnull
     public static String getStars(int n) {
-        StringBuilder builder = new StringBuilder();
-        while (n > 0) {
-            builder.append("⭐");
-            n--;
+        if (n <= 10) {
+            StringBuilder builder = new StringBuilder();
+            while (n > 0) {
+                builder.append("⭐");
+                n--;
+            }
+            return builder.toString();
+        } else {
+            return n + " ⭐";
         }
-        return builder.toString();
     }
 
     /**
@@ -38,7 +46,7 @@ public final class Utils {
      * @param item The {@link ItemStack} to be dealt with.
      */
     public static void glowItem(@Nonnull ItemStack item) {
-        if (!validateItem(item)) {
+        if (!ValidateUtils.noAirItem(item)) {
             return;
         }
 
@@ -49,18 +57,20 @@ public final class Utils {
     }
 
     /**
-     * Just a simple null check wrapper
+     * Get the material name.
      *
-     * @param itemStack The {@link ItemStack} to be checked
-     * @return if the {@link ItemStack} is valid
+     * @param material The {@link Material}
+     *
+     * @return The material name in Simplified Chinese if GuizhanLibPlugin exists. Otherwise, in English.
      */
-    public static boolean validateItem(@Nullable ItemStack itemStack) {
+    public static String getMaterialName(@Nonnull Material material) {
         try {
-            Preconditions.checkArgument(itemStack != null, "ItemStack should not be null");
-            Preconditions.checkArgument(itemStack.getType() != Material.AIR, "ItemStack should not be empty");
-            return true;
-        } catch (IllegalArgumentException ex) {
-            return false;
+            Class<?> clazz = Class.forName("net.guizhanss.guizhanlib.minecraft.helper.MaterialHelper");
+            Object result = clazz.getMethod("getName", Material.class).invoke(null, material);
+            return String.valueOf(result);
+        } catch (ClassNotFoundException | NoSuchMethodException | NullPointerException
+            | IllegalAccessException | InvocationTargetException e) {
+            return StringUtil.humanize(material.toString());
         }
     }
 }

@@ -2,26 +2,68 @@ package io.github.slimefunguguproject.bump.api.appraise;
 
 import javax.annotation.Nonnull;
 
-import com.google.common.base.Preconditions;
-
 import org.bukkit.attribute.Attribute;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NonNull;
+
 /**
- * This class represents a single {@link Attribute} with range.
+ * This class represents a single {@link Attribute} with range and weight.
  *
  * @author ybw0014
  */
-record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
+@AllArgsConstructor
+@Getter
+public final class AppraiseAttribute {
+    @NonNull
+    private final Attribute attribute;
+    private final double min;
+    private final double max;
 
-    AppraiseAttribute {
-        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
+    private double weight;
+
+    /**
+     * Set the weight of this attribute.
+     * <p>
+     * Can only change when weight is not designated yet.
+     *
+     * @param weight The weight of this attribute.
+     */
+    public void setWeight(double weight) {
+        if (weight != -1) {
+            throw new UnsupportedOperationException("You cannot change the weight when it is set");
+        }
+        this.weight = weight;
     }
 
     @Override
     @Nonnull
     public String toString() {
-        return "Attribute[" + attribute
-            + ", " + min + " - " + max + "]";
+        return "AppraiseAttribute[" + attribute
+            + ", " + min + " - " + max + ", " + weight + "]";
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof AppraiseAttribute anotherAttribute) {
+            return getAttribute() == anotherAttribute.getAttribute()
+                && getMin() == anotherAttribute.getMin()
+                && getMax() == anotherAttribute.getMax()
+                && getWeight() == anotherAttribute.getWeight();
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public int hashCode() {
+        int hash = 5;
+        hash = 47 * hash + this.attribute.hashCode();
+        hash = 13 * hash + Double.hashCode(this.min);
+        hash = 13 * hash + Double.hashCode(this.max);
+        hash = 13 * hash + Double.hashCode(this.weight);
+        return hash;
     }
 
     /**
@@ -30,9 +72,10 @@ record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
      * Return range from 0 to 100.
      *
      * @param value The result value.
+     *
      * @return The percentile of the result value.
      */
-    public double getPercent(double value) {
+    public double getPercentile(double value) {
         if (value <= min) {
             return 0;
         } else if (value >= max) {
@@ -40,5 +83,16 @@ record AppraiseAttribute(@Nonnull Attribute attribute, double min, double max) {
         } else {
             return (value - min) / (max - min) * 100.0D;
         }
+    }
+
+    /**
+     * Get the weighted percentile of result value.
+     *
+     * @param value The result value.
+     *
+     * @return The weighted percentile of the result value.
+     */
+    public double getWeightedPercentile(double value) {
+        return getPercentile(value) * weight / 100.D;
     }
 }

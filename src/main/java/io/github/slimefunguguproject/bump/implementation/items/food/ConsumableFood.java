@@ -5,12 +5,11 @@ import java.util.Locale;
 import javax.annotation.Nonnull;
 
 import org.bukkit.GameMode;
-import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.implementation.setup.BumpItemGroups;
+import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
@@ -41,7 +40,6 @@ public abstract class ConsumableFood extends SimpleSlimefunItem<ItemConsumptionH
                 ItemUtils.consumeItem(e.getItem(), false);
             }
 
-            p.playSound(p.getLocation(), Sound.ENTITY_GENERIC_EAT, 1, 1);
             this.applyFoodEffects(p);
         };
     }

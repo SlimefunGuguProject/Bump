@@ -11,3 +11,5 @@ authors:
   - ybw0014
 depend:
   - Slimefun
+softdepend:
+  - GuizhanLibPlugin
