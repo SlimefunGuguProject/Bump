@@ -138,4 +138,9 @@ public final class Bump extends AbstractAddon {
     public void disable() {
         Bukkit.getScheduler().cancelTasks(this);
     }
+
+    @Nonnull
+    public String getWikiURL() {
+        return "https://slimefun-addons-wiki.guizhanss.cn/bump/{0}";
+    }
 }

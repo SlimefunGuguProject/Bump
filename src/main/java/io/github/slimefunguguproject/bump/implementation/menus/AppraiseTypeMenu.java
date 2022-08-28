@@ -12,6 +12,7 @@ import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.EquipmentSlot;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import io.github.bakedlibs.dough.items.CustomItemStack;
@@ -30,7 +31,9 @@ import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 
 /**
- * This menu displays the details of {@link AppraiseType}
+ * This menu displays the details of an {@link AppraiseType}.
+ *
+ * @author ybw0014
  */
 @RequiredArgsConstructor
 public final class AppraiseTypeMenu {
@@ -122,6 +125,7 @@ public final class AppraiseTypeMenu {
 
     @Nonnull
     private ItemStack getMaterialItem(@Nonnull AppraiseType type) {
+        CustomItemStack result;
         if (type.checkMaterial()) {
             // Enabled checking material, display materials as well (cap at 10)
             List<String> lore = Bump.getLocalization().getStringList("appraise_info.material.lore_enabled");
@@ -139,18 +143,19 @@ public final class AppraiseTypeMenu {
                 lore.add(Bump.getLocalization().getString("appraise_info.material.lore_enabled_more", materials.size() - size));
             }
 
-            return new CustomItemStack(
+            result =  new CustomItemStack(
                 Material.FILLED_MAP,
                 Bump.getLocalization().getString("appraise_info.material.name", Strings.CHECK),
                 lore
             );
         } else {
-            return new CustomItemStack(
+            result = new CustomItemStack(
                 Material.MAP,
                 Bump.getLocalization().getString("appraise_info.material.name", Strings.CROSS),
                 Bump.getLocalization().getStringList("appraise_info.material.lore_disabled")
             );
         }
+        return result.addFlags(ItemFlag.HIDE_POTION_EFFECTS);
     }
 
     @Nonnull
