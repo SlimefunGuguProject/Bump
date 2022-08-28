@@ -20,7 +20,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.guizhanss:GuizhanLib:0.9.9'
+    implementation 'net.guizhanss:GuizhanLib:1.0.3'
 
     compileOnly 'org.spigotmc:spigot-api:1.16.5-R0.1-SNAPSHOT'
     compileOnly 'io.github.Slimefun:Slimefun4:RC-30'
