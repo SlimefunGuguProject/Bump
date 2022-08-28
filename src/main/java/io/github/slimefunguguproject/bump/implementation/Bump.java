@@ -99,7 +99,7 @@ public final class Bump extends AbstractAddon {
 
         // check slimefun version
         Slimefun slimefun = Slimefun.instance();
-        if (slimefun != null && lang.equalsIgnoreCase("en-US") && !lang.startsWith("zh-")) {
+        if (slimefun != null && lang.equalsIgnoreCase(DEFAULT_LANG) && !lang.startsWith("zh-")) {
             if (slimefun.getPluginVersion().endsWith("-canary") || slimefun.getPluginVersion().endsWith("-release")) {
                 log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
                 log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
