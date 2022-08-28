@@ -3,6 +3,7 @@ package io.github.slimefunguguproject.bump.implementation.menus;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.function.Consumer;
+import java.util.stream.Collectors;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -88,7 +89,10 @@ public abstract class AppraiseTypesMenu {
 
     @ParametersAreNonnullByDefault
     private void displayCollection(Player player, ChestMenu menu, int page) {
-        final List<AppraiseType> appraiseTypes = new ArrayList<>(Bump.getRegistry().getAppraiseTypes());
+        final List<AppraiseType> appraiseTypes = Bump.getRegistry().getAppraiseTypes()
+            .stream()
+            .filter(type -> type.hasPermission(player))
+            .collect(Collectors.toList());
         final int total = appraiseTypes.size();
         final int totalPages = (int) Math.ceil(total / (double) PAGE_SIZE);
         final int start = (page - 1) * PAGE_SIZE;
