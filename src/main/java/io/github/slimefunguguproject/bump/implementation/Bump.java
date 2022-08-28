@@ -99,13 +99,13 @@ public final class Bump extends AbstractAddon {
 
         // check slimefun version
         Slimefun slimefun = Slimefun.instance();
-        if (slimefun != null && lang.equalsIgnoreCase(DEFAULT_LANG) && !lang.startsWith("zh-")) {
-            if (slimefun.getPluginVersion().endsWith("-canary") || slimefun.getPluginVersion().endsWith("-release")) {
-                log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
-                log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
-                log(Level.WARNING, "你需要在 /plugins/Bump/config.yml 中，");
-                log(Level.WARNING, "设置 options.lang 为 zh-CN 来将Bump的语言改为简体中文。");
-            }
+        if (slimefun != null && lang.equalsIgnoreCase(DEFAULT_LANG)
+            && !lang.startsWith("zh-") && isSCSlimefun(slimefun.getPluginVersion())
+        ) {
+            log(Level.WARNING, "你似乎正在使用汉化版粘液科技，但未设置Bump的语言。");
+            log(Level.WARNING, "Bump是一个支持多语言的粘液附属，默认语言为英文。");
+            log(Level.WARNING, "你需要在 /plugins/Bump/config.yml 中，");
+            log(Level.WARNING, "设置 options.lang 为 zh-CN 来将Bump的语言改为简体中文。");
         }
 
         // tags
@@ -154,5 +154,9 @@ public final class Bump extends AbstractAddon {
     @Nonnull
     public String getWikiURL() {
         return "https://slimefun-addons-wiki.guizhanss.cn/bump/{0}";
+    }
+
+    private boolean isSCSlimefun(@Nonnull String pluginVersion) {
+        return pluginVersion.endsWith("-canary") || pluginVersion.endsWith("-release");
     }
 }
