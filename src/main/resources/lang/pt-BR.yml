@@ -257,7 +257,6 @@ messages:
     getgold_spade: "&b&k|&b- &7&oOMG, ouro..."
     appraisal_paper:
       invalid: "&cEste item é não pode ser avaliado!"
-      mismatch: "&cO identificador de qualidade é incompatível com este item!"
       success: "&aEste item pode ser avaliado agora!"
   weapon:
     unavailable: "&b&k|&b- &7&oVocê não pode ativar esta habilidade agora!"
@@ -284,3 +283,4 @@ gui:
     lore:
       - "&7<- Coloque os itens do lado esquerdo"
       - "&7Clique aqui para permitir que o item seja avaliado"
+
