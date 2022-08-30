@@ -102,6 +102,21 @@ public final class LocalizationService extends MinecraftLocalization {
     }
 
     @ParametersAreNonnullByDefault
+    @Nonnull
+    public ItemStack getRecipeTypeItem(String recipeTypeId, ItemStack itemStack) {
+        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(itemStack != null, "ItemStack cannot be null");
+
+        recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
+
+        return new CustomItemStack(
+            itemStack,
+            getString("recipes." + recipeTypeId + ".name"),
+            getStringArray("recipes." + recipeTypeId + ".lore")
+        );
+    }
+
+    @ParametersAreNonnullByDefault
     public void sendMessage(CommandSender sender, String messageKey, Object... args) {
         Preconditions.checkArgument(sender != null, "CommandSender cannot be null");
         Preconditions.checkArgument(messageKey != null, "Message key cannot be null");

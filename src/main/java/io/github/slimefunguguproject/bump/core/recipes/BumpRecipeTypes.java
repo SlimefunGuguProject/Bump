@@ -1,10 +1,9 @@
 package io.github.slimefunguguproject.bump.core.recipes;
 
-import org.bukkit.Material;
-
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
+import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
 
 import lombok.experimental.UtilityClass;
 
@@ -22,6 +21,9 @@ public final class BumpRecipeTypes {
 
     public static final RecipeType COMPRESSOR_MOCK = new RecipeType(
         Bump.createKey("compressor_mock"),
-        Bump.getLocalization().getRecipeTypeItem("compressor_mock", Material.DISPENSER)
+        Bump.getLocalization().getRecipeTypeItem(
+            "compressor_mock",
+            SlimefunItems.COMPRESSOR
+        )
     );
 }
