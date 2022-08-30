@@ -56,6 +56,6 @@ public final class ItemGroupsSetup {
         BumpItemGroups.ARMOR.register(addon);
         BumpItemGroups.WEAPON.register(addon);
         BumpItemGroups.APPRAISE_INFO.register(addon);
-        BumpItemGroups.LEGACY.register(addon);
+        BumpItemGroups.HIDDEN.register(addon);
     }
 }

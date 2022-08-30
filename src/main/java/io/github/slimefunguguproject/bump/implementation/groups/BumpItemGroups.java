@@ -92,8 +92,8 @@ public final class BumpItemGroups {
         )
     );
 
-    public static final ItemGroup LEGACY = new DummyItemGroup(
-        Bump.createKey("legacy"),
+    public static final ItemGroup HIDDEN = new DummyItemGroup(
+        Bump.createKey("hidden"),
         new CustomItemStack(
             Material.BARRIER,
             "Never gonna give you up~"

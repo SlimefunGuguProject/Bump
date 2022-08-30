@@ -42,6 +42,7 @@ public final class BumpItems {
     public static final SlimefunItemStack WATER_SUGAR;
     public static final SlimefunItemStack PEACH_WOOD;
     public static final SlimefunItemStack UPDATE_POWER;
+    public static final SlimefunItemStack COMPRESSED_RANDOM_EQUIPMENT;
     public static final SlimefunItemStack GETGOLD_SPADE;
     public static final SlimefunItemStack QUALITY_IDENTIFIER;
     public static final SlimefunItemStack APPRAISAL_PAPER_ARMOR;
@@ -177,6 +178,11 @@ public final class BumpItems {
         UPDATE_POWER = new LocalizedItemStack(
             "UPDATE_POWER",
             Material.ZOMBIE_HEAD
+        );
+
+        COMPRESSED_RANDOM_EQUIPMENT = new LocalizedItemStack(
+            "COMPRESSED_RANDOM_EQUIPMENT",
+            "bb82d5e2033ce8d9821d53e59d480f3dd60b4f9e555f67056c938c0240e16ffe"
         );
         // endregion stuff
 

@@ -9,10 +9,14 @@ import javax.annotation.ParametersAreNonnullByDefault;
 
 import com.google.common.base.Preconditions;
 
+import org.bukkit.Material;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.thebusybiscuit.slimefun4.utils.SlimefunUtils;
 
 import net.guizhanss.guizhanlib.localization.Localization;
 import net.guizhanss.guizhanlib.localization.MinecraftLocalization;
@@ -65,6 +69,36 @@ public final class LocalizationService extends MinecraftLocalization {
         Preconditions.checkArgument(researchId != null, "Research Id cannot be null");
 
         return getString("researches." + StringUtil.dehumanize(researchId).toLowerCase(Locale.ROOT));
+    }
+
+    @ParametersAreNonnullByDefault
+    @Nonnull
+    public ItemStack getRecipeTypeItem(String recipeTypeId, Material material) {
+        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(material != null, "Material cannot be null");
+
+        recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
+
+        return new CustomItemStack(
+            material,
+            getString("recipes." + recipeTypeId + ".name"),
+            getStringArray("recipes." + recipeTypeId + ".lore")
+        );
+    }
+
+    @ParametersAreNonnullByDefault
+    @Nonnull
+    public ItemStack getRecipeTypeItem(String recipeTypeId, String texture) {
+        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(texture != null, "Texture cannot be null");
+
+        recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
+
+        return new CustomItemStack(
+            SlimefunUtils.getCustomHead(texture),
+            getString("recipes." + recipeTypeId + ".name"),
+            getStringArray("recipes." + recipeTypeId + ".lore")
+        );
     }
 
     @ParametersAreNonnullByDefault

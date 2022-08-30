@@ -143,7 +143,7 @@ public final class AppraiseTypeMenu {
                 lore.add(Bump.getLocalization().getString("appraise_info.material.lore_enabled_more", materials.size() - size));
             }
 
-            result =  new CustomItemStack(
+            result = new CustomItemStack(
                 Material.FILLED_MAP,
                 Bump.getLocalization().getString("appraise_info.material.name", Strings.CHECK),
                 lore
