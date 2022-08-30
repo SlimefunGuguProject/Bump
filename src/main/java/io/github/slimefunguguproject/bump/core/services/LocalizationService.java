@@ -31,8 +31,10 @@ import net.md_5.bungee.api.chat.TextComponent;
  *
  * @author ybw0014
  */
-@SuppressWarnings("ConstantConditions")
+@SuppressWarnings({"ConstantConditions", "java:S1192"})
 public final class LocalizationService extends MinecraftLocalization {
+    private static final String NULL_RECIPE_TYPE_MESSAGE = "RecipeType Id cannot be null";
+
     public LocalizationService(Bump plugin) {
         super(plugin);
     }
@@ -74,7 +76,7 @@ public final class LocalizationService extends MinecraftLocalization {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack getRecipeTypeItem(String recipeTypeId, Material material) {
-        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(recipeTypeId != null, NULL_RECIPE_TYPE_MESSAGE);
         Preconditions.checkArgument(material != null, "Material cannot be null");
 
         recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
@@ -89,7 +91,7 @@ public final class LocalizationService extends MinecraftLocalization {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack getRecipeTypeItem(String recipeTypeId, String texture) {
-        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(recipeTypeId != null, NULL_RECIPE_TYPE_MESSAGE);
         Preconditions.checkArgument(texture != null, "Texture cannot be null");
 
         recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
@@ -104,7 +106,7 @@ public final class LocalizationService extends MinecraftLocalization {
     @ParametersAreNonnullByDefault
     @Nonnull
     public ItemStack getRecipeTypeItem(String recipeTypeId, ItemStack itemStack) {
-        Preconditions.checkArgument(recipeTypeId != null, "RecipeType Id cannot be null");
+        Preconditions.checkArgument(recipeTypeId != null, NULL_RECIPE_TYPE_MESSAGE);
         Preconditions.checkArgument(itemStack != null, "ItemStack cannot be null");
 
         recipeTypeId = StringUtil.dehumanize(recipeTypeId).toLowerCase(Locale.ROOT);
