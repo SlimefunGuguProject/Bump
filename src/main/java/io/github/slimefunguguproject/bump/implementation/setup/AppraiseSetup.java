@@ -33,6 +33,9 @@ import lombok.experimental.UtilityClass;
 public final class AppraiseSetup {
     public static void setupTypes() {
         AddonConfig config = new AddonConfig("appraise-types.yml");
+        config.save();
+        config.reload();
+
         Bump.getLocalization().log(Level.INFO, "loading-appraise-types");
         Set<String> types = config.getKeys(false);
         for (String type : types) {
@@ -74,7 +77,13 @@ public final class AppraiseSetup {
                     Attribute attribute = Attribute.valueOf(attr);
                     double min = attributesSection.getDouble(attr + ".min");
                     double max = attributesSection.getDouble(attr + ".max");
-                    double weight = attributesSection.getDouble(attr + ".weight", -1);
+                    String weightStr = attributesSection.getString(attr + ".weight");
+                    double weight = -1;
+                    if (weightStr != null) {
+                        try {
+                            weight = Double.parseDouble(weightStr);
+                        } catch (NumberFormatException ignored) {}
+                    }
                     appraiseType.addAttribute(attribute, min, max, weight);
                 }
 
