@@ -1,10 +1,13 @@
 package io.github.slimefunguguproject.bump.implementation;
 
+import java.io.File;
+import java.lang.reflect.Method;
 import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
 import org.bukkit.Bukkit;
+import org.bukkit.plugin.Plugin;
 
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.core.services.ConfigUpdateService;
@@ -22,6 +25,7 @@ import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AbstractAddon;
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+import net.guizhanss.guizhanlib.updater.GuizhanBuildsUpdater;
 
 import org.bstats.bukkit.Metrics;
 import org.bstats.charts.SimplePie;
@@ -149,6 +153,19 @@ public final class Bump extends AbstractAddon {
     @Override
     public void disable() {
         Bukkit.getScheduler().cancelTasks(this);
+    }
+
+    @Override
+    protected void autoUpdate() {
+        try {
+            // use updater in lib plugin
+            Class<?> clazz = Class.forName("net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper");
+            Method updaterStart = clazz.getDeclaredMethod("start", Plugin.class, File.class, String.class, String.class, String.class, Boolean.class);
+            updaterStart.invoke(null, this, getFile(), "SlimefunGuguProject", "Bump", "main", false);
+        } catch (Exception ignored) {
+            // use updater in lib
+            new GuizhanBuildsUpdater(this, getFile(), "SlimefunGuguProject", "Bump", "main", false).start();
+        }
     }
 
     @Nonnull

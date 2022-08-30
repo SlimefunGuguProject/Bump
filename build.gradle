@@ -17,10 +17,14 @@ repositories {
     maven {
         url = uri('https://jitpack.io')
     }
+
+    maven {
+        url = uri('https://s01.oss.sonatype.org/content/repositories/snapshots/')
+    }
 }
 
 dependencies {
-    implementation 'net.guizhanss:GuizhanLib-api:1.0.3'
+    implementation 'net.guizhanss:GuizhanLib-api:1.1.0-SNAPSHOT'
     implementation 'dev.sefiraat:SefiLib:0.1.4.5'
     implementation 'org.bstats:bstats-bukkit:3.0.0'
 
