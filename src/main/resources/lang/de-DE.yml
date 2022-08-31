@@ -261,4 +261,10 @@ messages:
   no-permission: "Sie haben keine Berechtigung."
   no-input: "&cBitte füge Elemente ein."
   output-no-space: "&cKein Ausgabesatz!"
+  not-enough-power: "&cNicht genug Energie."
+  stacked: "&cDu kannst diesen Gegenstand nicht verwenden, wenn er gestapelt wurde."
+  legacy: "&cDu verwendest ein altes Item. Du musst es auf ein neues upgraden."
+appraise_info:
+  attribute:
+    weight: "&7Gewicht: &b{0}%"
 

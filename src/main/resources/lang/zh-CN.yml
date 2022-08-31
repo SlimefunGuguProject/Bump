@@ -136,6 +136,12 @@ items:
       - ""
       - "&b&k|&b- 用来升级一些奇怪的物品..."
       - ""
+  compressed_random_equipment:
+    name: "&e压缩的随机装备"
+    lore:
+      - ""
+      - "&b&k|&b- 好像不能再使用了..."
+      - ""
   getgold_spade:
     name: "&e摸金铲"
     lore:
@@ -246,6 +252,13 @@ lores:
   not-appraised: "&b&k|&b- &7&o未鉴定"
   appraised: "&b&k|&b- &7&o已鉴定 &b| &d等级: &e&l{0}"
   click-to-open: "&7\u21E8 &a单击打开"
+  any-random-equipment: "&f任意随机装备"
+recipes:
+  compressor_mock:
+    name: "&b压缩机"
+    lore:
+      - "&7如合成表所示"
+      - "&7在压缩机中合成"
 researches:
   food: "Bump 食物"
   random_equipment: "随机装备"

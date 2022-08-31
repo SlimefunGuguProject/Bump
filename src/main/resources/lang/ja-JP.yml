@@ -7,6 +7,8 @@ categories:
   stuff: "&bBump - 魔法"
   tool: "&bBump - ツール"
   weapon: "&bBump - 魔法の武器"
+  appraise_info: "&eBump - 鑑定情報"
+  wiki: "&eBump - ウィキ"
 items:
   random_helmet:
     name: "&6ランダムなヘルメット"
@@ -140,6 +142,13 @@ items:
       - ""
       - "&b&k|&b- 砂から壊れた金貨を掘り出すチャンスがあります！"
       - ""
+  quality_identifier:
+    name: "&e品質鑑定符"
+    lore:
+      - ""
+      - "&b&k|&b- 該当するアイテムにランダムな属性を添加！"
+      - "&b&k|&b- とても高価なので、ちゃんと預かるべきです..."
+      - ""
   appraisal_paper_armor:
     name: "&e防具品質識別子"
     lore:
@@ -236,6 +245,7 @@ lores:
   per-use: "&7毎回使用"
   not-appraised: "&b&k|&b- &7&oまだ鑑定されていない"
   appraised: "&b&k|&b- &7&o鑑定された &b| &dレベル&e&l{0}"
+  click-to-open: "&7\u21E8 &aクリックして開く"
 researches:
   food: "Bumpの食品"
   random_equipment: "ランダムな装備"
@@ -248,10 +258,14 @@ researches:
   soul_sword: "魂の剣"
   sky_devil: "天滅魔殺"
 messages:
+  no-permission: "&c権限がありません。"
   no-input: "&cアイテムを入れてください。"
   output-no-space: "&c出力の空間が足りない！"
   not-enough-power: "&cエネルギーが足りない！"
   stacked: "&c積み重ねたものは使えません"
+  legacy: "&c古いアイテムを使用しています。新しいアイテムにアップグレードする必要があります。"
+  deprecated: "&c廃止予定のアイテムを使用してます。近日中に消除されます。"
+  click-here: "&eここをクリック:"
   food:
     cooldown: "&b&k|&b- &7&oこれをまた食べるにはしばらく待つ必要があります!"
     xuebi: "&b&k|&b- &7&o涼しい夏！"
@@ -263,6 +277,7 @@ messages:
   tool:
     getgold_spade: "&b&k|&b- &7&oOMG、金だ..."
     appraisal_paper:
+      legacy: "&b古い品質鑑定符がアップグレードされました。"
       invalid: "&cこのアイテムは鑑定できさせない！"
       success: "&a今はこのアイテムが鑑定できさせます！"
   weapon:
@@ -284,6 +299,7 @@ messages:
   machine:
     appraisal:
       invalid: "&cこのアイテムはまだ鑑定されていない！"
+      not-accepted: "&ck現在の鑑定タイプはこのアイテムを受け付けられません！"
       appraised: "&cアイテムがもう鑑定されたので、また鑑定させるのはできない！"
       success: "&a鑑定成功！"
     attribute-grindstone:
