@@ -30,7 +30,7 @@ public final class LegacyAppraisalPaper extends LimitedUseItem {
 
     @ParametersAreNonnullByDefault
     public LegacyAppraisalPaper(SlimefunItemStack item, RecipeType recipeType, ItemStack[] recipe) {
-        super(BumpItemGroups.LEGACY, item, recipeType, recipe);
+        super(BumpItemGroups.HIDDEN, item, recipeType, recipe);
 
         setMaxUseCount(QualityIdentifier.MAX_USES);
         addItemHandler(getItemHandler());

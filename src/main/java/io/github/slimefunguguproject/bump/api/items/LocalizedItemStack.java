@@ -14,7 +14,6 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 
-
 /**
  * This is an extended {@link SlimefunItemStack} that loads name and lore
  * from {@link LocalizationService}.
@@ -41,6 +40,32 @@ public class LocalizedItemStack extends SlimefunItemStack {
             Bump.getLocalization().getItemLore(id)
         );
 
+        appendLore(appendLore);
+    }
+
+    @ParametersAreNonnullByDefault
+    public LocalizedItemStack(String id, String texture) {
+        super(
+            id,
+            texture,
+            Bump.getLocalization().getItemName(id),
+            Bump.getLocalization().getItemLore(id)
+        );
+    }
+
+    @ParametersAreNonnullByDefault
+    public LocalizedItemStack(String id, String texture, String... appendLore) {
+        super(
+            id,
+            texture,
+            Bump.getLocalization().getItemName(id),
+            Bump.getLocalization().getItemLore(id)
+        );
+
+        appendLore(appendLore);
+    }
+
+    private void appendLore(String... lores) {
         ItemMeta im = getItemMeta();
         List<String> lore;
         if (im.hasLore()) {
@@ -48,7 +73,7 @@ public class LocalizedItemStack extends SlimefunItemStack {
         } else {
             lore = new ArrayList<>();
         }
-        for (String line : appendLore) {
+        for (String line : lores) {
             lore.add(ChatUtil.color(line));
         }
         im.setLore(lore);

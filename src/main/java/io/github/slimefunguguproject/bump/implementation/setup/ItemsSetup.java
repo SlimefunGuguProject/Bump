@@ -5,7 +5,9 @@ import javax.annotation.Nonnull;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
 
+import io.github.bakedlibs.dough.items.CustomItemStack;
 import io.github.slimefunguguproject.bump.core.recipes.BumpRecipeTypes;
+import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.BumpItems;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment;
@@ -31,6 +33,7 @@ import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 import io.github.thebusybiscuit.slimefun4.implementation.SlimefunItems;
+import io.github.thebusybiscuit.slimefun4.implementation.items.multiblocks.Compressor;
 
 import lombok.experimental.UtilityClass;
 
@@ -182,6 +185,22 @@ public final class ItemsSetup {
                 SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K, SlimefunItems.GOLD_24K
             }
         ).register(plugin);
+
+        new StuffItem(
+            BumpItems.COMPRESSED_RANDOM_EQUIPMENT,
+            BumpRecipeTypes.COMPRESSOR_MOCK,
+            new ItemStack[]{
+                new CustomItemStack(Material.DIAMOND_CHESTPLATE, Bump.getLocalization().getString("lores.any-random-equipment"))
+            }
+        ).register(plugin);
+
+        // compression random equipment
+        final SlimefunItem compressorItem = SlimefunItem.getById("COMPRESSOR");
+        if (compressorItem instanceof Compressor compressor) {
+            compressor.addRecipe(new ItemStack[]{BumpItems.RANDOM_HELMET}, BumpItems.COMPRESSED_RANDOM_EQUIPMENT);
+            compressor.addRecipe(new ItemStack[]{BumpItems.RANDOM_SWORD}, BumpItems.COMPRESSED_RANDOM_EQUIPMENT);
+            compressor.addRecipe(new ItemStack[]{BumpItems.RANDOM_HORSE_ARMOR}, BumpItems.COMPRESSED_RANDOM_EQUIPMENT);
+        }
         // </editor-fold>
 
         // <editor-fold defaultstate="collapsed" desc="Tools">
@@ -191,31 +210,7 @@ public final class ItemsSetup {
             BumpItems.QUALITY_IDENTIFIER,
             RecipeType.SMELTERY,
             new ItemStack[]{
-                BumpItems.RANDOM_HELMET
-            }
-        ).register(plugin);
-
-        new LegacyAppraisalPaper(
-            BumpItems.APPRAISAL_PAPER_ARMOR,
-            RecipeType.SMELTERY,
-            new ItemStack[]{
-                BumpItems.RANDOM_HELMET
-            }
-        ).register(plugin);
-
-        new LegacyAppraisalPaper(
-            BumpItems.APPRAISAL_PAPER_DAMAGE,
-            RecipeType.SMELTERY,
-            new ItemStack[]{
-                BumpItems.RANDOM_SWORD
-            }
-        ).register(plugin);
-
-        new LegacyAppraisalPaper(
-            BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
-            RecipeType.SMELTERY,
-            new ItemStack[]{
-                BumpItems.RANDOM_HORSE_ARMOR
+                BumpItems.COMPRESSED_RANDOM_EQUIPMENT
             }
         ).register(plugin);
         // </editor-fold>
@@ -283,6 +278,34 @@ public final class ItemsSetup {
         new SkySword().register(plugin);
         new DevilSword().register(plugin);
         new SkyDevilSword().register(plugin);
+        // </editor-fold>
+
+        // <editor-fold defaultstate="collapsed" desc="Hidden">
+
+        // legacy quality identifiers
+        new LegacyAppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[]{
+                BumpItems.RANDOM_HELMET
+            }
+        ).register(plugin);
+
+        new LegacyAppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_DAMAGE,
+            RecipeType.SMELTERY,
+            new ItemStack[]{
+                BumpItems.RANDOM_SWORD
+            }
+        ).register(plugin);
+
+        new LegacyAppraisalPaper(
+            BumpItems.APPRAISAL_PAPER_HORSE_ARMOR,
+            RecipeType.SMELTERY,
+            new ItemStack[]{
+                BumpItems.RANDOM_HORSE_ARMOR
+            }
+        ).register(plugin);
         // </editor-fold>
     }
 }

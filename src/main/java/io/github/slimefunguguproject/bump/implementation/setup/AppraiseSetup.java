@@ -82,7 +82,8 @@ public final class AppraiseSetup {
                     if (weightStr != null) {
                         try {
                             weight = Double.parseDouble(weightStr);
-                        } catch (NumberFormatException ignored) {}
+                        } catch (NumberFormatException ignored) {
+                        }
                     }
                     appraiseType.addAttribute(attribute, min, max, weight);
                 }

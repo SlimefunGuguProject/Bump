@@ -161,10 +161,10 @@ public final class Bump extends AbstractAddon {
             // use updater in lib plugin
             Class<?> clazz = Class.forName("net.guizhanss.guizhanlibplugin.updater.GuizhanBuildsUpdaterWrapper");
             Method updaterStart = clazz.getDeclaredMethod("start", Plugin.class, File.class, String.class, String.class, String.class, Boolean.class);
-            updaterStart.invoke(null, this, getFile(), "SlimefunGuguProject", "Bump", "main", false);
+            updaterStart.invoke(null, this, getFile(), getGithubUser(), getGithubRepo(), getGithubBranch(), false);
         } catch (Exception ignored) {
             // use updater in lib
-            new GuizhanBuildsUpdater(this, getFile(), "SlimefunGuguProject", "Bump", "main", false).start();
+            new GuizhanBuildsUpdater(this, getFile(), getGithubUser(), getGithubRepo(),  getGithubBranch(), false).start();
         }
     }
 
