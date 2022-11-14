@@ -245,7 +245,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oBreaking the sky and cutting the devil, one after another emits powerful energy..."
-      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and elevate yourself..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
       - ""
 lores:
   per-use: "&7per use"
