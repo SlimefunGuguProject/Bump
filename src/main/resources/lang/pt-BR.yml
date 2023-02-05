@@ -224,7 +224,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oRuptura do céu e cortando o diabo, um após o outro emite uma energia poderosa..."
-      - "&b&k|&b- &e&oBotão direito &7&olançar três sopros de dragão para a frente e elevar-se..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
       - ""
 lores:
   per-use: "&7por uso"
