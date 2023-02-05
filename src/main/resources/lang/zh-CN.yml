@@ -245,7 +245,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&o破天斩魔，相继发出强大的能量..."
-      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
+      - "&b&k|&b- &e&o右键 &7&o连续向前发射三次吐息并且提升自己..."
       - ""
 lores:
   per-use: "&7每次使用"
