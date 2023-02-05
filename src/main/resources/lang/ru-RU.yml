@@ -224,7 +224,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&obreak неба и разрезание дьявола, один за другим, выделяет мощную энергию..."
-      - "&b&k|&b- &e&oправый клик &7&oчтобы запустить три дракона подряд и поднять себя..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
       - ""
 lores:
   per-use: "&7Каждый раз использовать"
