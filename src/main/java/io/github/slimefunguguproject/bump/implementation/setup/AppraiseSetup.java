@@ -90,7 +90,8 @@ public final class AppraiseSetup {
 
                 appraiseType.register(Bump.getInstance());
                 Bump.getLocalization().log(Level.INFO, "loaded-appraise-type", type);
-            } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException | InvalidConfigurationException ex) {
+            } catch (NullPointerException | IllegalArgumentException | AppraiseTypeKeyConflictException |
+                     InvalidConfigurationException ex) {
                 Bump.getLocalization().log(Level.SEVERE, "error-loading-appraise-type", type, ex.getMessage());
             }
         }

@@ -21,7 +21,7 @@ public final class WikiUtils {
             Class<?> clazz = Class.forName("net.guizhanss.slimefun4.utils.WikiUtils");
             clazz.getMethod("setupJson", Plugin.class).invoke(null, Bump.getInstance());
         } catch (ClassNotFoundException | NoSuchMethodException | NullPointerException
-            | IllegalAccessException | InvocationTargetException e) {
+                 | IllegalAccessException | InvocationTargetException e) {
             Bump.log(Level.WARNING, "Cannot load wiki pages. You can ignore this message if you are using Slimefun DEV/RC version.");
         }
     }

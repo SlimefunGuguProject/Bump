@@ -164,7 +164,7 @@ public final class Bump extends AbstractAddon {
             updaterStart.invoke(null, this, getFile(), getGithubUser(), getGithubRepo(), getGithubBranch(), false);
         } catch (Exception ignored) {
             // use updater in lib
-            new GuizhanBuildsUpdater(this, getFile(), getGithubUser(), getGithubRepo(),  getGithubBranch(), false).start();
+            new GuizhanBuildsUpdater(this, getFile(), getGithubUser(), getGithubRepo(), getGithubBranch(), false).start();
         }
     }
 

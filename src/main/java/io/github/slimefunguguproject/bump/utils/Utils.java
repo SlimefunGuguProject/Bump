@@ -69,7 +69,7 @@ public final class Utils {
             Object result = clazz.getMethod("getName", Material.class).invoke(null, material);
             return String.valueOf(result);
         } catch (ClassNotFoundException | NoSuchMethodException | NullPointerException
-            | IllegalAccessException | InvocationTargetException e) {
+                 | IllegalAccessException | InvocationTargetException e) {
             return StringUtil.humanize(material.toString());
         }
     }
