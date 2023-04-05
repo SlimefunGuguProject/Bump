@@ -6,7 +6,7 @@ import org.bukkit.ChatColor;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.implementation.groups.BumpItemGroups;
-import io.github.slimefunguguproject.bump.utils.Strings;
+import io.github.slimefunguguproject.bump.utils.constant.Strings;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 
 import dev.sefiraat.sefilib.slimefun.itemgroup.MenuItem;

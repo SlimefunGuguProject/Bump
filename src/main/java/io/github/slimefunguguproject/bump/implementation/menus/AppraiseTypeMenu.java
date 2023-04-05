@@ -20,8 +20,8 @@ import io.github.slimefunguguproject.bump.api.appraise.AppraiseAttribute;
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
-import io.github.slimefunguguproject.bump.utils.Strings;
 import io.github.slimefunguguproject.bump.utils.Utils;
+import io.github.slimefunguguproject.bump.utils.constant.Strings;
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun;
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils;
 

@@ -5,8 +5,8 @@ import javax.annotation.Nonnull;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
 
-import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
+import io.github.slimefunguguproject.bump.utils.constant.Keys;
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
