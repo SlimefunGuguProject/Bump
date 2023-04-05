@@ -7,7 +7,6 @@ import com.google.common.base.Preconditions;
 
 import org.bukkit.attribute.Attribute;
 
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NonNull;
 

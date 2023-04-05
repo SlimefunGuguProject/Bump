@@ -28,7 +28,6 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
 import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;

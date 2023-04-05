@@ -17,9 +17,9 @@ import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
 
-import lombok.experimental.UtilityClass;
-
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
+
+import lombok.experimental.UtilityClass;
 
 /**
  * This utility class contains methods about configuration files.
