@@ -1,4 +1,4 @@
-package io.github.slimefunguguproject.bump.utils;
+package io.github.slimefunguguproject.bump.utils.constant;
 
 import org.bukkit.ChatColor;
 

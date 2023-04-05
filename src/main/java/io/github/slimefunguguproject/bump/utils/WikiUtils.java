@@ -22,7 +22,7 @@ public final class WikiUtils {
             clazz.getMethod("setupJson", Plugin.class).invoke(null, Bump.getInstance());
         } catch (ClassNotFoundException | NoSuchMethodException | NullPointerException
                  | IllegalAccessException | InvocationTargetException e) {
-            Bump.log(Level.WARNING, "Cannot load wiki pages. You can ignore this message if you are using Slimefun DEV/RC version.");
+            Bump.log(Level.WARNING, "Cannot load wiki pages. You can safely ignore this message if you are using Official Slimefun DEV/RC version.");
         }
     }
 }

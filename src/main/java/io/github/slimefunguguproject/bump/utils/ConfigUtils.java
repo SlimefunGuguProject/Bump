@@ -11,6 +11,7 @@ import org.bukkit.Material;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.inventory.EquipmentSlot;
 
+import io.github.slimefunguguproject.bump.utils.constant.Patterns;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
 

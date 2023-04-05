@@ -27,7 +27,7 @@ import org.bukkit.Tag;
 import io.github.slimefunguguproject.bump.api.exceptions.TagMisconfigurationException;
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.JsonUtils;
-import io.github.slimefunguguproject.bump.utils.Patterns;
+import io.github.slimefunguguproject.bump.utils.constant.Patterns;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
 
 /**
