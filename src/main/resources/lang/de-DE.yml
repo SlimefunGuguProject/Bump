@@ -239,7 +239,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oDurchbrechen des Himmels und Schneiden des Teufels, einer nach dem anderen emittiert starke Energie..."
-      - "&b&k|&b- &e&oRechtsklick &7&oum drei Drachenatmen in Folge abzufeuern und es erhebt dich..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
       - ""
 lores:
   per-use: "&7pro Verwendung"
