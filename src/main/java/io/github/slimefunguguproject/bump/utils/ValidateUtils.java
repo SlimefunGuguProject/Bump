@@ -21,8 +21,6 @@ public final class ValidateUtils {
      * @param itemStack The {@link ItemStack} to be validated.
      *
      * @return if the {@link ItemStack} is valid.
-     *
-     * @throws IllegalArgumentException when the {@link ItemStack} is invalid.
      */
     public static boolean noAirItem(@Nullable ItemStack itemStack) {
         try {

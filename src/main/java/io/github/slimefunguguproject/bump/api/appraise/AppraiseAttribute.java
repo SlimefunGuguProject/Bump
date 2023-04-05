@@ -1,6 +1,9 @@
 package io.github.slimefunguguproject.bump.api.appraise;
 
 import javax.annotation.Nonnull;
+import javax.annotation.ParametersAreNonnullByDefault;
+
+import com.google.common.base.Preconditions;
 
 import org.bukkit.attribute.Attribute;
 
@@ -13,7 +16,6 @@ import lombok.NonNull;
  *
  * @author ybw0014
  */
-@AllArgsConstructor
 @Getter
 public final class AppraiseAttribute {
     @NonNull
@@ -21,7 +23,24 @@ public final class AppraiseAttribute {
     private final double min;
     private final double max;
 
-    private double weight;
+    private double weight = -1;
+
+    @ParametersAreNonnullByDefault
+    public AppraiseAttribute(Attribute attribute, double min, double max) {
+        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
+        Preconditions.checkArgument(min <= max, "The minimum value cannot be larger than the maximum value");
+
+        this.attribute = attribute;
+        this.min = min;
+        this.max = max;
+    }
+
+    @ParametersAreNonnullByDefault
+    public AppraiseAttribute(Attribute attribute, double min, double max, double weight) {
+        this(attribute, min, max);
+
+        this.weight = weight;
+    }
 
     /**
      * Set the weight of this attribute.
