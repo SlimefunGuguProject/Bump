@@ -8,11 +8,16 @@ import java.util.Set;
 import javax.annotation.Nonnull;
 
 import org.bukkit.Material;
+import org.bukkit.configuration.Configuration;
 import org.bukkit.configuration.InvalidConfigurationException;
 import org.bukkit.inventory.EquipmentSlot;
 
+import io.github.slimefunguguproject.bump.utils.constant.Patterns;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
+import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.common.CommonPatterns;
+
+import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
 import lombok.experimental.UtilityClass;
 
@@ -23,6 +28,20 @@ import lombok.experimental.UtilityClass;
  */
 @UtilityClass
 public final class ConfigUtils {
+    /**
+     * Add the missing config options in {@link AddonConfig}.
+     *
+     * @param config The {@link AddonConfig} to deal with.
+     */
+    public static void addMissingOptions(AddonConfig config) {
+        Configuration defaultConfig = config.getDefaults();
+        for (String key : defaultConfig.getKeys(true)) {
+            if (!config.contains(key)) {
+                config.set(key, defaultConfig.get(key));
+            }
+        }
+    }
+
     /**
      * This method will parse {@link List} of material {@link String} into
      * {@link Set} of {@link Material}.
@@ -39,7 +58,7 @@ public final class ConfigUtils {
      */
     @Nonnull
     public static Set<Material> parseMaterials(@Nonnull List<String> materialList) throws InvalidConfigurationException {
-        ValidateUtils.noNullElements(materialList);
+        Validate.noNullElements(materialList);
 
         Set<Material> materials = new HashSet<>();
         for (String value : materialList) {
@@ -78,7 +97,7 @@ public final class ConfigUtils {
      */
     @Nonnull
     public static Set<EquipmentSlot> parseEquipmentSlots(@Nonnull List<String> slotList) throws InvalidConfigurationException {
-        ValidateUtils.noNullElements(slotList);
+        Validate.noNullElements(slotList);
 
         Set<EquipmentSlot> equipmentSlots = new HashSet<>();
         for (String value : slotList) {

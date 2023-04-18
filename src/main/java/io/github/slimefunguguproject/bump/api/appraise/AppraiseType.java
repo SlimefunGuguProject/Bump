@@ -28,9 +28,9 @@ import org.bukkit.inventory.ItemStack;
 import io.github.slimefunguguproject.bump.api.exceptions.AppraiseTypeKeyConflictException;
 import io.github.slimefunguguproject.bump.core.BumpRegistry;
 import io.github.slimefunguguproject.bump.implementation.Bump;
-import io.github.slimefunguguproject.bump.utils.ValidateUtils;
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon;
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem;
+import io.github.thebusybiscuit.slimefun4.libraries.commons.lang.Validate;
 
 import net.guizhanss.guizhanlib.utils.RandomUtil;
 import net.guizhanss.guizhanlib.utils.StringUtil;
@@ -173,7 +173,7 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType setDescription(String... description) {
-        ValidateUtils.noNullElements(description);
+        Validate.noNullElements(description);
         return setDescription(Arrays.asList(description));
     }
 
@@ -187,7 +187,7 @@ public class AppraiseType {
     @ParametersAreNonnullByDefault
     public final AppraiseType setDescription(List<String> description) {
         checkState();
-        ValidateUtils.noNullElements(description);
+        Validate.noNullElements(description);
         this.description = description;
         return this;
     }
@@ -265,8 +265,6 @@ public class AppraiseType {
     public final AppraiseType addAttribute(Attribute attribute, double min, double max, double weight) {
         checkState();
 
-        Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
-        Preconditions.checkArgument(min <= max, "The minimum value cannot be larger than the maximum value");
         Preconditions.checkArgument(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
         if (weight != -1) {
             Preconditions.checkArgument(usedPercentile + weight <= 100, "The overall weight exceeds 100");
@@ -336,7 +334,7 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidSlimefunItemIds(String... slimefunItemIds) {
-        ValidateUtils.noNullElements(slimefunItemIds);
+        Validate.noNullElements(slimefunItemIds);
         return addValidSlimefunItemIds(Arrays.asList(slimefunItemIds));
     }
 
@@ -350,7 +348,7 @@ public class AppraiseType {
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidSlimefunItemIds(Collection<String> slimefunItemIds) {
         checkState();
-        ValidateUtils.noNullElements(slimefunItemIds);
+        Validate.noNullElements(slimefunItemIds);
         validSlimefunItemIds.addAll(slimefunItemIds);
         return this;
     }
@@ -364,7 +362,7 @@ public class AppraiseType {
      */
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidEquipmentSlots(EquipmentSlot... equipmentSlots) {
-        ValidateUtils.noNullElements(equipmentSlots);
+        Validate.noNullElements(equipmentSlots);
         return addValidEquipmentSlots(Arrays.asList(equipmentSlots));
     }
 
@@ -378,7 +376,7 @@ public class AppraiseType {
     @ParametersAreNonnullByDefault
     public final AppraiseType addValidEquipmentSlots(Collection<EquipmentSlot> equipmentSlots) {
         checkState();
-        ValidateUtils.noNullElements(equipmentSlots);
+        Validate.noNullElements(equipmentSlots);
         validEquipmentSlots.addAll(equipmentSlots);
         return this;
     }

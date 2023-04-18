@@ -16,6 +16,7 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType;
 import io.github.slimefunguguproject.bump.implementation.Bump;
+import io.github.slimefunguguproject.bump.utils.constant.Keys;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;

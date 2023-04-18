@@ -4,7 +4,7 @@ import io.github.slimefunguguproject.bump.implementation.items.machines.Appraisa
 import io.github.thebusybiscuit.slimefun4.core.attributes.ItemAttribute;
 
 /**
- * This {@link ItemAttribute} indicates that this item has cooldown time.
+ * This {@link ItemAttribute} indicates that this item can be appraised.
  * <p>
  * Implement this interface if the item can be appraised in {@link AppraisalInstrument} directly.
  *

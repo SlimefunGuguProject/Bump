@@ -2,7 +2,7 @@ package io.github.slimefunguguproject.bump.core.services;
 
 import javax.annotation.Nonnull;
 
-import org.bukkit.configuration.Configuration;
+import io.github.slimefunguguproject.bump.utils.ConfigUtils;
 
 import net.guizhanss.guizhanlib.slimefun.addon.AddonConfig;
 
@@ -16,12 +16,7 @@ public final class ConfigUpdateService {
 
     public ConfigUpdateService(@Nonnull AddonConfig config) {
         if (config.getInt("version", 1) < CURRENT_VERSION) {
-            Configuration defaultConfig = config.getDefaults();
-            for (String key : defaultConfig.getKeys(true)) {
-                if (!config.contains(key)) {
-                    config.set(key, defaultConfig.get(key));
-                }
-            }
+            ConfigUtils.addMissingOptions(config);
             config.set("version", CURRENT_VERSION);
             config.save();
         }

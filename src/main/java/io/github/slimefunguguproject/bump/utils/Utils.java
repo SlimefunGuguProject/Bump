@@ -14,6 +14,11 @@ import net.guizhanss.guizhanlib.utils.StringUtil;
 
 import lombok.experimental.UtilityClass;
 
+/**
+ * Common utilities.
+ *
+ * @author ybw0014
+ */
 @UtilityClass
 @SuppressWarnings("ConstantConditions")
 public final class Utils {
@@ -57,9 +62,9 @@ public final class Utils {
     }
 
     /**
-     * Get the material name.
+     * Get the {@link Material} name.
      *
-     * @param material The {@link Material}
+     * @param material The {@link Material}.
      *
      * @return The material name in Simplified Chinese if GuizhanLibPlugin exists. Otherwise, in English.
      */

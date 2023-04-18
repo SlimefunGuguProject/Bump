@@ -10,7 +10,7 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack;
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType;
 
 /**
- * A {@link SlimefunItem} in hidden item group.
+ * A {@link SlimefunItem} in hidden item group, usually deprecated or secret item.
  *
  * @author ybw0014
  */

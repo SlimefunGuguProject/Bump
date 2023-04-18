@@ -19,9 +19,9 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import io.github.slimefunguguproject.bump.implementation.Bump;
 import io.github.slimefunguguproject.bump.utils.AppraiseUtils;
-import io.github.slimefunguguproject.bump.utils.Keys;
 import io.github.slimefunguguproject.bump.utils.Utils;
 import io.github.slimefunguguproject.bump.utils.ValidateUtils;
+import io.github.slimefunguguproject.bump.utils.constant.Keys;
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag;
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI;
 
