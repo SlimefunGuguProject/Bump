@@ -53,18 +53,23 @@ public final class Bump extends AbstractAddon {
     }
 
     @Nonnull
+    private static Bump inst() {
+        return getInstance();
+    }
+
+    @Nonnull
     public static LocalizationService getLocalization() {
-        return ((Bump) getInstance()).localization;
+        return inst().localization;
     }
 
     @Nonnull
     public static BumpRegistry getRegistry() {
-        return ((Bump) getInstance()).registry;
+        return inst().registry;
     }
 
     @Nonnull
     public static SoundService getSoundService() {
-        return ((Bump) getInstance()).soundService;
+        return inst().soundService;
     }
 
     @Override
