@@ -25,7 +25,7 @@ public final class AppraiseAttribute {
     private double weight = -1;
 
     @ParametersAreNonnullByDefault
-    public AppraiseAttribute(Attribute attribute, double min, double max) {
+    AppraiseAttribute(Attribute attribute, double min, double max) {
         Preconditions.checkArgument(attribute != null, "Attribute cannot be null");
         Preconditions.checkArgument(min <= max, "The minimum value cannot be larger than the maximum value");
 
@@ -35,7 +35,7 @@ public final class AppraiseAttribute {
     }
 
     @ParametersAreNonnullByDefault
-    public AppraiseAttribute(Attribute attribute, double min, double max, double weight) {
+    AppraiseAttribute(Attribute attribute, double min, double max, double weight) {
         this(attribute, min, max);
 
         this.weight = weight;
