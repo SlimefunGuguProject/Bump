@@ -59,7 +59,7 @@ public final class LegacyAppraisalPaper extends LimitedUseItem {
             PersistentDataAPI.setInt(newMeta, getStorageKey(), usesLeft);
             newItem.setItemMeta(newMeta);
 
-            p.getInventory().setItemInMainHand(newItem);
+            p.getInventory().setItem(e.getHand(), newItem);
 
             Bump.getLocalization().sendMessage(p, "tool.appraisal_paper.legacy");
         };
