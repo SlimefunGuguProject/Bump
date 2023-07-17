@@ -2,11 +2,13 @@
 
 # Bump
 
-- [English(United States)](/README-en-US.md)
+- [English (United States)](/README-en-US.md)
 
 作者: bxx2004 
 
-维护者: Lobbytech-MC, zimzaza4, haiman233, ybw0014
+前维护者：Lobbytech-MC，zimzaza4
+
+现维护者：SlimefunGuguProject（粘液科技简中汉化组）
 
 Bump 是一个 Slimefun4 附属插件，它添加了魔法武器、食物、武器鉴定系统。
 
@@ -14,13 +16,13 @@ Bump 是一个 Slimefun4 附属插件，它添加了魔法武器、食物、武�
 
 ### 2.0
 
-Bump 2.0 由 ybw0014 完成主要重写工作，基于 Slimefun RC-30 版本，并添加了多语言支持。  
-Minecraft 版本: 1.14 及以上版本  
+Bump 2.0 由 ybw0014 完成主要重写工作，并由 ybw0014 与 haiman233 共同维护，基于 Slimefun RC-30 版本，并添加了多语言支持。  
+Minecraft 版本: 1.16 及以上版本  
 Slimefun 版本: RC-30 及以上版本
 
 点击下方图片前往下载：
 
-[![构建状态](https://builds.guizhanss.net/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.net/SlimefunGuguProject/Bump/main)
+[![构建状态](https://builds.guizhanss.com/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.com/SlimefunGuguProject/Bump/main)
 
 <details><summary>旧版本，仅中文</summary>
 
@@ -73,11 +75,19 @@ https://www.mcbbs.net/thread-1125935-1-1.html
 我们目前支持以下语言来显示插件内容：
 
 - `en-US` 英语（美国）
-  - 感谢 @UniverseNetwork 为Bump的英文翻译提供参考
+    - 感谢 @UniverseNetwork 提供的翻译
+- `en-UK` 英语（英国）
 - `zh-CN` 简体中文
 - `zh-TW` 繁体中文
-- `ja` 日语
-  - 感谢 @SchnTgaiSpock 为Bump的日文翻译提供参考
+- `ru-RU` 俄语
+- `pt-BR` 葡萄牙语（巴西）
+    - 感谢 @N1kyZ 提供的翻译
+- `ja-JP` 日语
+    - 感谢 @SchnTgaiSpock 提供的翻译
+- `nl-NL` 荷兰语 37%
+- `de-DE` 德语 35%
+- `es-ES` 西班牙语 17%
+- `tr-TR` 土耳其语 3%
 
 默认语言为英语（美国） `en-US`。  
 你可以在`config.yml`中更改`options.lang`字段来应用新的语言。

@@ -6,7 +6,9 @@
 
 Author: bxx2004
 
-Maintainers: Lobbytech-MC, zimzaza4, haiman233, ybw0014
+Previous maintainers: Lobbytech-MC, zimzaza4
+
+Current maintainer: SlimefunGuguProject
 
 Bump is a Slimefun addon that adds magic weapons, food and an appraisal system.
 
@@ -21,7 +23,7 @@ Slimefun version: RC-30 and above
 
 Click the image below to download：
 
-[![Buils Status](https://builds.guizhanss.net/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.net/SlimefunGuguProject/Bump/main)
+[![Buils Status](https://builds.guizhanss.com/f/SlimefunGuguProject/Bump/main/badge.svg)](https://builds.guizhanss.com/SlimefunGuguProject/Bump/main)
 
 ## About Bump
 
