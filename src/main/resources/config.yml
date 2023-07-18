@@ -5,7 +5,7 @@ options:
   # Auto update
   auto-update: true
   # Bump language (Available languages: https://github.com/SlimefunGuguProject/Bump#supported-languages)
-  lang: zh-CN
+  lang: en-US
   # Enable researches
   enable-researches: true
 
