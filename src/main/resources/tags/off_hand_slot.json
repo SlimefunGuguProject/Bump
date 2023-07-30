@@ -11,6 +11,7 @@
         "minecraft:bundle",
         "minecraft:shears",
         "minecraft:goat_horn",
-        "minecraft:spyglass"
+        "minecraft:spyglass",
+        "minecraft:brush"
     ]
 }
