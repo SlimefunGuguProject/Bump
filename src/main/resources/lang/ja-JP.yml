@@ -239,7 +239,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&o天滅と魔殺は次々に強大なエネルギーを発する..."
-      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
+      - ""
       - ""
 lores:
   per-use: "&7毎回使用"
