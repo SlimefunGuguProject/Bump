@@ -1,7 +1,7 @@
 {
-    "values": [
-        "minecraft:saddle",
-        "#bump:chestplate",
-        "#bump:horse_armor"
-    ]
+	"values": [
+		"minecraft:saddle",
+		"#bump:chestplate",
+		"#bump:horse_armor"
+	]
 }
