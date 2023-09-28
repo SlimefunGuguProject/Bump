@@ -139,7 +139,7 @@ items:
   quality_identifier:
     lore:
       - ""
-      - "&b&k|&b- Add some random attributes for applicable items!"
+      - ""
       - "&b&k|&b- 非常昂貴, 一定要保存好..."
       - ""
   appraisal_paper_armor:
@@ -232,7 +232,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&o破天斬魔,相繼發出強大的能量..."
-      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
+      - ""
       - ""
 lores:
   per-use: "&7每次使用"

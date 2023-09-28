@@ -133,7 +133,7 @@ items:
     lore:
       - ""
       - "&b&k|&b- Een willekeurig harnas attribuut voor een bepaald voorwerp!"
-      - "&b&k|&b- Very expensive, be sure to keep it..."
+      - ""
       - ""
 messages:
   not-enough-power: "Niet genoeg energie."
