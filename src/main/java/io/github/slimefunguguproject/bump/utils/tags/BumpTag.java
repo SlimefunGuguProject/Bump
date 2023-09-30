@@ -95,6 +95,11 @@ public enum BumpTag implements Tag<Material> {
     HEAD,
 
     /**
+     * This includes all carpets.
+     */
+    CARPET,
+
+    /**
      * This includes all materials that is suitable for main hand slot.
      */
     HAND_SLOT,
