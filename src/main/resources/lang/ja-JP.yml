@@ -136,6 +136,12 @@ items:
       - ""
       - "&b&k|&b- 奇妙なアイテムをアップグレードするために使用される..."
       - ""
+  compressed_random_equipment:
+    name: "&e圧縮ランダムな装備"
+    lore:
+      - ""
+      - "&b&k|&b- どうやらもう使えません…"
+      - ""
   getgold_spade:
     name: "&e金取りのしゃべる"
     lore:
@@ -239,13 +245,20 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&o天滅と魔殺は次々に強大なエネルギーを発する..."
-      - ""
+      - "&b&k|&b- &e&o右クリック &7&oして前にドラゴンブレスを三つ連射して、自分を強化します..."
       - ""
 lores:
   per-use: "&7毎回使用"
   not-appraised: "&b&k|&b- &7&oまだ鑑定されていない"
   appraised: "&b&k|&b- &7&o鑑定された &b| &dレベル&e&l{0}"
   click-to-open: "&7\u21E8 &aクリックして開く"
+  any-random-equipment: "&f任意のランダムな装備"
+recipes:
+  compressor_mock:
+    name: "&b圧縮機"
+    lore:
+      - "&7このアイテムは表示されたように"
+      - "&7圧縮機にクラフトされています"
 researches:
   food: "Bumpの食品"
   random_equipment: "ランダムな装備"
@@ -305,12 +318,36 @@ messages:
     attribute-grindstone:
       invalid: "&cこのアイテムはまだ鑑定していません！"
       success: "&a鑑定結果が排除されました！"
+console:
+  loading-appraise-types: "設定ファイルから鑑定タイプを読み込み中。"
+  loading-appraise-type: "鑑定タイプ「{0}」を読み込み中"
+  disabled-appraise-type: "鑑定タイプ「{0}」が無効されているので、無視しています。"
+  loaded-appraise-type: "鑑定タイプ「{0}」を読み込みました。"
+  error-loading-appraise-type: "鑑定タイプ「{0}」を読み込み中にエラーが発生しました：{1}"
+  missing-appraise-stars: "設定に「appraise.stars」の部分が欠けています。"
+  use-default-appraise-stars: "デフォルトの鑑定星設定を使用しています。"
+  invalid-appraise-stars: "鑑定星は0から127までしか設定できません！"
+  error-sound: "音の設定ファイルを読み込み中にエラーが発生しました：{0}"
+  invalid-sound-config: "BumpSound: {0} の設定が見つかれません"
+  invalid-sound-volume: "BumpSound「{0}」の無効な音量：{1} ({2}以上でなければならない)"
+  invalid-sound-pitch: "BumpSound「{0}」の無効な音高：{1} ({2}以上でなければならない)"
 gui:
   appraise:
     name: "&eクリックして鑑定する"
     lore:
       - "&7<- 鑑定したいアイテムを左側に入れてください"
       - "&eここにクリックして鑑定する"
+  appraise_type_selector:
+    name: "&b現在のタイプ：&e{0}"
+    lore:
+      - ""
+      - "&7Bumpのカテゴリーに詳細を表示する"
+      - "&eクリックしてこのタイプを選択します"
+  appraise_type_selector_menu:
+    title: "&6鑑定タイプ選択"
+    lore:
+      - ""
+      - "&eクリックしてこのタイプを選択します"
   appraisal_paper:
     name: "&eクリックして適用する"
     lore:
@@ -321,4 +358,28 @@ gui:
     lore:
       - "&7<- 鑑定されたアイテムを左側においてください。"
       - "&7ここをクリックして属性を排除する"
+appraise_info:
+  name: "&b鑑定タイプ：&e{0}"
+  click: "&eクリックして詳細表示"
+  equipment_type:
+    name: "&a該当の装備タイプ：&b{0}"
+    any: "&7任意なアイテム"
+    vanilla: "&7原版アイテムのみ"
+    slimefun: "&7Slimefunアイテムのみ"
+  material:
+    name: "&a装備の材料をチェック: &b{0}"
+    lore_enabled:
+      - "&7以下のアイテムのみが受け入れられます："
+    lore_enabled_more: "&7後は{0}つ…"
+    lore_disabled:
+      - "&7アイテムの材料はチェックされません。"
+  equipment_slot:
+    name: "&a装備スロット"
+    lore:
+      - "&7属性を与えます"
+      - "&7装備スロットへ："
+  attribute:
+    name: "&e属性：&9{0}"
+    range: "&7範囲：&b{0} &7~ &b{1}"
+    weight: "&7重量：&b{0}％"
 
