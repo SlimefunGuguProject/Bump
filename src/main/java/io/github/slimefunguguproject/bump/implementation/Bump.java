@@ -179,6 +179,6 @@ public final class Bump extends AbstractAddon {
     }
 
     private boolean isSCSlimefun(@Nonnull String sfVersion) {
-        return sfVersion.endsWith("-canary") || sfVersion.endsWith("-release");
+        return sfVersion.endsWith("-canary") || sfVersion.endsWith("-release") || sfVersion.endsWith("-Beta") || sfVersion.endsWith("-Insider");
     }
 }

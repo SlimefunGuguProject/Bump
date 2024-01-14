@@ -24,7 +24,7 @@ repositories {
 }
 
 dependencies {
-    implementation 'net.guizhanss:GuizhanLib-api:1.6.1'
+    implementation 'net.guizhanss:GuizhanLib-api:1.7.0'
     implementation 'dev.sefiraat:SefiLib:0.2.6'
     implementation 'org.bstats:bstats-bukkit:3.0.2'
 
@@ -53,11 +53,11 @@ processResources {
     }
 }
 
-sonarqube {
+sonar {
     properties {
-        property 'sonar.host.url', 'https://sonarcloud.io'
-        property 'sonar.organization', 'slimefunguguproject'
-        property 'sonar.projectKey', 'SlimefunGuguProject_Bump'
+        property "sonar.projectKey", "SlimefunGuguProject_Bump"
+        property "sonar.organization", "slimefunguguproject"
+        property "sonar.host.url", "https://sonarcloud.io"
     }
 }
 
