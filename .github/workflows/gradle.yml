@@ -23,10 +23,10 @@ jobs:
           distribution: temurin
 
       - name: Validate Gradle wrapper
-        uses: gradle/wrapper-validation-action@v1.1.0
+        uses: gradle/wrapper-validation-action@v2
 
       - name: Build with Gradle
-        uses: gradle/gradle-build-action@v2.11.1
+        uses: gradle/gradle-build-action@v3
         with:
           arguments: build
 

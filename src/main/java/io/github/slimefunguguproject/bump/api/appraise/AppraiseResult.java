@@ -30,7 +30,7 @@ import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil;
 import lombok.Getter;
 
 /**
- * An {@link AppraiseResult} contains results of attributes and
+ * An {@link AppraiseResult} contains results of attributes and the weights.
  *
  * @author ybw0014
  */
@@ -40,20 +40,17 @@ public final class AppraiseResult {
     /**
      * This is a reference to the {@link AppraiseType} that generates this {@link AppraiseResult}.
      */
-    @Getter
     private final AppraiseType appraiseType;
 
     /**
      * This unmodifiable map stores the {@link AppraiseAttribute} and result.
      */
-    @Getter
     private final Map<AppraiseAttribute, Double> result;
 
     /**
-     * This represents the calculated overall percentile.
+     * This represents the calculated overall percentage.
      */
-    @Getter
-    private final double totalPercentile;
+    private final double totalPercentage;
 
     /**
      * Construct this {@link AppraiseResult} from {@link Builder}
@@ -63,7 +60,7 @@ public final class AppraiseResult {
     private AppraiseResult(@Nonnull Builder builder) {
         this.appraiseType = builder.appraiseType;
         this.result = Map.copyOf(builder.result);
-        this.totalPercentile = builder.totalPercentile;
+        this.totalPercentage = builder.totalPercentage;
     }
 
     /**
@@ -74,7 +71,7 @@ public final class AppraiseResult {
      */
     public byte getStars() {
         for (Map.Entry<Byte, Byte> entry : Bump.getRegistry().getStarThresholds().entrySet()) {
-            if (totalPercentile >= entry.getKey()) {
+            if (totalPercentage >= entry.getKey()) {
                 return entry.getValue();
             }
         }
@@ -140,7 +137,7 @@ public final class AppraiseResult {
     static class Builder {
         private final AppraiseType appraiseType;
         private final Map<AppraiseAttribute, Double> result = new HashMap<>();
-        private double totalPercentile = 0;
+        private double totalPercentage = 0;
 
         Builder(@Nonnull AppraiseType type) {
             appraiseType = type;
@@ -156,7 +153,7 @@ public final class AppraiseResult {
          */
         Builder add(AppraiseAttribute attribute, double result) {
             this.result.put(attribute, result);
-            totalPercentile += attribute.getWeightedPercentile(result);
+            totalPercentage += attribute.getWeightedPercentage(result);
             return this;
         }
 

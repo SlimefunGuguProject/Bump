@@ -85,15 +85,15 @@ public final class AppraiseAttribute {
     }
 
     /**
-     * Get the percentile of result value within range.
+     * Get the percentage of result value within range.
      * <p>
      * Return range from 0 to 100.
      *
      * @param value The result value.
      *
-     * @return The percentile of the result value.
+     * @return The percentage of the result value.
      */
-    public double getPercentile(double value) {
+    public double getPercentage(double value) {
         if (value <= min) {
             return 0;
         } else if (value >= max) {
@@ -104,13 +104,13 @@ public final class AppraiseAttribute {
     }
 
     /**
-     * Get the weighted percentile of result value.
+     * Get the weighted percentage of result value.
      *
      * @param value The result value.
      *
-     * @return The weighted percentile of the result value.
+     * @return The weighted percentage of the result value.
      */
-    public double getWeightedPercentile(double value) {
-        return getPercentile(value) * weight / 100.D;
+    public double getWeightedPercentage(double value) {
+        return getPercentage(value) * weight / 100.D;
     }
 }

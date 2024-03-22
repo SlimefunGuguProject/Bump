@@ -56,17 +56,20 @@ public class AppraiseType {
     private final NamespacedKey key;
 
     /**
-     * This is the display name of {@link AppraiseType}.
+     * The display name of {@link AppraiseType}.
      */
     @Getter
     private String name;
 
     /**
-     * This is the description of {@link AppraiseType}.
+     * The description of {@link AppraiseType}.
      */
     @Getter
     private List<String> description = new ArrayList<>();
 
+    /**
+     * The permission required to use this {@link AppraiseType}.
+     */
     @Getter
     private String permission;
 
@@ -77,9 +80,9 @@ public class AppraiseType {
     private Set<AppraiseAttribute> attributes = new LinkedHashSet<>();
 
     /**
-     * This indicates the used percentile of added {@link AppraiseAttribute}.
+     * This indicates the used percentage of added {@link AppraiseAttribute}.
      */
-    private double usedPercentile;
+    private double usedPercentage;
 
     /**
      * This indicates whether check equipment material when appraising.
@@ -267,14 +270,14 @@ public class AppraiseType {
 
         Preconditions.checkArgument(weight == -1 || (weight >= 0 && weight <= 100), "The weight should be -1 or between 0 and 100");
         if (weight != -1) {
-            Preconditions.checkArgument(usedPercentile + weight <= 100, "The overall weight exceeds 100");
+            Preconditions.checkArgument(usedPercentage + weight <= 100, "The overall weight exceeds 100");
         }
 
         AppraiseAttribute attr = new AppraiseAttribute(attribute, min, max, weight);
         attributes.add(attr);
 
         if (weight != -1) {
-            usedPercentile += weight;
+            usedPercentage += weight;
         }
 
         return this;
@@ -405,17 +408,17 @@ public class AppraiseType {
             .filter(appraiseAttribute -> appraiseAttribute.getWeight() == -1)
             .collect(Collectors.toSet());
 
-        // check percentile
-        if (usedPercentile < 100 && noWeightAttributes.isEmpty()) {
-            throw new IllegalArgumentException("Used percentile is less than 100");
+        // check percentage
+        if (usedPercentage < 100 && noWeightAttributes.isEmpty()) {
+            throw new IllegalArgumentException("Used percentage is less than 100");
         }
 
         // split remaining weight
         int num = noWeightAttributes.size();
-        double percentile = (100 - usedPercentile) / num;
+        double percentage = (100 - usedPercentage) / num;
         for (AppraiseAttribute attr : noWeightAttributes) {
-            attr.setWeight(percentile);
-            usedPercentile += percentile;
+            attr.setWeight(percentage);
+            usedPercentage += percentage;
         }
 
         // registry
