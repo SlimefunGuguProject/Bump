@@ -14,7 +14,7 @@ interface CooldownItem : ItemAttribute {
     /**
      * This variable returns the cooldown time in seconds.
      */
-    val cooldown: Int
+    fun getCooldown(): Int
 
     /**
      * Set the [ItemStack] to cooldown.
@@ -44,7 +44,7 @@ interface CooldownItem : ItemAttribute {
         return if (PersistentDataAPI.hasLong(im, Keys.LAST_USED)) {
             val lastUsed = PersistentDataAPI.getLong(im, Keys.LAST_USED)
 
-            lastUsed + cooldown * 1000L < System.currentTimeMillis()
+            lastUsed + getCooldown() * 1000L < System.currentTimeMillis()
         } else {
             true
         }

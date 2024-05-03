@@ -2,36 +2,38 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons
 
 import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound
-import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask
+import io.github.slimefunguguproject.bump.utils.constant.Keys
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType
+import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI
 import org.bukkit.Particle
 import org.bukkit.entity.Player
-import org.bukkit.entity.SmallFireball
 import org.bukkit.inventory.ItemStack
+import org.bukkit.util.Vector
 
 /**
- * [Demon Slayer Sword][DevilSword] will launch [SmallFireball] when using.
+ * [Heaven Breaking Sword][HeavenBreakingSword] will lift player up to the sky when using.
  *
  * @author ybw0014
  */
-class DevilSword(
+class HeavenBreakingSword(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>,
+    recipe: Array<out ItemStack?>,
     hunger: Int,
 ) : BumpSword(itemGroup, itemStack, recipeType, recipe, hunger) {
     override fun onItemUse(p: Player, sword: ItemStack) {
-        Bump.localization.sendActionbarMessage(p, "weapon.devil_sword")
+        Bump.localization.sendActionbarMessage(p, "weapon.heaven_breaking_sword.activated")
 
-        BumpSound.DEVIL_SWORD_USE.playFor(p)
+        // directly up
+        p.velocity = Vector(0, 3, 0)
 
+        BumpSound.SKY_SWORD_USE.playFor(p)
         for (i in 0..19) {
-            val projectile = p.launchProjectile(SmallFireball::class.java)
-            WeaponProjectileTask.track(projectile)
-            p.spawnParticle(Particle.ENCHANTMENT_TABLE, p.location, 1)
+            p.spawnParticle(Particle.EXPLOSION_HUGE, p.location, 1)
         }
+        PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, true)
     }
 }

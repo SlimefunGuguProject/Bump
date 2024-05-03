@@ -81,11 +81,7 @@ types:
       GENERIC_FLYING_SPEED:
         min: -3
         max: 5
-        weight: 7
-      ZOMBIE_SPAWN_REINFORCEMENTS:
-        min: -5
-        max: 5
-        weight: 3
+        weight: 10
 
   horse_armor:
     enabled: true
@@ -114,7 +110,7 @@ types:
       GENERIC_KNOCKBACK_RESISTANCE:
         min: -0.2
         max: 0.8
-        weight: 5
+        weight: 10
       HORSE_JUMP_STRENGTH:
         min: -0.5
         max: 1.4
@@ -123,7 +119,3 @@ types:
         min: -0.5
         max: 1.2
         weight: 15
-      GENERIC_FOLLOW_RANGE:
-        min: -50
-        max: 250
-        weight: 5

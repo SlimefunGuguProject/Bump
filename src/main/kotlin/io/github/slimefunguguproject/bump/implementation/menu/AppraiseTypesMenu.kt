@@ -2,13 +2,15 @@
 
 package io.github.slimefunguguproject.bump.implementation.menu
 
+import io.github.bakedlibs.dough.items.CustomItemStack
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType
 import io.github.slimefunguguproject.bump.core.BumpRegistry
+import io.github.thebusybiscuit.slimefun4.core.services.sounds.SoundEffect
 import io.github.thebusybiscuit.slimefun4.implementation.Slimefun
 import io.github.thebusybiscuit.slimefun4.utils.ChestMenuUtils
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ChestMenu
 import org.bukkit.ChatColor
-import org.bukkit.Sound
+import org.bukkit.Material
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
 import java.util.function.Consumer
@@ -29,6 +31,7 @@ abstract class AppraiseTypesMenu(
         private const val PAGE_SIZE = 36
 
         private const val GUIDE_BACK = 1
+        private const val GUIDE_INFO = 4
 
         private const val PAGE_PREVIOUS = 46
         private const val PAGE_NEXT = 52
@@ -40,6 +43,11 @@ abstract class AppraiseTypesMenu(
             45, 46, 47, 48, 49, 50, 51, 52, 53
         )
     }
+
+    /**
+     * Return the [ItemStack] to display the information of the current page.
+     */
+    abstract fun getInfoItem(): ItemStack
 
     /**
      * Open the menu to [Player].
@@ -61,9 +69,9 @@ abstract class AppraiseTypesMenu(
         chestMenu.open(p)
     }
 
-    private fun displayCollection(player: Player, menu: ChestMenu, page: Int) {
+    private fun displayCollection(p: Player, menu: ChestMenu, page: Int) {
         val appraiseTypes = BumpRegistry.appraiseTypes
-            .filter { type -> type.hasPermission(player) }
+            .filter { type -> type.hasPermission(p) }
             .toList()
         val total = appraiseTypes.size
         val totalPages = ceil(total / PAGE_SIZE.toDouble()).toInt()
@@ -72,17 +80,19 @@ abstract class AppraiseTypesMenu(
 
         val subList = appraiseTypes.subList(start, end)
 
-        setupFooter(player, menu, page, totalPages)
+        // header & footer
+        menu.replaceExistingItem(GUIDE_INFO, getInfoItem())
+        setupFooter(p, menu, page, totalPages)
 
         // Sound
-        player.playSound(player.location, Sound.ITEM_BOOK_PAGE_TURN, 1.0f, 1.0f)
+        SoundEffect.GUIDE_BUTTON_CLICK_SOUND.playFor(p)
 
         // Back
         menu.replaceExistingItem(
             GUIDE_BACK, ChestMenuUtils.getBackButton(
-                player,
+                p,
                 "",
-                ChatColor.GRAY.toString() + Slimefun.getLocalization().getMessage(player, "guide.back.guide")
+                ChatColor.GRAY.toString() + Slimefun.getLocalization().getMessage(p, "guide.back.guide")
             )
         )
         menu.addMenuClickHandler(GUIDE_BACK) { _, _, _, _ ->
@@ -90,6 +100,7 @@ abstract class AppraiseTypesMenu(
             false
         }
 
+        // list appraise types
         for (i in 0 until PAGE_SIZE) {
             val slot = i + 9
 
@@ -107,14 +118,7 @@ abstract class AppraiseTypesMenu(
         }
     }
 
-    abstract fun getDisplayItem(type: AppraiseType): ItemStack
-
     private fun setupFooter(player: Player, menu: ChestMenu, page: Int, totalPages: Int) {
-        for (slot in FOOTER) {
-            menu.replaceExistingItem(slot, ChestMenuUtils.getBackground())
-            menu.addMenuClickHandler(slot, ChestMenuUtils.getEmptyClickHandler())
-        }
-
         menu.replaceExistingItem(PAGE_PREVIOUS, ChestMenuUtils.getPreviousButton(player, page, totalPages))
         menu.addMenuClickHandler(PAGE_PREVIOUS) { p: Player, _, _, _ ->
             val previousPage = page - 1
@@ -132,5 +136,13 @@ abstract class AppraiseTypesMenu(
             }
             false
         }
+    }
+
+    private fun getDisplayItem(type: AppraiseType): ItemStack {
+        return CustomItemStack(
+            Material.PAPER,
+            type.name,
+            type.description
+        )
     }
 }

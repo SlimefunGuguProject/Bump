@@ -14,7 +14,7 @@ class InstantNoodle(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : ItemFood(itemGroup, itemStack, recipeType, recipe) {
     override fun applyFoodEffects(p: Player) {
         FoodLevelUtils.set(p, 20)

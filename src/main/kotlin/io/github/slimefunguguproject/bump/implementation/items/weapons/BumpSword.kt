@@ -17,11 +17,11 @@ abstract class BumpSword(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>,
+    recipe: Array<out ItemStack?>,
     hunger: Int,
 ) : SimpleSlimefunItem<ItemUseHandler>(itemGroup, itemStack, recipeType, recipe), CostHungerItem, CooldownItem {
     init {
-        check(hunger in 0..20) { "Hunger cost must be between 0 and 20" }
+        require(hunger in 0..20) { "Hunger cost must be between 0 and 20" }
     }
 
     private val hungerCostSetting = IntRangeSetting(this, "hunger-cost", 0, hunger, 20)
@@ -32,9 +32,9 @@ abstract class BumpSword(
         addItemSetting(cooldownSetting)
     }
 
-    override val hungerCost = hungerCostSetting.value
+    override fun getHungerCost() = hungerCostSetting.value
 
-    override val cooldown = cooldownSetting.value
+    override fun getCooldown() = cooldownSetting.value
 
     /**
      * This function is called when player use this sword
@@ -44,20 +44,18 @@ abstract class BumpSword(
      */
     abstract fun onItemUse(p: Player, sword: ItemStack)
 
-    override fun getItemHandler(): ItemUseHandler {
-        return ItemUseHandler { e: PlayerRightClickEvent ->
-            val p = e.player
-            val item = e.item
-            if (isCooldown(item)) {
-                if (costHunger(p)) {
-                    setCooldown(item)
-                    onItemUse(p, item)
-                } else {
-                    Bump.localization.sendActionbarMessage(p, "weapon.low-food-level")
-                }
+    override fun getItemHandler() = ItemUseHandler { e: PlayerRightClickEvent ->
+        val p = e.player
+        val item = e.item
+        if (isCooldown(item)) {
+            if (costHunger(p)) {
+                setCooldown(item)
+                onItemUse(p, item)
             } else {
-                Bump.localization.sendActionbarMessage(p, "weapon.cooldown")
+                Bump.localization.sendActionbarMessage(p, "weapon.low-food-level")
             }
+        } else {
+            Bump.localization.sendActionbarMessage(p, "weapon.cooldown")
         }
     }
 }

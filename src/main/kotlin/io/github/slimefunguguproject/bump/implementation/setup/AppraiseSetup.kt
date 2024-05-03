@@ -7,6 +7,7 @@ import io.github.slimefunguguproject.bump.core.BumpRegistry
 import io.github.slimefunguguproject.bump.utils.ConfigUtils
 import io.github.slimefunguguproject.bump.utils.GeneralUtils.valueOfOrNull
 import io.github.slimefunguguproject.bump.utils.constant.Keys.createKey
+import org.bukkit.ChatColor
 import org.bukkit.Material
 import org.bukkit.attribute.Attribute
 import org.bukkit.inventory.EquipmentSlot
@@ -54,9 +55,9 @@ object AppraiseSetup {
                 val materials: Set<Material> = ConfigUtils.parseMaterials(validMaterials)
 
                 val appraiseTypeBuilder = AppraiseType.Builder(type.createKey())
-                    .name(name)
+                    .name(ChatColor.YELLOW.toString() + name)
                     .permission(permission)
-                    .description(description)
+                    .description(description.map { ChatColor.GRAY.toString() + it })
                     .equipmentType(equipmentType)
                     .validEquipmentSlots(equipmentSlots)
                     .checkMaterial(checkMaterial)
@@ -76,9 +77,9 @@ object AppraiseSetup {
                     appraiseTypeBuilder.attribute(attribute, min, max, weight)
                 }
 
-                appraiseTypeBuilder.build(Bump.instance)
+                val appraiseType = appraiseTypeBuilder.build(Bump.instance)
                 Bump.log(Level.INFO, "Loaded appraise type \"$type\"")
-                Bump.debug("")
+                Bump.debug(appraiseType.toString())
             } catch (ex: Exception) {
                 Bump.log(Level.SEVERE, ex, "Failed to load appraise type \"$type\"")
             }

@@ -14,10 +14,10 @@ class Cola(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : ConsumableFood(itemGroup, itemStack, recipeType, recipe) {
     override fun applyFoodEffects(p: Player) {
         FoodLevelUtils.add(p, 6)
-        p.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, 2000, 3))
+        p.addPotionEffect(PotionEffect(PotionEffectType.LEVITATION, 600, 3))
     }
 }

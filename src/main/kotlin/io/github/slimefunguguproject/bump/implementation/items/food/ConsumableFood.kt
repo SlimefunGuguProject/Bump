@@ -17,10 +17,10 @@ abstract class ConsumableFood(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : SimpleSlimefunItem<ItemConsumptionHandler>(itemGroup, itemStack, recipeType, recipe) {
     override fun getItemHandler() = ItemConsumptionHandler { e: PlayerItemConsumeEvent, p: Player, _: ItemStack ->
-        val messageKey = id.lowercase()
+        val messageKey = id.replace(Bump.localization.idPrefix, "").lowercase()
         Bump.localization.sendActionbarMessage(p, "food.$messageKey")
 
         if (p.gameMode != GameMode.CREATIVE) {

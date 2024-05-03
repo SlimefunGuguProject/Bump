@@ -12,7 +12,7 @@ import org.bukkit.inventory.EquipmentSlot
 import org.bukkit.inventory.ItemStack
 import javax.annotation.Nonnull
 
-class AppraiseType internal constructor(
+data class AppraiseType internal constructor(
     val key: NamespacedKey,
     val name: String,
     val description: List<String>,

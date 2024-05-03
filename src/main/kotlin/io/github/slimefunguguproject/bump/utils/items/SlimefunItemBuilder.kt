@@ -7,7 +7,9 @@ import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItem
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil
+import org.bukkit.Material
 import org.bukkit.inventory.ItemStack
+import java.util.logging.Level
 import kotlin.reflect.KClass
 import kotlin.reflect.full.primaryConstructor
 
@@ -51,6 +53,10 @@ inline fun <reified I : SlimefunItem> buildSlimefunItem(
     vararg otherArgs: Any?,
     builder: SlimefunItemBuilder.() -> Unit
 ): SlimefunItemStack {
-    return SlimefunItemBuilder().apply(builder).build(I::class, *otherArgs)
+    try {
+        return SlimefunItemBuilder().apply(builder).build(I::class, *otherArgs)
+    } catch (e: Exception) {
+        Bump.log(Level.SEVERE, e, "Failed to build Slimefun item")
+        return SlimefunItemStack("ERROR", ItemStack(Material.AIR))
+    }
 }
-

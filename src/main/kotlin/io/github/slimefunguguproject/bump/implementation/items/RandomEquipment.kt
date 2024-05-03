@@ -13,7 +13,7 @@ class RandomEquipment(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>,
+    recipe: Array<out ItemStack?>,
 ) : SlimefunItem(itemGroup, itemStack, recipeType, recipe), AppraisableItem {
     override fun postRegister() {
         val compressor: Compressor = (getById("COMPRESSOR") ?: return) as Compressor

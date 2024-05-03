@@ -2,12 +2,10 @@
 
 package io.github.slimefunguguproject.bump.implementation.menu
 
-import io.github.bakedlibs.dough.items.CustomItemStack
 import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseAttribute
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType
 import io.github.slimefunguguproject.bump.utils.GeneralUtils
-import io.github.slimefunguguproject.bump.utils.constant.Strings
 import io.github.slimefunguguproject.bump.utils.items.AppraiseUtils
 import io.github.slimefunguguproject.bump.utils.items.MaterialType
 import io.github.slimefunguguproject.bump.utils.items.buildDisplayItem
@@ -94,7 +92,7 @@ class AppraiseTypeMenu(
     private fun getAppraiseInfoItem(type: AppraiseType): ItemStack {
         return buildDisplayItem {
             material = MaterialType.Material(Material.ANVIL)
-            name = Bump.localization.getGuiItemName("APPRAISE_INFO_NAME", type.name)
+            name = type.name
             lore = AppraiseUtils.getDescriptionLore(type)
         }
     }
@@ -103,8 +101,8 @@ class AppraiseTypeMenu(
         val equipmentType = type.equipmentType.toString()
         return buildDisplayItem {
             material = MaterialType.Material(Material.DIAMOND_SWORD)
-            name = Bump.localization.getGuiItemName("appraise_info.equipment_type.name", equipmentType)
-            lore = Bump.localization.getGuiItemLore("appraise_info.equipment_type.${equipmentType.lowercase()}")
+            name = Bump.localization.getLore("appraise_info.equipment_type.name", equipmentType)
+            lore = listOf(Bump.localization.getLore("appraise_info.equipment_type.${equipmentType.lowercase()}"))
         }
     }
 
@@ -112,8 +110,10 @@ class AppraiseTypeMenu(
         val result: ItemStack
         if (type.checkMaterial) {
             // Enabled checking material, display materials as well (cap at 10)
-            val matLore: MutableList<String> = Bump.localization.getStringList("appraise_info.material.lore_enabled")
-            matLore.add("")
+            val matLore: MutableList<String> = mutableListOf(
+                Bump.localization.getLore("appraise_info.material.enabled"),
+                ""
+            )
 
             val materials = type.validMaterials.toList()
             val size = min(materials.size, 10)
@@ -124,46 +124,50 @@ class AppraiseTypeMenu(
 
             if (materials.size > 10) {
                 matLore.add(
-                    Bump.localization.getString("appraise_info.material.lore_enabled_more", materials.size - size)
+                    Bump.localization.getLore("appraise_info.material.enabled_more", materials.size - size)
                 )
             }
 
             result = buildDisplayItem {
                 material = MaterialType.Material(Material.FILLED_MAP)
-                name = Bump.localization.getString("appraise_info.material.name", Strings.CHECK)
+                name = Bump.localization.getLore("appraise_info.material.name")
                 lore = matLore
             }
         } else {
             result = buildDisplayItem {
                 material = MaterialType.Material(Material.MAP)
-                name = Bump.localization.getString("appraise_info.material.name", Strings.CROSS)
-                lore = Bump.localization.getStringList("appraise_info.material.lore_disabled")
+                name = Bump.localization.getLore("appraise_info.material.name")
+                lore = listOf(Bump.localization.getLore("appraise_info.material.disabled"))
             }
         }
         return result
     }
 
     private fun getEquipmentSlotItem(type: AppraiseType): ItemStack {
-        val lore = Bump.localization.getStringList("appraise_info.equipment_slot.lore")
-        lore.add("")
+        val itemLore = mutableListOf(
+            Bump.localization.getLore("appraise_info.equipment_slot.lore"),
+            ""
+        )
 
-        for (slot in type.validEquipmentSlots) {
-            lore.add(ChatColor.GRAY.toString() + slot.toString())
+        type.validEquipmentSlots.forEach {
+            itemLore.add(ChatColor.GRAY.toString() + it.toString())
         }
 
-        return CustomItemStack(
-            Material.IRON_CHESTPLATE,
-            Bump.localization.getString("appraise_info.equipment_slot.name"),
-            lore
-        )
+        return buildDisplayItem {
+            material = MaterialType.Material(Material.IRON_CHESTPLATE)
+            name = Bump.localization.getLore("appraise_info.equipment_slot.name")
+            lore = itemLore
+        }
     }
 
     private fun getAppraiseAttributeItem(attribute: AppraiseAttribute): ItemStack {
-        return CustomItemStack(
-            Material.PAPER,
-            Bump.localization.getString("appraise_info.attribute.name", attribute.attribute.toString()),
-            Bump.localization.getString("appraise_info.attribute.range", attribute.min, attribute.max),
-            Bump.localization.getString("appraise_info.attribute.weight", attribute.weight)
-        )
+        return buildDisplayItem {
+            material = MaterialType.Material(Material.PAPER)
+            name = Bump.localization.getLore("appraise_info.attribute.name", attribute.attribute.toString())
+            lore = listOf(
+                Bump.localization.getLore("appraise_info.attribute.range", attribute.min, attribute.max),
+                Bump.localization.getLore("appraise_info.attribute.weight", attribute.weight),
+            )
+        }
     }
 }

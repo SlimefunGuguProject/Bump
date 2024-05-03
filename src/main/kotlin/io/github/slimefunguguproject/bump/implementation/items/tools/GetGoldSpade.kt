@@ -18,7 +18,7 @@ class GetGoldSpade(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : SimpleSlimefunItem<ToolUseHandler>(itemGroup, itemStack, recipeType, recipe) {
     override fun getItemHandler() =
         ToolUseHandler { e: BlockBreakEvent, item: ItemStack, _: Int, drops: MutableList<ItemStack> ->
@@ -31,6 +31,6 @@ class GetGoldSpade(
 
             drops.clear()
             drops.add(BumpItems.BROKEN_GOLD_COIN)
-            Bump.localization.sendActionbarMessage(e.player, "tool.getgold_spade")
+            Bump.localization.sendActionbarMessage(e.player, "tool.get_gold_spade")
         }
 }

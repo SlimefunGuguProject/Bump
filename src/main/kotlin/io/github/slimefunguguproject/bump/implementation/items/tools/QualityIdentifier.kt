@@ -35,7 +35,7 @@ class QualityIdentifier(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : LimitedUseItem(itemGroup, itemStack, recipeType, recipe) {
     companion object {
         const val MAX_USES = 5
@@ -158,9 +158,9 @@ class QualityIdentifier(
                     BumpSound.QUALITY_IDENTIFIER_SUCCEED.playFor(p)
                 }
 
-                Bump.localization.sendMessage(p, "tool.appraisal_paper.success")
+                Bump.localization.sendMessage(p, "tool.quality_identifier.success")
             } else {
-                Bump.localization.sendMessage(p, "tool.appraisal_paper.invalid")
+                Bump.localization.sendMessage(p, "tool.quality_identifier.invalid")
                 BumpSound.QUALITY_IDENTIFIER_FAIL.playFor(p)
             }
             false
@@ -168,26 +168,24 @@ class QualityIdentifier(
 
     /**
      * Validate the item. The item that can be marked appraisable
-     * should meet these requirements: <br />
-     * - is a valid item for any appraise type <br />
-     * - has not been appraised yet <br />
-     * - has not been marked appraisable yet <br />
+     * should meet these requirements:
+     * - is a valid item for any appraise type
+     * - has not been appraised yet
+     * - has not been marked appraisable yet
      *
      * @param itemStack The [ItemStack] to be validated.
      *
      * @return If the [ItemStack] is applicable to appraisal paper.
      */
     private fun isValidItem(itemStack: ItemStack): Boolean {
-        // find any match type
-        for (type in BumpRegistry.appraiseTypes) {
-            if (type.isValidItem(itemStack)
-                && !AppraiseUtils.isAppraised(itemStack)
-                && !AppraiseUtils.isAppraisable(itemStack)
-            ) {
-                return true
-            }
+        return if (BumpRegistry.appraiseTypes.any { it.isValidItem(itemStack) }) {
+            Bump.debug("Item is accepted by an appraise type: $itemStack")
+            Bump.debug("appraised: ${AppraiseUtils.isAppraised(itemStack)}")
+            Bump.debug("appraisable: ${AppraiseUtils.isAppraisable(itemStack)}")
+            !AppraiseUtils.isAppraised(itemStack) && !AppraiseUtils.isAppraisable(itemStack)
+        } else {
+            false
         }
-        return false
     }
 
     /**

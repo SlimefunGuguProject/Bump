@@ -3,6 +3,7 @@ package io.github.slimefunguguproject.bump.implementation.listeners
 import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.utils.constant.Keys
 import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.PersistentDataAPI
+import org.bukkit.entity.Monster
 import org.bukkit.entity.Player
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
@@ -20,9 +21,18 @@ class SkySwordListener(plugin: Bump) : Listener {
         if (e.cause == EntityDamageEvent.DamageCause.FALL
             && PersistentDataAPI.getBoolean(p, Keys.SKY_SWORD_PROTECTED)
         ) {
+            // cancel fall damage
             e.isCancelled = true
             Bump.localization.sendActionbarMessage(p, "weapon.sky_sword.protected")
             PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, false)
+
+            // distribute damage evenly to nearby hostiles
+            val damage = e.damage
+            if (damage <= 0) return
+            val nearbyHostiles = p.world.getNearbyEntities(p.location, 5.0, 5.0, 5.0) { it is Monster }
+            if (nearbyHostiles.isEmpty()) return
+            val damagePerHostile = damage / nearbyHostiles.size
+            nearbyHostiles.forEach { (it as Monster).damage(damagePerHostile) }
         }
     }
 }

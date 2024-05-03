@@ -2,17 +2,15 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons
 
 import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.core.handlers.BowUseHandler
-import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType
-import org.bukkit.Sound
+import org.bukkit.Material
 import org.bukkit.entity.Player
-import org.bukkit.entity.WitherSkull
 import org.bukkit.event.entity.EntityShootBowEvent
 import org.bukkit.inventory.ItemStack
 
-class WitherSkullBow(
+class LightningBow(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
@@ -21,15 +19,20 @@ class WitherSkullBow(
 ) : BumpBow(itemGroup, itemStack, recipeType, recipe, hunger) {
     override fun getItemHandler() = BowUseHandler { e: EntityShootBowEvent, p: Player, item: ItemStack ->
         e.isCancelled = true
+        val target = p.getTargetBlock(null, 200)
+        if (target.type == Material.AIR) {
+            return@BowUseHandler
+        }
+
+        val targetLocation = target.location
         if (costHunger(p)) {
             damageItem(p, item)
 
-            Bump.localization.sendActionbarMessage(p, "weapon.wither_skull_bow")
+            Bump.localization.sendActionbarMessage(p, "weapon.lightning_bow")
 
-            p.playSound(p.location, Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f)
-
-            val projectile = p.launchProjectile(WitherSkull::class.java)
-            WeaponProjectileTask.track(projectile)
+            for (i in 0..9) {
+                p.world.strikeLightning(targetLocation)
+            }
         } else {
             Bump.localization.sendActionbarMessage(p, "weapon.low-food-level")
         }

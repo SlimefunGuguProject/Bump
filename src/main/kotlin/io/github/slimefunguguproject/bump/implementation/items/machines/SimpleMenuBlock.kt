@@ -21,7 +21,7 @@ abstract class SimpleMenuBlock(
     itemGroup: ItemGroup,
     item: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : MenuBlock(itemGroup, item, recipeType, recipe), EnergyNetComponent {
     companion object {
         // gui

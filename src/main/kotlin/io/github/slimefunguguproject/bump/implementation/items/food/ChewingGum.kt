@@ -14,7 +14,7 @@ class ChewingGum(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : ItemFood(itemGroup, itemStack, recipeType, recipe) {
     override fun applyFoodEffects(p: Player) {
         FoodLevelUtils.add(p, 10)

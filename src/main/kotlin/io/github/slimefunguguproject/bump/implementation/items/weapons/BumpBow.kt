@@ -16,11 +16,11 @@ abstract class BumpBow(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>,
+    recipe: Array<out ItemStack?>,
     hunger: Int
 ) : SimpleSlimefunItem<BowUseHandler>(itemGroup, itemStack, recipeType, recipe), DamageableItem, CostHungerItem {
     init {
-        check(hunger in 0..20) { "Hunger cost must be between 0 and 20" }
+        require(hunger in 0..20) { "Hunger cost must be between 0 and 20" }
     }
 
     private val hungerCostSetting = IntRangeSetting(this, "hunger-cost", 0, hunger, 20)
@@ -33,5 +33,5 @@ abstract class BumpBow(
 
     override fun isDamageable() = costDurabilitySetting.value
 
-    override val hungerCost = hungerCostSetting.value
+    override fun getHungerCost() = hungerCostSetting.value
 }

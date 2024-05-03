@@ -6,12 +6,14 @@ import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.utils.FileUtils.listYmlFilesInJar
 import io.github.slimefunguguproject.bump.utils.items.MaterialType
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil
+import net.guizhanss.guizhanlib.minecraft.utils.ItemUtil
 import net.guizhanss.guizhanlib.slimefun.addon.SlimefunLocalization
 import net.guizhanss.guizhanlib.utils.StringUtil
 import net.md_5.bungee.api.ChatMessageType
 import net.md_5.bungee.api.chat.TextComponent
 import org.bukkit.command.CommandSender
 import org.bukkit.entity.Player
+import org.bukkit.inventory.ItemStack
 import java.io.File
 import java.text.MessageFormat
 
@@ -62,7 +64,9 @@ class LocalizationService(
     fun getResearchName(researchId: String): String = getString("researches.${researchId.lowercase()}")
 
     // gui items (special items with prefix _UI_)
-    fun getGuiItem(item: MaterialType, id: String) = getItem("_UI_${id.toId()}", item.convert())
+    fun getGuiItem(item: MaterialType, id: String, vararg extraLore: String): ItemStack =
+        ItemUtil.appendLore(getItem("_UI_${id.toId()}", item.convert()), *extraLore)
+
     fun getGuiItemName(id: String, vararg args: Any?) = getItemName("_UI_${id.toId()}", *args)
     fun getGuiItemLore(id: String): List<String> = getItemLore("_UI_${id.toId()}")
 

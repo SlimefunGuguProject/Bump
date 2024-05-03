@@ -159,7 +159,7 @@ enum class BumpTag : Tag<Material> {
         return if (materials.contains(material)) {
             true
         } else {
-            return additionalTags.any { it.isTagged(material)}
+            return additionalTags.any { it.isTagged(material) }
         }
     }
 

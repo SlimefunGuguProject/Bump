@@ -11,9 +11,17 @@ import io.github.slimefunguguproject.bump.implementation.items.food.SpicyStrips
 import io.github.slimefunguguproject.bump.implementation.items.food.Sprite
 import io.github.slimefunguguproject.bump.implementation.items.machines.Appraiser
 import io.github.slimefunguguproject.bump.implementation.items.machines.AttributeGrindstone
+import io.github.slimefunguguproject.bump.implementation.items.machines.ItemConverter
 import io.github.slimefunguguproject.bump.implementation.items.materials.BumpMaterial
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetGoldSpade
 import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier
+import io.github.slimefunguguproject.bump.implementation.items.weapons.BumpBasicSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.DemonSlayerSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.HeavenBreakingDemonSlayerSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.LightningBow
+import io.github.slimefunguguproject.bump.implementation.items.weapons.HeavenBreakingSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.SoulSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow
 import io.github.slimefunguguproject.bump.implementation.recipes.BumpRecipeTypes
 import io.github.slimefunguguproject.bump.utils.GeneralUtils
 import io.github.slimefunguguproject.bump.utils.items.AppraiseUtils
@@ -244,7 +252,7 @@ object BumpItems {
         recipe = arrayOf(
             ItemStack(Material.LILY_PAD), ItemStack(Material.ACACIA_LEAVES), ItemStack(Material.LILY_PAD),
             ItemStack(Material.ACACIA_LEAVES), ItemStack(Material.WHEAT), ItemStack(Material.ACACIA_LEAVES),
-            ItemStack(Material.LILY_PAD), ItemStack(Material.ACACIA_LEAVES), ItemStack(Material.LILY_PAD)
+            ItemStack(Material.LILY_PAD), ItemStack(Material.ACACIA_LEAVES), ItemStack(Material.LILY_PAD),
         )
     }
     // </editor-fold>
@@ -258,7 +266,7 @@ object BumpItems {
         recipe = arrayOf(
             null, SlimefunItems.GOLD_24K, null,
             null, ItemStack(Material.STICK), null,
-            null, ItemStack(Material.STICK), null
+            null, ItemStack(Material.STICK), null,
         )
         postCreate = {
             it.addUnsafeEnchantment(Enchantment.MENDING, 1)
@@ -277,8 +285,6 @@ object BumpItems {
     // </editor-fold>
 
     // <editor-fold desc="Machines">
-
-    // if no appraise type is configured, disable the appraiser
     val APPRAISER = buildSlimefunItem<Appraiser> {
         id = "APPRAISER"
         material = MaterialType.Material(Material.BELL)
@@ -303,10 +309,24 @@ object BumpItems {
         recipe = arrayOf(
             SlimefunItems.ELECTRO_MAGNET, APPRAISER, SlimefunItems.ELECTRO_MAGNET,
             MECHANICAL_GEAR, CPU, MECHANICAL_GEAR,
-            UPDATE_CORE, null, UPDATE_CORE
+            UPDATE_CORE, null, UPDATE_CORE,
         )
 
         +LoreBuilder.power(AttributeGrindstone.ENERGY_CONSUMPTION, " ${Bump.localization.getLore("per-use")}")
+    }
+
+    val ITEM_CONVERTER = buildSlimefunItem<ItemConverter> {
+        id = "ITEM_CONVERTER"
+        material = MaterialType.Material(Material.CRAFTING_TABLE)
+        itemGroup = BumpItemGroups.MACHINES
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            // @formatter:off
+            null, ItemStack(Material.REDSTONE), null,
+            ItemStack(Material.DIAMOND), ItemStack(Material.SMITHING_TABLE), ItemStack(Material.DIAMOND),
+            null, ItemStack(Material.REDSTONE_BLOCK), null,
+            // @formatter:on
+        )
     }
     // </editor-fold>
 
@@ -319,7 +339,7 @@ object BumpItems {
         recipe = arrayOf(
             ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND),
             ItemStack(Material.DIAMOND), UPDATE_CORE, ItemStack(Material.DIAMOND),
-            BROKEN_GOLD_COIN, null, BROKEN_GOLD_COIN
+            BROKEN_GOLD_COIN, null, BROKEN_GOLD_COIN,
         )
         postCreate = {
             AppraiseUtils.setAppraisable(it)
@@ -334,7 +354,7 @@ object BumpItems {
         recipe = arrayOf(
             ItemStack(Material.DIAMOND), BROKEN_GOLD_COIN, ItemStack(Material.DIAMOND),
             ItemStack(Material.DIAMOND), UPDATE_CORE, ItemStack(Material.DIAMOND),
-            ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND)
+            ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND),
         )
         postCreate = {
             AppraiseUtils.setAppraisable(it)
@@ -347,7 +367,22 @@ object BumpItems {
         itemGroup = BumpItemGroups.ARMOR
         recipeType = RecipeType.ARMOR_FORGE
         recipe = arrayOf(
-            ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND), ItemStack(Material.DIAMOND),
+            ItemStack(Material.DIAMOND), BROKEN_GOLD_COIN, ItemStack(Material.DIAMOND),
+            ItemStack(Material.DIAMOND), UPDATE_CORE, ItemStack(Material.DIAMOND),
+            ItemStack(Material.DIAMOND), null, ItemStack(Material.DIAMOND),
+        )
+        postCreate = {
+            AppraiseUtils.setAppraisable(it)
+        }
+    }
+
+    val RANDOM_BOOTS = buildSlimefunItem<RandomEquipment> {
+        id = "RANDOM_BOOTS"
+        material = MaterialType.Material(Material.DIAMOND_BOOTS)
+        itemGroup = BumpItemGroups.ARMOR
+        recipeType = RecipeType.ARMOR_FORGE
+        recipe = arrayOf(
+            null, null, null,
             ItemStack(Material.DIAMOND), UPDATE_CORE, ItemStack(Material.DIAMOND),
             ItemStack(Material.DIAMOND), BROKEN_GOLD_COIN, ItemStack(Material.DIAMOND)
         )
@@ -356,197 +391,197 @@ object BumpItems {
         }
     }
 
-//    val RANDOM_HORSE_ARMOR = buildSlimefunItem<RandomEquipment> {
-//        id = "RANDOM_HORSE_ARMOR"
-//        material = MaterialType.Material(Material.DIAMOND_HORSE_ARMOR)
-//        itemGroup = BumpItemGroups.ARMOR
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            OLD_COIN, null, OLD_COIN,
-//            OLD_COIN, ItemStack(Material.DIAMOND_HORSE_ARMOR), OLD_COIN,
-//            OLD_COIN, UPDATE_POWER, OLD_COIN
-//        )
-//        postCreate = {
-//            AppraiseUtils.setAppraisable(it)
-//        }
-//    }
+    val RANDOM_HORSE_ARMOR = buildSlimefunItem<RandomEquipment> {
+        id = "RANDOM_HORSE_ARMOR"
+        material = MaterialType.Material(Material.DIAMOND_HORSE_ARMOR)
+        itemGroup = BumpItemGroups.ARMOR
+        recipeType = RecipeType.ARMOR_FORGE
+        recipe = arrayOf(
+            null, BROKEN_GOLD_COIN, null,
+            null, ItemStack(Material.DIAMOND_HORSE_ARMOR), null,
+            null, UPDATE_CORE, null,
+        )
+        postCreate = {
+            AppraiseUtils.setAppraisable(it)
+        }
+    }
     // </editor-fold>
 
+    // <editor-fold desc="Weapon">
+    val RANDOM_SWORD = buildSlimefunItem<RandomEquipment> {
+        id = "RANDOM_SWORD"
+        material = MaterialType.Material(Material.DIAMOND_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, UPDATE_CORE, null,
+            null, COMPUTER_TECH_CORE, null,
+            null, ItemStack(Material.STICK), null
+        )
+        postCreate = {
+            AppraiseUtils.setAppraisable(it)
+        }
+    }
 
-//
-//    // <editor-fold desc="Weapon">
-//    val LIGHT_BOW = buildSlimefunItem<LightBow>(10) {
-//        id = "LIGHT_BOW"
-//        material = MaterialType.Material(Material.BOW)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
-//            SlimefunItems.POWER_CRYSTAL, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
-//            SlimefunItems.STAFF_STORM, null, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5)
-//        }
-//    }
-//
-//    val WITHERSKULL_BOW = buildSlimefunItem<WitherSkullBow>(5) {
-//        id = "WITHERSKULL_BOW"
-//        material = MaterialType.Material(Material.BOW)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            SlimefunItems.NECROTIC_SKULL, PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
-//            SlimefunItems.POWER_CRYSTAL, PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
-//            PEACH_WOOD, null, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5)
-//        }
-//    }
-//
-//    val EMER_SWORD = buildSlimefunItem {
-//        id = "EMER_SWORD"
-//        material = MaterialType.Material(Material.DIAMOND_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, ItemStack(Material.EMERALD), null,
-//            null, ItemStack(Material.EMERALD), null,
-//            null, ItemStack(Material.STICK), null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1)
-//        }
-//    }
-//
-//    val BONE_SWORD = buildSlimefunItem {
-//        id = "BONE_SWORD"
-//        material = MaterialType.Material(Material.WOODEN_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, ItemStack(Material.BONE_BLOCK, 64), null,
-//            null, ItemStack(Material.BONE_BLOCK, 64), null,
-//            null, SlimefunItems.GRANDMAS_WALKING_STICK, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 10)
-//        }
-//    }
-//
-//    val RANDOM_SWORD = buildSlimefunItem<RandomEquipment> {
-//        id = "RANDOM_SWORD"
-//        material = MaterialType.Material(Material.DIAMOND_SWORD)
-//        itemGroup = BumpItemGroups.WEAPONS
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, UPDATE_POWER, null,
-//            null, MAKE, null,
-//            null, ItemStack(Material.STICK), null
-//        )
-//        postCreate = {
-//            AppraiseUtils.setAppraisable(it)
-//        }
-//    }
-//
-//    val GUARD_SWORD = buildSlimefunItem {
-//        id = "GUARD_SWORD"
-//        material = MaterialType.Material(Material.GOLDEN_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, SUN_ENERGY, null,
-//            null, SUN_ENERGY, null,
-//            null, ItemStack(Material.STICK), null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5)
-//            it.addUnsafeEnchantment(Enchantment.IMPALING, 3)
-//        }
-//    }
-//
-//    val PEACH_SWORD = buildSlimefunItem {
-//        id = "PEACH_SWORD"
-//        material = MaterialType.Material(Material.WOODEN_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, PEACH_WOOD, null,
-//            null, PEACH_WOOD, null,
-//            null, ItemStack(Material.STICK), null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.KNOCKBACK, 5)
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 3)
-//        }
-//    }
-//
-//    val SOUL_SWORD = buildSlimefunItem<SoulSword> {
-//        id = "SOUL_SWORD"
-//        material = MaterialType.Material(Material.IRON_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, null, null,
-//            SOUL_PAPER, ItemStack(Material.DIAMOND_SWORD), SOUL_PAPER,
-//            null, null, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 2)
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
-//        }
-//    }
-//
-//    val SKY_SWORD = buildSlimefunItem<SkySword>(5) {
-//        id = "SKY_SWORD"
-//        material = MaterialType.Material(Material.DIAMOND_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            SlimefunItems.MAGIC_LUMP_2, SlimefunItems.AIR_RUNE, SlimefunItems.MAGIC_LUMP_2,
-//            SlimefunItems.RAINBOW_RUNE, SlimefunItems.RAINBOW_RUNE, SlimefunItems.MAGIC_LUMP_2,
-//            SlimefunItems.AIR_RUNE, SlimefunItems.MAGIC_LUMP_2, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1)
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
-//            it.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 1)
-//        }
-//    }
-//
-//    val DEVIL_SWORD = buildSlimefunItem<DevilSword>(5) {
-//        id = "DEVIL_SWORD"
-//        material = MaterialType.Material(Material.DIAMOND_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            SlimefunItems.MAGIC_LUMP_2, SlimefunItems.ENDER_RUNE, SlimefunItems.MAGIC_LUMP_2,
-//            SlimefunItems.FIRE_RUNE, SlimefunItems.FIRE_RUNE, SlimefunItems.MAGIC_LUMP_2,
-//            SlimefunItems.ENDER_RUNE, SlimefunItems.MAGIC_LUMP_2, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1)
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
-//            it.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 1)
-//        }
-//    }
-//
-//    val SKY_DEVIL_SWORD = buildSlimefunItem<SkyDevilSword>(5) {
-//        id = "SKY_DEVIL_SWORD"
-//        material = MaterialType.Material(Material.DIAMOND_SWORD)
-//        itemGroup = BumpItemGroups.WEAPON
-//        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
-//        recipe = arrayOf(
-//            null, null, null,
-//            SKY_SWORD, UPDATE_POWER, DEVIL_SWORD,
-//            null, null, null
-//        )
-//        postCreate = {
-//            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5)
-//            it.addUnsafeEnchantment(Enchantment.DURABILITY, 5)
-//            it.addUnsafeEnchantment(Enchantment.LOYALTY, 5)
-//        }
-//    }
-//    // </editor-fold>
+    val LIGHTNING_BOW = buildSlimefunItem<LightningBow>(10) {
+        id = "LIGHTNING_BOW"
+        material = MaterialType.Material(Material.BOW)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            // @formatter:off
+            null, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
+            SlimefunItems.POWER_CRYSTAL, SlimefunItems.LIGHTNING_RUNE, SlimefunItems.STAFF_STORM,
+            null, SlimefunItems.STAFF_STORM, SlimefunItems.LIGHTNING_RUNE,
+            // @formatter:on
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5)
+        }
+    }
+
+    val WITHER_SKULL_BOW = buildSlimefunItem<WitherSkullBow>(5) {
+        id = "WITHER_SKULL_BOW"
+        material = MaterialType.Material(Material.BOW)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
+            PEACH_WOOD, SlimefunItems.POWER_CRYSTAL, SlimefunItems.NECROTIC_SKULL,
+            null, PEACH_WOOD, SlimefunItems.NECROTIC_SKULL,
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.ARROW_DAMAGE, 5)
+        }
+    }
+
+    val EMERALD_SWORD = buildSlimefunItem<BumpBasicSword> {
+        id = "EMERALD_SWORD"
+        material = MaterialType.Material(Material.DIAMOND_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, ItemStack(Material.EMERALD), null,
+            null, ItemStack(Material.EMERALD), null,
+            null, ItemStack(Material.STICK), null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 2)
+        }
+    }
+
+    val BONE_SWORD = buildSlimefunItem<BumpBasicSword> {
+        id = "BONE_SWORD"
+        material = MaterialType.Material(Material.WOODEN_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, ItemStack(Material.BONE_BLOCK, 64), null,
+            null, ItemStack(Material.BONE_BLOCK, 64), null,
+            null, SlimefunItems.GRANDMAS_WALKING_STICK, null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 10)
+        }
+    }
+
+    val GUARDIAN_SWORD = buildSlimefunItem<BumpBasicSword> {
+        id = "GUARDIAN_SWORD"
+        material = MaterialType.Material(Material.GOLDEN_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, PHOTOSYNTHETIC_ENERGY, null,
+            null, PHOTOSYNTHETIC_ENERGY, null,
+            null, ItemStack(Material.STICK), null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5)
+            it.addUnsafeEnchantment(Enchantment.MENDING, 1)
+        }
+    }
+
+    val PEACH_WOOD_SWORD = buildSlimefunItem<BumpBasicSword> {
+        id = "PEACH_WOOD_SWORD"
+        material = MaterialType.Material(Material.WOODEN_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, PEACH_WOOD, null,
+            null, PEACH_WOOD, null,
+            null, ItemStack(Material.STICK), null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.KNOCKBACK, 5)
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 3)
+        }
+    }
+
+    val SOUL_SWORD = buildSlimefunItem<SoulSword> {
+        id = "SOUL_SWORD"
+        material = MaterialType.Material(Material.IRON_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, null, null,
+            ANCIENT_RUNE_SOUL, ItemStack(Material.DIAMOND_SWORD), ANCIENT_RUNE_SOUL,
+            null, null, null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 2)
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
+        }
+    }
+
+    val HEAVEN_BREAKING_SWORD = buildSlimefunItem<HeavenBreakingSword>(5) {
+        id = "HEAVEN_BREAKING_SWORD"
+        material = MaterialType.Material(Material.DIAMOND_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            SlimefunItems.MAGIC_LUMP_2, SlimefunItems.AIR_RUNE, SlimefunItems.MAGIC_LUMP_2,
+            SlimefunItems.RAINBOW_RUNE, SlimefunItems.RAINBOW_RUNE, SlimefunItems.MAGIC_LUMP_2,
+            SlimefunItems.AIR_RUNE, SlimefunItems.MAGIC_LUMP_2, null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1)
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
+            it.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 1)
+        }
+    }
+
+    val DEMON_SLAYER_SWORD = buildSlimefunItem<DemonSlayerSword>(5) {
+        id = "DEMON_SLAYER_SWORD"
+        material = MaterialType.Material(Material.DIAMOND_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            SlimefunItems.MAGIC_LUMP_2, SlimefunItems.ENDER_RUNE, SlimefunItems.MAGIC_LUMP_2,
+            SlimefunItems.FIRE_RUNE, SlimefunItems.FIRE_RUNE, SlimefunItems.MAGIC_LUMP_2,
+            SlimefunItems.ENDER_RUNE, SlimefunItems.MAGIC_LUMP_2, null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 1)
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 1)
+            it.addUnsafeEnchantment(Enchantment.SWEEPING_EDGE, 1)
+        }
+    }
+
+    val HEAVEN_BREAKING_DEMON_SLAYER_SWORD = buildSlimefunItem<HeavenBreakingDemonSlayerSword>(5) {
+        id = "HEAVEN_BREAKING_DEMON_SLAYER_SWORD"
+        material = MaterialType.Material(Material.DIAMOND_SWORD)
+        itemGroup = BumpItemGroups.WEAPONS
+        recipeType = RecipeType.ENHANCED_CRAFTING_TABLE
+        recipe = arrayOf(
+            null, null, null,
+            HEAVEN_BREAKING_SWORD, UPDATE_CORE, DEMON_SLAYER_SWORD,
+            null, null, null
+        )
+        postCreate = {
+            it.addUnsafeEnchantment(Enchantment.DAMAGE_ALL, 5)
+            it.addUnsafeEnchantment(Enchantment.DURABILITY, 5)
+            it.addUnsafeEnchantment(Enchantment.LOYALTY, 5)
+        }
+    }
+    // </editor-fold>
 }

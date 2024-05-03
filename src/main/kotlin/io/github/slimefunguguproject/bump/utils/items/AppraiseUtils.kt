@@ -62,8 +62,7 @@ object AppraiseUtils {
         if (!ValidateUtils.noAirItem(itemStack)) {
             return false
         }
-        PersistentDataAPI.hasByte(itemStack.itemMeta!!, Keys.APPRAISE_LEVEL)
-        return true
+        return PersistentDataAPI.hasByte(itemStack.itemMeta!!, Keys.APPRAISE_LEVEL)
     }
 
     fun getOperation(attribute: Attribute): AttributeModifier.Operation {
@@ -73,9 +72,7 @@ object AppraiseUtils {
         }
     }
 
-    fun getDescriptionLore(type: AppraiseType): MutableList<String> {
-        return type.description
-            .map { ChatUtil.color("${ChatColor.GRAY}${it}") }
-            .toMutableList()
-    }
+    fun getDescriptionLore(type: AppraiseType) = type.description
+        .map { ChatUtil.color("${ChatColor.GRAY}${it}") }
+        .toMutableList()
 }

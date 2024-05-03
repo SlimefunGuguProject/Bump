@@ -3,13 +3,12 @@
 package io.github.slimefunguguproject.bump.implementation.items.machines
 
 import io.github.slimefunguguproject.bump.Bump
-import io.github.slimefunguguproject.bump.api.appraise.AppraiseResult
 import io.github.slimefunguguproject.bump.api.appraise.AppraiseType
 import io.github.slimefunguguproject.bump.core.BumpRegistry
 import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound
 import io.github.slimefunguguproject.bump.implementation.items.RandomEquipment
 import io.github.slimefunguguproject.bump.utils.items.AppraiseUtils
-import io.github.slimefunguguproject.bump.utils.items.GuiItems
+import io.github.slimefunguguproject.bump.utils.items.MaterialType
 import io.github.slimefunguguproject.bump.utils.items.ValidateUtils
 import io.github.thebusybiscuit.slimefun4.api.SlimefunAddon
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
@@ -19,6 +18,7 @@ import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction
 import me.mrCookieSlime.Slimefun.api.BlockStorage
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu
 import org.bukkit.Location
+import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
@@ -29,7 +29,7 @@ class Appraiser(
     itemGroup: ItemGroup,
     item: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : SimpleMenuBlock(itemGroup, item, recipeType, recipe) {
     companion object {
         // energy
@@ -39,7 +39,10 @@ class Appraiser(
         private const val APPRAISE_TYPE_KEY = "appraise_type"
     }
 
-    override val operationSlotItem = GuiItems.APPRAISE_BUTTON
+    override val operationSlotItem = Bump.localization.getGuiItem(
+        MaterialType.Material(Material.NAME_TAG),
+        "APPRAISER_USE",
+    )
 
     override fun getCapacity() = ENERGY_CONSUMPTION
 
@@ -83,14 +86,14 @@ class Appraiser(
 
         // validate input
         if (!validate(item)) {
-            Bump.localization.sendMessage(p, "machine.appraisal.invalid")
+            Bump.localization.sendMessage(p, "machine.appraiser.invalid")
             BumpSound.APPRAISER_FAIL.playFor(p)
             return
         }
 
         // check if input item is already appraised
         if (AppraiseUtils.isAppraised(item)) {
-            Bump.localization.sendMessage(p, "machine.appraisal.appraised")
+            Bump.localization.sendMessage(p, "machine.appraiser.appraised")
             BumpSound.APPRAISER_FAIL.playFor(p)
             return
         }
@@ -118,13 +121,13 @@ class Appraiser(
             return
         }
         if (!type.isValidItem(item)) {
-            Bump.localization.sendMessage(p, "machine.appraisal.not-accepted")
+            Bump.localization.sendMessage(p, "machine.appraiser.not-accepted")
             BumpSound.APPRAISER_FAIL.playFor(p)
             return
         }
 
-        val output: ItemStack = item.clone()
-        val result: AppraiseResult = type.appraise()
+        val output = item.clone()
+        val result = type.appraise()
 
         result.apply(output)
 
@@ -132,7 +135,7 @@ class Appraiser(
         menu.pushItem(output, OUTPUT_SLOT)
 
         setCharge(menu.location, 0)
-        Bump.localization.sendMessage(p, "machine.appraisal.success")
+        Bump.localization.sendMessage(p, "machine.appraiser.success")
         BumpSound.APPRAISER_SUCCEED.playFor(p)
     }
 
@@ -141,7 +144,14 @@ class Appraiser(
 
     private fun updateSelector(menu: BlockMenu, l: Location) {
         val type: AppraiseType = getCurrentType(l)
-        menu.replaceExistingItem(APPRAISE_TYPE_SLOT, GuiItems.appraiseTypeSelector(type))
+        menu.replaceExistingItem(
+            APPRAISE_TYPE_SLOT, Bump.localization.getGuiItem(
+                MaterialType.Material(Material.PAPER),
+                "APPRAISER_SELECTOR",
+                type.name,
+                *type.description.toTypedArray()
+            )
+        )
         menu.addMenuClickHandler(APPRAISE_TYPE_SLOT) { player: Player, _, _, _ ->
             openSelector(player, menu, l)
             false

@@ -16,36 +16,34 @@ class SoulSword(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>,
+    recipe: Array<out ItemStack?>,
 ) : SimpleSlimefunItem<ItemUseHandler>(itemGroup, itemStack, recipeType, recipe) {
-    override fun getItemHandler(): ItemUseHandler {
-        return ItemUseHandler { e: PlayerRightClickEvent ->
-            val p = e.player
-            val health = p.health
-            val maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.baseValue
-            val foodLevel = p.foodLevel
+    override fun getItemHandler() = ItemUseHandler { e: PlayerRightClickEvent ->
+        val p = e.player
+        val health = p.health
+        val maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.baseValue
+        val foodLevel = p.foodLevel
 
-            if (maxHealth <= health) {
-                Bump.localization.sendActionbarMessage(p, "weapon.unavailable")
-                return@ItemUseHandler
-            }
-            if (foodLevel >= 2) {
-                if (maxHealth - health <= foodLevel) {
-                    // Food level can be partially converted to full health
-                    FoodLevelUtils.set(p, (foodLevel - (maxHealth - health)).toInt())
-                    p.health = maxHealth
-                    Bump.localization.sendActionbarMessage(p, "weapon.soul_sword.converted-part")
-                } else {
-                    // Food level can be all converted to health
-                    FoodLevelUtils.set(p, 0)
-                    p.health = health + foodLevel
-                    Bump.localization.sendActionbarMessage(p, "weapon.soul_sword.converted-all")
-                }
-
-                BumpSound.SOUL_SWORD_USE.playFor(p)
+        if (maxHealth <= health) {
+            Bump.localization.sendActionbarMessage(p, "weapon.unavailable")
+            return@ItemUseHandler
+        }
+        if (foodLevel >= 2) {
+            if (maxHealth - health <= foodLevel) {
+                // Food level can be partially converted to full health
+                FoodLevelUtils.set(p, (foodLevel - (maxHealth - health)).toInt())
+                p.health = maxHealth
+                Bump.localization.sendActionbarMessage(p, "weapon.soul_sword.converted-part")
             } else {
-                Bump.localization.sendActionbarMessage(p, "weapon.low-food-level")
+                // Food level can be all converted to health
+                FoodLevelUtils.set(p, 0)
+                p.health = health + foodLevel
+                Bump.localization.sendActionbarMessage(p, "weapon.soul_sword.converted-all")
             }
+
+            BumpSound.SOUL_SWORD_USE.playFor(p)
+        } else {
+            Bump.localization.sendActionbarMessage(p, "weapon.low-food-level")
         }
     }
 }

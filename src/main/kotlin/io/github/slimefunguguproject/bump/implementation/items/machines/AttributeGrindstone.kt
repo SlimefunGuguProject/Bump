@@ -7,7 +7,7 @@ import io.github.slimefunguguproject.bump.api.appraise.AppraiseType
 import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound
 import io.github.slimefunguguproject.bump.utils.constant.Keys
 import io.github.slimefunguguproject.bump.utils.items.AppraiseUtils
-import io.github.slimefunguguproject.bump.utils.items.GuiItems
+import io.github.slimefunguguproject.bump.utils.items.MaterialType
 import io.github.slimefunguguproject.bump.utils.items.ValidateUtils
 import io.github.slimefunguguproject.bump.utils.tags.BumpTag
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
@@ -17,6 +17,7 @@ import io.github.thebusybiscuit.slimefun4.libraries.dough.data.persistent.Persis
 import me.mrCookieSlime.CSCoreLibPlugin.general.Inventory.ClickAction
 import me.mrCookieSlime.Slimefun.api.inventory.BlockMenu
 import net.guizhanss.guizhanlib.minecraft.utils.ChatUtil
+import org.bukkit.Material
 import org.bukkit.NamespacedKey
 import org.bukkit.block.Block
 import org.bukkit.entity.Player
@@ -28,14 +29,17 @@ class AttributeGrindstone(
     itemGroup: ItemGroup,
     item: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : SimpleMenuBlock(itemGroup, item, recipeType, recipe) {
     companion object {
         // energy
         const val ENERGY_CONSUMPTION: Int = 1314
     }
 
-    override val operationSlotItem = GuiItems.GRIND_BUTTON
+    override val operationSlotItem = Bump.localization.getGuiItem(
+        MaterialType.Material(Material.NAME_TAG),
+        "ATTRIBUTE_GRINDSTONE_USE",
+    )
 
     override fun getCapacity() = ENERGY_CONSUMPTION
 

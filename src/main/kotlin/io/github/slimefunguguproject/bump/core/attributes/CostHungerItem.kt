@@ -9,7 +9,7 @@ interface CostHungerItem : ItemAttribute {
     /**
      * This variable returns the hunger cost of the item.
      */
-    val hungerCost: Int
+    fun getHungerCost(): Int
 
     /**
      * This method will check whether [Player]'s food level is sufficient to cost.
@@ -20,7 +20,7 @@ interface CostHungerItem : ItemAttribute {
      */
     fun checkHunger(p: Player): Boolean {
         return if (p.gameMode != GameMode.CREATIVE) {
-            p.foodLevel >= hungerCost
+            p.foodLevel >= getHungerCost()
         } else {
             true
         }
@@ -35,7 +35,7 @@ interface CostHungerItem : ItemAttribute {
      */
     fun costHunger(p: Player): Boolean {
         return if (checkHunger(p)) {
-            FoodLevelUtils.set(p, p.foodLevel - hungerCost)
+            FoodLevelUtils.set(p, p.foodLevel - getHungerCost())
         } else {
             false
         }

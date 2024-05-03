@@ -21,7 +21,7 @@ abstract class ItemFood(
     itemGroup: ItemGroup,
     itemStack: SlimefunItemStack,
     recipeType: RecipeType,
-    recipe: Array<ItemStack?>
+    recipe: Array<out ItemStack?>
 ) : UnplaceableBlock(itemGroup, itemStack, recipeType, recipe) {
     private val cooldown = Cooldown<UUID>()
 
@@ -34,7 +34,8 @@ abstract class ItemFood(
             return@ItemUseHandler
         }
 
-        Bump.localization.sendActionbarMessage(p, "food.${id.lowercase()}")
+        val messageKey = id.replace(Bump.localization.idPrefix, "").lowercase()
+        Bump.localization.sendActionbarMessage(p, "food.$messageKey")
 
         if (p.gameMode != GameMode.CREATIVE) {
             ItemUtils.consumeItem(e.item, false)
@@ -48,12 +49,12 @@ abstract class ItemFood(
                     p.playSound(p.location, Sound.ENTITY_GENERIC_EAT, 1f, 1f)
                     count--
                 } else {
+                    applyFoodEffects(p)
                     cancel()
                 }
             }
         }.runTaskTimer(Bump.instance, 1L, 4L)
 
-        applyFoodEffects(p)
         cooldown[p.uniqueId] = 2000L
     }
 
