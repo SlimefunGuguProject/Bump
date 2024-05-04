@@ -1,11 +1,11 @@
 package io.github.slimefunguguproject.bump.implementation.items.weapons
 
 import io.github.slimefunguguproject.bump.Bump
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType
-import org.bukkit.Sound
 import org.bukkit.entity.DragonFireball
 import org.bukkit.entity.Player
 import org.bukkit.inventory.ItemStack
@@ -32,7 +32,7 @@ class HeavenBreakingDemonSlayerSword(
 
             override fun run() {
                 if (count > 0) {
-                    p.playSound(p.location, Sound.ENTITY_ENDER_DRAGON_SHOOT, 1.0f, 1.0f)
+                    BumpSound.HEAVEN_BREAKING_DEMON_SLAYER_SWORD_USE.playFor(p)
                     val projectile = p.launchProjectile(DragonFireball::class.java)
                     WeaponProjectileTask.track(projectile)
                     count--

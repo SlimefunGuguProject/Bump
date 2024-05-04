@@ -21,7 +21,7 @@ class DemonSlayerSword(
     override fun onItemUse(p: Player, sword: ItemStack) {
         Bump.localization.sendActionbarMessage(p, "weapon.demon_slayer_sword")
 
-        BumpSound.DEVIL_SWORD_USE.playFor(p)
+        BumpSound.DEMON_SLAYER_SWORD_USE.playFor(p)
 
         for (i in 0..19) {
             val projectile = p.launchProjectile(SmallFireball::class.java)

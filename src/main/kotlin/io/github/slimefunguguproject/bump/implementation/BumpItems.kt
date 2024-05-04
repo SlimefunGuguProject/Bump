@@ -15,11 +15,11 @@ import io.github.slimefunguguproject.bump.implementation.items.machines.ItemConv
 import io.github.slimefunguguproject.bump.implementation.items.materials.BumpMaterial
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetGoldSpade
 import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier
-import io.github.slimefunguguproject.bump.implementation.items.weapons.NormalSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DemonSlayerSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.HeavenBreakingDemonSlayerSword
-import io.github.slimefunguguproject.bump.implementation.items.weapons.LightningBow
 import io.github.slimefunguguproject.bump.implementation.items.weapons.HeavenBreakingSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.LightningBow
+import io.github.slimefunguguproject.bump.implementation.items.weapons.NormalSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.SoulSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.WitherSkullBow
 import io.github.slimefunguguproject.bump.implementation.recipes.BumpRecipeTypes

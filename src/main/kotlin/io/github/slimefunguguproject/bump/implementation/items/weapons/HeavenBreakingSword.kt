@@ -30,7 +30,7 @@ class HeavenBreakingSword(
         // directly up
         p.velocity = Vector(0, 3, 0)
 
-        BumpSound.SKY_SWORD_USE.playFor(p)
+        BumpSound.HEAVEN_BREAKING_SWORD_USE.playFor(p)
         for (i in 0..19) {
             p.spawnParticle(Particle.EXPLOSION_HUGE, p.location, 1)
         }

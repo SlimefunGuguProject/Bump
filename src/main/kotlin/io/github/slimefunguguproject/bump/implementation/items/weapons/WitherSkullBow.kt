@@ -2,11 +2,11 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons
 
 import io.github.slimefunguguproject.bump.Bump
 import io.github.slimefunguguproject.bump.core.handlers.BowUseHandler
+import io.github.slimefunguguproject.bump.core.services.sounds.BumpSound
 import io.github.slimefunguguproject.bump.implementation.tasks.WeaponProjectileTask
 import io.github.thebusybiscuit.slimefun4.api.items.ItemGroup
 import io.github.thebusybiscuit.slimefun4.api.items.SlimefunItemStack
 import io.github.thebusybiscuit.slimefun4.api.recipes.RecipeType
-import org.bukkit.Sound
 import org.bukkit.entity.Player
 import org.bukkit.entity.WitherSkull
 import org.bukkit.event.entity.EntityShootBowEvent
@@ -26,7 +26,7 @@ class WitherSkullBow(
 
             Bump.localization.sendActionbarMessage(p, "weapon.wither_skull_bow")
 
-            p.playSound(p.location, Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f)
+            BumpSound.WITHER_SKULL_BOW_USE.playFor(p)
 
             val projectile = p.launchProjectile(WitherSkull::class.java)
             WeaponProjectileTask.track(projectile)

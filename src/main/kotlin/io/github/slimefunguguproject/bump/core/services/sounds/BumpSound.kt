@@ -21,10 +21,12 @@ enum class BumpSound(val sound: Sound, val volume: Float, val pitch: Float) {
     QUALITY_IDENTIFIER_OPEN(Sound.BLOCK_ENCHANTMENT_TABLE_USE, 1.0f, 1.0f),
     QUALITY_IDENTIFIER_FAIL(Sound.ENTITY_VILLAGER_NO, 1.0f, 1.0f),
     QUALITY_IDENTIFIER_SUCCEED(Sound.ENTITY_VILLAGER_CELEBRATE, 1.0f, 1.0f),
-    DEVIL_SWORD_USE(Sound.ENTITY_BLAZE_SHOOT, 1.0f, 1.0f),
-    SKY_SWORD_USE(Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f),
+    WITHER_SKULL_BOW_USE(Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f),
     SOUL_SWORD_USE(Sound.AMBIENT_CAVE, 1.0f, 1.0f),
-    WITHER_SKULL_BOW_USE(Sound.ENTITY_WITHER_SHOOT, 1.0f, 1.0f);
+    HEAVEN_BREAKING_SWORD_USE(Sound.ENTITY_GENERIC_EXPLODE, 1.0f, 1.0f),
+    DEMON_SLAYER_SWORD_USE(Sound.ENTITY_BLAZE_SHOOT, 1.0f, 1.0f),
+    HEAVEN_BREAKING_DEMON_SLAYER_SWORD_USE(Sound.ENTITY_ENDER_DRAGON_SHOOT, 1.0f, 1.0f),
+    ;
 
     private fun getSoundConfig(): SoundConfig? {
         val config = Bump.soundService.getSoundConfig(this)
