@@ -15,7 +15,7 @@ import io.github.slimefunguguproject.bump.implementation.items.machines.ItemConv
 import io.github.slimefunguguproject.bump.implementation.items.materials.BumpMaterial
 import io.github.slimefunguguproject.bump.implementation.items.tools.GetGoldSpade
 import io.github.slimefunguguproject.bump.implementation.items.tools.QualityIdentifier
-import io.github.slimefunguguproject.bump.implementation.items.weapons.BumpBasicSword
+import io.github.slimefunguguproject.bump.implementation.items.weapons.NormalSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.DemonSlayerSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.HeavenBreakingDemonSlayerSword
 import io.github.slimefunguguproject.bump.implementation.items.weapons.LightningBow
@@ -455,7 +455,7 @@ object BumpItems {
         }
     }
 
-    val EMERALD_SWORD = buildSlimefunItem<BumpBasicSword> {
+    val EMERALD_SWORD = buildSlimefunItem<NormalSword> {
         id = "EMERALD_SWORD"
         material = MaterialType.Material(Material.DIAMOND_SWORD)
         itemGroup = BumpItemGroups.WEAPONS
@@ -470,7 +470,7 @@ object BumpItems {
         }
     }
 
-    val BONE_SWORD = buildSlimefunItem<BumpBasicSword> {
+    val BONE_SWORD = buildSlimefunItem<NormalSword> {
         id = "BONE_SWORD"
         material = MaterialType.Material(Material.WOODEN_SWORD)
         itemGroup = BumpItemGroups.WEAPONS
@@ -485,7 +485,7 @@ object BumpItems {
         }
     }
 
-    val GUARDIAN_SWORD = buildSlimefunItem<BumpBasicSword> {
+    val GUARDIAN_SWORD = buildSlimefunItem<NormalSword> {
         id = "GUARDIAN_SWORD"
         material = MaterialType.Material(Material.GOLDEN_SWORD)
         itemGroup = BumpItemGroups.WEAPONS
@@ -501,7 +501,7 @@ object BumpItems {
         }
     }
 
-    val PEACH_WOOD_SWORD = buildSlimefunItem<BumpBasicSword> {
+    val PEACH_WOOD_SWORD = buildSlimefunItem<NormalSword> {
         id = "PEACH_WOOD_SWORD"
         material = MaterialType.Material(Material.WOODEN_SWORD)
         itemGroup = BumpItemGroups.WEAPONS

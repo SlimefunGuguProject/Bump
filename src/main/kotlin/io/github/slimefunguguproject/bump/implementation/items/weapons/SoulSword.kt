@@ -21,7 +21,7 @@ class SoulSword(
     override fun getItemHandler() = ItemUseHandler { e: PlayerRightClickEvent ->
         val p = e.player
         val health = p.health
-        val maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.baseValue
+        val maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH)!!.value
         val foodLevel = p.foodLevel
 
         if (maxHealth <= health) {

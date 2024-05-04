@@ -9,7 +9,7 @@ import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
 import org.bukkit.event.entity.EntityDamageEvent
 
-class SkySwordListener(plugin: Bump) : Listener {
+class HeavenBreakingSwordListener(plugin: Bump) : Listener {
     init {
         plugin.server.pluginManager.registerEvents(this, plugin)
     }
@@ -19,12 +19,12 @@ class SkySwordListener(plugin: Bump) : Listener {
         val p = e.entity
         if (p !is Player) return
         if (e.cause == EntityDamageEvent.DamageCause.FALL
-            && PersistentDataAPI.getBoolean(p, Keys.SKY_SWORD_PROTECTED)
+            && PersistentDataAPI.getBoolean(p, Keys.HEAVEN_BREAKING_SWORD_PROTECTED)
         ) {
             // cancel fall damage
             e.isCancelled = true
             Bump.localization.sendActionbarMessage(p, "weapon.sky_sword.protected")
-            PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, false)
+            PersistentDataAPI.setBoolean(p, Keys.HEAVEN_BREAKING_SWORD_PROTECTED, false)
 
             // distribute damage evenly to nearby hostiles
             val damage = e.damage
@@ -32,7 +32,7 @@ class SkySwordListener(plugin: Bump) : Listener {
             val nearbyHostiles = p.world.getNearbyEntities(p.location, 5.0, 5.0, 5.0) { it is Monster }
             if (nearbyHostiles.isEmpty()) return
             val damagePerHostile = damage / nearbyHostiles.size
-            nearbyHostiles.forEach { (it as Monster).damage(damagePerHostile) }
+            nearbyHostiles.forEach { (it as Monster).damage(damagePerHostile, p) }
         }
     }
 }

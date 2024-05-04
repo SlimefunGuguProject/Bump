@@ -372,14 +372,17 @@ items:
     lore:
       - ""
       - "&b&k|&b- &7&oDemon Slayer, what a mighty name..."
-      - "&b&k|&b- &e&oRight click &7&oto send out the holy fire to sweep all darkness..."
+      - "&b&k|&b- &e&oRight click &7&oto send out the holy fire"
+      - "&b&k|&b- &7&oto sweep all darkness..."
       - ""
   HEAVEN_BREAKING_DEMON_SLAYER_SWORD:
     name: "&6Heaven Breaking & Demon Slayer Sword"
     lore:
       - ""
-      - "&b&k|&b- &7&oBreaking the sky and slay the demon, one after another emits powerful energy..."
-      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths forward in a row and strengthen yourself..."
+      - "&b&k|&b- &7&oBreaking the sky and slay the demon,"
+      - "&b&k|&b- &7&oone after another emits powerful energy..."
+      - "&b&k|&b- &e&oRight-click &7&oto launch three dragon breaths"
+      - "&b&k|&b- &7&oforward in a row and strengthen yourself..."
       - ""
 lores:
   per-use: "&7per use"
@@ -405,16 +408,16 @@ lores:
       range: "&7Range: &b{0} &7~ &b{1}"
       weight: "&7Weight: &b{0}%"
 researches:
+  materials: "Bump materials"
   food: "Bump food"
-  random_equipment: "Random equipment"
+  get_gold: "Getting gold"
   appraise: "Appraise"
-  stuff: "Magical stuff"
-  old_stuff: "Getting gold"
+  random_equipment: "Random equipment"
   bow: "Bump bows"
   peach_sword: "Peach sword"
   normal_sword: "Normal sword"
   soul_sword: "Soul sword"
-  sky_devil: "Heaven or Demon"
+  heaven_hell: "Heaven or Hell"
 messages:
   no-permission: "&cYou don't have permission."
   no-input: "&cPlease put in items."
@@ -438,8 +441,8 @@ messages:
       invalid: "&cThis item cannot be marked appraisable!"
       success: "&aThis item is marked appraisable now!"
   weapon:
-    unavailable: "&b&k|&b- &7&oYou cannot activate this skill now!"
-    low-food-level: "&b&k|&b- &7&oYour food level is not enough to convert your health!"
+    unavailable: "&b&k|&b- &7&oYou cannot activate the ability now!"
+    low-food-level: "&b&k|&b- &7&oYour food level is not enough to activate the ability!"
     cooldown: "&b&k|&b- &7&oYou need to wait for a while to use weapon abilities!"
     lightning_bow: "&b&k|&b- &7&oGod punishes!"
     wither_skull_bow: "&b&k|&b- &7&oWithering!"

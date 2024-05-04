@@ -59,15 +59,16 @@ class Bump : AbstractAddon(
     override fun enable() {
         instance = this
 
-        sendConsole("&6&l  _____")
-        sendConsole("&6&l /\\   _`\\             - Slimefun")
-        sendConsole("&6&l \\ \\ \\L\\ \\ __  __    ___ ___   _____")
-        sendConsole("&6&l  \\ \\  _ <'/\\ \\/\\ \\ /' __` __`\\/\\ '__`\\")
-        sendConsole("&6&l   \\ \\ \\L\\ \\ \\ \\_\\ \\/\\ \\/\\ \\/\\ \\ \\ \\L\\ \\")
-        sendConsole("&6&l    \\ \\____/\\ \\____/\\ \\_\\ \\_\\ \\_\\ \\ ,__/")
-        sendConsole("&6&l     \\/___/  \\/___/  \\/_/\\/_/\\/_/\\ \\ \\/")
-        sendConsole("&6&l                                  \\ \\_\\")
-        sendConsole("&6&l                                   \\/_/")
+        sendConsole("&6&l____                        ")
+        sendConsole("&6&l |  _ \\                       ")
+        sendConsole("&6&l | |_) |_   _ _ __ ___  _ __  ")
+        sendConsole("&6&l |  _ <| | | | '_ ` _ \\| '_ \\ ")
+        sendConsole("&6&l | |_) | |_| | | | | | | |_) |")
+        sendConsole("&6&l |____/ \\__,_|_| |_| |_| .__/ ")
+        sendConsole("&6&l                       | |    ")
+        sendConsole("&6&l                       |_|    ")
+
+
         sendConsole("&a&l  Bump 3 for Slimefun4 RC-37+")
         sendConsole("&a&l  Powered By bxx2004, SlimefunGuguProject")
         sendConsole("&a&l  GitHub: https://github.com/SlimefunGuguProject/Bump")

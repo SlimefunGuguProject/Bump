@@ -34,6 +34,6 @@ class HeavenBreakingSword(
         for (i in 0..19) {
             p.spawnParticle(Particle.EXPLOSION_HUGE, p.location, 1)
         }
-        PersistentDataAPI.setBoolean(p, Keys.SKY_SWORD_PROTECTED, true)
+        PersistentDataAPI.setBoolean(p, Keys.HEAVEN_BREAKING_SWORD_PROTECTED, true)
     }
 }

@@ -52,6 +52,11 @@ interface CooldownItem : ItemAttribute {
 
     /**
      * This method checks if given [ItemStack] has cooled down,
+     * if so, set the [ItemStack] to be just used.
+     *
+     * @param itemStack The [ItemStack] to be checked
+     *
+     * @return if the item can be used now
      */
     fun checkCooldown(itemStack: ItemStack): Boolean {
         require(noAirAndHasItemMeta(itemStack)) { INVALID_ITEMSTACK }

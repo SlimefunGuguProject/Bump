@@ -19,7 +19,7 @@ class SpicyStrips(
 ) : ConsumableFood(itemGroup, itemStack, recipeType, recipe) {
     override fun applyFoodEffects(p: Player) {
         FoodLevelUtils.add(p, 2)
-        p.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, 100, 2))
+        p.addPotionEffect(PotionEffect(PotionEffectType.ABSORPTION, 200, 2))
 
         Bump.scheduler().run {
             if (p.hasPotionEffect(PotionEffectType.HUNGER)) {
