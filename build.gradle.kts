@@ -1,7 +1,7 @@
 plugins {
     kotlin("jvm") version "1.9.23"
     id("com.github.johnrengelman.shadow") version "8.1.1"
-    id("org.sonarqube") version "4.4.1.3373"
+    id("org.sonarqube") version "5.0.0.4638"
     id("net.minecrell.plugin-yml.bukkit") version "0.6.0"
 }
 
