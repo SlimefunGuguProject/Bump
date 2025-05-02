@@ -2,6 +2,8 @@ package io.github.slimefunguguproject.bump.implementation.items.weapons;
 
 import javax.annotation.Nonnull;
 
+import io.github.slimefunguguproject.bump.utils.Attributes;
+
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.entity.Player;
@@ -37,7 +39,7 @@ public class SoulSword extends SimpleSlimefunItem<ItemUseHandler> {
         return e -> {
             Player p = e.getPlayer();
             double health = p.getHealth();
-            double maxHealth = p.getAttribute(Attribute.GENERIC_MAX_HEALTH).getBaseValue();
+            double maxHealth = p.getAttribute(Attributes.get("max_health")).getBaseValue();
             int foodLevel = p.getFoodLevel();
 
             if (maxHealth <= health) {

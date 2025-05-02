@@ -7,6 +7,8 @@ import java.util.logging.Level;
 
 import javax.annotation.Nonnull;
 
+import io.github.slimefunguguproject.bump.utils.Attributes;
+
 import org.bukkit.Material;
 import org.bukkit.attribute.Attribute;
 import org.bukkit.configuration.ConfigurationSection;
@@ -74,7 +76,7 @@ public final class AppraiseSetup {
                     .addValidSlimefunItemIds(validSlimefunItemIds);
 
                 for (String attr : attributes) {
-                    Attribute attribute = Attribute.valueOf(attr);
+                    Attribute attribute = Attributes.get(attr);
                     double min = attributesSection.getDouble(attr + ".min");
                     double max = attributesSection.getDouble(attr + ".max");
                     String weightStr = attributesSection.getString(attr + ".weight");
